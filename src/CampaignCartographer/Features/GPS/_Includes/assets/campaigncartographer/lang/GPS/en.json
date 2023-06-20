@@ -1,3 +1,4 @@
 {
-  "Features.GPS.ClientCommandDescription": "Shows information about the player's current location."
+  "Features.GPS.ClientCommand.Description.Default": "Shows information about your current location.",
+  "Features.GPS.ClientCommand.Description.BroadcastSubCommand": "Broadcasts your current location as a message in chat."
 }

@@ -13,10 +13,15 @@ internal class GpsClientSystem : ClientModSystem
 {
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        capi.ChatCommands
+        var command = capi.ChatCommands
             .Create("gps")
-            .WithDescription(LangEx.FeatureString("GPS", "ClientCommandDescription"))
+            .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.Default"))
             .HandleWith(OnClientDefaultHandler);
+
+        command.BeginSubCommand("chat")
+            .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.BroadcastSubCommand"))
+            .HandleWith(OnClientSubCommandBroadcast)
+            .EndSubCommand();
     }
 
     private static TextCommandResult OnClientDefaultHandler(TextCommandCallingArgs args)
@@ -24,7 +29,14 @@ internal class GpsClientSystem : ClientModSystem
         var pos = PlayerLocationMessage(args.Caller.Player);
         return TextCommandResult.Success(pos);
     }
-    
+
+    private TextCommandResult OnClientSubCommandBroadcast(TextCommandCallingArgs args)
+    {
+        var pos = PlayerLocationMessage(args.Caller.Player);
+        Capi.SendChatMessage(pos);
+        return TextCommandResult.Success();
+    }
+
     private static string PlayerLocationMessage(IPlayer player)
     {
         var pos = player.Entity.Pos.AsBlockPos;
