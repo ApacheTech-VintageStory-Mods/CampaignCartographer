@@ -22,6 +22,11 @@ internal class GpsClientSystem : ClientModSystem
             .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.BroadcastSubCommand"))
             .HandleWith(OnClientSubCommandBroadcast)
             .EndSubCommand();
+
+        command.BeginSubCommand("copy")
+            .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.ClipboardSubCommand"))
+            .HandleWith(OnClientSubCommandClipboard)
+            .EndSubCommand();
     }
 
     private static TextCommandResult OnClientDefaultHandler(TextCommandCallingArgs args)
@@ -34,6 +39,12 @@ internal class GpsClientSystem : ClientModSystem
     {
         var pos = PlayerLocationMessage(args.Caller.Player);
         Capi.SendChatMessage(pos);
+        return TextCommandResult.Success();
+    }
+
+    private TextCommandResult OnClientSubCommandClipboard(TextCommandCallingArgs args)
+    {
+        Capi.Input.ClipboardText = PlayerLocationMessage(args.Caller.Player);
         return TextCommandResult.Success();
     }
 

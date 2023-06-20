@@ -1,4 +1,5 @@
 {
   "Features.GPS.ClientCommand.Description.Default": "Shows information about your current location.",
-  "Features.GPS.ClientCommand.Description.BroadcastSubCommand": "Broadcasts your current location as a message in chat."
+  "Features.GPS.ClientCommand.Description.BroadcastSubCommand": "Broadcasts your current location as a message in chat.",
+  "Features.GPS.ClientCommand.Description.ClipboardSubCommand": "Copies your current location to the clipboard."
 }
