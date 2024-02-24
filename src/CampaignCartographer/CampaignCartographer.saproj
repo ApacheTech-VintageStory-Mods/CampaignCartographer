@@ -42,7 +42,7 @@
                 <Embedding Compress="1" Encrypt="1" />
             </Assembly>
             <Assembly AssemblyName="ApacheTech.VintageMods.FluentChatCommands, Culture=neutral, PublicKeyToken=null">
-                <Merging Merge="1">
+                <Merging Merge="0">
                     <Pruning Prune="0">
                         <Exclusion />
                     </Pruning>
@@ -415,7 +415,7 @@
                 <Embedding Compress="1" Encrypt="1" />
             </Assembly>
             <Assembly AssemblyName="Gantry.Services.FileSystem, Culture=neutral, PublicKeyToken=null">
-                <Merging Merge="1">
+                <Merging Merge="0">
                     <Pruning>
                         <Exclusion />
                     </Pruning>
@@ -427,7 +427,7 @@
                 <Embedding Compress="1" Encrypt="1" />
             </Assembly>
             <Assembly AssemblyName="Gantry.Services.HarmonyPatches, Culture=neutral, PublicKeyToken=null">
-                <Merging Merge="1">
+                <Merging Merge="0">
                     <Pruning>
                         <Exclusion />
                     </Pruning>
@@ -439,7 +439,7 @@
                 <Embedding Compress="1" Encrypt="1" />
             </Assembly>
             <Assembly AssemblyName="Gantry.Core, Culture=neutral, PublicKeyToken=null">
-                <Merging Merge="1">
+                <Merging Merge="0">
                     <Pruning Prune="0">
                         <Exclusion />
                     </Pruning>
@@ -499,7 +499,7 @@
                 <Embedding Compress="1" Encrypt="1" />
             </Assembly>
             <Assembly AssemblyName="Gantry.Services.Network, Culture=neutral, PublicKeyToken=null">
-                <Merging Merge="1">
+                <Merging Merge="0">
                     <Pruning>
                         <Exclusion />
                     </Pruning>
@@ -883,6 +883,187 @@
                     <ControlFlow />
                 </Merging>
                 <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="Mono.Nat, Culture=neutral, PublicKeyToken=6c9468a3c21bc6d1">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Gantry, Culture=neutral, PublicKeyToken=null">
+                <Merging Merge="1">
+                    <Pruning />
+                    <Obfuscation />
+                    <ControlFlow />
+                    <MemberRefsProxy />
+                    <ResourcesCompression />
+                </Merging>
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="ApacheTech.Common.FunctionalCSharp, Culture=neutral, PublicKeyToken=null">
+                <Merging Merge="1">
+                    <Pruning />
+                    <Obfuscation />
+                    <ControlFlow />
+                    <MemberRefsProxy />
+                    <ResourcesCompression />
+                </Merging>
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="SkiaSharp, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Windowing.GraphicsLibraryFramework, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Windowing.Desktop, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Runtime.InteropServices.RuntimeInformation, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Runtime.Extensions, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Core, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Windowing.Common, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Mathematics, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Runtime.Intrinsics, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Drawing.Common, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Microsoft.Win32.SystemEvents, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.IO.FileSystem, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="MonoMod.Utils, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Mono.Cecil, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="MonoMod.Core, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Text.Json, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="MonoMod.ILHelpers, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="MonoMod.Backports, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="MonoMod.Iced, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Text.Encodings.Web, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="CommandLine, Culture=neutral, PublicKeyToken=5a870481e358d379">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Microsoft.CodeAnalysis, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Microsoft.CodeAnalysis.CSharp, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="ICSharpCode.SharpZipLib, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Audio.OpenAL, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="OpenTK.Graphics, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Security.Cryptography.Algorithms, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Security.Cryptography.Primitives, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Text.Encoding.CodePages, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="Eto, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="SharpAvi.SkiaSharp, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.ComponentModel.Annotations, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.ServiceModel.Primitives, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Private.ServiceModel, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+                <Embedding Compress="1" Encrypt="1" />
+            </Assembly>
+            <Assembly AssemblyName="System.Security.Permissions, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.Threading.AccessControl, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.Diagnostics.EventLog, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.Diagnostics.PerformanceCounter, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.Configuration.ConfigurationManager, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.IO.Ports, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
+            </Assembly>
+            <Assembly AssemblyName="System.Windows.Extensions, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+                <Merging />
             </Assembly>
         </Assemblies>
     </Configuration>

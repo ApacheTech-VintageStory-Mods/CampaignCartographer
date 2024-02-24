@@ -1,0 +1,20 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Customise Player Pins",
+  "Features.PlayerPins.Dialogue.Self": "You",
+  "Features.PlayerPins.Dialogue.Highlighted": "Highlighted Players",
+  "Features.PlayerPins.Dialogue.Others": "Other People on the Server",
+  "Features.PlayerPins.Dialogue.Randomise": "Randomise Colour and Scale",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Player Pins:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Whether to change your own player pin, or the pin that shows for other server members.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Player",
+  "Features.PlayerPins.Dialogue.lblRed": "Red:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "The Red channel of the pin colour.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Green:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "The Green channel of the pin colour.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Blue:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "The Blue channel of the pin colour.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opacity:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "The opacity of the pin colour.",
+  "Features.PlayerPins.Dialogue.lblScale": "Scale:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "The scale adjustment to apply to the pin scale."
+}

@@ -1,4 +1,7 @@
-﻿namespace CampaignCartographer.Features.GPS.Systems;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers;
+using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers.Extensions;
+
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 
 /// <summary>
 ///     [GPS] The user should be able to display their current XYZ position.
@@ -13,6 +16,8 @@ internal class GpsClientSystem : ClientModSystem
 {
     public override void StartClientSide(ICoreClientAPI capi)
     {
+        var parsers = capi.ChatCommands.Parsers;
+
         var command = capi.ChatCommands
             .Create("gps")
             .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.Default"))
@@ -26,6 +31,12 @@ internal class GpsClientSystem : ClientModSystem
         command.BeginSubCommand("copy")
             .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.ClipboardSubCommand"))
             .HandleWith(OnClientSubCommandClipboard)
+            .EndSubCommand();
+
+        command.BeginSubCommand("pm")
+            .WithDescription(LangEx.FeatureString("GPS", "ClientCommand.Description.PrivateMessageSubCommand"))
+            .WithArgs(parsers.FuzzyPlayerSearch())
+            .HandleWith(OnClientSubCommandPrivateMessage)
             .EndSubCommand();
     }
 
@@ -46,6 +57,24 @@ internal class GpsClientSystem : ClientModSystem
     {
         Capi.Input.ClipboardText = PlayerLocationMessage(args.Caller.Player);
         return TextCommandResult.Success();
+    }
+
+    private TextCommandResult OnClientSubCommandPrivateMessage(TextCommandCallingArgs args)
+    {
+        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
+        var players = parser.Results;
+        var searchTerm = parser.Value;
+
+        switch (players.Count)
+        {
+            case 1:
+                Capi.TriggerChatMessage($"/pm {players[0].PlayerName} {PlayerLocationMessage(args.Caller.Player)}");
+                return TextCommandResult.Success();
+            case > 1:
+                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults", searchTerm));
+            default:
+                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
+        }
     }
 
     private static string PlayerLocationMessage(IPlayer player)

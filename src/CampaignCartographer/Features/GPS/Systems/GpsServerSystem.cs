@@ -1,6 +1,6 @@
 ﻿using Vintagestory.API.Server;
 
-namespace CampaignCartographer.Features.GPS.Systems;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 
 /// <summary>
 ///     [GPS] The user should be able to display their current XYZ position.

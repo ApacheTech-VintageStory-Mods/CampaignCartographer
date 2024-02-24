@@ -1,8 +1,9 @@
-﻿using ApacheTech.VintageMods.FluentChatCommands;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Extensions;
+using Gantry.Core.Extensions.GameContent;
 using Gantry.Services.HarmonyPatches.DependencyInjection;
 using Gantry.Services.Network.DependencyInjection;
 
-namespace CampaignCartographer;
+namespace ApacheTech.VintageMods.CampaignCartographer;
 
 /// <summary>
 ///     Entry-point for the mod. This class will configure and build the IOC Container, and Service list for the rest of the mod.
@@ -29,14 +30,9 @@ public sealed class Program : ModHost
         services.AddFileSystemService(o => o.RegisterSettingsFiles = true);
         services.AddHarmonyPatchingService(o => o.AutoPatchModAssembly = true);
         services.AddNetworkService();
-    }
 
-    /// <summary>
-    ///     If this mod allows runtime reloading, you must implement this method to unregister any listeners / handlers
-    /// </summary>
-    public override void Dispose()
-    {
-        FluentChat.ClearCommands(UApi);
-        base.Dispose();
+        // TODO: ROADMAP: This may be better to push to a separate mod system.
+        services.AddProprietaryModSystem<IWorldMapManager, WorldMapManager>();
+        services.AddSingleton(sp => sp.Resolve<WorldMapManager>().WaypointMapLayer());
     }
 }
