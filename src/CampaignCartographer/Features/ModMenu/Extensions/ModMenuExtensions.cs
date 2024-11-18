@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Gantry.Core.GameContent.GUI.Abstractions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 
@@ -14,7 +15,7 @@ public static class ModMenuExtensions
     [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Extension Method")]
     public static void AddModMenuDialogue<T>(this ICoreClientAPI capi, string title) where T : GenericDialogue
     {
-        IOC.Services.Resolve<ModMenu>().FeatureDialogues
+        IOC.Services.Resolve<ModMenuClientSystem>().FeatureDialogues
             .AddIfNotPresent(typeof(T), LangEx.FeatureString($"{title}.Dialogue", "Title"));
     }
 }

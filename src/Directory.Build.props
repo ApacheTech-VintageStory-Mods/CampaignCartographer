@@ -12,6 +12,7 @@
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<Configurations>Debug;Release;Package</Configurations>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Environment Variables">
@@ -21,16 +22,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="**\_EmbeddedResources\**\*.*" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectCapability Include="DynamicDependentFile" />
 		<ProjectCapability Include="DynamicFileNesting" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Resource Include="Features\**\_Includes\assets\**\*.*" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Package|AnyCPU'">
@@ -81,16 +74,16 @@
 			<HintPath>$(EnvironmentVariable)\Eto.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="SkiaSharp">
+			<HintPath>$(EnvironmentVariable)\Lib\SkiaSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="0Harmony">
 			<HintPath>$(EnvironmentVariable)\Lib\0Harmony.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="AnimatedGif">
 			<HintPath>$(EnvironmentVariable)\Lib\AnimatedGif.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="SkiaSharp">
-			<HintPath>$(EnvironmentVariable)\Lib\SkiaSharp.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="cairo-sharp">
@@ -119,5 +112,9 @@
 		<None Include="$(ProjectName).saproj">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<EmbeddedResource Include="**\_EmbeddedResources\**\*.*" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Gantry.Core.Extensions.Helpers;
+using Gantry.Core.GameContent.GUI.Abstractions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Dialogue;
 
@@ -7,31 +8,20 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Dialogue;
 /// </summary>
 /// <seealso cref="GenericDialogue" />
 [UsedImplicitly]
-public sealed class SupportDialogue : GenericDialogue
+public sealed class SupportDialogue : RowedButtonMenuDialogue
 {
-    private float _row;
-    private const float ButtonWidth = 350f;
-    private const float HeightOffset = 0f;
-
     /// <summary>
     /// 	Initialises a new instance of the <see cref="SupportDialogue"/> class.
     /// </summary>
     /// <param name="capi">The client API.</param>
     public SupportDialogue(ICoreClientAPI capi) : base(capi)
     {
-        Alignment = EnumDialogArea.CenterMiddle;
-        Title = LangEx.ModTitle();
         ModalTransparency = 0f;
+        Title = LangEx.ModTitle();
         ShowTitleBar = true;
     }
 
-    /// <summary>
-    ///     Gets an entry from the language files, for the feature this instance is representing.
-    /// </summary>
-    /// <param name="code">The entry to return.</param>
-    /// <returns>A localised <see cref="string"/>, for the specified language file code.</returns>
-    private static string LangEntry(string code) => 
-        LangEx.FeatureString("Support.Dialogue", code);
+    protected override string LangEntryPrefix => "Support.Dialogue";
 
     /// <summary>
     ///     Composes the header for the GUI.
@@ -39,72 +29,14 @@ public sealed class SupportDialogue : GenericDialogue
     /// <param name="composer">The composer.</param>
     protected override void ComposeBody(GuiComposer composer)
     {
-        AddButton(composer, LangEntry("Patreon"), OnPatreonButtonPressed);
-        AddButton(composer, LangEntry("Donate"), OnDonateButtonPressed);
-        AddButton(composer, LangEntry("Coffee"), OnCoffeeButtonPressed);
-        AddButton(composer, LangEntry("Twitch"), OnTwitchButtonPressed);
-        AddButton(composer, LangEntry("YouTube"), OnYouTubeButtonPressed);
-        AddButton(composer, LangEntry("WishList"), OnWishListButtonPressed);
-        AddButton(composer, LangEntry("Website"), OnWebsiteButtonPressed);
-        IncrementRow(ref _row);
+        AddButton(composer, LangEntry("Patreon"), () => BrowserEx.TryOpenUrl("https://www.patreon.com/ApacheTechSolutions?fan_landing=true"));
+        AddButton(composer, LangEntry("Donate"), () => BrowserEx.TryOpenUrl("https://bit.ly/APGDonate"));
+        AddButton(composer, LangEntry("Coffee"), () => BrowserEx.TryOpenUrl("https://www.buymeacoffee.com/Apache"));
+        AddButton(composer, LangEntry("Twitch"), () => BrowserEx.TryOpenUrl("https://twitch.tv/ApacheGamingUK"));
+        AddButton(composer, LangEntry("YouTube"), () => BrowserEx.TryOpenUrl("https://youtube.com/ApacheGamingUK"));
+        AddButton(composer, LangEntry("WishList"), () => BrowserEx.TryOpenUrl("http://amzn.eu/7qvKTFu"));
+        AddButton(composer, LangEntry("Website"), () => BrowserEx.TryOpenUrl("https://apachegaming.net"));
+        IncrementRow();
         AddButton(composer, LangEntry("Back"), TryClose);
-    }
-        
-    private void AddButton(GuiComposer composer, string langEntry, ActionConsumable onClick)
-    {
-        composer.AddSmallButton(langEntry, onClick, ButtonBounds(ref _row, ButtonWidth, HeightOffset));
-    }
-
-    private static void IncrementRow(ref float row) => row += 0.5f;
-
-    private static ElementBounds ButtonBounds(ref float row, double width, double height)
-    {
-        IncrementRow(ref row);
-        return ElementStdBounds
-            .MenuButton(row, EnumDialogArea.LeftFixed)
-            .WithFixedOffset(0, height)
-            .WithFixedSize(width, 30);
-    }
-
-    private static bool OnPatreonButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://www.patreon.com/ApacheTechSolutions?fan_landing=true");
-        return true;
-    }
-
-    private static bool OnWebsiteButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://apachegaming.net");
-        return true;
-    }
-
-    private static bool OnDonateButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://bit.ly/APGDonate");
-        return true;
-    }
-
-    private static bool OnCoffeeButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://www.buymeacoffee.com/Apache");
-        return true;
-    }
-
-    private static bool OnTwitchButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://twitch.tv/ApacheGamingUK");
-        return true;
-    }
-
-    private static bool OnYouTubeButtonPressed()
-    {
-        BrowserEx.OpenUrl("https://youtube.com/ApacheGamingUK");
-        return true;
-    }
-
-    private static bool OnWishListButtonPressed()
-    {
-        BrowserEx.OpenUrl("http://amzn.eu/7qvKTFu");
-        return true;
     }
 }

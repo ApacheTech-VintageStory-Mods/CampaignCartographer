@@ -2,7 +2,6 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Cairo;
 using Vintagestory.Server;
-
 using Color = System.Drawing.Color;
 
 // ReSharper disable StringLiteralTypo

@@ -1,8 +1,7 @@
 ﻿using ApacheTech.Common.Extensions.Enum;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Cairo;
-using Gantry.Core.DependencyInjection.Annotation;
-using Gantry.Core.Extensions.GameContent;
+using Gantry.Core.Hosting.Annotation;
 using Gantry.Services.FileSystem.Dialogue;
 
 using Color = System.Drawing.Color;

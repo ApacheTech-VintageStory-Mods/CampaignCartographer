@@ -4,10 +4,7 @@
 		<Nullable>warnings</Nullable>
 		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(Configuration)|$(Platform)'!='Debug|AnyCPU'">
-		<PackageReference Include="VintageStory.Gantry" Version="0.7.4" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\Gantry\src\Gantry\Gantry.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -29,7 +26,7 @@
 	  <Resource Remove="Features\PlayerPins\_Includes\assets\campaigncartographer\lang\PlayerPins\en.json" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Features\WaypointManager\Extensions\" />
+	  <Folder Include="Features\WaypointManager\Abstractions\" />
 	  <Folder Include="Features\WaypointManager\Commands\" />
 	  <Folder Include="Features\WaypointManager\Handlers\" />
 	</ItemGroup>

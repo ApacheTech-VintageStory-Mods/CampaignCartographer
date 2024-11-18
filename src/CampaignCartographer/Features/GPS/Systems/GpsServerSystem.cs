@@ -1,4 +1,6 @@
-﻿using Vintagestory.API.Server;
+﻿using Gantry.Core.Hosting.Registration;
+using Gantry.Services.FileSystem.Hosting;
+using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 

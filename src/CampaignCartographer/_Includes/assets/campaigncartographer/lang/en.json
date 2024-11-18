@@ -52,21 +52,6 @@
 
   "Features.PredefinedWaypoints.WaypointTemplate.DefaultTitle": "New Waypoint",
 
-  "Features.PredefinedWaypoints.Dialogue.MenuScreen.Title": "Campaign Cartographer",
-  "Features.PredefinedWaypoints.Dialogue.MenuScreen.EditBlockSelectionWaypointMarker": "Edit Block Selection Waypoint Marker",
-  "Features.PredefinedWaypoints.Dialogue.MenuScreen.EditPreDefinedWaypoints": "Edit Pre-Defined Waypoints",
-  "Features.PredefinedWaypoints.Dialogue.MenuScreen.WaypointManager": "Waypoint Manager",
-  "Features.PredefinedWaypoints.Dialogue.MenuScreen.Support": "Support The Mod Author",
-
-  "Features.Support.Dialogue.Patreon": "Join my Patreon",
-  "Features.Support.Dialogue.Donate": "Donate via PayPal",
-  "Features.Support.Dialogue.Coffee": "Buy me a Coffee",
-  "Features.Support.Dialogue.Twitch": "Subscribe on Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Subscribe on YouTube",
-  "Features.Support.Dialogue.WishList": "Amazon WishList",
-  "Features.Support.Dialogue.Website": "Visit my Website",
-  "Features.Support.Dialogue.Back": "Back",
-
   "Features.FirstRun.Dialogue.Title": "First Run",
   "Features.FirstRun.Dialogue.AutoWaypointsButton": "Change Automatic Waypoint Settings",
   "Features.FirstRun.Dialogue.PlayerPinsButton": "Change Player Map Pin Settings",
@@ -124,18 +109,6 @@
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.CellPinned": "Pinned: {0}",
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.lblSearch.HoverText": "Filter waypoint types, by title and name.",
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.lblDisabledOnly": "Only Show Disabled Waypoint Types:",
-
-  "Features.PlayerPins.SettingsCommandDescription": "Customise Player Map Pins",
-
-  "Features.PlayerPins.Friends.Description": "Add/Remove players from your friends list. Friends are highlighted on the world map.",
-  "Features.PlayerPins.Friends.FriendsList": "Friends List:",
-  "Features.PlayerPins.Friends.YouHaveNoFriends": "You have no friends.",
-  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Please specify a player's name.'",
-  "Features.PlayerPins.Friends.PlayerNotFound": "No player with the name `{0}` has been found.",
-  "Features.PlayerPins.Friends.MultiplePlayersFound": "Multiple players with the name `{0}` have been found.",
-  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} has already been added to your friends list",
-  "Features.PlayerPins.Friends.PlayerAdded": "{0} has been added to your friends list",
-  "Features.PlayerPins.Friends.PlayerRemoved": "{0} has been removed from your friends list.",
 
   "Features.WaypointUtil.SettingsCommandDescription": "A selection of utility commands that makes working with waypoints a lot easier.",
   "Features.WaypointUtil.Confirm": "confirm",

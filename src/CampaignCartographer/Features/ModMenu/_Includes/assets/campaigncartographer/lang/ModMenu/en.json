@@ -1,9 +1,17 @@
 {
-  "Features.CentreMap.SettingsCommandDescription": "Re-centres the map on the given location or player.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Cannot find player `{0}` at this time. They may be out of range. Re-logging will display them on the map.",
-  "Features.CentreMap.CentreMapOnPlayer": "Re-centred map on player: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Re-centred map on player spawn point: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Re-centred map on position: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Re-centred map on world spawn: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Re-centred map on waypoint {0}: {1} ({2}, {3})"
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Edit Block Selection Waypoint Marker",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Edit Pre-Defined Waypoints",
+  "Features.ModMenu.Dialogue.WaypointManager": "Waypoint Manager",
+
+  "Features.ModMenu.Dialogue.Title": "Campaign Cartographer",
+  "Features.ModMenu.Dialogue.Support": "Support The Mod Author",
+
+  "Features.Support.Dialogue.Patreon": "Join my Patreon",
+  "Features.Support.Dialogue.Donate": "Donate via PayPal",
+  "Features.Support.Dialogue.Coffee": "Buy me a Coffee",
+  "Features.Support.Dialogue.Twitch": "Subscribe on Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Subscribe on YouTube",
+  "Features.Support.Dialogue.WishList": "Amazon WishList",
+  "Features.Support.Dialogue.Website": "Visit my Website",
+  "Features.Support.Dialogue.Back": "Back"
 }

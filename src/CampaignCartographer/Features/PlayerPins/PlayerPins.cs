@@ -1,6 +1,8 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.ChatCommands;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.Dialogue;
+using Gantry.Core.Hosting.Registration;
+using Gantry.Services.FileSystem.Hosting;
 
 // ReSharper disable StringLiteralTypo
 
@@ -17,7 +19,7 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
     ///     Allows a mod to include Singleton, or Transient services to the IOC Container.
     /// </summary>
     /// <param name="services">The service collection.</param>
-    /// <param name="capi">The The client side API.</param>
+    /// <param name="capi">The client side API.</param>
     public void ConfigureClientModServices(IServiceCollection services, ICoreClientAPI capi)
     {
         services.AddFeatureWorldSettings<PlayerPinsSettings>();

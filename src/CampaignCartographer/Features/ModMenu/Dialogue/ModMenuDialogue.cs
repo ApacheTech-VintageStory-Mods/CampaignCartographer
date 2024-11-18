@@ -1,4 +1,5 @@
-﻿using Gantry.Core.GameContent.GUI.Helpers;
+﻿using Gantry.Core.GameContent.GUI.Abstractions;
+using Gantry.Core.GameContent.GUI.Helpers;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Dialogue;
 
@@ -19,7 +20,7 @@ public sealed class ModMenuDialogue : GenericDialogue
     /// </summary>
     /// <param name="capi">The client API.</param>
     /// <param name="system">The mod system that controls this dialogue window.</param>
-    public ModMenuDialogue(ICoreClientAPI capi, ModMenu system) : base(capi)
+    public ModMenuDialogue(ICoreClientAPI capi, ModMenuClientSystem system) : base(capi)
     {
         Alignment = EnumDialogArea.CenterMiddle;
         Title = LangEx.ModTitle();
@@ -35,7 +36,7 @@ public sealed class ModMenuDialogue : GenericDialogue
     protected override void ComposeBody(GuiComposer composer)
     {
         var squareBounds = ElementBounds.FixedSize(EnumDialogArea.CenterTop, ButtonWidth, HeightOffset).WithFixedOffset(0, 30);
-   
+
         composer
             .AddStaticImage(AssetLocation.Create("campaigncartographer:textures/dialogue/menu-logo.png"), squareBounds);
 
@@ -44,10 +45,10 @@ public sealed class ModMenuDialogue : GenericDialogue
             AddDialogueButton(composer, dialogue.Value, dialogue.Key);
         }
         IncrementRow(ref _row);
-        AddButton(composer, LangEx.FeatureString("PredefinedWaypoints.Dialogue.MenuScreen", "Support"), OnDonateButtonPressed);
+        AddButton(composer, LangEx.FeatureString("ModMenu.Dialogue", "Support"), OnDonateButtonPressed);
         AddButton(composer, Lang.Get("pause-back2game"), TryClose);
     }
-        
+
     private void AddButton(GuiComposer composer, string langEntry, ActionConsumable onClick)
     {
         composer.AddSmallButton(langEntry, onClick, ButtonBounds(ref _row, ButtonWidth, HeightOffset));

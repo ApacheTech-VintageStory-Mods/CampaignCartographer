@@ -1,8 +1,7 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers;
-using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
-using Gantry.Core.Extensions.GameContent;
+using Gantry.Services.EasyX.ChatCommands.Parsers;
+using Gantry.Services.EasyX.ChatCommands.Parsers.Extensions;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 
@@ -106,7 +105,7 @@ public sealed class CentreMapClient : ClientModSystem
     private TextCommandResult OnSelfOption(TextCommandCallingArgs args)
     {
         var player = args.Caller.Player;
-        var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn();
+        var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn(player.Entity.Api.World);
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnPlayer", player.PlayerName, displayPos.X,
             displayPos.Y, displayPos.Z);
         return RecentreAndProvideFeedback(player.Entity.Pos.XYZ, message);
@@ -145,7 +144,7 @@ public sealed class CentreMapClient : ClientModSystem
 
         TextCommandResult OnPlayerFound(IPlayer player)
         {
-            var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn();
+            var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn(player.Entity.Api.World);
             var message = LangEx.FeatureString("CentreMap", "CentreMapOnPlayer", player.PlayerName, displayPos.X,
                 displayPos.Y, displayPos.Z);
             return RecentreAndProvideFeedback(player.Entity.Pos.XYZ, message);
@@ -173,7 +172,7 @@ public sealed class CentreMapClient : ClientModSystem
     private TextCommandResult OnSpawnOption(TextCommandCallingArgs args)
     {
         var pos = _capi.World.DefaultSpawnPosition.AsBlockPos;
-        var displayPos = pos.RelativeToSpawn();
+        var displayPos = pos.RelativeToSpawn(_capi.World);
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnWorldSpawn", displayPos.X, displayPos.Z);
         return RecentreAndProvideFeedback(pos.ToVec3d(), message);
     }
@@ -186,7 +185,7 @@ public sealed class CentreMapClient : ClientModSystem
         var waypointId = args.Parsers[0].GetValue().To<int>();
         var target = _worldMap.WaypointMapLayer().ownWaypoints[waypointId];
         var pos = target.Position.AsBlockPos;
-        var displayPos = pos.RelativeToSpawn();
+        var displayPos = pos.RelativeToSpawn(_capi.World);
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnWaypoint", waypointId, target.Title,
             displayPos.X, displayPos.Z);
         return RecentreAndProvideFeedback(pos.ToVec3d(), message);
@@ -200,7 +199,7 @@ public sealed class CentreMapClient : ClientModSystem
     /// <param name="packet">The packet that was sent.</param>
     private void OnClientSpawnPointResponsePacketReceived(PlayerSpawnPositionDto packet)
     {
-        var displayPos = packet.SpawnPosition.RelativeToSpawn();
+        var displayPos = packet.SpawnPosition.RelativeToSpawn(_capi.World);
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnPlayerSpawn", displayPos.X, displayPos.Z);
         RecentreAndProvideFeedback(packet.SpawnPosition.ToVec3d(), message);
     }

@@ -1,5 +1,5 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers;
-using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers.Extensions;
+﻿using Gantry.Services.EasyX.ChatCommands.Parsers;
+using Gantry.Services.EasyX.ChatCommands.Parsers.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 
@@ -80,7 +80,7 @@ internal class GpsClientSystem : ClientModSystem
     private static string PlayerLocationMessage(IPlayer player)
     {
         var pos = player.Entity.Pos.AsBlockPos;
-        var displayPos = pos.RelativeToSpawn();
+        var displayPos = pos.RelativeToSpawn(player.Entity.Api.World);
         var message = $"X = {displayPos.X}, Y = {displayPos.Y}, Z = {displayPos.Z}.";
         return message;
     }

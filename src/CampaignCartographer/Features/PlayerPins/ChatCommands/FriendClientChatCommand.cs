@@ -1,6 +1,6 @@
 ﻿using System.Text;
-using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers;
-using ApacheTech.VintageMods.CampaignCartographer.Domain.ChatCommands.Parsers.Extensions;
+using Gantry.Services.EasyX.ChatCommands.Parsers;
+using Gantry.Services.EasyX.ChatCommands.Parsers.Extensions;
 using Gantry.Services.FileSystem.Configuration;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.ChatCommands;
