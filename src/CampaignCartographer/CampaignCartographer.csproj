@@ -4,30 +4,8 @@
 		<Nullable>warnings</Nullable>
 		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
+	
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\Gantry\src\Gantry\Gantry.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Resource Remove="Features\CentreMap\_Includes\assets\.gitkeep" />
-	  <Resource Remove="Features\CentreMap\_Includes\assets\campaigncartographer\.gitkeep" />
-	  <Resource Remove="Features\CentreMap\_Includes\assets\campaigncartographer\lang\.gitkeep" />
-	  <Resource Remove="Features\CentreMap\_Includes\assets\campaigncartographer\lang\CentreMap\en.json" />
-	  <Resource Remove="Features\GPS\_Includes\assets\.gitkeep" />
-	  <Resource Remove="Features\GPS\_Includes\assets\campaigncartographer\.gitkeep" />
-	  <Resource Remove="Features\GPS\_Includes\assets\campaigncartographer\lang\.gitkeep" />
-	  <Resource Remove="Features\GPS\_Includes\assets\campaigncartographer\lang\GPS\en.json" />
-	  <Resource Remove="Features\ModMenu\_Includes\assets\.gitkeep" />
-	  <Resource Remove="Features\ModMenu\_Includes\assets\campaigncartographer\.gitkeep" />
-	  <Resource Remove="Features\ModMenu\_Includes\assets\campaigncartographer\lang\.gitkeep" />
-	  <Resource Remove="Features\ModMenu\_Includes\assets\campaigncartographer\lang\ModMenu\en.json" />
-	  <Resource Remove="Features\PlayerPins\_Includes\assets\.gitkeep" />
-	  <Resource Remove="Features\PlayerPins\_Includes\assets\campaigncartographer\.gitkeep" />
-	  <Resource Remove="Features\PlayerPins\_Includes\assets\campaigncartographer\lang\.gitkeep" />
-	  <Resource Remove="Features\PlayerPins\_Includes\assets\campaigncartographer\lang\PlayerPins\en.json" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Features\WaypointManager\Abstractions\" />
-	  <Folder Include="Features\WaypointManager\Commands\" />
-	  <Folder Include="Features\WaypointManager\Handlers\" />
+		<ProjectReference Include="..\..\..\..\..\Gantry\src\Gantry\Gantry.csproj" />
 	</ItemGroup>
 </Project>
