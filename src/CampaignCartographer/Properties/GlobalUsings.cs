@@ -16,18 +16,16 @@ global using ApacheTech.Common.DependencyInjection.Abstractions.Extensions;
 
 global using Gantry.Core;
 global using Gantry.Core.Extensions;
-global using Gantry.Core.Extensions.GameContent.Gui;
+global using Gantry.Core.GameContent.Extensions;
+global using Gantry.Core.GameContent.Extensions.Gui;
 global using Gantry.Core.GameContent.GUI;
 global using Gantry.Core.ModSystems;
-global using Gantry.Core.DependencyInjection;
-global using Gantry.Core.DependencyInjection.Registration;
-global using Gantry.Services.FileSystem.DependencyInjection;
+global using Gantry.Core.Hosting;
 global using Gantry.Services.FileSystem.Configuration.Abstractions;
 global using Gantry.Services.HarmonyPatches.Annotations;
 
 global using Vintagestory.API.Common;
 global using Vintagestory.API.Config;
 global using Vintagestory.API.Client;
-global using Vintagestory.Common;
 global using Vintagestory.GameContent;
 global using Vintagestory.Client.NoObf;

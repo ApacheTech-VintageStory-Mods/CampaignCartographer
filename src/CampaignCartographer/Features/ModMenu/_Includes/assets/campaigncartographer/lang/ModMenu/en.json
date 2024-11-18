@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Edit Block Selection Waypoint Marker",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Edit Pre-Defined Waypoints",
+  "Features.ModMenu.Dialogue.WaypointManager": "Waypoint Manager",
+
+  "Features.ModMenu.Dialogue.Title": "Campaign Cartographer",
+  "Features.ModMenu.Dialogue.Support": "Support The Mod Author",
+
+  "Features.Support.Dialogue.Patreon": "Join my Patreon",
+  "Features.Support.Dialogue.Donate": "Donate via PayPal",
+  "Features.Support.Dialogue.Coffee": "Buy me a Coffee",
+  "Features.Support.Dialogue.Twitch": "Subscribe on Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Subscribe on YouTube",
+  "Features.Support.Dialogue.WishList": "Amazon WishList",
+  "Features.Support.Dialogue.Website": "Visit my Website",
+  "Features.Support.Dialogue.Back": "Back"
+}
