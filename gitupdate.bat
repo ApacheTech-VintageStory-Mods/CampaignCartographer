@@ -13,7 +13,7 @@ ECHO Processing repository: %CurrentDirectory%
 
 REM Copy the ".github" folder from the root directory to the repository.
 ECHO Copying .github folder into the current repository...
-xcopy "%CurrentDirectory%\.github" ".github" /E /I /Y
+xcopy "..\.github" ".github" /E /I /Y
 
 REM Echo feedback about deleting the Git index.
 ECHO Removing Git index in the current repository...

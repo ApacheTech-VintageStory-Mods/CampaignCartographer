@@ -1,20 +1,40 @@
 ---
-name: Feature Request
-about: Suggest an idea for this project.
-title: "[FEATURE] <title>"
-labels: enhancement
-assignees: 'Apache'
-
+name: 🙋 Feature Request
+about: Want us to add something?
+title: "feat: add [what] to/in [where]"
+labels: 'status: triage'
 ---
 
-**Is your feature request related to a problem? If not, why is your feature needed?**
+<!---
+Thanks for filing an issue 😄 ! Before you submit, please read the following:
 
-A clear description of what the problem is.
+Search open/closed issues before submitting. Someone may have requested the same feature before.
+-->
 
-**Describe the solution you'd like**
+# 🙋 Feature Request
 
-Please take your time, and give as much detail as possible.
+<!--- Provide a general summary of the feature here -->
 
-**Additional context**
+## 🤔 Expected Behaviour
 
-Add any other context or screenshots about the feature request here.
+<!--- Tell us how the feature should work -->
+
+## 😯 Current Behaviour
+
+<!--- Explain how the feature would alter/enhance current behavior -->
+
+## 💁 Possible Solution
+
+<!--- Ideas how to implement this feature -->
+<!--- What implementation solution would be ideal for you? -->
+
+## 🔦 Context
+
+<!--- What are you trying to accomplish? -->
+<!--- How has not having this feature affected you? -->
+<!--- What alternatives have you considered? -->
+
+## 💻 Examples
+
+<!-- Examples help us understand the requested feature better -->
+<!-- Attach screenshots or images if they would add detail to your request -->
