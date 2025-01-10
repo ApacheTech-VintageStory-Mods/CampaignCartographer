@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "Zobrazuje vaši aktuální pozici ve světě.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Vysílat vaši aktuální polohu na server.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Kopírovat vaši aktuální polohu do schránky.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Poslat vaši aktuální polohu jinému hráči.",
+  "Features.GPS.ClipboardTextSet": "Poloha hráče zkopírována do schránky.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Bylo nalezeno více hráčů se stejným jménem.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "Žádní hráči nenalezeni.",
+  "Features.GPS.player-not-found": "Hráč nebyl nalezen na serveru.",
+  "Features.GPS.whisper-received": "[Od {0}]: {1}",
+  "Features.GPS.whisper-sent": "[Komu {0}]: {1}",
+  "Features.GPS.ShowOnMap": "Zobrazit na mapě"
+}

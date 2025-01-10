@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "世界内で現在位置を表示します。",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "現在位置をサーバーに送信します。",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "現在位置をクリップボードにコピーします。",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "現在位置を他のプレイヤーに送信します。",
+  "Features.GPS.ClipboardTextSet": "プレイヤーの位置がクリップボードにコピーされました。",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "同じ名前のプレイヤーが複数見つかりました。",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "プレイヤーが見つかりませんでした。",
+  "Features.GPS.player-not-found": "サーバー上でプレイヤーが見つかりませんでした。",
+  "Features.GPS.whisper-received": "[{0} から]: {1}",
+  "Features.GPS.whisper-sent": "[{0} へ]: {1}",
+  "Features.GPS.ShowOnMap": "マップに表示"
+}

@@ -1,5 +1,9 @@
-﻿using Gantry.Core.Hosting.Registration;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Extensions;
+using Gantry.Core.GameContent.ChatCommands.Parsers;
+using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
+using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
+using Gantry.Services.Network;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
@@ -15,8 +19,101 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 /// <seealso cref="IServerServiceRegistrar" />
 internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 {
+    private IServerNetworkChannel _serverChannel;
+
     public void ConfigureServerModServices(IServiceCollection services, ICoreServerAPI sapi)
     {
         services.AddFeatureGlobalSettings<GpsSettings>();
     }
+
+    public override void StartServerSide(ICoreServerAPI api)
+    {
+        ApiEx.Logger.VerboseDebug("Starting GPS service.");
+        var parsers = api.ChatCommands.Parsers;
+
+        var command = api.ChatCommands
+            .Create("gps")
+            .RequiresPrivilege(Privilege.chat)
+            .WithDescription(T("Command.Description.Default"))
+            .HandleWith(ShowLocation);
+
+        command.BeginSubCommand("chat")
+            .WithDescription(T("Command.Description.BroadcastSubCommand"))
+            .HandleWith(OnClientSubCommandBroadcast)
+            .EndSubCommand();
+
+        command.BeginSubCommand("copy")
+            .WithDescription(T("Command.Description.ClipboardSubCommand"))
+            .HandleWith(OnClientSubCommandClipboard)
+            .EndSubCommand();
+
+        command.BeginSubCommand("pm")
+            .WithDescription(T("Command.Description.PrivateMessageSubCommand"))
+            .WithArgs(parsers.FuzzyPlayerSearch())
+            .HandleWith(OnClientSubCommandPrivateMessage)
+            .EndSubCommand();
+
+        _serverChannel = IOC.Services
+            .GetRequiredService<IServerNetworkService>()
+            .ServerChannel("CC_GPS")
+            .RegisterMessageType<GpsPacket>();
+    }
+
+    private static TextCommandResult ShowLocation(TextCommandCallingArgs args)
+    {
+        var pos = args.Caller.Player.GpsLocation();
+        return TextCommandResult.Success(pos);
+    }
+
+    private TextCommandResult OnClientSubCommandBroadcast(TextCommandCallingArgs args)
+    {
+        _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Broadcast }, args.Caller.Player as IServerPlayer);
+        return TextCommandResult.Success();
+    }
+
+    private TextCommandResult OnClientSubCommandClipboard(TextCommandCallingArgs args)
+    {
+        _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Clipboard }, args.Caller.Player as IServerPlayer);
+        return TextCommandResult.Success(T("ClipboardTextSet"));
+    }
+
+    private TextCommandResult OnClientSubCommandPrivateMessage(TextCommandCallingArgs args)
+    {
+        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
+        var players = parser.Results;
+        var searchTerm = parser.Value;
+
+        switch (players.Count)
+        {
+            case 1:
+                var target = players[0];
+                SendLocationTo(args.Caller.Player, target.PlayerUID);
+                return TextCommandResult.Success();
+            case > 1:
+                return TextCommandResult.Error(T("FuzzyPlayerSearch.MultipleResults", searchTerm));
+            default:
+                return TextCommandResult.Error(T("FuzzyPlayerSearch.NoResults", searchTerm));
+        }
+    }
+
+    private static void SendLocationTo(IPlayer fromPlayer, string targetUid)
+    {
+        var toPlayer = ApiEx.ServerMain.AllOnlinePlayers.FirstOrDefault(p => p.PlayerUID == targetUid);
+        var message = fromPlayer.GpsLocation();
+
+        if (toPlayer is null)
+        {
+            Sapi.SendMessage(fromPlayer, GlobalConstants.GeneralChatGroup, T("player-not-found"), EnumChatType.OwnMessage);
+            return;
+        }
+
+        var receivedMessage = T("whisper-received", fromPlayer.PlayerName, message);
+        Sapi.SendMessage(toPlayer as IServerPlayer, GlobalConstants.GeneralChatGroup, receivedMessage, EnumChatType.OwnMessage);
+
+        var sentMessage = T("whisper-sent", toPlayer.PlayerName, message);
+        Sapi.SendMessage(fromPlayer, GlobalConstants.GeneralChatGroup, sentMessage, EnumChatType.OwnMessage);
+    }
+
+    private static string T(string path, params object[] args)
+        => LangEx.FeatureString("GPS", path, args);
 }

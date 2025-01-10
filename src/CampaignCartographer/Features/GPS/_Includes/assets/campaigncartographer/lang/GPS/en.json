@@ -1,13 +1,17 @@
 {
-  "Features.GPS.Client.SettingsCommandDescription": "Shows information about the player's current location.",
-  "Features.GPS.Server.SettingsCommandDescription": "Change GPS settings for the server.",
-  "Features.GPS.Client.location-copied-to-clipboard": "Player location copied to clipboard.",
-  "Features.GPS.Client.player-not-found": "No player with the name `{0}` found on the server.",
-  "Features.GPS.Server.invalid-command-syntax": "Invalid syntax. Please try again.",
-  "Features.GPS.Server.whisper-received": "[From {0}]: {1}",
-  "Features.GPS.Server.whisper-sent": "[To {0}]: {1}",
-  "Features.GPS.Dialogue.Title": "GPS Admin",
-  "Features.GPS.Dialogue.lblWhispers": "Whispers Allowed:",
-  "Features.GPS.Dialogue.lblWhispers.HoverText": "Determines whether or not players can whisper GPS coordinates to each other.",
+  "Features.GPS.Command.Description.Default": "Shows your current position within the world.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Broadcast your current location to the server.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Copy your current location to the clipboard.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Send your current location to another player.",
+
+  "Features.GPS.ClipboardTextSet": "Player location copied to clipboard.",
+
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Multiple players found with the same name.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "No players found.",
+
+  "Features.GPS.player-not-found": "Player not found on server.",
+  "Features.GPS.whisper-received": "[From {0}]: {1}",
+  "Features.GPS.whisper-sent": "[To {0}]: {1}",
+
   "Features.GPS.ShowOnMap": "Show On Map"
 }

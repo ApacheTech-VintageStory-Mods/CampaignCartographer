@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "يظهر موقعك الحالي داخل العالم.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "بث موقعك الحالي إلى الخادم.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "نسخ موقعك الحالي إلى الحافظة.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "إرسال موقعك الحالي إلى لاعب آخر.",
+  "Features.GPS.ClipboardTextSet": "تم نسخ موقع اللاعب إلى الحافظة.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "تم العثور على عدة لاعبين بنفس الاسم.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "لم يتم العثور على لاعبين.",
+  "Features.GPS.player-not-found": "لم يتم العثور على اللاعب في الخادم.",
+  "Features.GPS.whisper-received": "[من {0}]: {1}",
+  "Features.GPS.whisper-sent": "[إلى {0}]: {1}",
+  "Features.GPS.ShowOnMap": "عرض على الخريطة"
+}

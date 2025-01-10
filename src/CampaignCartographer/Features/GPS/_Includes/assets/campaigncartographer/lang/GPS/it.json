@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "Mostra la tua posizione attuale nel mondo.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Trasmetti la tua posizione attuale al server.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Copia la tua posizione attuale negli appunti.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Invia la tua posizione attuale a un altro giocatore.",
+  "Features.GPS.ClipboardTextSet": "Posizione del giocatore copiata negli appunti.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Trovati più giocatori con lo stesso nome.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "Nessun giocatore trovato.",
+  "Features.GPS.player-not-found": "Giocatore non trovato nel server.",
+  "Features.GPS.whisper-received": "[Da {0}]: {1}",
+  "Features.GPS.whisper-sent": "[A {0}]: {1}",
+  "Features.GPS.ShowOnMap": "Mostra sulla mappa"
+}

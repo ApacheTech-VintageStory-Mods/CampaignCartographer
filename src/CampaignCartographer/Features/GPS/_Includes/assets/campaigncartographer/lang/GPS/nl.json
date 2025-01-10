@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "Toont je huidige positie in de wereld.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Breng je huidige locatie over naar de server.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Kopieer je huidige locatie naar het klembord.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Stuur je huidige locatie naar een andere speler.",
+  "Features.GPS.ClipboardTextSet": "Spelerlocatie gekopieerd naar klembord.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Meerdere spelers gevonden met dezelfde naam.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "Geen spelers gevonden.",
+  "Features.GPS.player-not-found": "Speler niet gevonden op de server.",
+  "Features.GPS.whisper-received": "[Van {0}]: {1}",
+  "Features.GPS.whisper-sent": "[Aan {0}]: {1}",
+  "Features.GPS.ShowOnMap": "Toon op de kaart"
+}

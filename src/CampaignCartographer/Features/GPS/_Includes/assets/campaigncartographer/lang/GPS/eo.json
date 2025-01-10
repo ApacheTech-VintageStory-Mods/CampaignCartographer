@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "Montras vian nunan pozicion ene de la mondo.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Elsendi vian nunan lokon al la servilo.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Kopii vian nunan lokon al la clipboard.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Sendi vian nunan lokon al alia ludanto.",
+  "Features.GPS.ClipboardTextSet": "Ludanta loko kopiiĝis al la clipboard.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Pluraj ludantoj kun la sama nomo trovitaj.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "Neniu ludanto trovita.",
+  "Features.GPS.player-not-found": "Ludanto ne trovita en la servilo.",
+  "Features.GPS.whisper-received": "[De {0}]: {1}",
+  "Features.GPS.whisper-sent": "[Al {0}]: {1}",
+  "Features.GPS.ShowOnMap": "Montri sur la mapo"
+}

@@ -1,0 +1,13 @@
+{
+  "Features.GPS.Command.Description.Default": "Prikazuje vašu trenutnu poziciju u svetu.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Emitujte vašu trenutnu lokaciju na server.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Kopirajte vašu trenutnu lokaciju u međuspremnik.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Pošaljite vašu trenutnu lokaciju drugom igraču.",
+  "Features.GPS.ClipboardTextSet": "Lokacija igrača kopirana u međuspremnik.",
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Više igrača sa istim imenom pronađeno.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "Nema pronađenih igrača.",
+  "Features.GPS.player-not-found": "Igrač nije pronađen na serveru.",
+  "Features.GPS.whisper-received": "[Od {0}]: {1}",
+  "Features.GPS.whisper-sent": "[Za {0}]: {1}",
+  "Features.GPS.ShowOnMap": "Pokaži na mapi"
+}
