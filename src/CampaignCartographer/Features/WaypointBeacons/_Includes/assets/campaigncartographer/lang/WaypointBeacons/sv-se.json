@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "WayPoint",
+
+  "Features.WaypointBeacons.Dialogue.Title": "WayPoint Beacon Inställningar",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Ikonens Räckvidd",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Området, i block, där waypoint-ikoner är synliga.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Visa Prefix",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Anger om waypoint-prefixar ska visas.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Visa Index",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Anger om waypoint-index ska visas.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Visa Pelare",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Anger om waypoint-pelare ska visas.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Fäst position",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fäster waypoint-ikonen vid sidan av skärmen när waypointen rör sig utanför synfältet.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Titel Räckvidd",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Området, i block, där waypoint-titlar är synliga."
+}

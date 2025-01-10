@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "نقطة مرجعية",
+
+  "Features.WaypointBeacons.Dialogue.Title": "إعدادات نقطة الإشارة",
+  "Features.WaypointBeacons.Dialogue.IconRange": "نطاق الأيقونة",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "النطاق، بوحدات الكتل، الذي تكون فيه أيقونات النقاط المرجعية مرئية.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "إظهار البادئة",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "يشير إلى ما إذا كان يجب عرض بادئات النقاط المرجعية.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "إظهار الفهرس",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "يشير إلى ما إذا كان يجب عرض فهارس النقاط المرجعية.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "إظهار الأعمدة",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "يشير إلى ما إذا كان يجب عرض أعمدة النقاط المرجعية.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "تثبيت الموقع",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "يثبت أيقونة نقطة الطريق على جانب الشاشة عندما تتحرك نقطة الطريق خارج العرض.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "نطاق العنوان",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "النطاق، بوحدات الكتل، الذي تكون فيه عناوين النقاط المرجعية مرئية."
+}

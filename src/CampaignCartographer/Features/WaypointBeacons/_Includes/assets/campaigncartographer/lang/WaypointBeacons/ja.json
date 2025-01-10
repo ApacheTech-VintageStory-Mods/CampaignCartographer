@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "ウェイポイント",
+
+  "Features.WaypointBeacons.Dialogue.Title": "ウェイポイントビーコンの設定",
+  "Features.WaypointBeacons.Dialogue.IconRange": "アイコン範囲",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "ウェイポイントアイコンが表示される範囲（ブロック単位）。",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "プレフィックスの表示",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "ウェイポイントのプレフィックスを表示するかどうかを示します。",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "インデックスの表示",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "ウェイポイントのインデックスを表示するかどうかを示します。",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "柱の表示",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "ウェイポイントの柱を表示するかどうかを示します。",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "位置を固定",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "ウェイポイントが画面外に移動すると、ウェイポイントアイコンを画面の横に固定します。",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "タイトル範囲",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "ウェイポイントタイトルが表示される範囲（ブロック単位）。"
+}

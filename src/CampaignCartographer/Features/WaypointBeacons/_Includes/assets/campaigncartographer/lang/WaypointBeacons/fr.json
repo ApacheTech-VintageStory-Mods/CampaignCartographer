@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Point de repère",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Paramètres du balise de point de repère",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Plage de l'icône",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "La plage, en blocs, dans laquelle les icônes des points de repère sont visibles.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Afficher le préfixe",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indique si les préfixes des points de repère doivent être affichés.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Afficher l'index",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indique si les index des points de repère doivent être affichés.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Afficher les piliers",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indique si les piliers des points de repère doivent être affichés.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Position fixée",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fixe l'icône du waypoint sur le côté de l'écran lorsque le waypoint sort de la vue.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Plage des titres",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "La plage, en blocs, dans laquelle les titres des points de repère sont visibles."
+}

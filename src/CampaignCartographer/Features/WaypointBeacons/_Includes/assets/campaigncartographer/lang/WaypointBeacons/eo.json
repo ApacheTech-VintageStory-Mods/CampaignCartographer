@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Vojaĵpunkto",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Agordoj de Vojaĵpunkto Beacon",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Ikona Rango",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "La intervalo, en blokoj, ene de kiu vojaĵpunkto ikonoj estas videblaj.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Montri Prefikson",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indikas ĉu vojaĵpunkto prefiksoj devus esti montritaj.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Montri Indekson",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indikas ĉu vojaĵpunkto indeksoj devus esti montritaj.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Montri Pilarojn",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indikas ĉu vojaĵpunkto piloj devus esti montritaj.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Fiksa Pozicio",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fiksas la ikonon de la vojpunkto al la flanko de la ekrano kiam la vojpunkto moviĝas el la vidkampo.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Titola Rango",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "La intervalo, en blokoj, ene de kiu vojaĵpunkto titoloj estas videblaj."
+}

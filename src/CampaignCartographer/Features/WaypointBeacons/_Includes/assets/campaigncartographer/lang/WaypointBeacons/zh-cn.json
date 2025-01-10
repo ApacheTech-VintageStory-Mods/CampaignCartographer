@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "航路点",
+
+  "Features.WaypointBeacons.Dialogue.Title": "航路点信标设置",
+  "Features.WaypointBeacons.Dialogue.IconRange": "图标范围",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "航路点图标可见的范围，以区块为单位。",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "显示前缀",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "指示是否应显示航路点的前缀。",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "显示索引",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "指示是否应显示航路点的索引。",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "显示柱子",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "指示是否应显示航路点的柱子。",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "固定位置",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "当航点移出视野时，将航点图标固定在屏幕的一侧。",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "标题范围",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "航路点标题可见的范围，以区块为单位。"
+}

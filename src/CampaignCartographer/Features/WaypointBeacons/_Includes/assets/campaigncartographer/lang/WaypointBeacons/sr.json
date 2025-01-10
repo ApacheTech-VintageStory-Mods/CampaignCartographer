@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "WayPoint",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Podešavanja Waypoint Beacona",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Opseg Ikone",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Opseg, u blokovima, unutar kojeg su ikone vidljive.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Prikaži Prefiks",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Označava da li treba da se prikažu prefiksi za waypoint.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Prikaži Indeks",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Označava da li treba da se prikažu indeksi za waypoint.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Prikaži Stubove",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Označava da li treba da se prikažu stubovi za waypoint.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Fiksiraj poziciju",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Prikvači ikonu waypointa sa strane ekrana kada waypoint izađe iz vidokruga.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Opseg Titlova",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Opseg, u blokovima, unutar kojeg su titlovi vidljivi."
+}

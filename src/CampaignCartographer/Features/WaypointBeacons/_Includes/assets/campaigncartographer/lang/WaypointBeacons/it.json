@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Punto di riferimento",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Impostazioni del Beacon del Punto di Riferimento",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Gamma dell'Icona",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "La gamma, in blocchi, entro cui le icone dei punti di riferimento sono visibili.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Mostra Prefisso",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indica se i prefissi dei punti di riferimento devono essere mostrati.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Mostra Indice",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indica se gli indici dei punti di riferimento devono essere mostrati.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Mostra Pilastri",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indica se i pilastri dei punti di riferimento devono essere mostrati.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Posizione bloccata",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fissa l'icona del waypoint al lato dello schermo quando il waypoint esce dalla vista.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Gamma dei Titoli",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "La gamma, in blocchi, entro cui i titoli dei punti di riferimento sono visibili."
+}

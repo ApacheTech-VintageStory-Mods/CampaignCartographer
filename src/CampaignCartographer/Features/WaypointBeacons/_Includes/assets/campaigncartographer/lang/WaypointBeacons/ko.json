@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "웨이포인트",
+
+  "Features.WaypointBeacons.Dialogue.Title": "웨이포인트 비콘 설정",
+  "Features.WaypointBeacons.Dialogue.IconRange": "아이콘 범위",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "웨이포인트 아이콘이 표시되는 범위(블록 단위).",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "접두사 표시",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "웨이포인트 접두사를 표시할지 여부를 나타냅니다.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "인덱스 표시",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "웨이포인트 인덱스를 표시할지 여부를 나타냅니다.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "기둥 표시",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "웨이포인트 기둥을 표시할지 여부를 나타냅니다.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "위치 고정",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "웨이포인트가 화면을 벗어나면 아이콘을 화면의 측면에 고정합니다.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "제목 범위",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "웨이포인트 제목이 표시되는 범위(블록 단위)."
+}

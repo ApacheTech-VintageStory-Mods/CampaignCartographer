@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Маяк",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Настройки маяка точки",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Диапазон иконки",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Диапазон в блоках, в пределах которого иконки точек видны.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Показать префикс",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Указывает, должны ли показываться префиксы точек маршрута.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Показать индекс",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Указывает, должны ли показываться индексы точек маршрута.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Показать столбы",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Указывает, должны ли показываться столбы точек маршрута.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Зафиксировать позицию",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Прикрепляет иконку пути к боковой части экрана, когда путь выходит за пределы видимости.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Диапазон титулов",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Диапазон в блоках, в пределах которого титулы точек видны."
+}

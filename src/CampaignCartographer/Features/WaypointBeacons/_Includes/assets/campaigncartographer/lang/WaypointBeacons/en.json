@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Waypoint",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Waypoint Beacon Settings",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Icon Range",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "The range, in blocks, within which waypoint icons are visible.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Show Prefix",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indicates whether waypoint prefixes should be displayed.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Show Index",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indicates whether waypoint indexes should be displayed.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Show Pillars",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indicates whether waypoint pillars should be displayed.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Clamp Position",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Pins the waypoint icon to the side of the screen when the waypoint moves out of view.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Title Range",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "The range, in blocks, within which waypoint titles are visible."
+}

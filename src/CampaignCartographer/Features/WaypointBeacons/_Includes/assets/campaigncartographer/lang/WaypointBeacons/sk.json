@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Značka",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Nastavenia Waypoint Beacon",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Rozsah Ikony",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Rozsah, v blokoch, v ktorom sú ikony waypointov viditeľné.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Zobraziť Prefix",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Určuje, či by sa mali zobraziť prefixy waypointov.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Zobraziť Index",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Určuje, či by sa mali zobraziť indexy waypointov.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Zobraziť Stĺpy",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Určuje, či by sa mali zobraziť stĺpy waypointov.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Upevniť polohu",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Prichytí ikonu waypointu na bočnú stranu obrazovky, keď waypoint vyjde mimo zobrazenia.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Rozsah Títulov",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Rozsah, v blokoch, v ktorom sú tituly waypointov viditeľné."
+}

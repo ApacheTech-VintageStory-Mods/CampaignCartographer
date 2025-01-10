@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Waypoint",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Ustawienia Beaconu Waypoint",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Zakres Ikony",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Zasięg, w blokach, w którym widoczne są ikony waypointów.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Pokaż Prefiks",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Określa, czy prefiksy waypointów powinny być wyświetlane.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Pokaż Indeks",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Określa, czy indeksy waypointów powinny być wyświetlane.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Pokaż Filarze",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Określa, czy filary waypointów powinny być wyświetlane.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Zablokuj pozycję",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Przytwierdza ikonę punktu kontrolnego do boku ekranu, gdy punkt kontrolny wychodzi poza widok.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Zakres Tytułów",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Zasięg, w blokach, w którym tytuły waypointów są widoczne."
+}

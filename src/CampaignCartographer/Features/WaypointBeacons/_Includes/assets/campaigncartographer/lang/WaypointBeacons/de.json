@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Wegpunkt",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Wegpunkt-Beacon-Einstellungen",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Icon-Reichweite",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Der Bereich, in Blöcken, innerhalb dessen Wegpunkt-Symbole sichtbar sind.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Präfix anzeigen",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Gibt an, ob Wegpunkt-Präfixe angezeigt werden sollen.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Index anzeigen",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Gibt an, ob Wegpunkt-Indizes angezeigt werden sollen.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Säulen anzeigen",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Gibt an, ob Wegpunkt-Säulen angezeigt werden sollen.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Position fixieren",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fixiert das Wegpunkt-Symbol an der Seite des Bildschirms, wenn der Wegpunkt aus dem Sichtbereich verschwindet.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Titel-Reichweite",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Der Bereich, in Blöcken, innerhalb dessen Wegpunkt-Titel sichtbar sind."
+}
