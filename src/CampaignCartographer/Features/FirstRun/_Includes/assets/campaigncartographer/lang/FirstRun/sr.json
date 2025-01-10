@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Prvi Pokretanje",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Promeni postavke automatskih tačaka",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Promeni postavke pinova igrača na mapi",
+  "Features.FirstRun.Dialogue.Paragraph1": "Ovo je prvi put da pokrećete Campaign Cartographer. Želite li da učitate podrazumevanu listu tipova tačaka koje ćete koristiti sa komandom `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Iako će ove podrazumevane tačke biti na engleskom jeziku, mogu se uređivati u postavkama, korišćenjem komande `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Da li želite da zapamtite ovu postavku za sve servere?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Jeste li sigurni da ne želite odmah dodati unapred definisane tačke? Možete ih dodati kasnije iz postavki moda.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Jeste li sigurni da želite odmah dodati unapred definisane tačke? Možete ih dodati kasnije iz postavki moda."
+}

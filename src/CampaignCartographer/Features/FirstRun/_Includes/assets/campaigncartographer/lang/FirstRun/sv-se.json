@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Första Starten",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Ändra inställningar för automatiska waypoints",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Ändra inställningar för spelarpinnar på kartan",
+  "Features.FirstRun.Dialogue.Paragraph1": "Det här är första gången du kör Campaign Cartographer. Vill du ladda en standardlista med waypoint-typer att använda med kommandot `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Även om dessa standard-waypoints kommer vara på engelska kan de redigeras i inställningarna med kommandot `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Vill du komma ihåg den här inställningen för alla servrar?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Är du säker på att du inte vill lägga till fördefinierade waypoints nu? Du kan lägga till dem senare i modinställningarna.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Är du säker på att du vill lägga till fördefinierade waypoints nu? Du kan lägga till dem senare i modinställningarna."
+}

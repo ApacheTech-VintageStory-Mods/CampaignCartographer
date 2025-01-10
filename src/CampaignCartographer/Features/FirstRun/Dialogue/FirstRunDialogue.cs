@@ -94,7 +94,7 @@ public sealed class FirstRunDialogue : GenericDialogue
     }
 
     /// <summary>
-    ///     Attempts to close this dialogue- triggering the OnCloseDialogue event.
+    ///     Attempts to close this dialogue, triggering the OnCloseDialogue event.
     /// </summary>
     /// <returns>Was this dialogue successfully closed?</returns>
     public override bool TryClose()

@@ -3,7 +3,6 @@ using Gantry.Services.FileSystem.Abstractions.Contracts;
 using Gantry.Services.FileSystem.Hosting;
 using Gantry.Services.FileSystem.Enums;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FirstRun.Dialogue;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.FirstRun;
@@ -35,6 +34,8 @@ public sealed class FirstRun : ClientModSystem, IClientServiceRegistrar
 
     protected override void StartPreClientSide(ICoreClientAPI capi)
     {
+        ApiEx.Logger.VerboseDebug("Initialising the first run service.");
+
         _fileSystemService = IOC.Services.Resolve<IFileSystemService>()
             .RegisterFile("default-waypoints.json", FileScope.Global)
             .RegisterFile("version.data", FileScope.Global)
@@ -52,6 +53,8 @@ public sealed class FirstRun : ClientModSystem, IClientServiceRegistrar
 
     public override void StartClientSide(ICoreClientAPI api)
     {
+        ApiEx.Logger.VerboseDebug("Starting the first run service.");
+
         _globalSettings = IOC.Services.Resolve<FirstRunGlobalSettings>();
         _worldSettings = IOC.Services.Resolve<FirstRunWorldSettings>();
 
@@ -69,11 +72,7 @@ public sealed class FirstRun : ClientModSystem, IClientServiceRegistrar
         void OnGameTick(float dt)
         {
             var defaultWaypointsFile = _fileSystemService.GetJsonFile("default-waypoints.json");
-            if (!defaultWaypointsFile.AsFileInfo().Exists)
-            {
-                return;
-            }
-
+            if (!defaultWaypointsFile.AsFileInfo().Exists) return;
             Capi.Event.UnregisterGameTickListener(_listenerId);
 
             _defaultWaypoints = defaultWaypointsFile
@@ -82,19 +81,21 @@ public sealed class FirstRun : ClientModSystem, IClientServiceRegistrar
 
             if (!_globalSettings.AlwaysLoadDefaultWaypoints)
             {
+                ApiEx.Logger.VerboseDebug("Launching first run dialogue.");
                 OpenFirstRunDialogue();
             }
             else
             {
+                ApiEx.Logger.VerboseDebug("Saving default waypoints for new world.");
                 SaveDefaultWaypointsToDisk();
             }
-            //SaveDefaultWaypointsToDisk();
             _worldSettings.FirstRun = false;
         }
     }
 
     public void ResetToFactorySettings()
     {
+        ApiEx.Logger.VerboseDebug("Resetting first-run service to factory settings.");
         _worldSettings.FirstRun = true;
 
         _globalSettings.NeverLoadDefaultWaypoints = false;

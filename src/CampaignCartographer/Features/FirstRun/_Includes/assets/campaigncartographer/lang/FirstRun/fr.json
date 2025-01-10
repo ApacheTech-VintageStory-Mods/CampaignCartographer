@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Premier lancement",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Modifier les paramètres des points de passage automatiques",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Modifier les paramètres des épingles de joueur sur la carte",
+  "Features.FirstRun.Dialogue.Paragraph1": "C'est la première fois que vous lancez Campaign Cartographer. Souhaitez-vous charger une liste par défaut de types de points à utiliser avec la commande `.wp` ?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Bien que ces types de points par défaut soient en anglais, ils peuvent être modifiés dans les paramètres, en utilisant la commande `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Souhaitez-vous mémoriser ce paramètre pour tous les serveurs ?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Êtes-vous sûr de ne pas vouloir ajouter de points prédéfinis maintenant ? Vous pouvez les ajouter plus tard depuis les paramètres du mod.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Êtes-vous sûr de vouloir ajouter des points prédéfinis maintenant ? Vous pouvez les ajouter plus tard depuis les paramètres du mod."
+}

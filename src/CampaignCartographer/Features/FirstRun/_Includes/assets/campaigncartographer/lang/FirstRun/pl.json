@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Pierwsze uruchomienie",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Zmień ustawienia punktów automatycznych",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Zmień ustawienia pinów graczy na mapie",
+  "Features.FirstRun.Dialogue.Paragraph1": "To jest pierwszy raz, gdy uruchamiasz Campaign Cartographer. Czy chcesz załadować domyślną listę typów punktów do użycia z komendą `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Chociaż te domyślne typy punktów będą w języku angielskim, można je edytować w ustawieniach, używając komendy `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Pamiętać to ustawienie dla wszystkich serwerów?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Jesteś pewny, że nie chcesz teraz dodać zdefiniowanych punktów? Możesz dodać je później w ustawieniach moda.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Jesteś pewny, że chcesz teraz dodać zdefiniowane punkty? Możesz dodać je później w ustawieniach moda."
+}

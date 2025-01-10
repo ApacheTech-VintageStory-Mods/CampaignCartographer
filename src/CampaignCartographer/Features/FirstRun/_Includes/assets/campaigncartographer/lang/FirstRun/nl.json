@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Eerste Start",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Wijzig de automatische waypoints-instellingen",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Wijzig de speler pin-instellingen op de kaart",
+  "Features.FirstRun.Dialogue.Paragraph1": "Dit is de eerste keer dat je Campaign Cartographer uitvoert. Wil je een standaardlijst met waypointtypes laden voor gebruik met de `.wp`-opdracht?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Hoewel deze standaard waypointtypes in het Engels zijn, kunnen ze worden bewerkt in de instellingen met de `.wpSettings`-opdracht.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Deze instelling voor alle servers onthouden?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Weet je zeker dat je nu geen vooraf gedefinieerde waypoints wilt toevoegen? Je kunt ze later toevoegen vanuit de modinstellingen.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Weet je zeker dat je nu vooraf gedefinieerde waypoints wilt toevoegen? Je kunt ze later toevoegen vanuit de modinstellingen."
+}

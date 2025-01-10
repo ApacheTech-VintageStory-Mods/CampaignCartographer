@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "First Run",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Change Automatic Waypoint Settings",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Change Player Map Pin Settings",
+  "Features.FirstRun.Dialogue.Paragraph1": "This is the first time you have run Campaign Cartographer. Would you like to load a default list of waypoint types to use with the `.wp` command?",
+  "Features.FirstRun.Dialogue.Paragraph2": "While these default waypoint types will be in English, they can be edited in the settings, by using the `.wpSettings` command.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Remember this setting for all servers?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Are you sure you don't want to add pre-defined waypoints now? You can add them from the mod settings later on.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Are you sure you want to add pre-defined waypoints now? You can add them from the mod settings later on."
+}

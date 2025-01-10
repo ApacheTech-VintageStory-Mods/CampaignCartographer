@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Перше Запуск",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Змінити налаштування автоматичних точок маршруту",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Змінити налаштування пінів гравця на карті",
+  "Features.FirstRun.Dialogue.Paragraph1": "Це перший запуск Campaign Cartographer. Бажаєте завантажити стандартний список типів точок для використання з командою `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Хоча ці стандартні типи точок будуть англійською мовою, їх можна редагувати в налаштуваннях за допомогою команди `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Запам'ятати це налаштування для всіх серверів?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Ви впевнені, що не хочете додати попередньо визначені точки зараз? Ви можете додати їх пізніше через налаштування моду.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Ви впевнені, що хочете додати попередньо визначені точки зараз? Ви можете додати їх пізніше через налаштування моду."
+}

@@ -3,7 +3,7 @@
 /// <summary>
 ///     General Global Settings for the Client.
 /// </summary>
-public class FirstRunGlobalSettings
+public class FirstRunGlobalSettings : FeatureSettings<FirstRunGlobalSettings>
 {
     /// <summary>
     ///     Gets or sets a value indicating whether to always load default waypoints.

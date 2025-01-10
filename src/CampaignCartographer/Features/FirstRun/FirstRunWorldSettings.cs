@@ -3,7 +3,7 @@
 /// <summary>
 ///     General Per-World Settings for the Client.
 /// </summary>
-public class FirstRunWorldSettings
+public class FirstRunWorldSettings : FeatureSettings<FirstRunWorldSettings>
 {
     /// <summary>
     ///     Gets or sets a value indicating whether this is the first time the user has run this mod on this server.

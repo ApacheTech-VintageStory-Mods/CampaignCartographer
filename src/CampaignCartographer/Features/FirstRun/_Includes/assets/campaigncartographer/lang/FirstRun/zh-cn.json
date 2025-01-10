@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "首次运行",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "更改自动路标设置",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "更改玩家地图标记设置",
+  "Features.FirstRun.Dialogue.Paragraph1": "这是您首次运行 Campaign Cartographer。您想加载一个默认的路标类型列表，以便与 `.wp` 命令一起使用吗？",
+  "Features.FirstRun.Dialogue.Paragraph2": "虽然这些默认的路标类型是英文的，但您可以通过使用 `.wpSettings` 命令在设置中进行编辑。",
+  "Features.FirstRun.Dialogue.RememberPreference": "是否记住此设置适用于所有服务器？",
+  "Features.FirstRun.Dialogue.CancelMessage": "您确定现在不想添加预定义的路标吗？您可以稍后从 mod 设置中添加它们。",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "您确定现在想要添加预定义的路标吗？您可以稍后从 mod 设置中添加它们。"
+}

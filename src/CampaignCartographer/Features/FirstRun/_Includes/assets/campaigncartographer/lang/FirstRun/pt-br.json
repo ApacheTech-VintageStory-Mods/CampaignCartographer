@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Primeira Execução",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Alterar configurações de waypoints automáticos",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Alterar configurações de pinos de jogador no mapa",
+  "Features.FirstRun.Dialogue.Paragraph1": "Esta é a primeira vez que você executa o Campaign Cartographer. Gostaria de carregar uma lista padrão de tipos de waypoints para usar com o comando `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Embora esses tipos de waypoints padrão sejam em inglês, eles podem ser editados nas configurações, usando o comando `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Lembrar dessa configuração para todos os servidores?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Tem certeza de que não quer adicionar waypoints predefinidos agora? Você pode adicioná-los mais tarde nas configurações do mod.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Tem certeza de que quer adicionar waypoints predefinidos agora? Você pode adicioná-los mais tarde nas configurações do mod."
+}

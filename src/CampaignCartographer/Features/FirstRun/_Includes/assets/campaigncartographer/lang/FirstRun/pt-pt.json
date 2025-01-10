@@ -1,0 +1,10 @@
+{
+  "Features.FirstRun.Dialogue.Title": "Primeira Execução",
+  "Features.FirstRun.Dialogue.AutoWaypointsButton": "Alterar definições de pontos automáticos",
+  "Features.FirstRun.Dialogue.PlayerPinsButton": "Alterar definições de pins de jogador no mapa",
+  "Features.FirstRun.Dialogue.Paragraph1": "Esta é a primeira vez que executa o Campaign Cartographer. Gostaria de carregar uma lista predefinida de tipos de pontos para utilizar com o comando `.wp`?",
+  "Features.FirstRun.Dialogue.Paragraph2": "Embora estes tipos de pontos predefinidos estejam em inglês, podem ser editados nas definições, utilizando o comando `.wpSettings`.",
+  "Features.FirstRun.Dialogue.RememberPreference": "Lembrar-se desta definição para todos os servidores?",
+  "Features.FirstRun.Dialogue.CancelMessage": "Tem a certeza de que não quer adicionar pontos predefinidos agora? Pode adicioná-los mais tarde nas definições do mod.",
+  "Features.FirstRun.Dialogue.ConfirmMessage": "Tem a certeza de que quer adicionar pontos predefinidos agora? Pode adicioná-los mais tarde nas definições do mod."
+}
