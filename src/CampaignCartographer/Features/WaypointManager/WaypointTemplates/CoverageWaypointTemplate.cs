@@ -1,6 +1,4 @@
-﻿using ProtoBuf;
-
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+﻿namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 
 /// <summary>
 ///     Represents a Waypoint that cannot be placed within a specific radius of another waypoint of the same type.

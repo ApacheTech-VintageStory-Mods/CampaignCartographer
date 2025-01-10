@@ -5,13 +5,16 @@ using Gantry.Core.Hosting.Registration;
 using Gantry.Core.GameContent.AssetEnum;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core.Maths;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-[HarmonySidedPatch(EnumAppSide.Client)]
+[HarmonyClientSidePatch]
 public sealed class WaypointManager : ClientModSystem, IClientServiceRegistrar
 {
+    public override double ExecuteOrder() => 0.11;
+
     /// <summary>
     ///     Allows a mod to include Singleton, or Transient services to the IOC Container.
     /// </summary>
@@ -38,9 +41,46 @@ public sealed class WaypointManager : ClientModSystem, IClientServiceRegistrar
     [HarmonyPatch(typeof(WaypointMapLayer), MethodType.Constructor, [typeof(ICoreAPI), typeof(IWorldMapManager)])]
     public static void Harmony_WaypointMapLayer_Constructor_Postfix(WaypointMapLayer __instance)
     {
-        __instance.WaypointColors = NamedColour
+        var colours = NamedColour
             .ValuesList()
-            .Select(x => x.ToColour().ToArgb())
+            .Select(x => x.ToColour())
+            .FilterSimilarColours(threshold: 20)
             .ToList();
+
+        colours.Sort(new ColourRampComparer { Repetitions = 18, SmoothHueBlending = true });
+
+        __instance.WaypointColors = colours.Select(x => x.ToArgb()).ToList();
     }
+
+    /// <summary>
+    ///     Prefix patch for <see cref="ClientEventManager.TriggerNewServerChatLine"/> to control whether the server chat line is processed based on the chat type and message content.
+    /// </summary>
+    /// <param name="message">The chat message being processed.</param>
+    /// <param name="chattype">The type of chat message being processed.</param>
+    /// <returns>Returns false to prevent further processing of the message if certain conditions are met; otherwise, true.</returns>
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(ClientEventManager), nameof(ClientEventManager.TriggerNewServerChatLine))]
+    public static bool Harmony_ClientEventManager_TriggerNewServerChatLine_Prefix(string message, EnumChatType chattype)
+    {
+        if (chattype != EnumChatType.CommandSuccess)
+        {
+            return true;
+        }
+        if (message.ContainsNoneOf(["Ok, waypoint", "Ok, deleted waypoint"]))
+        {
+            return true;
+        }
+
+        var retVal = ShowFeedbackMessages;
+        return retVal;
+    }
+
+    /// <summary>
+    ///     Controls whether the output of server chat messages should be silenced under specific conditions.
+    /// </summary>
+    /// <remarks>
+    ///     If <c>true</c>, chat output will be suppressed for certain messages.
+    ///     If <c>false</c>, chat output will be processed normally.
+    /// </remarks>
+    internal static bool ShowFeedbackMessages { get; set; } = true;
 }

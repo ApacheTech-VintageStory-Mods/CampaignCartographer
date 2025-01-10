@@ -1,5 +1,4 @@
 ﻿using Gantry.Core.GameContent.AssetEnum;
-using ProtoBuf;
 
 // ReSharper disable NonReadonlyMemberInGetHashCode
 

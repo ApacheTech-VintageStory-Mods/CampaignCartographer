@@ -2,17 +2,16 @@
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories.Commands;
 
-public class RemoveWaypointCommand : ICommand
+/// <summary>
+///     Represents a command to remove a waypoint by its index.
+/// </summary>
+/// <param name="index">The index of the waypoint to be removed.</param>
+public class RemoveWaypointCommand(int index) : ICommand
 {
-    private readonly string _command;
+    private readonly string _command = $"/waypoint remove {index}";
 
-    public RemoveWaypointCommand(int index)
-    {
-        _command = $"/waypoint remove {index}";
-    }
-
-    public void Execute()
-    {
-        ApiEx.Client!.SendChatMessage(_command);
-    }
+    /// <summary>
+    ///     Executes the command to remove the specified waypoint.
+    /// </summary>
+    public void Execute() => ApiEx.Client.SendChatMessage(_command);
 }

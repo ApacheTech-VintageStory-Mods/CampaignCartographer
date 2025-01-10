@@ -101,9 +101,8 @@ public class WaypointImportDialogue : GenericDialogue
             }
             catch (Exception exception)
             {
-                ApiEx.Client!.Logger.Error("[VintageMods] Error caught while loading waypoints from import file.");
-                ApiEx.Client.Logger.Error(exception.Message);
-                ApiEx.Client.Logger.Error(exception.StackTrace);
+                ApiEx.Logger.Error("Error caught while loading waypoints from import file.");
+                ApiEx.Logger.Error(exception);
                 return [];
             }
         }
@@ -257,8 +256,6 @@ public class WaypointImportDialogue : GenericDialogue
     /// </summary>
     private bool OnImportSelectedWaypointsButtonPressed()
     {
-        // TODO: O/C and SRP issues.
-        // Code-behind is still a part of the APL, and should not touch the BLL, only its end-points.
         var files = _filesList.elementCells
             .Cast<WaypointImportGuiCell>()
             .Where(p => p.On)

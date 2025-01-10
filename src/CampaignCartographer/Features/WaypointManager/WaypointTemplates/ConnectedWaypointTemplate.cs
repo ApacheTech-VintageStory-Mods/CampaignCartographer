@@ -1,6 +1,4 @@
-﻿using ProtoBuf;
-
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+﻿namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 
 /// <summary>
 ///     Represents a Waypoint that has a connection to another waypoint on the map.

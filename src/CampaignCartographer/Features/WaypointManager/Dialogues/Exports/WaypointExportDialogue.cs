@@ -68,7 +68,7 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
             return new WaypointSelectionCellEntry
             {
                 Title = dto.Title,
-                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn(ApiEx.ClientMain)} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn()} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
                 RightTopOffY = 3f,
                 DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
                 Model = dto,

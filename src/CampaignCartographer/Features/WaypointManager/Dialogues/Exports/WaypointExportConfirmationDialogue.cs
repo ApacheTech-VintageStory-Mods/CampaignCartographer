@@ -16,7 +16,7 @@ public class WaypointExportConfirmationDialogue : GenericDialogue
     private readonly string _defaultFileName = $"{DateTime.Now:yyyy.M.dd HH-mm-ss}.json";
     private readonly string _defaultName = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "DefaultName");
 
-    [InjectableConstructor]
+    [ActivatorUtilitiesConstructor]
     public WaypointExportConfirmationDialogue(ICoreClientAPI capi, List<PositionedWaypointTemplate> waypoints) : base(capi)
     {
         Title = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "ConfirmationTitle");

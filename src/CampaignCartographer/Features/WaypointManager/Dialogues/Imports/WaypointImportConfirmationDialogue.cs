@@ -69,7 +69,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
         return waypoints.Select(dto => new WaypointSelectionCellEntry
         {
             Title = dto.Value.Title,
-            RightTopText = $"{dto.Value.Position.AsBlockPos.RelativeToSpawn(world)} ({dto.Value.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+            RightTopText = $"{dto.Value.Position.AsBlockPos.RelativeToSpawn()} ({dto.Value.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
             RightTopOffY = 3f,
             DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
             Model = SelectableWaypointTemplate.FromWaypoint(dto.Value, selected: true),
@@ -96,7 +96,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
             .Cast<WaypointSelectionGuiCell>()
             .Where(p => p.On)
             .Select(w => w.Model.With(x => {
-                x.Position = x.Position.AsBlockPos.RelativeToSpawn(ApiEx.Client.World).ToVec3d();
+                x.Position = x.Position.AsBlockPos.RelativeToSpawn().ToVec3d();
             }))
             .ToList();
 

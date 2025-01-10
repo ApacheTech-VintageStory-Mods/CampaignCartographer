@@ -7,6 +7,9 @@ using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 
+/// <summary>
+///     Provides extension methods for waypoint templates.
+/// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public static class WaypointTemplateExtensions
 {
@@ -77,7 +80,6 @@ public static class WaypointTemplateExtensions
         }
     }
 
-
     /// <summary>
     ///     Converts a waypoint template to a waypoint that can be added to the map.
     /// </summary>
@@ -96,13 +98,12 @@ public static class WaypointTemplateExtensions
         };
     }
 
-
     /// <summary>
     ///     Converts a waypoint template to a waypoint that can be added to the map.
     /// </summary>
     /// <param name="template">The template.</param>
     /// <returns></returns>
-    public static Waypoint ToPositionedWaypoint(this PositionedWaypointTemplate template)
+    public static Waypoint ToWaypoint(this PositionedWaypointTemplate template)
     {
         return new Waypoint
         {
@@ -116,6 +117,12 @@ public static class WaypointTemplateExtensions
         };
     }
 
+    /// <summary>
+    ///     Compares two waypoint templates to determine if they are the same based on specific properties.
+    /// </summary>
+    /// <param name="this">The current waypoint template.</param>
+    /// <param name="other">The other waypoint template to compare to.</param>
+    /// <returns>True if the waypoint templates have the same title, colour, pinned state, and server icon; otherwise, false.</returns>
     public static bool IsSameAs(this WaypointTemplate @this, WaypointTemplate other)
     {
         return @this.Validate(
@@ -125,6 +132,11 @@ public static class WaypointTemplateExtensions
             x => x.ServerIcon == other.ServerIcon);
     }
 
+    /// <summary>
+    ///     Converts a string representing a colour to its integer value.
+    /// </summary>
+    /// <param name="colourString">The colour string to convert.</param>
+    /// <returns>The integer representation of the colour.</returns>
     public static int ToInt(this string colourString)
     {
         if (colourString.StartsWith("#")) return ColorUtil.Hex2Int(colourString);
@@ -133,6 +145,11 @@ public static class WaypointTemplateExtensions
             : Color.FromName(namedColour).ToArgb() | -16777216;
     }
 
-    public static string ToHexString(this int intColour) 
+    /// <summary>
+    ///     Converts an integer representing a colour to its hexadecimal string representation.
+    /// </summary>
+    /// <param name="intColour">The integer value of the colour.</param>
+    /// <returns>The hexadecimal string representation of the colour.</returns>
+    public static string ToHexString(this int intColour)
         => ColorUtil.Int2Hex(intColour);
 }

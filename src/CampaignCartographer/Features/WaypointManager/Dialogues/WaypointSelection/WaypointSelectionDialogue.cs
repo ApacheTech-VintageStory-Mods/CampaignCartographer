@@ -13,7 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 ///     Dialogue Window: Allows the user to export waypoints to JSON files.
 /// </summary>
 /// <seealso cref="GenericDialogue" />
-[HarmonySidedPatch(EnumAppSide.Client)]
+[HarmonyClientSidePatch]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public abstract class WaypointSelectionDialogue : GenericDialogue
 {
@@ -272,14 +272,13 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         WorldMap.RecentreMap(cell.Model.Position);
         if (args.Button != EnumMouseButton.Right) return;
 
-        var dialogue = new GuiDialogEditWayPoint(
-            ApiEx.Client,
-            WorldMap.WaypointMapLayer(),
+        var dialogue = new AddEditWaypointDialogue(
+            ApiEx.Client, 
             cell.Model.ToWaypoint(),
             cell.CellEntry.Index);
 
         dialogue.OnClosed += RefreshWaypoints;
-        dialogue.TryOpen();
+        dialogue.ToggleGui();
     }
 
     private void RefreshWaypoints()
@@ -312,7 +311,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
             return new WaypointSelectionCellEntry
             {
                 Title = dto.Title,
-                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn(ApiEx.ClientMain)} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn()} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
                 RightTopOffY = 3f,
                 DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
                 Model = dto,

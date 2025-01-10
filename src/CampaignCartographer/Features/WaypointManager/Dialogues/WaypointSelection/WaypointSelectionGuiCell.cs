@@ -108,6 +108,7 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
 
         context.Operator = Operator.Add;
         EmbossRoundRectangleElement(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, false, 4, 0);
+        // TODO: What is this?
         //if (string.IsNullOrWhiteSpace(Model.Title))
         //{
         //    context.SetSourceRGBA(0.0, 0.0, 0.0, 0.5);
@@ -130,24 +131,23 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
         var imageSurface = new ImageSurface(0, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
         var context = genContext(imageSurface);
         var num = scaled(UnscaledRightBoxWidth);
+        context.NewPath();
         if (left)
         {
-            context.NewPath();
             context.LineTo(0.0, 0.0);
             context.LineTo(Bounds.InnerWidth - num, 0.0);
             context.LineTo(Bounds.InnerWidth - num, Bounds.OuterHeight);
             context.LineTo(0.0, Bounds.OuterHeight);
-            context.ClosePath();
         }
         else
         {
-            context.NewPath();
             context.LineTo(Bounds.InnerWidth - num, 0.0);
             context.LineTo(Bounds.OuterWidth, 0.0);
             context.LineTo(Bounds.OuterWidth, Bounds.OuterHeight);
             context.LineTo(Bounds.InnerWidth - num, Bounds.OuterHeight);
-            context.ClosePath();
         }
+
+        context.ClosePath();
         context.SetSourceRGBA(0.0, 0.0, 0.0, 0.15);
         context.Fill();
         generateTexture(imageSurface, ref textureId);
@@ -220,6 +220,7 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
 
     public void OnMouseUpOnElement(MouseEvent args, int elementIndex)
     {
+        args.Handled = false;
         var mouseX = api.Input.MouseX;
         var mouseY = api.Input.MouseY;
         var vec2d = Bounds.PositionInside(mouseX, mouseY);
