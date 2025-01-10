@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{02AF42D2
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
 		src\Directory.Build.targets = src\Directory.Build.targets
+		gitupdate.bat = gitupdate.bat
+		reallyRefresh.bat = reallyRefresh.bat
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CampaignCartographer", "src\CampaignCartographer\CampaignCartographer.csproj", "{FC5B486D-5440-48A7-8F6A-ECE178556884}"
@@ -36,11 +38,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLauncher", "..\..\..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{9755E00A-BC21-40B0-AC56-D9E27197CA65}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApacheTech.VintageMods.CampaignCartographer", "..\ApacheTech.VintageMods.CampaignCartographer\src\ApacheTech.VintageMods.CampaignCartographer\ApacheTech.VintageMods.CampaignCartographer.csproj", "{14168AC7-6E86-4A5C-95A8-4817D958AB07}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLauncherCA", "..\..\..\CoreClrLauncher\src\ClientLauncherCA\ClientLauncherCA.csproj", "{4E1601F6-727F-4803-B18E-86C80517B04F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerLauncher", "..\..\..\CoreClrLauncher\src\ServerLauncher\ServerLauncher.csproj", "{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B9E00F31-824B-4FE9-A3DB-95811BEFFE6A}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Gantry\src\Directory.Build.props = ..\..\..\Gantry\src\Directory.Build.props
+		..\..\..\Gantry\src\Directory.Build.targets = ..\..\..\Gantry\src\Directory.Build.targets
+		..\..\..\Gantry\src\Directory.Packages.props = ..\..\..\Gantry\src\Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApacheTech.VintageMods.CampaignCartographer", "..\..\ApacheTech.VintageMods.CampaignCartographer\src\ApacheTech.VintageMods.CampaignCartographer\ApacheTech.VintageMods.CampaignCartographer.csproj", "{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,8 +72,8 @@ Global
 		{FC5B486D-5440-48A7-8F6A-ECE178556884}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70987259-0649-403A-95E7-12AB5AF5C82C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70987259-0649-403A-95E7-12AB5AF5C82C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70987259-0649-403A-95E7-12AB5AF5C82C}.Package|Any CPU.ActiveCfg = Debug|Any CPU
-		{70987259-0649-403A-95E7-12AB5AF5C82C}.Package|Any CPU.Build.0 = Debug|Any CPU
+		{70987259-0649-403A-95E7-12AB5AF5C82C}.Package|Any CPU.ActiveCfg = Package|Any CPU
+		{70987259-0649-403A-95E7-12AB5AF5C82C}.Package|Any CPU.Build.0 = Package|Any CPU
 		{70987259-0649-403A-95E7-12AB5AF5C82C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70987259-0649-403A-95E7-12AB5AF5C82C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8331DEE8-7E25-43FC-825F-143064F7B342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -73,12 +82,6 @@ Global
 		{8331DEE8-7E25-43FC-825F-143064F7B342}.Package|Any CPU.Build.0 = Package|Any CPU
 		{8331DEE8-7E25-43FC-825F-143064F7B342}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8331DEE8-7E25-43FC-825F-143064F7B342}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Package|Any CPU.ActiveCfg = Package|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Package|Any CPU.Build.0 = Package|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E1601F6-727F-4803-B18E-86C80517B04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E1601F6-727F-4803-B18E-86C80517B04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E1601F6-727F-4803-B18E-86C80517B04F}.Package|Any CPU.ActiveCfg = Package|Any CPU
@@ -91,6 +94,12 @@ Global
 		{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73}.Package|Any CPU.Build.0 = Package|Any CPU
 		{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Package|Any CPU.ActiveCfg = Package|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Package|Any CPU.Build.0 = Package|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,9 +110,10 @@ Global
 		{FC5B486D-5440-48A7-8F6A-ECE178556884} = {8EE062AD-CAD4-4B30-BFEE-72A748B96AA4}
 		{70987259-0649-403A-95E7-12AB5AF5C82C} = {A79CBC2C-EF31-4D1D-A4E1-49112831995B}
 		{8331DEE8-7E25-43FC-825F-143064F7B342} = {F22F8C23-47E0-4134-A905-207A3E700A9E}
-		{14168AC7-6E86-4A5C-95A8-4817D958AB07} = {9755E00A-BC21-40B0-AC56-D9E27197CA65}
 		{4E1601F6-727F-4803-B18E-86C80517B04F} = {F22F8C23-47E0-4134-A905-207A3E700A9E}
 		{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73} = {F22F8C23-47E0-4134-A905-207A3E700A9E}
+		{B9E00F31-824B-4FE9-A3DB-95811BEFFE6A} = {A79CBC2C-EF31-4D1D-A4E1-49112831995B}
+		{2ABDA325-569B-4E87-AD1D-32C1DABDCA8A} = {9755E00A-BC21-40B0-AC56-D9E27197CA65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {603A1432-7DAA-410C-9259-CBD9DB944EF3}

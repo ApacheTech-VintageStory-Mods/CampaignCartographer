@@ -47,63 +47,553 @@
 		<ModInfoGeneratorPath>$(ModInfoGeneratorDir)$(ModInfoGeneratorName)</ModInfoGeneratorPath>
 	</PropertyGroup>
 
-	<ItemGroup Label="Game Imports">
-		<!-- Vintage Story Game Libraries -->
+	<!-- Core Game Library Imports -->
+
+	<ItemGroup>
+
+		<!--
+			Library 1: VintagestoryAPI
+			Description: Core API library for interacting with the Vintage Story game engine
+		-->
 		<Reference Include="VintagestoryAPI">
-			<HintPath>$(EnvironmentVariable)\VintagestoryAPI.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\VintagestoryAPI.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+			Library 2: VintagestoryLib
+			Description: Library containing the core functionality and utilities for the Vintage Story game
+		-->
 		<Reference Include="VintagestoryLib">
-			<HintPath>$(EnvironmentVariable)\VintagestoryLib.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\VintagestoryLib.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="VSCreativeMod">
-			<HintPath>$(EnvironmentVariable)\Mods\VSCreativeMod.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="VSSurvivalMod">
-			<HintPath>$(EnvironmentVariable)\Mods\VSSurvivalMod.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
+
+		<!--
+			Library 3: VSEssentials
+			Description: A mod providing essential features and utilities for the Vintage Story game
+		-->
 		<Reference Include="VSEssentials">
-			<HintPath>$(EnvironmentVariable)\Mods\VSEssentials.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Mods\VSEssentials.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<!-- Vintage Story Included Libraries -->
-		<Reference Include="Eto">
-			<HintPath>$(EnvironmentVariable)\Eto.dll</HintPath>
+
+		<!--
+			Library 4: VSSurvivalMod
+			Description: A mod for enhancing and extending the survival gameplay experience in Vintage Story
+		-->
+		<Reference Include="VSSurvivalMod">
+			<HintPath>$(VINTAGE_STORY)\Mods\VSSurvivalMod.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="SkiaSharp">
-			<HintPath>$(EnvironmentVariable)\Lib\SkiaSharp.dll</HintPath>
+
+		<!--
+			Library 5: VSCreativeMod
+			Description: A mod for enhancing and adding creative mode features to the Vintage Story game
+		-->
+		<Reference Include="VSCreativeMod">
+			<HintPath>$(VINTAGE_STORY)\Mods\VSCreativeMod.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+	</ItemGroup>
+
+
+	<!-- Auxhilary Game Library Imports -->
+
+	<ItemGroup>
+
+		<!--
+	        Library 1: 0Harmony
+	        Description: A library for modifying .NET assemblies
+	    -->
 		<Reference Include="0Harmony">
-			<HintPath>$(EnvironmentVariable)\Lib\0Harmony.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\0Harmony.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 2: AnimatedGif
+	        Description: A library for handling animated GIFs
+	    -->
 		<Reference Include="AnimatedGif">
-			<HintPath>$(EnvironmentVariable)\Lib\AnimatedGif.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\AnimatedGif.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 3: cairo-sharp
+	        Description: A .NET binding for the Cairo graphics library
+	    -->
 		<Reference Include="cairo-sharp">
-			<HintPath>$(EnvironmentVariable)\Lib\cairo-sharp.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\cairo-sharp.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 4: CommandLine
+	        Description: A library for command-line argument parsing
+	    -->
+		<Reference Include="CommandLine">
+			<HintPath>$(VINTAGE_STORY)\Lib\CommandLine.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 5: csogg
+	        Description: A C# wrapper for the Ogg Vorbis audio codec
+	    -->
+		<Reference Include="csogg">
+			<HintPath>$(VINTAGE_STORY)\Lib\csogg.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 6: csvorbis
+	        Description: A C# library for handling CSV and Ogg Vorbis formats
+	    -->
+		<Reference Include="csvorbis">
+			<HintPath>$(VINTAGE_STORY)\Lib\csvorbis.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 7: DnsClient
+	        Description: A DNS client for .NET
+	    -->
+		<Reference Include="DnsClient">
+			<HintPath>$(VINTAGE_STORY)\Lib\DnsClient.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 8: Eto.Wpf
+	        Description: A cross-platform UI framework for .NET
+	    -->
+		<Reference Include="Eto.Wpf">
+			<HintPath>$(VINTAGE_STORY)\Lib\Eto.Wpf.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 11: ICSharpCode.SharpZipLib
+	        Description: A library for working with zip archives in .NET
+	    -->
+		<Reference Include="ICSharpCode.SharpZipLib">
+			<HintPath>$(VINTAGE_STORY)\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 12: JsonDiffPatch
+	        Description: A .NET library for performing JSON diff and patch operations
+	    -->
+		<Reference Include="JsonDiffPatch">
+			<HintPath>$(VINTAGE_STORY)\Lib\JsonDiffPatch.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 16: Microsoft.CodeAnalysis.CSharp
+	        Description: The C# compiler and syntax analysis components of Roslyn
+	    -->
+		<Reference Include="Microsoft.CodeAnalysis.CSharp">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 17: Microsoft.CodeAnalysis
+	        Description: Roslyn, the .NET compiler platform for C# and Visual Basic
+	    -->
+		<Reference Include="Microsoft.CodeAnalysis">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.CodeAnalysis.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 18: Microsoft.Data.Sqlite
+	        Description: A .NET library for working with SQLite databases
+	    -->
+		<Reference Include="Microsoft.Data.Sqlite">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.Data.Sqlite.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 19: Microsoft.Win32.SystemEvents
+	        Description: A library for subscribing to system-wide events
+	    -->
+		<Reference Include="Microsoft.Win32.SystemEvents">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.Win32.SystemEvents.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 20: Microsoft.WindowsAPICodePack
+	        Description: A .NET wrapper for the Windows API Code Pack
+	    -->
+		<Reference Include="Microsoft.WindowsAPICodePack">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 21: Microsoft.WindowsAPICodePack.Shell
+	        Description: A .NET wrapper for Windows Shell APIs
+	    -->
+		<Reference Include="Microsoft.WindowsAPICodePack.Shell">
+			<HintPath>$(VINTAGE_STORY)\Lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 22: Mono.Cecil
+	        Description: A library for reading and writing .NET assemblies
+	    -->
+		<Reference Include="Mono.Cecil">
+			<HintPath>$(VINTAGE_STORY)\Lib\Mono.Cecil.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 23: Mono.Cecil.Mdb
+	        Description: Mono.Cecil extension for reading and writing debugging information
+	    -->
+		<Reference Include="Mono.Cecil.Mdb">
+			<HintPath>$(VINTAGE_STORY)\Lib\Mono.Cecil.Mdb.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 24: Mono.Cecil.Pdb
+	        Description: Mono.Cecil extension for reading and writing PDB files
+	    -->
+		<Reference Include="Mono.Cecil.Pdb">
+			<HintPath>$(VINTAGE_STORY)\Lib\Mono.Cecil.Pdb.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 25: Mono.Cecil.Rocks
+	        Description: Extension methods for Mono.Cecil
+	    -->
+		<Reference Include="Mono.Cecil.Rocks">
+			<HintPath>$(VINTAGE_STORY)\Lib\Mono.Cecil.Rocks.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 26: Mono.Nat
+	        Description: A .NET library for NAT traversal and UPnP
+	    -->
+		<Reference Include="Mono.Nat">
+			<HintPath>$(VINTAGE_STORY)\Lib\Mono.Nat.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 27: MonoMod.Backports
+	        Description: A library for backporting MonoMod features for older Mono versions
+	    -->
+		<Reference Include="MonoMod.Backports">
+			<HintPath>$(VINTAGE_STORY)\Lib\MonoMod.Backports.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 28: MonoMod.Core
+	        Description: The core library for MonoMod, used for modifying .NET assemblies
+	    -->
+		<Reference Include="MonoMod.Core">
+			<HintPath>$(VINTAGE_STORY)\Lib\MonoMod.Core.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 29: MonoMod.Iced
+	        Description: A library for using the Iced.NET disassembler with MonoMod
+	    -->
+		<Reference Include="MonoMod.Iced">
+			<HintPath>$(VINTAGE_STORY)\Lib\MonoMod.Iced.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 30: MonoMod.ILHelpers
+	        Description: Helper methods for MonoMod to manipulate IL code
+	    -->
+		<Reference Include="MonoMod.ILHelpers">
+			<HintPath>$(VINTAGE_STORY)\Lib\MonoMod.ILHelpers.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 31: MonoMod.Utils
+	        Description: Utility functions for MonoMod and other assembly manipulation tasks
+	    -->
+		<Reference Include="MonoMod.Utils">
+			<HintPath>$(VINTAGE_STORY)\Lib\MonoMod.Utils.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 33: Newtonsoft.Json
+	        Description: A popular .NET library for JSON handling
+	    -->
 		<Reference Include="Newtonsoft.Json">
-			<HintPath>$(EnvironmentVariable)\Lib\Newtonsoft.Json.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\Newtonsoft.Json.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 34: Open.Nat
+	        Description: A library for NAT traversal and UPnP
+	    -->
+		<Reference Include="Open.Nat">
+			<HintPath>$(VINTAGE_STORY)\Lib\Open.Nat.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 36: OpenTK.Audio.OpenAL
+	        Description: OpenTK bindings for the OpenAL audio API
+	    -->
+		<Reference Include="OpenTK.Audio.OpenAL">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Audio.OpenAL.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 37: OpenTK.Compute
+	        Description: OpenTK bindings for compute shaders and OpenCL
+	    -->
+		<Reference Include="OpenTK.Compute">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Compute.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 38: OpenTK.Core
+	        Description: Core library for OpenTK, a .NET wrapper for OpenGL
+	    -->
+		<Reference Include="OpenTK.Core">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Core.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 39: OpenTK.Graphics
+	        Description: OpenTK bindings for OpenGL and graphical APIs
+	    -->
+		<Reference Include="OpenTK.Graphics">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Graphics.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 40: OpenTK.Input
+	        Description: OpenTK bindings for keyboard, mouse, and other input devices
+	    -->
+		<Reference Include="OpenTK.Input">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Input.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 41: OpenTK.Mathematics
+	        Description: Mathematical utilities for OpenTK, including vectors and matrices
+	    -->
+		<Reference Include="OpenTK.Mathematics">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Mathematics.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 42: OpenTK.Windowing.Common
+	        Description: Common types for OpenTK windowing systems
+	    -->
+		<Reference Include="OpenTK.Windowing.Common">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Windowing.Common.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 43: OpenTK.Windowing.Desktop
+	        Description: Desktop-specific windowing functionality for OpenTK
+	    -->
+		<Reference Include="OpenTK.Windowing.Desktop">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Windowing.Desktop.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 44: OpenTK.Windowing.GraphicsLibraryFramework
+	        Description: Bindings for GLFW, a library for creating windows with OpenGL
+	    -->
+		<Reference Include="OpenTK.Windowing.GraphicsLibraryFramework">
+			<HintPath>$(VINTAGE_STORY)\Lib\OpenTK.Windowing.GraphicsLibraryFramework.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 45: protobuf-net
+	        Description: A .NET library for protocol buffers serialization and deserialization
+	    -->
 		<Reference Include="protobuf-net">
-			<HintPath>$(EnvironmentVariable)\Lib\protobuf-net.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\protobuf-net.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 46: SharpAvi
+	        Description: A library for creating and manipulating AVI video files in .NET
+	    -->
+		<Reference Include="SharpAvi">
+			<HintPath>$(VINTAGE_STORY)\Lib\SharpAvi.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 47: SharpAvi.SkiaSharp
+	        Description: Integration of SkiaSharp with SharpAvi for video manipulation
+	    -->
+		<Reference Include="SharpAvi.SkiaSharp">
+			<HintPath>$(VINTAGE_STORY)\Lib\SharpAvi.SkiaSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 48: SkiaSharp
+	        Description: A cross-platform graphics library for 2D drawing and text rendering
+	    -->
+		<Reference Include="SkiaSharp">
+			<HintPath>$(VINTAGE_STORY)\Lib\SkiaSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 50: SQLitePCLRaw.batteries_v2
+	        Description: Batteries for SQLitePCLRaw with SQLite3 backend
+	    -->
+		<Reference Include="SQLitePCLRaw.batteries_v2">
+			<HintPath>$(VINTAGE_STORY)\Lib\SQLitePCLRaw.batteries_v2.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 51: SQLitePCLRaw.core
+	        Description: Core SQLitePCLRaw library for .NET
+	    -->
+		<Reference Include="SQLitePCLRaw.core">
+			<HintPath>$(VINTAGE_STORY)\Lib\SQLitePCLRaw.core.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 52: SQLitePCLRaw.provider.e_sqlite3
+	        Description: SQLite provider for SQLitePCLRaw, using e_sqlite3 as the backend
+	    -->
+		<Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+			<HintPath>$(VINTAGE_STORY)\Lib\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 53: System.Data.SQLite
+	        Description: A library for managing SQLite database operations in .NET
+	    -->
 		<Reference Include="System.Data.SQLite">
-			<HintPath>$(EnvironmentVariable)\Lib\System.Data.SQLite.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\System.Data.SQLite.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+
+		<!--
+	        Library 55: System.Private.ServiceModel
+	        Description: Private APIs for the System.ServiceModel stack
+	    -->
+		<Reference Include="System.Private.ServiceModel">
+			<HintPath>$(VINTAGE_STORY)\Lib\System.Private.ServiceModel.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 56: System.ServiceModel
+	        Description: .NET library for service-oriented applications
+	    -->
+		<Reference Include="System.ServiceModel">
+			<HintPath>$(VINTAGE_STORY)\Lib\System.ServiceModel.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 57: System.ServiceModel.Primitives
+	        Description: Primitives for working with WCF and service models in .NET
+	    -->
+		<Reference Include="System.ServiceModel.Primitives">
+			<HintPath>$(VINTAGE_STORY)\Lib\System.ServiceModel.Primitives.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 58: Tavis.JsonPatch
+	        Description: A .NET library for working with JSON Patch format
+	    -->
 		<Reference Include="Tavis.JsonPatch">
-			<HintPath>$(EnvironmentVariable)\Lib\Tavis.JsonPatch.dll</HintPath>
+			<HintPath>$(VINTAGE_STORY)\Lib\Tavis.JsonPatch.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 59: Xceed.Wpf.AvalonDock
+	        Description: A WPF library for creating dockable windows in your application
+	    -->
+		<Reference Include="Xceed.Wpf.AvalonDock">
+			<HintPath>$(VINTAGE_STORY)\Lib\Xceed.Wpf.AvalonDock.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 60: Xceed.Wpf.AvalonDock.Themes.Aero
+	        Description: Aero theme for AvalonDock in WPF applications
+	    -->
+		<Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+			<HintPath>$(VINTAGE_STORY)\Lib\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+			Library 61: Xceed.Wpf.AvalonDock.Themes.Metro
+			Description: Metro theme for AvalonDock in WPF applications
+		-->
+		<Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+			<HintPath>$(VINTAGE_STORY)\Lib\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+			Library 62: Xceed.Wpf.AvalonDock.Themes.VS2010
+			Description: Visual Studio 2010 theme for AvalonDock in WPF applications
+		-->
+		<Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+			<HintPath>$(VINTAGE_STORY)\Lib\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+			Library 63: Xceed.Wpf.Toolkit
+			Description: A WPF toolkit that provides a variety of additional controls
+		-->
+		<Reference Include="Xceed.Wpf.Toolkit">
+			<HintPath>$(VINTAGE_STORY)\Lib\Xceed.Wpf.Toolkit.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+			Library 64: xplatforminterface
+			Description: A cross-platform interface library
+		 -->
+		<Reference Include="xplatforminterface">
+			<HintPath>$(VINTAGE_STORY)\Lib\xplatforminterface.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
