@@ -1,0 +1,9 @@
+{
+  "ModTitle": "Kampanjkartograf",
+  "ModDescription": "Lägger till flera kartografirelaterade funktioner till spelet, såsom anpassade ikoner för vägpunkter, GPS, automatiska markörer för vägpunkter och mer.",
+
+  "error-messages.feature-not-available-client-side": "Den här funktionen är inte tillgänglig på klientsidan. Använd istället den motsvarande serverkommandot.",
+  "error-messages.mod-not-installed-on-server": "Kampanjkartograf är inte installerad på servern. Be serveradministratören att installera Kampanjkartograf för extra funktionalitet.",
+  "error-messages.feature-disabled": "Serveradministratören har inaktiverat denna funktion.",
+  "error-messages.invalid-command": "Ogiltigt kommando. Försök igen."
+}

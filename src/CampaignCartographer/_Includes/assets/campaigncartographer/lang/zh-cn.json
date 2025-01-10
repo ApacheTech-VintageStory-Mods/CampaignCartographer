@@ -1,0 +1,9 @@
+{
+  "ModTitle": "战役制图师",
+  "ModDescription": "为游戏添加多个与制图相关的功能，例如自定义航点图标、GPS、自动航点标记等。",
+
+  "error-messages.feature-not-available-client-side": "此功能在客户端不可用。请改用等效的服务器命令。",
+  "error-messages.mod-not-installed-on-server": "战役制图师未安装在服务器上。请要求服务器管理员安装战役制图师以获取更多功能。",
+  "error-messages.feature-disabled": "服务器管理员已禁用此功能。",
+  "error-messages.invalid-command": "无效命令。请重试。"
+}

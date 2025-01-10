@@ -1,0 +1,9 @@
+{
+  "ModTitle": "캠페인 지도 제작자",
+  "ModDescription": "사용자 정의 웨이포인트 아이콘, GPS, 자동 웨이포인트 마커 등 여러 지도 제작 관련 기능을 게임에 추가합니다.",
+
+  "error-messages.feature-not-available-client-side": "이 기능은 클라이언트 측에서 사용할 수 없습니다. 대신 서버 명령을 사용하십시오.",
+  "error-messages.mod-not-installed-on-server": "캠페인 지도 제작자가 서버에 설치되어 있지 않습니다. 서버 관리자에게 설치를 요청하십시오.",
+  "error-messages.feature-disabled": "서버 관리자가 이 기능을 비활성화했습니다.",
+  "error-messages.invalid-command": "잘못된 명령입니다. 다시 시도하십시오."
+}

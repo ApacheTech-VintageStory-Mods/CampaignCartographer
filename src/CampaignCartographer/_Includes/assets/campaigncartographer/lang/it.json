@@ -1,0 +1,9 @@
+{
+  "ModTitle": "Cartografo della Campagna",
+  "ModDescription": "Aggiunge al gioco diverse funzionalità legate alla cartografia, come icone personalizzate dei waypoint, GPS, marcatori automatici dei waypoint e altro.",
+
+  "error-messages.feature-not-available-client-side": "Questa funzione non è disponibile lato client. Si prega di utilizzare invece il comando equivalente lato server.",
+  "error-messages.mod-not-installed-on-server": "Cartografo della Campagna non è installato sul server. Si prega di chiedere all'amministratore del server di installare Cartografo della Campagna per funzionalità aggiuntive.",
+  "error-messages.feature-disabled": "L'amministratore del server ha disattivato questa funzione.",
+  "error-messages.invalid-command": "Comando non valido. Riprova."
+}

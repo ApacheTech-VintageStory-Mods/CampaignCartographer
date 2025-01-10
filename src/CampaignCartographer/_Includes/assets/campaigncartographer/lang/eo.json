@@ -1,0 +1,9 @@
+{
+  "ModTitle": "Kampanja Kartografo",
+  "ModDescription": "Aldonas plurajn kartografio-rilatajn funkciojn al la ludo, kiel personigitajn vojpunkto-ikonojn, GPS, aŭtomatajn vojpunkto-markojn, kaj pli.",
+
+  "error-messages.feature-not-available-client-side": "Ĉi tiu funkcio ne disponeblas ĉe la klientflanko. Bonvolu uzi la ekvivalentan servilan komandon anstataŭe.",
+  "error-messages.mod-not-installed-on-server": "Kampanja Kartografo ne estas instalita en la servilo. Bonvolu peti vian servil-administranton instali Kampanja Kartografo por pliigita funkciado.",
+  "error-messages.feature-disabled": "La servil-administranto malŝaltis ĉi tiun funkcion.",
+  "error-messages.invalid-command": "Nevalida komando. Bonvolu reprovi."
+}

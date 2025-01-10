@@ -1,0 +1,9 @@
+{
+  "ModTitle": "Cartographe de Campagne",
+  "ModDescription": "Ajoute plusieurs fonctionnalités liées à la cartographie au jeu, telles que des icônes de points de repère personnalisés, un GPS, des marqueurs automatiques de points de repère, et bien plus.",
+
+  "error-messages.feature-not-available-client-side": "Cette fonctionnalité n'est pas disponible côté client. Veuillez utiliser la commande équivalente côté serveur à la place.",
+  "error-messages.mod-not-installed-on-server": "Cartographe de Campagne n'est pas installé sur le serveur. Veuillez demander à l'administrateur du serveur d'installer Cartographe de Campagne pour des fonctionnalités supplémentaires.",
+  "error-messages.feature-disabled": "L'administrateur du serveur a désactivé cette fonctionnalité.",
+  "error-messages.invalid-command": "Commande invalide. Veuillez réessayer."
+}

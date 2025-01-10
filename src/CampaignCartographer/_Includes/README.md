@@ -8,6 +8,51 @@ This mod can be installed as a client-side only mod, which will allow you access
 
 ## Features:
   
+ - ### **Waypoint Icons and Colours**
+ 
+    The *"add"* and *"edit"* windows for waypoints have been re-written, allowing for new functionality to be added.
+
+     - Added fifty (50) new icons for waypoints.
+     - Added seventy (70) new colours for waypoints.
+  
+ - ### **Waypoint Beacons**
+ 
+    Add existing waypoints as beacons, visible in the world as pillars of light.
+    
+    Via the settings menu, you can:
+    
+     - Change the distance at which the beacon beams are visible.
+     - Change the distance at which the beacon titles are visible.
+     - Choose whether to show the beacon beams as pillars of light.
+     - Choose whether to prefix the waypoint title.
+     - Choose whether to show the index within the title.
+  
+ - ### **Waypoint Sharing**
+ 
+    Share waypoints with other players.
+
+     - Share an existing waypoint with a specific player.
+     - Share an existing waypoint with everyone on the server.
+  
+ - ### **Fast Travel Map Overlay**
+ 
+    Display translocators, and teleporters on a separate map layer, with lines connecting the endpoints.
+
+     - Server admins can configure teleporters using a re-written GUI window, by shift-right-clicking a teleporter block.
+     - Add a node to the map by ctrl-right-clicking an active teleporter or translocator.
+     - Change the title of the node.
+     - Change the colour of the marker for the node.
+     - Enable/Disable the node.
+     - Show/Hide the path between the two endpoints of the node.
+     - Change the default colour for all translocators.
+     - Change the default colour for all teleporters.
+     - Change the default colour for all nodes with errors.
+     - Change the default colour for all disabled nodes.
+     - Change the opacity for all nodes with errors.
+     - Change the opacity for all disabled nodes.
+     - Change the width of the line drawn between the nodes.
+     - Change the size of the node on the map.
+  
  - ### **Manual Waypoint Addition *`(.wp)`***
  
     Quickly and easily add waypoints at your current position, via the chat window. There are over 130 pre-defined waypoints for many different block types, and areas of interest.
@@ -18,7 +63,7 @@ This mod can be installed as a client-side only mod, which will allow you access
      - Add a waypoint to a trader, within five blocks of the player. ***`(.wpt)`***
      - Add a waypoint for the block the player is currently targetting. ***`(.wps)`***
 
- - ### **Automatic Waypoint Addition *`(.wpAuto)`*** 
+ - ### **Automatic Waypoint Addition** 
  
     Make exploration even more rewarding, by documenting your journeys as you travel. From rock strata, to traders, to essential foodstuff; waypoints are added as you interact with the world.
 
@@ -41,62 +86,25 @@ This mod can be installed as a client-side only mod, which will allow you access
      - Re-centre the map on a specific waypoint. ***`(.cm wp)`***
      - Re-centre the map on player's spawn point. ***`(.cm home)`*** **(Requires Server Installation)**
 
- - ### **Global Positioning System *`(.gps)`***
+ - ### **Global Positioning System *`(/gps)`***
  
     Display and share your current location within the world.
   
-     - Display your current XYZ coordinates. ***`(.gps)`***
-     - Copy your current XYZ coordinates to clipboard. ***`(.gps copy)`***
-     - Send your current XYZ coordinates as a chat message to the current chat group. ***`(.gps chat)`***
-     - Whisper your current XYZ coordinates to a single player. Disabled by default. ***`(.gps to)`*** **(Requires Server Installation)**
-     - **Admin:** Change permissions to whisper other members of the server. ***`(/gpsAdmin)`*** **(Requires Server Installation)**
-         - Enable whispers between players. ***`(/gpsAdmin enable-whispers)`***
-         - Disable whispers between players. ***`(/gpsAdmin disable-whispers)`***
+     - Display your current XYZ coordinates. ***`(/gps)`***
+     - Copy your current XYZ coordinates to clipboard. ***`(/gps copy)`***
+     - Send your current XYZ coordinates as a chat message to the current chat group. ***`(/gps chat)`***
+     - Whisper your current XYZ coordinates to a single player. Disabled by default. ***`(/gps pm)`***
 
  - ### **Customisable Player Map Pins *`(.playerPins)`***
  
     Change the colour and scale of player pins on the world map.
  
-     - Add other players as friends, to distinguish their player pins on the map. ***`(.friend add)`***
-     - Remove a player as a friend. ***`(.friend remove)`***
+     - Highlight other player, to distinguish their player pins on the map. ***`(.playerpins highlight add)`***
+     - Remove highlight from player. ***`(.playerpins highlight remove)`***
      - Toggle the Player Pins settings window. ***`(.playerPins)`***
          - Change settings for your own player pin.
-         - Change settings for the player pins of friends on the server.
+         - Change settings for the highlighted player pins on the server.
          - Change settings for the player pins of other people on the server.
-
- - ### **Waypoint Utilities *`(.wpUtil)`***
- 
-    A selection of utility commands that makes working with waypoints a lot easier.
-
-     - All purge commands will need confirmation. ***`(.wpUtil confirm)`***
-     - Purge all waypoints. ***`(.wpUtil purge-all)`***
-     - Purge all waypoints within a given radius of the player. ***`(.wpUtil purge-nearby)`***
-     - Purge all waypoints with a specified icon. ***`(.wpUtil purge-icon)`***
-     - Purge all waypoints with a specified colour. ***`(.wpUtil purge-colour)`***
-     - Purge all waypoints where the title starts with a specified string. ***`(.wpUtil purge-title)`***
-
-## Client-Side Commands:
-
-| Command               | Description |
-| ---                   | --- |
-| **.wp**               | Add a waypoint at the player's current location, via a chat command. |
-| **.wptl**             | Adds a waypoint to a translocator, within five blocks of the player. |
-| **.wptp**             | Adds a waypoint to a teleporter block, within five blocks of the player. |
-| **.wpt**              | Adds a waypoint to a trader, within five blocks of the player. |
-| **.wps**              | Adds a waypoint to the block the player is currently targetting. |
-| **.wpUtil**           | Various utilities for managing waypoints, en-masse. |
-| **.wpSettings**       | Toggle the Manual Waypoints settings window. |
-| **.wpAuto**           | Toggle the Auto Waypoints settings window. |
-| **.cm**               | Centre the mini-map, and world map on a specific location. |
-| **.gps**              | Display and broadcast your current location. |
-| **.playerPins**       | Toggle the Player Pins settings window. |
-| **.friend**           | Distinguish a player's marker pin on the map. |
-
-## Server-Side Commands:
-
-| Command               | Description |
-| ---                   | --- |
-| **/gpsAdmin**         | Change GPS settings for the server. |
 
 ## Acknowledgements:
 
@@ -107,5 +115,5 @@ Thank you to the following people:
  - **Melchior:** For assistance with ProtoBuf, and overwriting vanilla classes.
  - **Craluminum2413:** Translation into Russian, and Ukrainian.
  - **Aledark:** Translation into French.
- - **Novocain:** Original creator of some of the back-end reflection helpers, and ClientSideEverywhere hack.
+ - **Novocain:** Insipiration for some core Gantry features, and the Waypoint Beacons.
  - **Tyron:** For refactoring some of the API to make this mod easier to make.
