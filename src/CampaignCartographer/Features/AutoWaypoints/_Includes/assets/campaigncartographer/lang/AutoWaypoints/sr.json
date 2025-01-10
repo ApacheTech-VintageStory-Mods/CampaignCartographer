@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Овде сте умрли: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Промените подешавања аутоматских маркера",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Аутоматски маркери",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Маркер смрти:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Аутоматски додаје маркере на места где умрете. Ово ће онемогућити подразумевани маркер смрти.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Статички транслокатори:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Аутоматски додаје маркере за транслокаторе када путујете између њих.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Телепорт блокови:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Аутоматски додаје маркере за телепорт блокове када путујете између њих.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Трговци:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Аутоматски додаје маркере за трговце током интеракције са њима.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Површинска налазишта:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Аутоматски додаје маркере за различите типове метала приликом сакупљања површинских налазишта.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Расуте каменице:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Аутоматски додаје маркере за различите типове стена приликом сакупљања површинских налазишта.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Печурке:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Аутоматски додаје маркере за печурке приликом сакупљања.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Смола:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Аутоматски додаје маркере за смолу приликом сакупљања.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Жбунови са бобицама:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Аутоматски додаје маркере за жбунове са бобицама приликом сакупљања."
+}

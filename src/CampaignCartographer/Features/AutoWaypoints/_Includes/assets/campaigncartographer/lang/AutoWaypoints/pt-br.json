@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Você morreu aqui: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Alterar configurações de Pontos de Referência Automáticos",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Pontos de Referência Automáticos",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Pontos de Morte:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Adiciona automaticamente pontos de referência toda vez que você morrer. Isso desativa o ponto de morte padrão.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Translocadores Estáticos:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Adiciona automaticamente pontos de referência para translocadores enquanto você viaja entre eles.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Blocos de Teletransporte:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Adiciona automaticamente pontos de referência para blocos de teletransporte enquanto você viaja entre eles.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Comerciantes:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Adiciona automaticamente pontos de referência para comerciantes enquanto você interage com eles.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Depósitos Superficiais:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Adiciona automaticamente pontos de referência para diferentes tipos de metais enquanto coleta depósitos superficiais.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Pedras Soltas:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Adiciona automaticamente pontos de referência para diferentes tipos de pedras enquanto coleta depósitos superficiais.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Cogumelos:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Adiciona automaticamente pontos de referência para cogumelos enquanto os coleta.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Resina:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Adiciona automaticamente pontos de referência para resina enquanto a coleta.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Arbustos de Frutas:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Adiciona automaticamente pontos de referência para arbustos de frutas enquanto os coleta."
+}

@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "You died here: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Change Automatic Waypoint Settings",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Automatic Waypoints",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Death Waypoints:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Automatically add waypoints whenever you die. This will disable vanilla death waypoint.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Static Translocators:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Automatically add waypoints for Translocators, as you travel between them.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Teleporter Blocks:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Automatically add waypoints for Teleporters, as you travel between them.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Traders:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Automatically add waypoints for Traders, as you interact with them.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Surface Deposits:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Automatically add waypoints for different metal types, as you collect surface deposits.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Loose Stones:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Automatically add waypoints for different rock types, as you collect surface deposits.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Mushrooms:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Automatically add waypoints for mushrooms, as you forage.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Resin:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Automatically add waypoints for resin, as you forage.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Berry Bushes:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Automatically add waypoints for berry bushes, as you forage."
+}

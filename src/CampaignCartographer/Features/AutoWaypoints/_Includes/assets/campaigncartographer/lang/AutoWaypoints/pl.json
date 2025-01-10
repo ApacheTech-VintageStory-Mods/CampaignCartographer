@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Zginąłeś tutaj: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Zmień ustawienia automatycznych punktów orientacyjnych",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Automatyczne Punkty Orientacyjne",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Punkty śmierci:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Automatycznie dodaje punkty orientacyjne po każdej śmierci. Wyłącza standardowy punkt śmierci.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Statyczne Translokatory:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Automatycznie dodaje punkty orientacyjne dla translokatorów podczas podróży między nimi.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Bloki Teleportacji:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Automatycznie dodaje punkty orientacyjne dla bloków teleportacji podczas podróży między nimi.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Handlarze:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Automatycznie dodaje punkty orientacyjne dla handlarzy podczas interakcji z nimi.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Złoża Powierzchniowe:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Automatycznie dodaje punkty orientacyjne dla różnych rodzajów metali podczas zbierania złóż powierzchniowych.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Luźne Kamienie:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Automatycznie dodaje punkty orientacyjne dla różnych rodzajów kamieni podczas zbierania złóż powierzchniowych.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Grzyby:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Automatycznie dodaje punkty orientacyjne dla grzybów podczas ich zbierania.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Żywica:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Automatycznie dodaje punkty orientacyjne dla żywicy podczas jej zbierania.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Krzewy Jagodowe:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Automatycznie dodaje punkty orientacyjne dla krzewów jagodowych podczas ich zbierania."
+}

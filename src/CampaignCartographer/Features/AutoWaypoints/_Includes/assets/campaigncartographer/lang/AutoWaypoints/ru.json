@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Вы умерли здесь: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Изменить настройки автоматических путевых точек",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Автоматические Путевые Точки",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Точки смерти:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Автоматически добавляет путевые точки при каждой смерти. Это отключает стандартную точку смерти.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Стационарные Транслокаторы:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Автоматически добавляет путевые точки для транслокаторов при перемещении между ними.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Телепорт-блоки:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Автоматически добавляет путевые точки для телепорт-блоков при перемещении между ними.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Торговцы:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Автоматически добавляет путевые точки для торговцев при взаимодействии с ними.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Поверхностные залежи:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Автоматически добавляет путевые точки для различных видов металлов при сборе поверхностных залежей.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Разбросанные камни:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Автоматически добавляет путевые точки для различных видов камней при сборе поверхностных залежей.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Грибы:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Автоматически добавляет путевые точки для грибов при их сборе.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Смола:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Автоматически добавляет путевые точки для смолы при её сборе.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Кусты ягод:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Автоматически добавляет путевые точки для кустов ягод при их сборе."
+}

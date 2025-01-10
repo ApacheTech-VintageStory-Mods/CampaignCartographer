@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Sei morto qui: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Modifica le impostazioni dei punti automatici",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Punti Automatici",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Punti di morte:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Aggiunge automaticamente punti ogni volta che muori. Questo disattiverà il punto di morte predefinito.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Traslocatori Statici:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Aggiunge automaticamente punti per i traslocatori mentre viaggi tra di essi.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Blocchi Teletrasporto:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Aggiunge automaticamente punti per i teletrasportatori mentre viaggi tra di essi.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Mercanti:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Aggiunge automaticamente punti per i mercanti durante l'interazione.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Depositi Superficiali:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Aggiunge automaticamente punti per diversi tipi di metalli mentre raccogli depositi superficiali.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Pietre Sciolte:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Aggiunge automaticamente punti per diversi tipi di pietre mentre raccogli depositi superficiali.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Funghi:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Aggiunge automaticamente punti per i funghi mentre li raccogli.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Resina:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Aggiunge automaticamente punti per la resina mentre la raccogli.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Cespugli di Bacche:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Aggiunge automaticamente punti per i cespugli di bacche mentre li raccogli."
+}

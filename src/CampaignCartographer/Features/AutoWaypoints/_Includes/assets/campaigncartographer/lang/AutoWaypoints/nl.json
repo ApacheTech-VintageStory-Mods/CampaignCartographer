@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Je bent hier gestorven: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Wijzig instellingen voor automatische waypoints",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Automatische Waypoints",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Dood Waypoints:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Voegt automatisch waypoints toe wanneer je sterft. Dit schakelt de standaard dood-waypoint uit.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Statische Translocators:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Voegt automatisch waypoints toe voor translocators wanneer je ertussen reist.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Teleporteerblokken:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Voegt automatisch waypoints toe voor teleporteerblokken wanneer je ertussen reist.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Handelaren:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Voegt automatisch waypoints toe voor handelaren wanneer je met hen interacteert.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Oppervlakteafzettingen:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Voegt automatisch waypoints toe voor verschillende metaalsoorten bij het verzamelen van oppervlakteafzettingen.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Losse Stenen:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Voegt automatisch waypoints toe voor verschillende steensoorten bij het verzamelen van oppervlakteafzettingen.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Paddenstoelen:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Voegt automatisch waypoints toe voor paddenstoelen bij het verzamelen ervan.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Hars:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Voegt automatisch waypoints toe voor hars bij het verzamelen ervan.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Bessenstruiken:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Voegt automatisch waypoints toe voor bessenstruiken bij het verzamelen ervan."
+}

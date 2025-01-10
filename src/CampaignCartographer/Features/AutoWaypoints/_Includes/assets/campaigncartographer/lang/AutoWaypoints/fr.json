@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Vous êtes mort ici : {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Modifier les paramètres des points de passage automatiques",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Points de Passage Automatiques",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Points de mort :",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Ajoute automatiquement des points de passage chaque fois que vous mourez. Cela désactivera le point de mort par défaut.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Translocateurs Statistiques :",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Ajoute automatiquement des points de passage pour les translocateurs lorsque vous voyagez entre eux.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Blocs de Téléportation :",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Ajoute automatiquement des points de passage pour les téléporteurs lorsque vous voyagez entre eux.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Marchands :",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Ajoute automatiquement des points de passage pour les marchands lorsque vous interagissez avec eux.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Dépôts de Surface :",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Ajoute automatiquement des points de passage pour différents types de métaux lorsque vous collectez des dépôts de surface.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Pierres Détachées :",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Ajoute automatiquement des points de passage pour différents types de pierres lorsque vous collectez des dépôts de surface.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Champignons :",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Ajoute automatiquement des points de passage pour les champignons lorsque vous les collectez.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Résine :",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Ajoute automatiquement des points de passage pour la résine lorsque vous la collectez.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Buissons à Baies :",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Ajoute automatiquement des points de passage pour les buissons à baies lorsque vous les collectez."
+}

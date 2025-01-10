@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "ここで死亡しました: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "自動ウェイポイント設定を変更",
+
+  "Features.AutoWaypoints.Dialogue.Title": "自動ウェイポイント",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "死亡ウェイポイント:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "死亡するたびに自動でウェイポイントを追加します。これにより、デフォルトの死亡ウェイポイントが無効になります。",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "固定型トランスロケーター:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "トランスロケーター間を移動する際に自動的にウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "テレポーターブロック:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "テレポーター間を移動する際に自動的にウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "商人:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "商人とやり取りする際に自動的にウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "表面鉱床:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "表面鉱床を採集するときに、金属の種類ごとに自動でウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "転がった石:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "表面鉱床を採集するときに、石の種類ごとに自動でウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "キノコ:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "キノコを採集するときに自動でウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblResin": "樹脂:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "樹脂を採集するときに自動でウェイポイントを追加します。",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "ベリーブッシュ:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "ベリーブッシュを採集するときに自動でウェイポイントを追加します。"
+}

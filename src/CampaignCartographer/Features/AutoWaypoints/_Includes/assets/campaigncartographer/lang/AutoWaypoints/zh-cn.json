@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "您在这里死亡: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "更改自动路径点设置",
+
+  "Features.AutoWaypoints.Dialogue.Title": "自动路径点",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "死亡路径点:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "死亡时自动添加路径点。这将禁用默认的死亡路径点。",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "静态传送装置:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "在传送装置之间旅行时，自动添加路径点。",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "传送方块:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "在传送方块之间旅行时，自动添加路径点。",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "商人:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "与商人互动时自动添加路径点。",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "地表矿点:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "采集地表矿点时，自动添加不同金属类型的路径点。",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "散落的石块:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "采集地表矿点时，自动添加不同岩石类型的路径点。",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "蘑菇:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "采集蘑菇时自动添加路径点。",
+  "Features.AutoWaypoints.Dialogue.lblResin": "树脂:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "采集树脂时自动添加路径点。",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "浆果灌木:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "采集浆果灌木时自动添加路径点。"
+}

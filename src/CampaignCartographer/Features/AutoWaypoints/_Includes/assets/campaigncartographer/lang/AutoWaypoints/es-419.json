@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Moriste aquí: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Cambiar configuración de puntos automáticos",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Puntos Automáticos",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Puntos de muerte:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Agrega puntos automáticamente cada vez que mueres. Esto deshabilitará el punto de muerte predeterminado.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Translocadores Estáticos:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Agrega puntos automáticamente para translocadores mientras viajas entre ellos.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Bloques de Teletransporte:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Agrega puntos automáticamente para teletransportadores mientras viajas entre ellos.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Comerciantes:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Agrega puntos automáticamente para comerciantes al interactuar con ellos.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Depósitos Superficiales:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Agrega puntos automáticamente para diferentes tipos de metales mientras recolectas depósitos superficiales.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Piedras Sueltas:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Agrega puntos automáticamente para diferentes tipos de piedras mientras recolectas depósitos superficiales.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Hongos:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Agrega puntos automáticamente para hongos mientras los recolectas.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Resina:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Agrega puntos automáticamente para resina mientras la recolectas.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Arbustos de Bayas:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Agrega puntos automáticamente para arbustos de bayas mientras los recolectas."
+}

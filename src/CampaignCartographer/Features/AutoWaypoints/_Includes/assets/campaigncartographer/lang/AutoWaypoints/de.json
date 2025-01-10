@@ -1,0 +1,25 @@
+{
+  "Features.AutoWaypoints.DeathWaypointTitle": "Du bist hier gestorben: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Automatische Wegpunkt-Einstellungen ändern",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Automatische Wegpunkte",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Todeswegpunkte:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Fügt automatisch Wegpunkte hinzu, wenn du stirbst. Dies deaktiviert den Standard-Todeswegpunkt.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Statische Translokatoren:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Fügt automatisch Wegpunkte für Translokatoren hinzu, wenn du zwischen ihnen reist.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Teleporterblöcke:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Fügt automatisch Wegpunkte für Teleporter hinzu, wenn du zwischen ihnen reist.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Händler:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Fügt automatisch Wegpunkte für Händler hinzu, wenn du mit ihnen interagierst.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Oberflächenvorkommen:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Fügt automatisch Wegpunkte für verschiedene Metallarten hinzu, wenn du Oberflächenvorkommen sammelst.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Lose Steine:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Fügt automatisch Wegpunkte für verschiedene Gesteinsarten hinzu, wenn du Oberflächenvorkommen sammelst.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Pilze:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Fügt automatisch Wegpunkte für Pilze hinzu, wenn du sie sammelst.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Harz:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Fügt automatisch Wegpunkte für Harz hinzu, wenn du es sammelst.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Beerensträucher:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Fügt automatisch Wegpunkte für Beerensträucher hinzu, wenn du sie sammelst."
+}
