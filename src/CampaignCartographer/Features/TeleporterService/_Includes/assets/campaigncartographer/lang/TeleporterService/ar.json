@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "تعيين موقع جهاز النقل",
+
+  "Features.TeleporterService.Dialogue.Title": "تعيين موقع جهاز النقل",
+
+  "Features.TeleporterService.Dialogue.lblName": "الاسم",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "الاسم الذي سيتم إعطاؤه لجهاز النقل هذا.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "الهدف",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "جهاز النقل المستهدف الذي سينقلك إليه هذا الجهاز."
+}

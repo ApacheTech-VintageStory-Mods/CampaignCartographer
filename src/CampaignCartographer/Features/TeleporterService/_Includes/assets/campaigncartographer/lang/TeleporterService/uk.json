@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Встановити місце розташування телепорта",
+
+  "Features.TeleporterService.Dialogue.Title": "Встановити місце розташування телепорта",
+
+  "Features.TeleporterService.Dialogue.lblName": "Назва",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "Назва, яка буде надана цьому телепорту.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Ціль",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Телепортер, до якого цей блок перенесе вас."
+}

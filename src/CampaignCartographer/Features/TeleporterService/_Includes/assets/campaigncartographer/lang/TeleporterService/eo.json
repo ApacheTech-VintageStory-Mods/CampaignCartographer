@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Agordi teleportilon lokon",
+
+  "Features.TeleporterService.Dialogue.Title": "Agordi teleportilon lokon",
+
+  "Features.TeleporterService.Dialogue.lblName": "Nomo",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "La nomo donota al ĉi tiu teleportilo.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Celo",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "La celo teleportilo, al kiu ĉi tiu bloko sendos vin."
+}

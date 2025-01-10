@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Nastavit umístění teleportu",
+
+  "Features.TeleporterService.Dialogue.Title": "Nastavit umístění teleportu",
+
+  "Features.TeleporterService.Dialogue.lblName": "Název",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "Název, který bude přiřazen tomuto teleportu.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Cíl",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Teleport, na který tě tento blok přenese."
+}

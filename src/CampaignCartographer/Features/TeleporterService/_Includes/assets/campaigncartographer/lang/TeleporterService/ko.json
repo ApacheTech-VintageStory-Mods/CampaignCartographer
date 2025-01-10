@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "텔레포터 위치 설정",
+
+  "Features.TeleporterService.Dialogue.Title": "텔레포터 위치 설정",
+
+  "Features.TeleporterService.Dialogue.lblName": "이름",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "이 텔레포터에 할 이름.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "대상",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "이 블록이 이동시킬 대상 텔레포터."
+}

@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Définir l'emplacement du téléporteur",
+
+  "Features.TeleporterService.Dialogue.Title": "Définir l'emplacement du téléporteur",
+
+  "Features.TeleporterService.Dialogue.lblName": "Nom",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "Le nom à attribuer à ce téléporteur.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Cible",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Le téléporteur cible vers lequel ce bloc vous enverra."
+}

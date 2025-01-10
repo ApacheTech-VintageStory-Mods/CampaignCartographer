@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Ustaw lokalizację teleportera",
+
+  "Features.TeleporterService.Dialogue.Title": "Ustaw lokalizację teleportera",
+
+  "Features.TeleporterService.Dialogue.lblName": "Nazwa",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "Nazwa, która zostanie przypisana do tego teleportera.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Cel",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Teleporter docelowy, do którego ten blok cię przeniesie."
+}

@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "设置传送门位置",
+
+  "Features.TeleporterService.Dialogue.Title": "设置传送门位置",
+
+  "Features.TeleporterService.Dialogue.lblName": "名称",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "分配给该传送门的名称。",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "目标",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "该块将把你传送到的目标传送门。"
+}

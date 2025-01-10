@@ -1,0 +1,11 @@
+{
+  "game:blockhelp-set-teleporter-location": "Ställ in teleporterplats",
+
+  "Features.TeleporterService.Dialogue.Title": "Ställ in teleporterplats",
+
+  "Features.TeleporterService.Dialogue.lblName": "Namn",
+  "Features.TeleporterService.Dialogue.lblName.HoverText": "Namnet som ska tilldelas denna teleporter.",
+
+  "Features.TeleporterService.Dialogue.lblTargetLocation": "Mål",
+  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Den teleporter som denna block skickar dig till."
+}
