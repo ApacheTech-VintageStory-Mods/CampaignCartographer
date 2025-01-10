@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Редактировать маркер точки выбора блока",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Редактировать предустановленные точки",
+  "Features.ModMenu.Dialogue.WaypointManager": "Менеджер точек маршрута",
+
+  "Features.ModMenu.Dialogue.Title": "Картограф кампании",
+  "Features.ModMenu.Dialogue.Support": "Поддержите автора мода",
+
+  "Features.Support.Dialogue.Patreon": "Присоединяйтесь к моему Patreon",
+  "Features.Support.Dialogue.Donate": "Пожертвовать через PayPal",
+  "Features.Support.Dialogue.Coffee": "Купите мне кофе",
+  "Features.Support.Dialogue.Twitch": "Подписаться на Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Подписаться на YouTube",
+  "Features.Support.Dialogue.WishList": "Список желаемого Amazon",
+  "Features.Support.Dialogue.Website": "Посетите мой веб-сайт",
+  "Features.Support.Dialogue.Back": "Назад"
+}

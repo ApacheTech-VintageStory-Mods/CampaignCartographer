@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "تحرير علامة نقطة الطريق لاختيار الكتل",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "تحرير النقاط المحددة مسبقًا",
+  "Features.ModMenu.Dialogue.WaypointManager": "مدير النقاط المرجعية",
+
+  "Features.ModMenu.Dialogue.Title": "رسام الحملة",
+  "Features.ModMenu.Dialogue.Support": "دعم مؤلف التعديل",
+
+  "Features.Support.Dialogue.Patreon": "انضم إلى باتريون الخاص بي",
+  "Features.Support.Dialogue.Donate": "تبرع عبر باي بال",
+  "Features.Support.Dialogue.Coffee": "اشترِ لي قهوة",
+  "Features.Support.Dialogue.Twitch": "اشترك على تويتش",
+  "Features.Support.Dialogue.YouTube": "اشترك على يوتيوب",
+  "Features.Support.Dialogue.WishList": "قائمة أمنيات أمازون",
+  "Features.Support.Dialogue.Website": "زيارة موقعي الإلكتروني",
+  "Features.Support.Dialogue.Back": "عودة"
+}

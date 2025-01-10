@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Modifica il marcatore del punto di selezione del blocco",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Modifica i punti di riferimento predefiniti",
+  "Features.ModMenu.Dialogue.WaypointManager": "Gestore dei punti di riferimento",
+
+  "Features.ModMenu.Dialogue.Title": "Cartografo della campagna",
+  "Features.ModMenu.Dialogue.Support": "Sostieni l'autore del mod",
+
+  "Features.Support.Dialogue.Patreon": "Unisciti al mio Patreon",
+  "Features.Support.Dialogue.Donate": "Fai una donazione tramite PayPal",
+  "Features.Support.Dialogue.Coffee": "Comprami un caffè",
+  "Features.Support.Dialogue.Twitch": "Abbonati su Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Abbonati su YouTube",
+  "Features.Support.Dialogue.WishList": "Lista dei desideri di Amazon",
+  "Features.Support.Dialogue.Website": "Visita il mio sito web",
+  "Features.Support.Dialogue.Back": "Indietro"
+}

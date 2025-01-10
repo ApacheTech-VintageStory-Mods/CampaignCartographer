@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "ブロック選択ウェイポイントマーカーの編集",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "定義済みウェイポイントの編集",
+  "Features.ModMenu.Dialogue.WaypointManager": "ウェイポイントマネージャー",
+
+  "Features.ModMenu.Dialogue.Title": "キャンペーントラッカー",
+  "Features.ModMenu.Dialogue.Support": "Mod制作者をサポート",
+
+  "Features.Support.Dialogue.Patreon": "私のPatreonに参加",
+  "Features.Support.Dialogue.Donate": "PayPalで寄付",
+  "Features.Support.Dialogue.Coffee": "コーヒーをおごってください",
+  "Features.Support.Dialogue.Twitch": "Twitch.tvでサブスクライブ",
+  "Features.Support.Dialogue.YouTube": "YouTubeでサブスクライブ",
+  "Features.Support.Dialogue.WishList": "Amazon欲しい物リスト",
+  "Features.Support.Dialogue.Website": "私のウェブサイトにアクセス",
+  "Features.Support.Dialogue.Back": "戻る"
+}

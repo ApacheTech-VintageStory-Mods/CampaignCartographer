@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Upravit marker bodu výberu bloku",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Upravit preddefinované body",
+  "Features.ModMenu.Dialogue.WaypointManager": "Správca waypointov",
+
+  "Features.ModMenu.Dialogue.Title": "Kampaní kartograf",
+  "Features.ModMenu.Dialogue.Support": "Podporiť autora modifikácie",
+
+  "Features.Support.Dialogue.Patreon": "Pripojte sa k môjmu Patreonu",
+  "Features.Support.Dialogue.Donate": "Darujte cez PayPal",
+  "Features.Support.Dialogue.Coffee": "Kúpte mi kávu",
+  "Features.Support.Dialogue.Twitch": "Prihláste sa na Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Prihláste sa na YouTube",
+  "Features.Support.Dialogue.WishList": "Amazon zoznam prianí",
+  "Features.Support.Dialogue.Website": "Navštívte moju webovú stránku",
+  "Features.Support.Dialogue.Back": "Späť"
+}

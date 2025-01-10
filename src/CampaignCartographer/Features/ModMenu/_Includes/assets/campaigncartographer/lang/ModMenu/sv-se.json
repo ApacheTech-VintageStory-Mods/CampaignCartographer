@@ -1,0 +1,17 @@
+{
+  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Redigera blockval waypoint-markör",
+  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Redigera fördefinierade waypoints",
+  "Features.ModMenu.Dialogue.WaypointManager": "Waypointhanterare",
+
+  "Features.ModMenu.Dialogue.Title": "Kampanjkartograf",
+  "Features.ModMenu.Dialogue.Support": "Stöd modförfattaren",
+
+  "Features.Support.Dialogue.Patreon": "Gå med i min Patreon",
+  "Features.Support.Dialogue.Donate": "Donera via PayPal",
+  "Features.Support.Dialogue.Coffee": "Köp mig en kaffe",
+  "Features.Support.Dialogue.Twitch": "Prenumerera på Twitch.tv",
+  "Features.Support.Dialogue.YouTube": "Prenumerera på YouTube",
+  "Features.Support.Dialogue.WishList": "Amazon önskelista",
+  "Features.Support.Dialogue.Website": "Besök min webbplats",
+  "Features.Support.Dialogue.Back": "Tillbaka"
+}

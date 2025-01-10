@@ -6,36 +6,51 @@ using Gantry.Core.Hosting.Registration;
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu;
 
 /// <summary>
-///     Provides a main GUI for the mod, as a central location to access each feature; rather than through commands.
+///     Represents the main GUI for the mod, providing a central location to access all features rather than relying on commands.
 /// </summary>
 /// <seealso cref="ClientModSystem" />
 [UsedImplicitly]
 public sealed class ModMenuClientSystem : ClientModSystem, IClientServiceRegistrar
 {
-    public override double ExecuteOrder() => 0;
+    /// <summary>
+    ///     Specifies the execution order of the system.
+    /// </summary>
+    /// <returns>A double value representing the execution order.</returns>
+    public override double ExecuteOrder() => -1;
 
+    /// <summary>
+    ///     Configures the client-side services for the mod.
+    /// </summary>
+    /// <param name="services">The service collection to configure.</param>
+    /// <param name="capi">The core client API.</param>
     public void ConfigureClientModServices(IServiceCollection services, ICoreClientAPI capi)
     {
         services.AddTransient<ModMenuDialogue>();
         services.AddTransient<SupportDialogue>();
     }
 
+    /// <summary>
+    ///     Starts the client-side functionality of the mod.
+    /// </summary>
+    /// <param name="capi">The core client API.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        capi.Input.RegisterTransientGuiDialogueHotKey(
-            IOC.Services.Resolve<ModMenuDialogue>, LangEx.ModTitle(), GlKeys.F7);
+        ApiEx.Logger.VerboseDebug("Starting mod menu service");
 
-        capi.ChatCommands
-            .Create("wpsettings")
-            .WithDescription(LangEx.FeatureString("ManualWaypoints", "SettingsCommandDescription"))
-            .HandleWith(_ =>
-            {
-                IOC.Services.Resolve<ModMenuDialogue>().ToggleGui();
-                return TextCommandResult.Success();
-            });
+        // Registers a hotkey to open the mod menu dialogue
+        capi.Input.RegisterTransientGuiDialogueHotKey(
+            IOC.Services.Resolve<ModMenuDialogue>,
+            LangEx.ModTitle(),
+            GlKeys.F7);
     }
 
-    public Dictionary<Type, string> FeatureDialogues { get; } = [];
+    /// <summary>
+    ///     Gets a dictionary mapping feature types to their associated dialogue names.
+    /// </summary>
+    public Dictionary<Type, string> FeatureDialogues { get; } = new();
 
+    /// <summary>
+    ///     Cleans up the resources used by the system.
+    /// </summary>
     public override void Dispose() => FeatureDialogues.Clear();
 }
