@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Ponovo centrira mapu na zadatu lokaciju ili igrača.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Trenutno nije moguće pronaći igrača `{0}`. Možda je van dosega. Ponovno prijavljivanje će ga prikazati na mapi.",
+  "Features.CentreMap.CentreMapOnPlayer": "Mapa je ponovo centrirana na igrača: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa je ponovo centrirana na tačku rođenja igrača: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Mapa je ponovo centrirana na poziciju: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa je ponovo centrirana na tačku rođenja sveta: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Mapa je ponovo centrirana na waypoint {0}: {1} ({2}, {3})"
+}

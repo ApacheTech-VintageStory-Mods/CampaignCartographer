@@ -1,5 +1,4 @@
-﻿using ProtoBuf;
-using Vintagestory.API.MathTools;
+﻿using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
 

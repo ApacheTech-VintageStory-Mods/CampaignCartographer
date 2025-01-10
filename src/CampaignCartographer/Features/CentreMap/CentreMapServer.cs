@@ -11,9 +11,10 @@ public sealed class CentreMapServer : ServerModSystem
     /// <summary>
     ///     Minor convenience method to save yourself the check for/cast to ICoreServerAPI in Start()
     /// </summary>
-    /// <param name="sapi">The core API implemented by the server. The main interface for accessing the server. Contains all sub-components, and some miscellaneous methods.</param>
+    /// <param name="sapi">The core API implemented by the server. The main interface for accessing the server. Contains all subcomponents, and some miscellaneous methods.</param>
     public override void StartServerSide(ICoreServerAPI sapi)
     {
+        ApiEx.Logger.VerboseDebug("Starting centre-map service");
         _serverChannel = sapi.Network.RegisterChannel("centreMap")
             .RegisterMessageType<PlayerSpawnPositionDto>()
             .SetMessageHandler<PlayerSpawnPositionDto>(OnServerSpawnPointRequestReceived);

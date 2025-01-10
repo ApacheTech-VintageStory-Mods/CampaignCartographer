@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Recentre la carte sur l'emplacement ou le joueur spécifié.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Impossible de trouver le joueur `{0}` à ce moment. Il peut être hors de portée. Se reconnecter l'affichera sur la carte.",
+  "Features.CentreMap.CentreMapOnPlayer": "Carte recentrée sur le joueur : {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Carte recentrée sur le point d'apparition du joueur : ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Carte recentrée sur la position : ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Carte recentrée sur le point d'apparition du monde : ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Carte recentrée sur le point de passage {0} : {1} ({2}, {3})"
+}

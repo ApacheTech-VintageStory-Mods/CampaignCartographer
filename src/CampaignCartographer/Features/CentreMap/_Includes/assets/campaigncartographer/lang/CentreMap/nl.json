@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Herschuif de kaart naar de opgegeven locatie of speler.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Kan speler `{0}` op dit moment niet vinden. Ze zijn mogelijk buiten bereik. Opnieuw inloggen zal ze op de kaart weergeven.",
+  "Features.CentreMap.CentreMapOnPlayer": "Kaart herschikt naar speler: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Kaart herschikt naar speler spawn punt: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Kaart herschikt naar positie: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Kaart herschikt naar wereld spawn: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Kaart herschikt naar waypoint {0}: {1} ({2}, {3})"
+}

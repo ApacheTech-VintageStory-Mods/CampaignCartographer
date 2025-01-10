@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Znovu zarovná mapu na zadané místo nebo hráče.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Nelze najít hráče `{0}` v tuto chvíli. Může být mimo dosah. Přihlášení znovu jej zobrazí na mapě.",
+  "Features.CentreMap.CentreMapOnPlayer": "Mapa byla znovu zarovnána na hráče: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa byla znovu zarovnána na bod zrodu hráče: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Mapa byla znovu zarovnána na pozici: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa byla znovu zarovnána na bod zrodu světa: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Mapa byla znovu zarovnána na bod zájmu {0}: {1} ({2}, {3})"
+}

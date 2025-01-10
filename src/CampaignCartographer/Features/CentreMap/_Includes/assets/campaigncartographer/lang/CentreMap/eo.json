@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Recentrigas la mapon al la donita loko aŭ ludanto.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Ne eblas trovi ludanton `{0}` nuntempe. Ili povus esti ekster la atingo. Rekonekti montros ilin sur la mapo.",
+  "Features.CentreMap.CentreMapOnPlayer": "Mapo recentrigita al ludanto: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapo recentrigita al la naskiĝpunkto de ludanto: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Mapo recentrigita al pozicio: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapo recentrigita al la mondnaskiĝpunkto: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Mapo recentrigita al vojpunkto {0}: {1} ({2}, {3})"
+}

@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Opätovne centrovať mapu na zadanú polohu alebo hráča.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Momentálne sa nepodarilo nájsť hráča `{0}`. Môže byť mimo dosahu. Znova sa prihláste, aby sa zobrazil na mape.",
+  "Features.CentreMap.CentreMapOnPlayer": "Mapa bola opätovne centrovaná na hráča: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa bola opätovne centrovaná na bod spawnu hráča: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Mapa bola opätovne centrovaná na pozíciu: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa bola opätovne centrovaná na bod spawnu sveta: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Mapa bola opätovne centrovaná na waypoint {0}: {1} ({2}, {3})"
+}

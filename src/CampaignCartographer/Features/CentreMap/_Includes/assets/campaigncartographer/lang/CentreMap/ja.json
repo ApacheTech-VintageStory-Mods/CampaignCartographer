@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "指定された場所またはプレイヤーにマップを再センター化します。",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "現在プレイヤー `{0}` を見つけることができません。範囲外にいる可能性があります。再ログインするとマップに表示されます。",
+  "Features.CentreMap.CentreMapOnPlayer": "マップがプレイヤーに再センター化されました: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "マップがプレイヤーのスポーン地点に再センター化されました: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "マップが位置に再センター化されました: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "マップがワールドのスポーン地点に再センター化されました: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "マップがウェイポイント {0} に再センター化されました: {1} ({2}, {3})"
+}

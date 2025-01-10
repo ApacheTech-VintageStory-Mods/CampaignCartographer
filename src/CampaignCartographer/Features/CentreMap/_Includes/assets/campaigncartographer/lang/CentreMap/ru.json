@@ -1,0 +1,9 @@
+{
+  "Features.CentreMap.SettingsCommandDescription": "Центрирует карту на указанном местоположении или игроке.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "Не удалось найти игрока `{0}` в данный момент. Возможно, он вне зоны действия. Повторный вход отобразит его на карте.",
+  "Features.CentreMap.CentreMapOnPlayer": "Карта центрирована на игроке: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Карта центрирована на точке возрождения игрока: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Карта центрирована на позиции: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Карта центрирована на точке возрождения мира: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Карта центрирована на точке маршрута {0}: {1} ({2}, {3})"
+}
