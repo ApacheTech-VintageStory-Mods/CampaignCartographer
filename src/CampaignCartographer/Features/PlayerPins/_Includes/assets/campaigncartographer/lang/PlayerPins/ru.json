@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Настройка Пинов Игроков",
+  "Features.PlayerPins.Dialogue.Self": "Вы",
+  "Features.PlayerPins.Dialogue.Highlighted": "Выделенные Игроки",
+  "Features.PlayerPins.Dialogue.Others": "Другие Игроки на Сервисе",
+  "Features.PlayerPins.Dialogue.Randomise": "Рандомизация Цвета и Масштаба",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Пины Игроков:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Выберите, хотите ли вы изменить свой пин или пин других игроков на сервере.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Игрок",
+  "Features.PlayerPins.Dialogue.lblRed": "Красный:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Красный канал цвета пина.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Зеленый:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Зеленый канал цвета пина.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Синий:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Синий канал цвета пина.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Непрозрачность:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "Непрозрачность цвета пина.",
+  "Features.PlayerPins.Dialogue.lblScale": "Масштаб:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Корректировка масштаба для применения к размеру пина.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Настройка Пинов Игроков на Карте",
+
+  "Features.PlayerPins.Friends.Description": "Добавить/Удалить игроков из вашего списка друзей. Друзья будут выделены на карте мира.",
+  "Features.PlayerPins.Friends.FriendsList": "Список Друзей:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "У вас нет друзей.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Пожалуйста, укажите имя игрока.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Игрок с именем `{0}` не найден.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Найдено несколько игроков с именем `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "Игрок {0} уже добавлен в ваш список друзей.",
+  "Features.PlayerPins.Friends.PlayerAdded": "Игрок {0} добавлен в ваш список друзей.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "Игрок {0} удален из вашего списка друзей."
+}

@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Налаштування Пінів Гравців",
+  "Features.PlayerPins.Dialogue.Self": "Ви",
+  "Features.PlayerPins.Dialogue.Highlighted": "Підсвічені Гравці",
+  "Features.PlayerPins.Dialogue.Others": "Інші Гравці на Сервері",
+  "Features.PlayerPins.Dialogue.Randomise": "Випадкова зміна кольору та масштабу",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Піни Гравців:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Виберіть, чи хочете ви змінити свій пін або пін, який відображається для інших гравців на сервері.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Гравець",
+  "Features.PlayerPins.Dialogue.lblRed": "Червоний:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Червоний канал кольору піна.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Зелений:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Зелений канал кольору піна.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Синій:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Синій канал кольору піна.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Непрозорість:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "Непрозорість кольору піна.",
+  "Features.PlayerPins.Dialogue.lblScale": "Масштаб:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Коригування масштабу для застосування до розміру піна.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Налаштування Пінів Гравців на Карті",
+
+  "Features.PlayerPins.Friends.Description": "Додати/видалити гравців зі списку друзів. Друзі будуть підсвічені на світовій карті.",
+  "Features.PlayerPins.Friends.FriendsList": "Список друзів:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "У вас немає друзів.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Будь ласка, вкажіть ім'я гравця.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Гравець з ім'ям `{0}` не знайдений.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Знайдено кілька гравців з ім'ям `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "Гравець {0} вже доданий до вашого списку друзів.",
+  "Features.PlayerPins.Friends.PlayerAdded": "Гравець {0} доданий до вашого списку друзів.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "Гравець {0} видалений з вашого списку друзів."
+}

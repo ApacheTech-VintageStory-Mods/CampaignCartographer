@@ -1,6 +1,7 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.ChatCommands;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.Dialogue;
+using Gantry.Core.GameContent.ChatCommands;
 using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
 
@@ -24,21 +25,19 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
     {
         services.AddFeatureWorldSettings<PlayerPinsSettings>();
         services.AddSingleton<PlayerPinsDialogue>();
-        services.AddSingleton<FriendClientChatCommand>();
+        services.AddSingleton<HighlightClientChatCommand>();
     }
 
+    /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
+        ApiEx.Logger.VerboseDebug("Starting player pins system");
         capi.ChatCommands
             .Create("playerpins")
             .WithDescription(LangEx.FeatureString("PlayerPins", "SettingsCommandDescription"))
-            .HandleWith(_ =>
-            {
-                IOC.Services.Resolve<PlayerPinsDialogue>().ToggleGui();
-                return TextCommandResult.Success();
-            });
+            .HandleWith(_ => IOC.Services.Resolve<PlayerPinsDialogue>().ToggleGui());
 
-        IOC.Services.Resolve<FriendClientChatCommand>().Register();
+        IOC.Services.Resolve<HighlightClientChatCommand>().Register();
 
         capi.AddModMenuDialogue<PlayerPinsDialogue>("PlayerPins");
     }

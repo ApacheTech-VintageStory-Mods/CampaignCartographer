@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "플레이어 핀 사용자 정의",
+  "Features.PlayerPins.Dialogue.Self": "당신",
+  "Features.PlayerPins.Dialogue.Highlighted": "강조된 플레이어",
+  "Features.PlayerPins.Dialogue.Others": "서버의 다른 사람들",
+  "Features.PlayerPins.Dialogue.Randomise": "색상 및 크기 무작위화",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "플레이어 핀:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "자신의 플레이어 핀 또는 다른 서버 구성원의 핀을 변경할지 선택합니다.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} 플레이어",
+  "Features.PlayerPins.Dialogue.lblRed": "빨강:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "핀 색상의 빨강 채널.",
+  "Features.PlayerPins.Dialogue.lblGreen": "초록:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "핀 색상의 초록 채널.",
+  "Features.PlayerPins.Dialogue.lblBlue": "파랑:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "핀 색상의 파랑 채널.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "불투명도:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "핀 색상의 불투명도.",
+  "Features.PlayerPins.Dialogue.lblScale": "크기:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "핀 크기에 적용할 크기 조정.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "플레이어 지도 핀 사용자 정의",
+
+  "Features.PlayerPins.Friends.Description": "친구 목록에 플레이어를 추가/제거합니다. 친구는 세계 지도에서 강조 표시됩니다.",
+  "Features.PlayerPins.Friends.FriendsList": "친구 목록:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "친구가 없습니다.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "플레이어 이름을 지정해 주세요.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "이름 `{0}`의 플레이어를 찾을 수 없습니다.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "이름 `{0}`의 플레이어가 여러 명 발견되었습니다.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0}은 이미 친구 목록에 추가되었습니다.",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0}이 친구 목록에 추가되었습니다.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0}이 친구 목록에서 제거되었습니다."
+}

@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Personalizar Pins dos Jogadores",
+  "Features.PlayerPins.Dialogue.Self": "Você",
+  "Features.PlayerPins.Dialogue.Highlighted": "Jogadores Destacados",
+  "Features.PlayerPins.Dialogue.Others": "Outras Pessoas no Servidor",
+  "Features.PlayerPins.Dialogue.Randomise": "Aleatorizar Cor e Escala",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Pins dos Jogadores:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Escolha se quer mudar o pin do seu próprio jogador ou o pin que aparece para outros membros do servidor.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Jogador",
+  "Features.PlayerPins.Dialogue.lblRed": "Vermelho:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Canal vermelho da cor do pin.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Verde:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Canal verde da cor do pin.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Azul:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Canal azul da cor do pin.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opacidade:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "A opacidade da cor do pin.",
+  "Features.PlayerPins.Dialogue.lblScale": "Escala:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Ajuste de escala a ser aplicado na escala do pin.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Personalizar Pins no Mapa dos Jogadores",
+
+  "Features.PlayerPins.Friends.Description": "Adicionar/Remover jogadores da sua lista de amigos. Amigos são destacados no mapa do mundo.",
+  "Features.PlayerPins.Friends.FriendsList": "Lista de Amigos:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "Você não tem amigos.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Por favor, especifique o nome de um jogador.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Nenhum jogador com o nome `{0}` foi encontrado.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Foram encontrados vários jogadores com o nome `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} já foi adicionado à sua lista de amigos.",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0} foi adicionado à sua lista de amigos.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0} foi removido da sua lista de amigos."
+}

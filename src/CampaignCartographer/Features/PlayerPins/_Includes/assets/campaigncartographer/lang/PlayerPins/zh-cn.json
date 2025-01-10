@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "自定义玩家图钉",
+  "Features.PlayerPins.Dialogue.Self": "你",
+  "Features.PlayerPins.Dialogue.Highlighted": "高亮显示的玩家",
+  "Features.PlayerPins.Dialogue.Others": "服务器上的其他玩家",
+  "Features.PlayerPins.Dialogue.Randomise": "随机颜色和大小",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "玩家图钉:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "选择是否更改自己的图钉或其他玩家在服务器上显示的图钉。",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} 玩家",
+  "Features.PlayerPins.Dialogue.lblRed": "红色:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "图钉颜色的红色通道。",
+  "Features.PlayerPins.Dialogue.lblGreen": "绿色:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "图钉颜色的绿色通道。",
+  "Features.PlayerPins.Dialogue.lblBlue": "蓝色:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "图钉颜色的蓝色通道。",
+  "Features.PlayerPins.Dialogue.lblOpacity": "透明度:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "图钉颜色的透明度。",
+  "Features.PlayerPins.Dialogue.lblScale": "缩放:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "调整应用于图钉大小的缩放比例。",
+
+  "Features.PlayerPins.SettingsCommandDescription": "自定义地图上的玩家图钉",
+
+  "Features.PlayerPins.Friends.Description": "添加/移除好友。好友将在世界地图上高亮显示。",
+  "Features.PlayerPins.Friends.FriendsList": "好友列表:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "你没有好友。",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "请输入玩家名称。",
+  "Features.PlayerPins.Friends.PlayerNotFound": "找不到名为 `{0}` 的玩家。",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "找到了多个名为 `{0}` 的玩家。",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "玩家 {0} 已经添加到你的好友列表。",
+  "Features.PlayerPins.Friends.PlayerAdded": "玩家 {0} 已添加到你的好友列表。",
+  "Features.PlayerPins.Friends.PlayerRemoved": "玩家 {0} 已从你的好友列表中移除。"
+}

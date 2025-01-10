@@ -1,17 +1,17 @@
 ﻿using System.Text;
-using Gantry.Services.EasyX.ChatCommands.Parsers;
-using Gantry.Services.EasyX.ChatCommands.Parsers.Extensions;
+using Gantry.Core.GameContent.ChatCommands.Parsers;
+using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
 using Gantry.Services.FileSystem.Configuration;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.ChatCommands;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public class FriendClientChatCommand
+public class HighlightClientChatCommand
 {
     private readonly PlayerPinsSettings _settings;
     private readonly ICoreClientAPI _capi;
 
-    public FriendClientChatCommand(ICoreClientAPI capi, PlayerPinsSettings settings)
+    public HighlightClientChatCommand(ICoreClientAPI capi, PlayerPinsSettings settings)
     {
         _settings = settings;
         _capi = capi;

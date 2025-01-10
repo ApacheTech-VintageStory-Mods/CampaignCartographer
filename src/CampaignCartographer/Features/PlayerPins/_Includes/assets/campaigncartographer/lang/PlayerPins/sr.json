@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Prilagodite Pinske Ikone Igrača",
+  "Features.PlayerPins.Dialogue.Self": "Vi",
+  "Features.PlayerPins.Dialogue.Highlighted": "Istaknuti Igrači",
+  "Features.PlayerPins.Dialogue.Others": "Ostali Igrači na Serveru",
+  "Features.PlayerPins.Dialogue.Randomise": "Nasumično Promijeniti Boju i Skalu",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Igračke Pinske Ikone:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Izaberite da li želite promijeniti svoju pinsku ikonu ili onu koja se prikazuje za druge igrače na serveru.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Igrač",
+  "Features.PlayerPins.Dialogue.lblRed": "Crvena:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Crveni kanal boje pinske ikone.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Zelena:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Zeleni kanal boje pinske ikone.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Plava:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Plavi kanal boje pinske ikone.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Prozirnost:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "Prozirnost boje pinske ikone.",
+  "Features.PlayerPins.Dialogue.lblScale": "Skala:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Prilagodba skale koja će biti primenjena na veličinu pinske ikone.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Prilagodite Igračke Pinske Ikone na Mapi",
+
+  "Features.PlayerPins.Friends.Description": "Dodajte/uklonite igrače sa svog spiska prijatelja. Prijatelji će biti istaknuti na svetskoj mapi.",
+  "Features.PlayerPins.Friends.FriendsList": "Lista Prijatelja:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "Nemate prijatelje.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Molimo unesite ime igrača.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Igrač sa imenom `{0}` nije pronađen.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Pronađeno više igrača sa imenom `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "Igrač {0} je već dodan na vaš spisak prijatelja.",
+  "Features.PlayerPins.Friends.PlayerAdded": "Igrač {0} je dodat na vaš spisak prijatelja.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "Igrač {0} je uklonjen sa vašeg spiska prijatelja."
+}

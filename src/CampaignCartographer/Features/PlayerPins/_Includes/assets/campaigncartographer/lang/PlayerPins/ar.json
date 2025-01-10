@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "تخصيص علامات اللاعبين",
+  "Features.PlayerPins.Dialogue.Self": "أنت",
+  "Features.PlayerPins.Dialogue.Highlighted": "اللاعبون المميزون",
+  "Features.PlayerPins.Dialogue.Others": "أشخاص آخرون على الخادم",
+  "Features.PlayerPins.Dialogue.Randomise": "تغيير اللون والمقياس عشوائيًا",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "علامات اللاعبين:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "هل تريد تغيير علامة اللاعب الخاصة بك، أو العلامة التي تظهر لأعضاء الخادم الآخرين.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "لاعب {0}",
+  "Features.PlayerPins.Dialogue.lblRed": "أحمر:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "قناة اللون الأحمر للعلامة.",
+  "Features.PlayerPins.Dialogue.lblGreen": "أخضر:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "قناة اللون الأخضر للعلامة.",
+  "Features.PlayerPins.Dialogue.lblBlue": "أزرق:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "قناة اللون الأزرق للعلامة.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "الشفافية:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "الشفافية للون العلامة.",
+  "Features.PlayerPins.Dialogue.lblScale": "المقياس:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "التعديل على مقياس العلامة.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "تخصيص علامات الخريطة للاعبين",
+
+  "Features.PlayerPins.Friends.Description": "إضافة/إزالة لاعبين من قائمة الأصدقاء الخاصة بك. يتم تمييز الأصدقاء على الخريطة.",
+  "Features.PlayerPins.Friends.FriendsList": "قائمة الأصدقاء:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "ليس لديك أصدقاء.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "يرجى تحديد اسم لاعب.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "لم يتم العثور على لاعب بالاسم `{0}`.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "تم العثور على عدة لاعبين بالاسم `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "لقد تم إضافة {0} إلى قائمة أصدقائك بالفعل",
+  "Features.PlayerPins.Friends.PlayerAdded": "تم إضافة {0} إلى قائمة أصدقائك",
+  "Features.PlayerPins.Friends.PlayerRemoved": "تم إزالة {0} من قائمة أصدقائك."
+}

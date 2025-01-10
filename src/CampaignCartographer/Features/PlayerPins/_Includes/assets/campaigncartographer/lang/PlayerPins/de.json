@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Spieler-Pins anpassen",
+  "Features.PlayerPins.Dialogue.Self": "Du",
+  "Features.PlayerPins.Dialogue.Highlighted": "Hervorgehobene Spieler",
+  "Features.PlayerPins.Dialogue.Others": "Andere Spieler auf dem Server",
+  "Features.PlayerPins.Dialogue.Randomise": "Farbe und Maßstab zufällig ändern",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Spieler-Pins:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Ob du deinen eigenen Spieler-Pin oder den Pin für andere Servermitglieder ändern möchtest.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Spieler",
+  "Features.PlayerPins.Dialogue.lblRed": "Rot:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Der Rote Kanal der Pin-Farbe.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Grün:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Der Grüne Kanal der Pin-Farbe.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Blau:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Der Blaue Kanal der Pin-Farbe.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opazität:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "Die Opazität der Pin-Farbe.",
+  "Features.PlayerPins.Dialogue.lblScale": "Maßstab:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Die Maßstabseinstellung für den Pin.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Spieler-Pins auf der Karte anpassen",
+
+  "Features.PlayerPins.Friends.Description": "Spieler zur deiner Freundesliste hinzufügen/entfernen. Freunde werden auf der Weltkarte hervorgehoben.",
+  "Features.PlayerPins.Friends.FriendsList": "Freundesliste:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "Du hast keine Freunde.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Bitte gib den Namen eines Spielers an.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Kein Spieler mit dem Namen `{0}` wurde gefunden.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Mehrere Spieler mit dem Namen `{0}` wurden gefunden.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} wurde bereits zu deiner Freundesliste hinzugefügt",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0} wurde zu deiner Freundesliste hinzugefügt",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0} wurde aus deiner Freundesliste entfernt."
+}

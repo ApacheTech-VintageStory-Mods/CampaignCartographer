@@ -6,7 +6,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins;
 ///     A strongly-typed representation of the settings in the JSON file for the PlayerPins feature. This class cannot be inherited.
 /// </summary>
 [JsonObject]
-public sealed class PlayerPinsSettings : FeatureSettings
+public sealed class PlayerPinsSettings : FeatureSettings<PlayerPinsSettings>
 {
     /// <summary>
     ///     Gets or sets the colour of the player's own pin.
@@ -48,5 +48,5 @@ public sealed class PlayerPinsSettings : FeatureSettings
     ///     Gets a list of the people on the server that the user has added as highlighted players.
     /// </summary>
     /// <value>A <see cref="Dictionary{TKey,TValue}"/>, where the key is the player name, and the value is the PlayerUID.</value>
-    public Dictionary<string, string> HighlightedPlayers { get; set; } = new();
+    public Dictionary<string, string> HighlightedPlayers { get; set; } = [];
 }

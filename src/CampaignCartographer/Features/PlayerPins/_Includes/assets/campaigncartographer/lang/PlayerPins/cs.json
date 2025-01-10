@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Přizpůsobení značek hráčů",
+  "Features.PlayerPins.Dialogue.Self": "Ty",
+  "Features.PlayerPins.Dialogue.Highlighted": "Zvýraznění hráčů",
+  "Features.PlayerPins.Dialogue.Others": "Další hráči na serveru",
+  "Features.PlayerPins.Dialogue.Randomise": "Náhodně změnit barvu a měřítko",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Značky hráčů:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Zda změnit vlastní značku hráče nebo značku, která se zobrazuje ostatním členům serveru.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "Hráč {0}",
+  "Features.PlayerPins.Dialogue.lblRed": "Červená:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Červený kanál barvy značky.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Zelená:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Zelený kanál barvy značky.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Modrá:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Modrý kanál barvy značky.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Průhlednost:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "Průhlednost barvy značky.",
+  "Features.PlayerPins.Dialogue.lblScale": "Měřítko:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Úprava měřítka značky.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Přizpůsobení značek na mapě hráčů",
+
+  "Features.PlayerPins.Friends.Description": "Přidání/odebrání hráčů z tvého seznamu přátel. Přátelé jsou zvýrazněni na mapě světa.",
+  "Features.PlayerPins.Friends.FriendsList": "Seznam přátel:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "Nemáš žádné přátele.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Zadejte jméno hráče.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Hráč s názvem `{0}` nebyl nalezen.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Bylo nalezeno více hráčů s názvem `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "Hráč {0} již byl přidán do tvého seznamu přátel",
+  "Features.PlayerPins.Friends.PlayerAdded": "Hráč {0} byl přidán do tvého seznamu přátel",
+  "Features.PlayerPins.Friends.PlayerRemoved": "Hráč {0} byl odstraněn ze seznamu přátel."
+}

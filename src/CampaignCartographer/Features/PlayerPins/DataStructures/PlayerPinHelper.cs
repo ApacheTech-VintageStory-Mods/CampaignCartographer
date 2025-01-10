@@ -7,15 +7,17 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataSt
 ///     A helper class that eases the retrieval and setting of pin values, based on an entity's relationship to the current client player.
 /// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-[SettingsConsumer(EnumAppSide.Client)]
 public sealed class PlayerPinHelper : WorldSettingsConsumer<PlayerPinsSettings>
 {
     /// <summary>
-    ///     Gets or sets the relation.
+    ///     The relationship between the player and the target.
     /// </summary>
     /// <value>The relation.</value>
     public static PlayerRelation Relation { get; set; } = PlayerRelation.Self;
 
+    /// <summary>
+    ///     The colour of the player pin.
+    /// </summary>
     public static Color Colour
     {
         get
@@ -46,6 +48,9 @@ public sealed class PlayerPinHelper : WorldSettingsConsumer<PlayerPinsSettings>
         }
     }
 
+    /// <summary>
+    ///     The scale of the player pin.
+    /// </summary>
     public static int Scale
     {
         get

@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "プレイヤーピンをカスタマイズ",
+  "Features.PlayerPins.Dialogue.Self": "あなた",
+  "Features.PlayerPins.Dialogue.Highlighted": "強調表示されたプレイヤー",
+  "Features.PlayerPins.Dialogue.Others": "サーバーの他のプレイヤー",
+  "Features.PlayerPins.Dialogue.Randomise": "色とスケールをランダム化",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "プレイヤーピン:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "自分のプレイヤーピンを変更するか、サーバーの他のメンバーのピンを変更するかを選択します。",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} プレイヤー",
+  "Features.PlayerPins.Dialogue.lblRed": "赤:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "ピンの色の赤チャネル。",
+  "Features.PlayerPins.Dialogue.lblGreen": "緑:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "ピンの色の緑チャネル。",
+  "Features.PlayerPins.Dialogue.lblBlue": "青:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "ピンの色の青チャネル。",
+  "Features.PlayerPins.Dialogue.lblOpacity": "不透明度:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "ピンの色の不透明度。",
+  "Features.PlayerPins.Dialogue.lblScale": "スケール:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "ピンのスケールに適用するスケール調整。",
+
+  "Features.PlayerPins.SettingsCommandDescription": "プレイヤーマップピンをカスタマイズ",
+
+  "Features.PlayerPins.Friends.Description": "友達リストにプレイヤーを追加/削除します。友達はワールドマップで強調表示されます。",
+  "Features.PlayerPins.Friends.FriendsList": "友達リスト:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "あなたには友達がいません。",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "プレイヤーの名前を指定してください。",
+  "Features.PlayerPins.Friends.PlayerNotFound": "名前 `{0}` のプレイヤーは見つかりませんでした。",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "名前 `{0}` のプレイヤーが複数見つかりました。",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} はすでにあなたの友達リストに追加されています。",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0} はあなたの友達リストに追加されました。",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0} はあなたの友達リストから削除されました。"
+}

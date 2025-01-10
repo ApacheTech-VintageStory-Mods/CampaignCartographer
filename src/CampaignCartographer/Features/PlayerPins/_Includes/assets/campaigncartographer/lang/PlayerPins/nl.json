@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Speler Pins Aanpassen",
+  "Features.PlayerPins.Dialogue.Self": "Jij",
+  "Features.PlayerPins.Dialogue.Highlighted": "Gemarkeerde Spelers",
+  "Features.PlayerPins.Dialogue.Others": "Andere Mensen op de Server",
+  "Features.PlayerPins.Dialogue.Randomise": "Kleur en Schaal Randomiseren",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Speler Pins:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Of je je eigen speler pin wilt veranderen, of de pin die wordt weergegeven voor andere serverleden.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Speler",
+  "Features.PlayerPins.Dialogue.lblRed": "Rood:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "Het rode kanaal van de pinkleur.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Groen:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "Het groene kanaal van de pinkleur.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Blauw:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "Het blauwe kanaal van de pinkleur.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opacity:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "De ondoorzichtigheid van de pinkleur.",
+  "Features.PlayerPins.Dialogue.lblScale": "Schaal:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "De schaalaanpassing die moet worden toegepast op de pin schaal.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Speler Kaart Pins Aanpassen",
+
+  "Features.PlayerPins.Friends.Description": "Voeg spelers toe/haal ze weg van je vriendenlijst. Vrienden worden gemarkeerd op de wereldkaart.",
+  "Features.PlayerPins.Friends.FriendsList": "Vriendenlijst:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "Je hebt geen vrienden.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Geef een naam op voor een speler.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "Er is geen speler met de naam `{0}` gevonden.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Er zijn meerdere spelers gevonden met de naam `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} is al toegevoegd aan je vriendenlijst.",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0} is toegevoegd aan je vriendenlijst.",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0} is verwijderd van je vriendenlijst."
+}

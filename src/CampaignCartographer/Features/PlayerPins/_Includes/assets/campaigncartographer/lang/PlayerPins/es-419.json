@@ -1,0 +1,32 @@
+{
+  "Features.PlayerPins.Dialogue.Title": "Personalizar Marcadores de Jugadores",
+  "Features.PlayerPins.Dialogue.Self": "Tú",
+  "Features.PlayerPins.Dialogue.Highlighted": "Jugadores Destacados",
+  "Features.PlayerPins.Dialogue.Others": "Otras Personas en el Servidor",
+  "Features.PlayerPins.Dialogue.Randomise": "Aleatorizar Color y Escala",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Marcadores de Jugadores:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Si deseas cambiar tu propio marcador de jugador o el marcador que se muestra a otros miembros del servidor.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Jugador",
+  "Features.PlayerPins.Dialogue.lblRed": "Rojo:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "El canal rojo del color del marcador.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Verde:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "El canal verde del color del marcador.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Azul:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "El canal azul del color del marcador.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opacidad:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "La opacidad del color del marcador.",
+  "Features.PlayerPins.Dialogue.lblScale": "Escala:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "Ajuste de escala para aplicar al marcador.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Personalizar Marcadores de Jugadores en el Mapa",
+
+  "Features.PlayerPins.Friends.Description": "Agregar/Eliminar jugadores de tu lista de amigos. Los amigos se destacan en el mapa del mundo.",
+  "Features.PlayerPins.Friends.FriendsList": "Lista de Amigos:",
+  "Features.PlayerPins.Friends.YouHaveNoFriends": "No tienes amigos.",
+  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Por favor, especifica el nombre de un jugador.",
+  "Features.PlayerPins.Friends.PlayerNotFound": "No se ha encontrado un jugador con el nombre `{0}`.",
+  "Features.PlayerPins.Friends.MultiplePlayersFound": "Se han encontrado varios jugadores con el nombre `{0}`.",
+  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} ya ha sido agregado a tu lista de amigos",
+  "Features.PlayerPins.Friends.PlayerAdded": "{0} ha sido agregado a tu lista de amigos",
+  "Features.PlayerPins.Friends.PlayerRemoved": "{0} ha sido eliminado de tu lista de amigos."
+}

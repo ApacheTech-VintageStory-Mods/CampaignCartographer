@@ -1,4 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Enum;
+﻿ using ApacheTech.Common.Extensions.Enum;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Cairo;
 using Gantry.Core.Hosting.Annotation;
@@ -51,9 +51,9 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
 
         var names = new[]
         {
-            LangEx.FeatureString("PlayerPins", "Dialogue.Self"),
-            LangEx.FeatureString("PlayerPins", "Dialogue.Highlighted"),
-            LangEx.FeatureString("PlayerPins", "Dialogue.Others")
+            T("Self"),
+            T("Highlighted"),
+            T("Others")
         };
         var values = new[] { "Self", "Highlighted", "Others" };
 
@@ -61,45 +61,45 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
         var textBounds = ElementBounds.Fixed(0, GuiStyle.TitleBarHeight + 1.0, 150, switchSize);
 
         var bounds = sliderBounds.FlatCopy().WithFixedWidth(sliderWidth).WithFixedHeight(GuiStyle.TitleBarHeight + 1.0);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblToggleSwitch"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblToggleSwitch.HoverText"), font, 260, textBounds);
+        composer.AddStaticText(T("lblToggleSwitch"), font, textBounds);
+        composer.AddHoverText(T("lblToggleSwitch.HoverText"), font, 260, textBounds);
         composer.AddDropDown(values, names, 0, OnSelectionChanged, bounds, font, "btnTogglePlayerPins");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding + 5);
         sliderBounds = sliderBounds.BelowCopy(fixedDeltaY: switchPadding + 5);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblRed"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblRed.HoverText"), font, 260, textBounds);
-        composer.AddSlider(OnRChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderR");
+        composer.AddStaticText(T("lblRed"), font, textBounds);
+        composer.AddHoverText(T("lblRed.HoverText"), font, 260, textBounds);
+        composer.AddLazySlider(OnRChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderR");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
         sliderBounds = sliderBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblGreen"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblGreen.HoverText"), font, 260, textBounds);
-        composer.AddSlider(OnGChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderG");
+        composer.AddStaticText(T("lblGreen"), font, textBounds);
+        composer.AddHoverText(T("lblGreen.HoverText"), font, 260, textBounds);
+        composer.AddLazySlider(OnGChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderG");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
         sliderBounds = sliderBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblBlue"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblBlue.HoverText"), font, 260, textBounds);
-        composer.AddSlider(OnBChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderB");
+        composer.AddStaticText(T("lblBlue"), font, textBounds);
+        composer.AddHoverText(T("lblBlue.HoverText"), font, 260, textBounds);
+        composer.AddLazySlider(OnBChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderB");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
         sliderBounds = sliderBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblOpacity"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblOpacity.HoverText"), font, 260, textBounds);
-        composer.AddSlider(OnAChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderA");
+        composer.AddStaticText(T("lblOpacity"), font, textBounds);
+        composer.AddHoverText(T("lblOpacity.HoverText"), font, 260, textBounds);
+        composer.AddLazySlider(OnAChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderA");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
         sliderBounds = sliderBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(LangEx.FeatureString("PlayerPins", "Dialogue.lblScale"), font, textBounds);
-        composer.AddHoverText(LangEx.FeatureString("PlayerPins", "Dialogue.lblScale.HoverText"), font, 260, textBounds);
-        composer.AddSlider(OnScaleChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderScale");
+        composer.AddStaticText(T("lblScale"), font, textBounds);
+        composer.AddHoverText(T("lblScale.HoverText"), font, 260, textBounds);
+        composer.AddLazySlider(OnScaleChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderScale");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
         composer.AddDynamicCustomDraw(textBounds.FlatCopy().WithFixedWidth(textBounds.fixedWidth + sliderWidth + 10), OnPreviewPanelDraw, "pnlPreview");
 
         textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddSmallButton(LangEx.FeatureString("PlayerPins", "Dialogue.Randomise"), OnRandomise,
+        composer.AddSmallButton(T("Randomise"), OnRandomise,
             textBounds.FlatCopy().WithFixedWidth(360).WithFixedHeight(GuiStyle.TitleBarHeight + 1.0));
 
         SingleComposer = composer.EndChildElements().Compose();
