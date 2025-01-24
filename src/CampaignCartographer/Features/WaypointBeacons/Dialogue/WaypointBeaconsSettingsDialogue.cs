@@ -25,22 +25,22 @@ internal class WaypointBeaconsSettingsDialogue : FeatureSettingsDialogue<Waypoin
         if (!IsOpened()) return;
 
         // Refresh slider: Title Range
-        SetSliderValue("sliderTitleRange", Settings.TitleRange);
+        SetSliderValue("intTitleRange", Settings.TitleRange);
 
         // Refresh slider: Icon Range
-        SetSliderValue("sliderIconRange", Settings.IconRange);
+        SetSliderValue("intIconRange", Settings.IconRange);
 
         // Refresh switch: Show Waypoint Prefix
-        SetSwitchValue("switchShowWaypointPrefix", Settings.ShowWaypointPrefix);
+        SetSwitchValue("btnShowWaypointPrefix", Settings.ShowWaypointPrefix);
 
         // Refresh switch: Show Waypoint Index
-        SetSwitchValue("switchShowWaypointIndex", Settings.ShowWaypointIndex);
+        SetSwitchValue("btnShowWaypointIndex", Settings.ShowWaypointIndex);
 
         // Refresh switch: Show Pillars
-        SetSwitchValue("switchShowPillars", Settings.ShowPillars);
+        SetSwitchValue("btnShowPillars", Settings.ShowPillars);
 
         // Refresh switch: Clamp Position
-        SetSwitchValue("switchClampWaypointPosition", Settings.ClampWaypointPosition);
+        SetSwitchValue("btnClampWaypointPosition", Settings.ClampWaypointPosition);
     }
 
     /// <summary>
@@ -67,53 +67,60 @@ internal class WaypointBeaconsSettingsDialogue : FeatureSettingsDialogue<Waypoin
     /// <inheritdoc />
     protected override void ComposeBody(GuiComposer composer)
     {
-        const int switchSize = 20;
-        const int switchPadding = 20;
-        const double sliderWidth = 200.0;
+        const int leftWidth = 150;
 
-        var font = CairoFont.WhiteSmallText();
+        var labelFont = CairoFont.WhiteSmallText();
+        var txtTitleFont = CairoFont.WhiteDetailText();
+        var topBounds = ElementBounds.FixedSize(400, 30);
+
 
         // Slider: Icon Range
-        var labelBounds = ElementBounds.Fixed(0, GuiStyle.TitleBarHeight + 1.0, 150, switchSize);
-        var formElementBounds = ElementBounds.Fixed(160, GuiStyle.TitleBarHeight, switchSize, switchSize);
-        composer.AddStaticText(T("IconRange"), font, labelBounds);
-        composer.AddHoverText(T("IconRange.HoverText"), font, 260, labelBounds);
-        composer.AddLazySlider(OnIconRangeChanged, formElementBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderIconRange");
+        var left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(topBounds, 10);
+        var right = ElementBounds.FixedSize(270, 30).FixedUnder(topBounds, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("IconRange"), labelFont, EnumTextOrientation.Right, left, "lblIconRange")
+            .AddAutoSizeHoverText(T("IconRange.HoverText"), txtTitleFont, 260, left)
+            .AddLazySlider(OnIconRangeChanged, right, "intIconRange");
 
         // Slider: Title Range
-        labelBounds = labelBounds.BelowCopy(fixedDeltaY: switchPadding + 5);
-        formElementBounds = formElementBounds.BelowCopy(fixedDeltaY: switchPadding + 5);
-        composer.AddStaticText(T("TitleRange"), font, labelBounds);
-        composer.AddHoverText(T("TitleRange.HoverText"), font, 260, labelBounds);
-        composer.AddLazySlider(OnTitleRangeChanged, formElementBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderTitleRange");
+        left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("TitleRange"), labelFont, EnumTextOrientation.Right, left, "lblTitleRange")
+            .AddAutoSizeHoverText(T("TitleRange.HoverText"), txtTitleFont, 260, left)
+            .AddLazySlider(OnTitleRangeChanged, right, "intTitleRange");
 
         // Switch: Show Waypoint Prefix
-        labelBounds = labelBounds.BelowCopy(fixedDeltaY: switchPadding);
-        formElementBounds = formElementBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(T("ShowWaypointPrefix"), font, labelBounds);
-        composer.AddHoverText(T("ShowWaypointPrefix.HoverText"), font, 260, labelBounds);
-        composer.AddSwitch(OnShowWaypointPrefixChanged, formElementBounds, "switchShowWaypointPrefix");
+        left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("ShowWaypointPrefix"), labelFont, EnumTextOrientation.Right, left, "lblShowWaypointPrefix")
+            .AddAutoSizeHoverText(T("ShowWaypointPrefix.HoverText"), txtTitleFont, 260, left)
+            .AddSwitch(OnShowWaypointPrefixChanged, right, "btnShowWaypointPrefix");
 
         // Switch: Show Waypoint Index
-        labelBounds = labelBounds.BelowCopy(fixedDeltaY: switchPadding);
-        formElementBounds = formElementBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(T("ShowWaypointIndex"), font, labelBounds);
-        composer.AddHoverText(T("ShowWaypointIndex.HoverText"), font, 260, labelBounds);
-        composer.AddSwitch(OnShowWaypointIndexChanged, formElementBounds, "switchShowWaypointIndex");
+        left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("ShowWaypointIndex"), labelFont, EnumTextOrientation.Right, left, "lblShowWaypointIndex")
+            .AddAutoSizeHoverText(T("ShowWaypointIndex.HoverText"), txtTitleFont, 260, left)
+            .AddSwitch(OnShowWaypointIndexChanged, right, "btnShowWaypointIndex");
 
         // Switch: Show Pillars
-        labelBounds = labelBounds.BelowCopy(fixedDeltaY: switchPadding);
-        formElementBounds = formElementBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(T("ShowPillars"), font, labelBounds);
-        composer.AddHoverText(T("ShowPillars.HoverText"), font, 260, labelBounds);
-        composer.AddSwitch(OnShowPillarsChanged, formElementBounds, "switchShowPillars");
+        left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("ShowPillars"), labelFont, EnumTextOrientation.Right, left, "lblShowPillars")
+            .AddAutoSizeHoverText(T("ShowPillars.HoverText"), txtTitleFont, 260, left)
+            .AddSwitch(OnShowWaypointPrefixChanged, right, "btnShowPillars");
 
         // Switch: Clamp Waypoint Position
-        labelBounds = labelBounds.BelowCopy(fixedDeltaY: switchPadding);
-        formElementBounds = formElementBounds.BelowCopy(fixedDeltaY: switchPadding);
-        composer.AddStaticText(T("ClampWaypointPosition"), font, labelBounds);
-        composer.AddHoverText(T("ClampWaypointPosition.HoverText"), font, 260, labelBounds);
-        composer.AddSwitch(OnClampWaypointPositionChanged, formElementBounds, "switchClampWaypointPosition");
+        left = ElementBounds.FixedSize(leftWidth, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        composer
+            .AddStaticText(T("ClampWaypointPosition"), labelFont, EnumTextOrientation.Right, left, "ClampWaypointPosition")
+            .AddAutoSizeHoverText(T("ClampWaypointPosition.HoverText"), txtTitleFont, 260, left)
+            .AddSwitch(OnClampWaypointPositionChanged, right, "btnClampWaypointPosition");
     }
 
     /// <summary>

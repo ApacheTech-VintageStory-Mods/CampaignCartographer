@@ -110,4 +110,15 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     {
         return MemberwiseClone();
     }
+
+    /// <summary>
+    ///     Creates a new object that is a copy of the current instance.
+    /// </summary>
+    /// <returns>
+    ///     A new object that is a copy of this instance.
+    /// </returns>
+    public virtual T Clone<T>() where T : WaypointTemplate
+    {
+        return (T)MemberwiseClone();
+    }
 }

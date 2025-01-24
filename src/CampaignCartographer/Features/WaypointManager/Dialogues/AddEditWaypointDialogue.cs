@@ -19,12 +19,12 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly BlockPos _position;
     private readonly int _index;
     private readonly WaypointTypeMode _mode;
+    private readonly IPlayer[] _onlinePlayers;
     private readonly WaypointBeaconsSettings _waypointBeaconSettings;
 
     private bool _beacon;
     private bool _autoSuggest = true;
     private bool _ignoreNextAutoSuggestDisable;
-    private IPlayer[] _onlinePlayers;
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, Waypoint waypoint, int index)
         : this(capi, WaypointTypeMode.Edit, waypoint, index: index)
@@ -51,8 +51,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         : base(capi)
     {
         var waypointMapLayer = IOC.Services.GetRequiredService<WaypointMapLayer>();
-        _icons = waypointMapLayer.WaypointIcons.Keys.ToArray();
-        _colours = waypointMapLayer.WaypointColors.ToArray();
+        _icons = [.. waypointMapLayer.WaypointIcons.Keys];
+        _colours = [.. waypointMapLayer.WaypointColors];
         _waypoint = waypoint.DeepClone();
         _index = index;
         _position = position;

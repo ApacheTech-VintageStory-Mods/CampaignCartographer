@@ -1,14 +1,14 @@
 ﻿// ReSharper disable StringLiteralTypo
 
-[assembly: ModDependency("game", "1.19.8")]
-[assembly: ModDependency("survival", "1.19.8")]
+[assembly: ModDependency("game", "1.20.1")]
+[assembly: ModDependency("survival", "1.20.1")]
 
 [assembly: ModInfo(
     "Campaign Cartographer",
     "campaigncartographer",
     Description = "The original map mod, reborn. Adds multiple Cartography related features to the game, such as custom player pins, GPS, auto waypoint markers, and more.",
     Side = "Universal",
-    Version = "4.1.0",
+    Version = "4.2.0",
     RequiredOnClient = true,
     RequiredOnServer = true,
     NetworkVersion = "1.0.0",

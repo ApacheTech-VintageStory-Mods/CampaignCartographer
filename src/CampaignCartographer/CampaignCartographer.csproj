@@ -1,16 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Version>4.1.0.0</Version>
+		<Version>4.2.0.0</Version>
 		<Nullable>warnings</Nullable>
 		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
 	
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\Gantry\src\Gantry\Gantry.csproj" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Domain\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

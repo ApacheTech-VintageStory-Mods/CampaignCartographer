@@ -7,7 +7,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay
 ///     Client-side Harmony patches for modifying teleporter block behaviour.
 /// </summary>
 [HarmonyClientSidePatch]
-internal class BlockTeleporterPatches
+public class BlockTeleporterPatches
 {
     /// <summary>
     ///     Transpiler for <see cref="BlockTeleporter.OnBlockInteractStart"/>.
@@ -19,7 +19,7 @@ internal class BlockTeleporterPatches
     /// </returns>
     [HarmonyTranspiler]
     [HarmonyPatch(typeof(BlockTeleporter), nameof(BlockTeleporter.OnBlockInteractStart))]
-    internal static IEnumerable<CodeInstruction> Harmony_BlockTeleporter_OnBlockInteractStart_Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Harmony_BlockTeleporter_OnBlockInteractStart_Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var il = instructions.ToList();
         var startIndex = il.FindIndex(0, p => p.opcode == OpCodes.Bne_Un_S);

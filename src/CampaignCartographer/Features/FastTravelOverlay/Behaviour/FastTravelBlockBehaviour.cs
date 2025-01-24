@@ -45,7 +45,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
 
         var dialogue = node is null
             ? FastTravelOverlayNodeDialogue.Create(GetOrCreateNode(selection, blockEntity))
-            : FastTravelOverlayNodeDialogue.Edit(node.DeepClone());
+            : FastTravelOverlayNodeDialogue.Edit(node);
 
         dialogue.ToggleGui();
         handling = EnumHandling.Handled;
