@@ -1,5 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using Gantry.Services.FileSystem.Dialogue;
+﻿using Gantry.Services.FileSystem.Dialogue;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue;
 

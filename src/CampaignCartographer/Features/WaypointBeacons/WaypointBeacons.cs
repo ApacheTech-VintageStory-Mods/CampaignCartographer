@@ -1,17 +1,10 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
-using Gantry.Core.Extensions.DotNet;
 using Gantry.Core.Extensions.Threading;
 using Gantry.Core.GameContent;
-using Gantry.Core.GameContent.AssetEnum;
-using Gantry.Core.GameContent.ChatCommands;
 using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
-using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons;
 

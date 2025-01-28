@@ -259,7 +259,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
         command.Execute();
         
-        if (_mode == WaypointTypeMode.Edit && (_beacon
+        if (_waypoint.Guid is not null && _mode == WaypointTypeMode.Edit && (_beacon
             ? _waypointBeaconSettings.ActiveBeacons.AddIfNotPresent(_waypoint.Guid)
             : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))) 
             ModSettings.World.Save(_waypointBeaconSettings);

@@ -67,7 +67,18 @@ public class WaypointBeaconsClientSystem : ClientSystem
     /// </summary>
     private static void Repopulate()
     {
-        // Remove elements not in ActiveWaypoints
+        // Remove elements with null keys
+        foreach (var kvp in WaypointElements)
+        {
+            if (kvp.Key is null)
+            {
+                kvp.Value.TryClose();
+                kvp.Value.Dispose();
+                WaypointElements.TryRemove(kvp);
+            }
+        }
+
+        // Remove elements not in ActiveBeacons
         foreach (var kvp in WaypointElements)
         {
             if (_settings.ActiveBeacons.Contains(kvp.Key)) continue;
@@ -76,8 +87,8 @@ public class WaypointBeaconsClientSystem : ClientSystem
             WaypointElements.TryRemove(kvp.Key, out _);
         }
 
-        // Add elements present in ActiveWaypoints but missing in WaypointElements
-        foreach (var id in _settings.ActiveBeacons.Where(id => !WaypointElements.ContainsKey(id)))
+        // Add elements present in ActiveBeacons but missing in WaypointElements
+        foreach (var id in _settings.ActiveBeacons.Where(id => id is not null && !WaypointElements.ContainsKey(id)))
         {
             ApiEx.Client.Event.AwaitMainThreadTask(() =>
             {
