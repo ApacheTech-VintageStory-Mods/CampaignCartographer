@@ -1,5 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.FileSystem.Dialogue;
