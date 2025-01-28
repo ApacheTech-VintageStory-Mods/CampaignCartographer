@@ -1,11 +1,10 @@
 ﻿using System.Text;
 using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
-using Cairo;
-using Gantry.Core.GameContent.AssetEnum;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.Hosting.Annotation;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Dialogue;
 
@@ -14,7 +13,9 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 {
     private readonly PredefinedWaypointTemplate _waypoint;
     private readonly WaypointTypeMode _mode;
-    private readonly List<WaypointIconModel> _icons;
+
+    private readonly string[] _icons;
+    private readonly int[] _colours;
 
     /// <summary>
     /// 	Initialises a new instance of the <see cref="AddEditWaypointTypeDialogue"/> class.
@@ -26,12 +27,14 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     [SidedConstructor(EnumAppSide.Client)]
     public AddEditWaypointTypeDialogue(ICoreClientAPI capi, PredefinedWaypointTemplate waypoint, WaypointTypeMode mode) : base(capi)
     {
+        var waypointMapLayer = IOC.Services.GetRequiredService<WaypointMapLayer>();
         _waypoint = waypoint.Clone().To<PredefinedWaypointTemplate>();
         _mode = mode;
-        _icons = WaypointIconModel.GetVanillaIcons().ToList();
+        _icons = [.. waypointMapLayer.WaypointIcons.Keys];
+        _colours = [.. waypointMapLayer.WaypointColors];
 
         var titlePrefix = _mode == WaypointTypeMode.Add ? "AddNew" : "Edit";
-        Title = LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", titlePrefix);
+        Title = T(titlePrefix);
         Alignment = EnumDialogArea.CenterMiddle;
         Modal = true;
         ModalTransparency = .4f;
@@ -40,40 +43,29 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     public Action<PredefinedWaypointTemplate> OnOkAction { get; set; }
     public Action<PredefinedWaypointTemplate> OnDeleteAction { get; set; }
 
-    private GuiElementTextInput SyntaxTextBox => SingleComposer.GetTextInput("txtSyntax");
-    private GuiElementTextInput TitleTextBox => SingleComposer.GetTextInput("txtTitle");
-    private GuiElementDropDown ColourComboBox => SingleComposer.GetDropDown("cbxColour");
-    private GuiElementCustomDraw ColourPreviewBox => SingleComposer.GetCustomDraw("pbxColour");
-    private GuiElementDropDown IconComboBox => SingleComposer.GetDropDown("cbxIcon");
-    private GuiElementSlider HorizontalRadiusTextBox => SingleComposer.GetSlider("txtHorizontalRadius");
-    private GuiElementSlider VerticalRadiusTextBox => SingleComposer.GetSlider("txtVerticalRadius");
-    private GuiElementSwitch PinnedSwitch => SingleComposer.GetSwitch("btnPinned");
-
     #region Form Composition
 
     protected override void RefreshValues()
     {
-        ApiEx.ClientMain.EnqueueMainThreadTask(() =>
+        if (_mode == WaypointTypeMode.Add)
         {
-            if (_mode == WaypointTypeMode.Add)
-            {
-                SyntaxTextBox.SetValue(_waypoint.Key);
-            }
-            TitleTextBox.SetValue(_waypoint.Title);
-            ColourComboBox.SetSelectedValue(_waypoint.Colour.ToLowerInvariant());
-            ColourPreviewBox.Redraw();
-            IconComboBox.SetSelectedValue(_waypoint.DisplayedIcon.ToLowerInvariant());
-            HorizontalRadiusTextBox.SetValues(_waypoint.HorizontalCoverageRadius, 0, 50, 1);
-            VerticalRadiusTextBox.SetValues(_waypoint.VerticalCoverageRadius, 0, 50, 1);
-            PinnedSwitch.SetValue(_waypoint.Pinned);
-        }, "");
+            SingleComposer.GetTextInput("txtSyntax").SetValue(_waypoint.Key);
+        }
+        var colour = _colours.IndexOf(_waypoint.Colour.ColourValue());
+        var icon = _icons.IndexOf(_waypoint.DisplayedIcon);
+        SingleComposer.GetTextInput("txtTitle").SetValue(_waypoint.Title);
+        SingleComposer.ColorListPickerSetValue("optColour", Math.Max(colour, 0));
+        SingleComposer.IconListPickerSetValue("optIcon", Math.Max(icon, 0));
+        SingleComposer.GetSlider("txtHorizontalRadius").SetValues(_waypoint.HorizontalCoverageRadius, 0, 50, 1);
+        SingleComposer.GetSlider("txtVerticalRadius").SetValues(_waypoint.VerticalCoverageRadius, 0, 50, 1);
+        SingleComposer.GetSwitch("btnPinned").SetValue(_waypoint.Pinned);
     }
 
     protected override void ComposeBody(GuiComposer composer)
     {
         var labelFont = CairoFont.WhiteSmallText();
-        var textInputFont = CairoFont.WhiteDetailText();
-        var topBounds = ElementBounds.FixedSize(400, 30);
+        var txtTitleFont = CairoFont.WhiteDetailText();
+        var topBounds = ElementBounds.FixedSize(600, 30);
 
         //
         // Syntax
@@ -83,13 +75,13 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         var right = ElementBounds.FixedSize(270, 30).FixedUnder(topBounds, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Syntax"), labelFont, EnumTextOrientation.Right, left.WithFixedOffset(0, 5), "lblSyntax")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Syntax.HoverText"), textInputFont, 260, left)
+            .AddStaticText(T("Syntax"), labelFont, EnumTextOrientation.Right, left.WithFixedOffset(0, 5), "lblSyntax")
+            .AddAutoSizeHoverText(T("Syntax.HoverText"), txtTitleFont, 260, left)
             .AddIf(_mode == WaypointTypeMode.Add)
-            .AddTextInput(right, OnSyntaxChanged, textInputFont, "txtSyntax")
+            .AddTextInput(right, OnSyntaxChanged, txtTitleFont, "txtSyntax")
             .EndIf()
             .AddIf(_mode == WaypointTypeMode.Edit)
-            .AddStaticText(_waypoint.Key, textInputFont, EnumTextOrientation.Left, right.WithFixedOffset(0, 5))
+            .AddStaticText(_waypoint.Key, txtTitleFont, EnumTextOrientation.Left, right.WithFixedOffset(0, 5))
             .EndIf();
 
         //
@@ -97,64 +89,35 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         //
 
         left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "WaypointTitle"), labelFont, EnumTextOrientation.Right, left, "lblTitle")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "WaypointTitle.HoverText"), textInputFont, 260, left)
-            .AddTextInput(right, OnTitleChanged, textInputFont, "txtTitle");
-
-        //
-        // Colour
-        //
-
-        left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
-        var cbxColourBounds = right.FlatCopy().WithFixedWidth(230);
-        var pbxColourBounds = right.FlatCopy().WithFixedWidth(30).FixedRightOf(cbxColourBounds, 10);
-
-        composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Colour"), labelFont, EnumTextOrientation.Right, left, "lblColour")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Colour.HoverText"), textInputFont, 260, left)
-            .AddDropDown(NamedColour.ValuesList(), NamedColour.NamesList(), 0,
-                OnColourValueChanged, cbxColourBounds, textInputFont, "cbxColour")
-            .AddDynamicCustomDraw(pbxColourBounds, OnDrawColour, "pbxColour");
-
-        //
-        // Icon
-        //
-
-        left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
-
-        composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Icon"), labelFont, EnumTextOrientation.Right, left, "lblIcon")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Icon.HoverText"), textInputFont, 260, left)
-            .AddDropDown(_icons.Select(p => p.Name).ToArray(), _icons.Select(p => p.Glyph).ToArray(), 0, OnIconChanged, right,
-                textInputFont, "cbxIcon");
+            .AddStaticText(T("WaypointTitle"), labelFont, EnumTextOrientation.Right, left, "lblTitle")
+            .AddAutoSizeHoverText(T("WaypointTitle.HoverText"), txtTitleFont, 260, left)
+            .AddTextInput(right, OnTitleChanged, txtTitleFont, "txtTitle");
 
         //
         // Horizontal Radius
         //
 
         left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "HCoverage"), labelFont, EnumTextOrientation.Right, left, "lblHorizontalRadius")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "HCoverage.HoverText"), textInputFont, 260, left)
+            .AddStaticText(T("HCoverage"), labelFont, EnumTextOrientation.Right, left, "lblHorizontalRadius")
+            .AddHoverText(T("HCoverage.HoverText"), txtTitleFont, 260, left)
             .AddLazySlider(OnHorizontalRadiusChanged, right.FlatCopy().WithFixedHeight(20), "txtHorizontalRadius");
 
         //
-        // Vertical Radius  
+        // Vertical Radius
         //
 
         left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "VCoverage"), labelFont, EnumTextOrientation.Right, left, "lblVerticalRadius")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "VCoverage.HoverText"), textInputFont, 260, left)
+            .AddStaticText(T("VCoverage"), labelFont, EnumTextOrientation.Right, left, "lblVerticalRadius")
+            .AddHoverText(T("VCoverage.HoverText"), txtTitleFont, 260, left)
             .AddLazySlider(OnVerticalRadiusChanged, right.FlatCopy().WithFixedHeight(20), "txtVerticalRadius");
 
         //
@@ -165,25 +128,58 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Pinned"), labelFont, EnumTextOrientation.Right, left, "lblPinned")
-            .AddAutoSizeHoverText(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Pinned.HoverText"), textInputFont, 260, left)
+            .AddStaticText(T("Pinned"), labelFont, EnumTextOrientation.Right, left, "lblPinned")
+            .AddAutoSizeHoverText(T("Pinned.HoverText"), txtTitleFont, 260, left)
             .AddSwitch(OnPinnedChanged, right, "btnPinned");
 
         //
-        // Buttons
+        // Colour
         //
 
-        var controlRowBoundsLeftFixed = ElementBounds.FixedSize(100, 30).WithAlignment(EnumDialogArea.LeftFixed);
-        var controlRowBoundsCentreFixed = ElementBounds.FixedSize(100, 30).WithAlignment(EnumDialogArea.CenterFixed);
-        var controlRowBoundsRightFixed = ElementBounds.FixedSize(100, 30).WithAlignment(EnumDialogArea.RightFixed);
+        const double colourIconSize = 22d;
+        left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddSmallButton(LangEx.ConfirmationString("cancel"), OnCancelButtonPressed, controlRowBoundsLeftFixed.FixedUnder(right, 10))
-            .AddSmallButton(LangEx.ConfirmationString("ok"), OnOkButtonPressed, controlRowBoundsRightFixed.FixedUnder(right, 10));
+            .AddStaticText(T("Colour"), labelFont, EnumTextOrientation.Right, left, "lblColour")
+            .AddAutoSizeHoverText(T("Colour.HoverText"), txtTitleFont, 260, left)
+            .AddColorListPicker(_colours, OnColourSelected, right.WithFixedSize(colourIconSize, colourIconSize), 470, "optColour");
 
+        //
+        // Icon
+        //
+
+        const double iconIconSize = 27d;
+        left = ElementBounds.FixedSize(100, 30).FixedUnder(right, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+
+        composer
+            .AddStaticText(T("Icon"), labelFont, EnumTextOrientation.Right, left, "lblIcon")
+            .AddAutoSizeHoverText(T("Icon.HoverText"), txtTitleFont, 260, left)
+            .AddIconListPicker(_icons, OnIconSelected, right.WithFixedSize(iconIconSize, iconIconSize), 470, "optIcon");
+
+        //
+        // OK Button
+        //
+
+        left = ElementBounds.FixedSize(100, 30).FixedUnder(right);
+        var buttonBounds = ElementBounds.FixedSize(100, 30).WithAlignment(EnumDialogArea.RightFixed).FixedUnder(left, 10);
+        composer.AddSmallButton(LangEx.ConfirmationString("ok"), OnOkButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnSave");
+
+        //
+        // Cancel Button
+        //
+
+        buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
+        composer.AddSmallButton(LangEx.ConfirmationString("cancel"), OnCancelButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnCancel");
         if (_mode == WaypointTypeMode.Add) return;
-        composer
-            .AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, controlRowBoundsCentreFixed.FixedUnder(right, 10));
+
+        //
+        // Delete Button
+        //
+
+        buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
+        composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
     }
 
     #endregion
@@ -200,26 +196,15 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         _waypoint.Title = title;
     }
 
-    private void OnColourValueChanged(string colour, bool selected)
+    private void OnIconSelected(int index)
     {
-        if (!NamedColour.ValuesList().Contains(colour)) colour = NamedColour.Black;
-        _waypoint.Colour = colour;
-        ColourPreviewBox.Redraw();
+        _waypoint.DisplayedIcon = _icons[index];
+        _waypoint.ServerIcon = _icons[index];
     }
 
-    private void OnDrawColour(Context ctx, ImageSurface surface, ElementBounds currentBounds)
+    private void OnColourSelected(int index)
     {
-        ctx.Rectangle(0.0, 0.0, GuiElement.scaled(25.0), GuiElement.scaled(25.0));
-        ctx.SetSourceRGBA(ColorUtil.ToRGBADoubles(_waypoint.Colour.ColourValue()));
-        ctx.FillPreserve();
-        ctx.SetSourceRGBA(GuiStyle.DialogBorderColor);
-        ctx.Stroke();
-    }
-
-    private void OnIconChanged(string icon, bool selected)
-    {
-        _waypoint.DisplayedIcon = icon;
-        _waypoint.ServerIcon = icon;
+        _waypoint.Colour = ColorUtil.Int2Hex(_colours[index]);
     }
 
     private bool OnHorizontalRadiusChanged(int radius)
@@ -252,14 +237,14 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
         if (string.IsNullOrWhiteSpace(_waypoint.Key) || _waypoint.Key.Contains(' '))
         {
-            message.AppendLine(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Syntax.Validation"));
+            message.AppendLine(T("Syntax.Validation"));
             message.AppendLine();
             validationErrors = true;
         }
 
         if (_waypoint.HorizontalCoverageRadius < 0 || _waypoint.VerticalCoverageRadius < 0)
         {
-            message.AppendLine(LangEx.FeatureString("PredefinedWaypoints.Dialogue.WaypointType", "Coverage.Validation"));
+            message.AppendLine(T("Coverage.Validation"));
             message.AppendLine();
             validationErrors = true;
         }
@@ -282,4 +267,13 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     }
 
     #endregion
+
+    /// <summary>
+    ///     Gets an entry from the language files, for the feature this instance is representing.
+    /// </summary>
+    /// <param name="path">The entry to return.</param>
+    /// <param name="args">The entry to return.</param>
+    /// <returns>A localised <see cref="string"/>, for the specified language file code.</returns>
+    protected string T(string path, params object[] args)
+        => LangEx.FeatureString($"PredefinedWaypoints.Dialogue.WaypointType", path, args);
 }
