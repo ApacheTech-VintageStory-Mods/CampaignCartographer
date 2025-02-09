@@ -12,6 +12,23 @@ public class WaypointBeaconViewModel
     private readonly WaypointBeaconsSettings _settings;
     private readonly WaypointMapLayer _mapLayer;
 
+    private Waypoint ThisWaypoint
+    {
+        get
+        {
+            try
+            {
+                var mapLayer = _mapLayer;
+                var ownWaypoints = mapLayer?.ownWaypoints?.ToArray();
+                return ownWaypoints?.FirstOrDefault(p => p.Guid == _id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
     /// <summary>
     ///     Initialises a new instance of the <see cref="WaypointBeaconViewModel"/> class with the specified waypoint ID and settings.
     /// </summary>
@@ -27,12 +44,12 @@ public class WaypointBeaconViewModel
     /// <summary>
     ///     The waypoint associated with this view model.
     /// </summary>
-    public Waypoint Waypoint => _mapLayer.ownWaypoints.ToArray().FirstOrDefault(p => p.Guid == _id);
+    public Waypoint Waypoint => Get(p => p);
 
     /// <summary>
     ///     Indicates whether the waypoint is available.
     /// </summary>
-    public bool Available => Waypoint is not null;
+    public bool Available => ThisWaypoint is not null;
 
     /// <summary>
     ///     The index of the waypoint within the waypoint map layer.
@@ -81,5 +98,5 @@ public class WaypointBeaconViewModel
     /// <typeparam name="T">The type of the value to retrieve.</typeparam>
     /// <param name="f">A function to retrieve the value from the waypoint.</param>
     /// <returns>The retrieved value, or the default if the waypoint is unavailable.</returns>
-    private T Get<T>(System.Func<Waypoint, T> f) => !Available ? default : f(Waypoint);
+    private T Get<T>(System.Func<Waypoint, T> f) => !Available ? default : f(ThisWaypoint);
 }
