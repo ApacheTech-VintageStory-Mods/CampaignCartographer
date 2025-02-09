@@ -34,15 +34,33 @@ public sealed class CentreMapClient : ClientModSystem
         _capi = capi;
         _worldMap = capi.ModLoader.GetModSystem<WorldMapManager>();
 
-        _capi.Event.PlayerEntitySpawn += OnPlayerSpawn;
-        _capi.Event.PlayerEntityDespawn += OnPlayerDespawn;
+        _capi.Event.IsPlayerReady += Event_IsPlayerReady;
 
         _clientChannel = _capi.Network.RegisterChannel("centreMap")
             .RegisterMessageType<PlayerSpawnPositionDto>()
             .SetMessageHandler<PlayerSpawnPositionDto>(OnClientSpawnPointResponsePacketReceived);
 
-        var parsers = _capi.ChatCommands.Parsers;
+        CreateChatCommand();
+    }
 
+    private bool Event_IsPlayerReady(ref EnumHandling handling)
+    {
+        _capi.Event.PlayerEntitySpawn += OnPlayerSpawn;
+        _capi.Event.PlayerEntityDespawn += OnPlayerDespawn;
+        handling = EnumHandling.PassThrough;
+        return true;
+    }
+
+    public override void Dispose()
+    {
+        _capi.Event.IsPlayerReady -= Event_IsPlayerReady;
+        _capi.Event.PlayerEntitySpawn -= OnPlayerSpawn;
+        _capi.Event.PlayerEntityDespawn -= OnPlayerDespawn;
+    }
+
+    private void CreateChatCommand()
+    {
+        var parsers = _capi.ChatCommands.Parsers;
         var cm = _capi.ChatCommands
             .Create("cm")
             .WithDescription(LangEx.FeatureString("CentreMap", "SettingsCommandDescription"))
