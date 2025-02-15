@@ -1,6 +1,7 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core.GameContent.AssetEnum;
 
 // ReSharper disable StringLiteralTypo
 
@@ -49,13 +50,14 @@ public sealed class TraderWaypoints : ClientModSystem
             var displayName = trader.GetBehavior<EntityBehaviorNameTag>().DisplayName;
             var wpTitle = Lang.Get("tradingwindow-" + trader.Code.Path, displayName);
 
-            _waypointService.GetTemplateByKey("trader")?
-                .With(p =>
-                {
-                    p.Title = wpTitle;
-                    p.Colour = TraderModel.GetColourFor(trader);
-                })
-                .AddToMap(trader.Pos.AsBlockPos);
+            new PredefinedWaypointTemplate
+            {
+                Title = wpTitle,
+                Colour = TraderModel.GetColourFor(trader),
+                DisplayedIcon = WaypointIcon.Trader,
+                ServerIcon = WaypointIcon.Trader
+            }.AddToMap(trader.Pos.AsBlockPos);
+
         }
         return TextCommandResult.Success();
     }

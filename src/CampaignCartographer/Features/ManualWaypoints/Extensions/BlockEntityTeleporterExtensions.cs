@@ -35,13 +35,13 @@ public static class BlockEntityTeleporterExtensions
 
         var title = Lang.Get(titleTemplate, sourceName, targetName);
 
-        _waypointService.GetTemplateByKey("tl")?
-            .With(p =>
-            {
-                p.Title = title;
-                p.Colour = NamedColour.SpringGreen;
-            })
-            .AddToMap(sourcePos);
+        new PredefinedWaypointTemplate
+        {
+            Title = title,
+            Colour = NamedColour.SpringGreen,
+            DisplayedIcon = WaypointIcon.Spiral,
+            ServerIcon = WaypointIcon.Spiral
+        }.AddToMap(sourcePos);
 
         ApiEx.Logger.VerboseDebug($"Added Waypoint: {title}");
     }

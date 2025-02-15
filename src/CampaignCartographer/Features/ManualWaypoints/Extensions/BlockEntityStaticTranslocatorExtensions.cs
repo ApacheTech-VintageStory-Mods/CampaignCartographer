@@ -66,13 +66,13 @@ public static class BlockEntityStaticTranslocatorExtensions
         var message = Lang.Get(titleTemplate, displayPos.X, displayPos.Y, displayPos.Z);
         var forceWaypoint = await ClearWaypointsForEndpoint(sourcePos);
 
-        var service = IOC.Services.Resolve<WaypointTemplateService>();
-        service.GetTemplateByKey("tl")?
-            .With(p =>
-            {
-                p.Title = message;
-            })
-            .AddToMap(sourcePos, forceWaypoint);
+        new PredefinedWaypointTemplate
+        {
+            Title = message,
+            Colour = NamedColour.Fuchsia,
+            DisplayedIcon = WaypointIcon.Spiral,
+            ServerIcon = WaypointIcon.Spiral
+        }.AddToMap(sourcePos, forceWaypoint);
 
         ApiEx.Logger.VerboseDebug($"Added Waypoint: Translocator to ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
     }
@@ -88,14 +88,13 @@ public static class BlockEntityStaticTranslocatorExtensions
         var displayPos = blockPos.RelativeToSpawn();
         if (blockPos.WaypointExistsAtPos(p => p.Icon == WaypointIcon.Spiral)) return;
 
-        var service = IOC.Services.Resolve<WaypointTemplateService>();
-        service.GetTemplateByKey("tl")?
-            .With(p =>
-            {
-                p.Title = message;
-                p.Colour = NamedColour.Red;
-            })
-            .AddToMap(blockPos);
+        new PredefinedWaypointTemplate
+        {
+            Title = message,
+            Colour = NamedColour.Red,
+            DisplayedIcon = WaypointIcon.Spiral,
+            ServerIcon = WaypointIcon.Spiral
+        }.AddToMap(blockPos);
 
         ApiEx.Logger.VerboseDebug($"Added Waypoint: Broken Translocator at ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
     }
