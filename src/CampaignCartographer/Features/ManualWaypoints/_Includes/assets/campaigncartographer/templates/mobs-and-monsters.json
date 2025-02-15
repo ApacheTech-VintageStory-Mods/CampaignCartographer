@@ -1,0 +1,45 @@
+{
+  "Metadata": {
+    "Name": "mobs-and-monsters",
+    "Version": "1.0.0",
+    "Custom": false
+  },
+  "Templates": [
+    {
+      "Key": "beehive",
+      "Title": "Bees",
+      "DetailText": "",
+      "ServerIcon": "Bee",
+      "DisplayedIcon": "Bee",
+      "Colour": "Yellow",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "bees",
+      "Title": "Bees",
+      "DetailText": "",
+      "ServerIcon": "Bee",
+      "DisplayedIcon": "Bee",
+      "Colour": "Yellow",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "trader",
+      "Title": "Trader",
+      "DetailText": "",
+      "ServerIcon": "Trader",
+      "DisplayedIcon": "Trader",
+      "Colour": "Aqua",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    }
+  ]
+}

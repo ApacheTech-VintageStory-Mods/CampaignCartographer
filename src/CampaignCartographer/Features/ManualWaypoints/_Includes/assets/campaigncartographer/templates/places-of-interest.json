@@ -1,0 +1,94 @@
+{
+  "Metadata": {
+    "Name": "places-of-interest",
+    "Version": "1.0.0",
+    "Custom": false
+  },
+  "Templates": [
+    {
+      "Key": "cave",
+      "Title": "Cave",
+      "DetailText": "",
+      "ServerIcon": "Cave",
+      "DisplayedIcon": "Cave",
+      "Colour": "Navy",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "poi",
+      "Title": "Point Of Interest",
+      "DetailText": "",
+      "ServerIcon": "Star1",
+      "DisplayedIcon": "Star1",
+      "Colour": "White",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "ruins",
+      "Title": "Ruins",
+      "DetailText": "",
+      "ServerIcon": "Ruins",
+      "DisplayedIcon": "Ruins",
+      "Colour": "LightGray",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "spawn",
+      "Title": "Spawn Point",
+      "DetailText": "",
+      "ServerIcon": "Spiral",
+      "DisplayedIcon": "Spiral",
+      "Colour": "Yellow",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": true,
+      "Enabled": true
+    },
+    {
+      "Key": "tl",
+      "Title": "Translocator",
+      "DetailText": "",
+      "ServerIcon": "Spiral",
+      "DisplayedIcon": "Spiral",
+      "Colour": "Fuchsia",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "tlb",
+      "Title": "Broken Translocator",
+      "DetailText": "",
+      "ServerIcon": "Spiral",
+      "DisplayedIcon": "Spiral",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "translocator",
+      "Title": "Translocator",
+      "DetailText": "",
+      "ServerIcon": "Spiral",
+      "DisplayedIcon": "Spiral",
+      "Colour": "Fuchsia",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    }
+  ]
+}
+ 

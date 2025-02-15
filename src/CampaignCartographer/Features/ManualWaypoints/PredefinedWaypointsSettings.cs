@@ -13,4 +13,14 @@ public sealed class PredefinedWaypointsSettings : FeatureSettings<PredefinedWayp
     /// </summary>
     /// <value>The block selection waypoint template.</value>
     public CoverageWaypointTemplate BlockSelectionWaypointTemplate { get; set; } = new();
+
+    /// <summary>
+    ///     The template packs that have been disabled.
+    /// </summary>
+    public List<string> DisabledTemplatePacks { get; set; } = [];
+
+    /// <summary>
+    ///     The templates within a pack that have been disabled.
+    /// </summary>
+    public Dictionary<string, List<string>> DisabledTemplatesPerPack { get; set; } = [];
 }

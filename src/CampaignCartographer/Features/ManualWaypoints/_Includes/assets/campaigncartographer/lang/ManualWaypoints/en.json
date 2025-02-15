@@ -49,8 +49,9 @@
   "Features.PredefinedWaypoints.Dialogue.WaypointType.Pinned.HoverText": "Whether or not to pin this waypoint to the map, by default.",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.Delete.Title": "Confirm Waypoint Type Removal",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.Delete.Message": "Are you sure you want to delete this waypoint type?",
-  "Features.PredefinedWaypoints.Dialogue.Title": "Pre-Defined Waypoints",
-  "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.Title": "Pre-Defined Waypoints",
+
+  "Features.PredefinedWaypoints.Dialogue.Title": "Waypoint Template Packs",
+  "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.Title": "Waypoints Template Packs",
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.Error": "Validation Errors",
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.LoadDefault": "Load Default Waypoint Types",
   "Features.PredefinedWaypoints.Dialogue.PreDefinedWaypoints.LoadDefault.Confirmation": "Are you sure you want to import the default waypoint types. The titles for these defaults are in English.",

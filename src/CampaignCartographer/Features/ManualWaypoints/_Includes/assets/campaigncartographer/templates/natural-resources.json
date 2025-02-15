@@ -1,0 +1,177 @@
+{
+  "Metadata": {
+    "Name": "natural-resources",
+    "Version": "1.0.0",
+    "Custom": false
+  },
+  "Templates": [
+    {
+      "Key": "berries",
+      "Title": "Berry Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "berry",
+      "Title": "Berry Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "blueberry",
+      "Title": "Blueberry Bush",
+      "DetailText": "",
+      "ServerIcon": "Rocks",
+      "DisplayedIcon": "Rocks",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "bclay",
+      "Title": "Blue Clay",
+      "DetailText": "",
+      "ServerIcon": "Pick",
+      "DisplayedIcon": "Pick",
+      "Colour": "SteelBlue",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "blackcurrant",
+      "Title": "Blackcurrant Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "blue-clay",
+      "Title": "Blue Clay",
+      "DetailText": "",
+      "ServerIcon": "Pick",
+      "DisplayedIcon": "Pick",
+      "Colour": "SteelBlue",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "bush",
+      "Title": "Berry Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "cranberry",
+      "Title": "Cranberry Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "fclay",
+      "Title": "Fire Clay",
+      "DetailText": "",
+      "ServerIcon": "Pick",
+      "DisplayedIcon": "Pick",
+      "Colour": "SandyBrown",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "fire-clay",
+      "Title": "Fire Clay",
+      "DetailText": "",
+      "ServerIcon": "Pick",
+      "DisplayedIcon": "Pick",
+      "Colour": "SandyBrown",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "peat",
+      "Title": "Peat",
+      "DetailText": "",
+      "ServerIcon": "Pick",
+      "DisplayedIcon": "Pick",
+      "Colour": "Sienna",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "redcurrant",
+      "Title": "Redcurrant Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "Red",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "resin",
+      "Title": "Resin",
+      "DetailText": "",
+      "ServerIcon": "Circle",
+      "DisplayedIcon": "Circle",
+      "Colour": "Peru",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "whitecurrant",
+      "Title": "Whitecurrant Bush",
+      "DetailText": "",
+      "ServerIcon": "Star2",
+      "DisplayedIcon": "Star2",
+      "Colour": "antiquewhite",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    }
+  ]
+}
