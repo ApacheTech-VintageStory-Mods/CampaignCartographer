@@ -5,7 +5,7 @@
 /// </summary>
 [JsonObject]
 [ProtoContract]
-public class ConnectedWaypointTemplate : WaypointTemplate
+public class ConnectedWaypointTemplate : WaypointTemplateBase
 {
     /// <summary>
     ///     The ID of the Waypoint that this Waypoint is connected to.

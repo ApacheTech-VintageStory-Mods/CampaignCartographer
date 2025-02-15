@@ -13,7 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.E
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public static class WaypointTemplateExtensions
 {
-    private static readonly List<BlockPos> PositionsBeingHandled = [];
+    private static readonly List<BlockPos> _positionsBeingHandled = [];
 
     /// <summary>
     ///     Adds a <see cref="CoverageWaypointTemplate"/> to the world map. These are waypoints that haven't been added before.
@@ -30,8 +30,8 @@ public static class WaypointTemplateExtensions
         //              to be added in rapid succession, but limits the calls to one pass-through per block, per second.
 
         position ??= ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
-        if (PositionsBeingHandled.Contains(position)) return;
-        PositionsBeingHandled.Add(position);
+        if (_positionsBeingHandled.Contains(position)) return;
+        _positionsBeingHandled.Add(position);
         try
         {
             if (!force && position.WaypointExistsWithinRadius(waypoint.HorizontalCoverageRadius, waypoint.VerticalCoverageRadius,
@@ -48,16 +48,16 @@ public static class WaypointTemplateExtensions
         }
         finally
         {
-            ApiEx.Client.RegisterDelayedCallback(_ => { PositionsBeingHandled.Remove(position); }, 1000);
+            ApiEx.Client.RegisterDelayedCallback(_ => { _positionsBeingHandled.Remove(position); }, 1000);
         }
     }
 
     /// <summary>
-    ///     Adds a <see cref="WaypointTemplate"/> to the world map. These are waypoints that are being imported into the game, and have a position already.
+    ///     Adds a <see cref="WaypointTemplateBase"/> to the world map. These are waypoints that are being imported into the game, and have a position already.
     /// </summary>
     /// <param name="waypoint">The waypoint to add.</param>
     /// <param name="position">The position to add the waypoint at.</param>
-    public static void AddToMap(this WaypointTemplate waypoint, BlockPos position)
+    public static void AddToMap(this WaypointTemplateBase waypoint, BlockPos position)
     {
         // DEV NOTE:    This method looks needlessly complicated because of race conditions when running in single-player mode.
         //              In these cases, it's possible for this method to be run multiple times, resulting in multiple waypoints
@@ -65,8 +65,8 @@ public static class WaypointTemplateExtensions
         //              for waypoint related actions, this is the best way to resolve the issues. This still enables waypoints
         //              to be added in rapid succession, but limits the calls to one pass-through per block, per second.
 
-        if (PositionsBeingHandled.Contains(position)) return;
-        PositionsBeingHandled.Add(position);
+        if (_positionsBeingHandled.Contains(position)) return;
+        _positionsBeingHandled.Add(position);
         try
         {
             ApiEx.ClientMain.EnqueueMainThreadTask(() =>
@@ -76,7 +76,7 @@ public static class WaypointTemplateExtensions
         }
         finally
         {
-            ApiEx.Client.RegisterDelayedCallback(_ => { PositionsBeingHandled.Remove(position); }, 1000);
+            ApiEx.Client.RegisterDelayedCallback(_ => { _positionsBeingHandled.Remove(position); }, 1000);
         }
     }
 
@@ -85,7 +85,7 @@ public static class WaypointTemplateExtensions
     /// </summary>
     /// <param name="template">The template.</param>
     /// <returns></returns>
-    public static Waypoint ToWaypoint(this WaypointTemplate template)
+    public static Waypoint ToWaypoint(this WaypointTemplateBase template)
     {
         return new Waypoint
         {
@@ -123,7 +123,7 @@ public static class WaypointTemplateExtensions
     /// <param name="this">The current waypoint template.</param>
     /// <param name="other">The other waypoint template to compare to.</param>
     /// <returns>True if the waypoint templates have the same title, colour, pinned state, and server icon; otherwise, false.</returns>
-    public static bool IsSameAs(this WaypointTemplate @this, WaypointTemplate other)
+    public static bool IsSameAs(this WaypointTemplateBase @this, WaypointTemplateBase other)
     {
         return @this.Validate(
             x => x.Title == other.Title,

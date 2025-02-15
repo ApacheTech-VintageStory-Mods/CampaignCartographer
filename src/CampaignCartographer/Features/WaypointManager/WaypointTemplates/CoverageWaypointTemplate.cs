@@ -5,7 +5,7 @@
 /// </summary>
 [JsonObject]
 [ProtoContract]
-public class CoverageWaypointTemplate : WaypointTemplate
+public class CoverageWaypointTemplate : WaypointTemplateBase
 {
     /// <summary>
     ///     Determines how far apart waypoints of the same type can be.

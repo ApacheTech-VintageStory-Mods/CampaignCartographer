@@ -7,7 +7,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.W
 /// </summary>
 [JsonObject]
 [ProtoContract]
-public class PositionedWaypointTemplate : WaypointTemplate
+public class PositionedWaypointTemplate : WaypointTemplateBase
 {
     /// <summary>
     ///     Gets or sets the position of the waypoint in the game world.

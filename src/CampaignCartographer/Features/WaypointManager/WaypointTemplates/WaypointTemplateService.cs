@@ -1,6 +1,6 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using Gantry.Services.FileSystem.Abstractions.Contracts;
-using ProperVersion;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints;
+using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Systems;
+using Gantry.Core.Extensions.DotNet;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 
@@ -10,9 +10,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.W
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class WaypointTemplateService
 {
-    private readonly ICoreClientAPI _capi;
-    private readonly IFileSystemService _fileSystemService;
-    private List<PredefinedWaypointTemplate> _defaultWaypoints;
+    private readonly PredefinedWaypointsSettings _settings;
 
     /// <summary>
     ///     Gets the collection of waypoint templates indexed by their keys.
@@ -24,10 +22,9 @@ public class WaypointTemplateService
     /// </summary>
     /// <param name="capi">The client API for interacting with the core system.</param>
     /// <param name="fileSystemService">The service used for file operations.</param>
-    public WaypointTemplateService(ICoreClientAPI capi, IFileSystemService fileSystemService)
+    public WaypointTemplateService(PredefinedWaypointsSettings settings)
     {
-        _capi = capi;
-        _fileSystemService = fileSystemService;
+        _settings = settings;
         LoadWaypointTemplates();
     }
 
@@ -48,34 +45,19 @@ public class WaypointTemplateService
         try
         {
             WaypointTemplates.Clear();
-
-            // Load default waypoints
-            _defaultWaypoints = _fileSystemService
-                .GetJsonFile("default-waypoints.json")
-                .ParseAsMany<PredefinedWaypointTemplate>()
-                .ToList();
-
-            // Version check and update if needed
-            var versionFile = _fileSystemService.GetJsonFile("version.data");
-            var versionData = versionFile.ParseAsJsonObject();
-            var version = versionData["Version"].AsString();
-            var installedVersion = SemVer.Parse(version);
-
-            if (installedVersion < SemVer.Parse(ModEx.ModInfo.Version))
+            var disabledPacks = _settings.DisabledTemplatePacks;
+            var templatePacks = PredefinedWaypoints.TemplatePacks.Where(p => !disabledPacks.Contains(p.Metadata.Name)).ToList();
+            foreach (var templatePack in templatePacks)
             {
-                var defaultWaypointsFile = _fileSystemService.GetJsonFile("default-waypoints.json");
-                ApiEx.Logger.VerboseDebug("Updating global default files.");
-                var globalConfigFile = _fileSystemService.GetJsonFile("version.data");
-                defaultWaypointsFile.DisembedFrom(ModEx.ModAssembly);
-                globalConfigFile.DisembedFrom(GetType().Assembly);
+                var disabledTemplates = _settings.DisabledTemplatesPerPack.All(templatePack.Metadata.Name);
+                var templates = templatePack.GetTemplates().Where(p => !disabledTemplates.Contains(p.Key));
+                foreach (var template in templates)
+                {
+                    WaypointTemplates.AddIfNotPresent(template.Key, template);
+                }
             }
 
-            // Load waypoint templates from the configuration file
-            var waypointsFile = _fileSystemService.GetJsonFile("waypoint-types.json");
-            var waypoints = waypointsFile.ParseAsMany<PredefinedWaypointTemplate>();
-            WaypointTemplates.AddOrUpdateRange(waypoints.Where(p => p.Enabled), p => p.Key);
-
-            ApiEx.Logger.Event($"{WaypointTemplates.Count} waypoint extensions loaded.");
+            ApiEx.Logger.VerboseDebug($"{WaypointTemplates.Count} waypoint extensions loaded from {templatePacks.Count} template packs.");
         }
         catch (Exception e)
         {
@@ -93,16 +75,7 @@ public class WaypointTemplateService
     /// </returns>
     public PredefinedWaypointTemplate GetTemplateByKey(string key)
     {
-        if (WaypointTemplates.TryGetValue(key, out var template))
-        {
-            return template.Clone() as PredefinedWaypointTemplate;
-        }
-
-        if (_defaultWaypoints is null || _defaultWaypoints.Count == 0) return null;
-
-        return _defaultWaypoints
-            .Where(p => p.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase))
-            .Select(p => p.DeepClone())
-            .FirstOrNull();
+        WaypointTemplates.TryGetValue(key, out var template);
+        return template;
     }
 }

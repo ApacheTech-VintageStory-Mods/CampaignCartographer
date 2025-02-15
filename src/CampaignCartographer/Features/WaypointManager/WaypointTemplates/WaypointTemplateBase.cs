@@ -9,8 +9,10 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.W
 /// </summary>
 [JsonObject]
 [ProtoContract]
-public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
+public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
 {
+    protected string _title = string.Empty;
+
     /// <summary>
     ///     Gets or sets the title of the waypoint.
     /// </summary>
@@ -24,8 +26,7 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     /// <value>The title of the waypoint.</value>
     [JsonRequired]
     [ProtoMember(2)]
-    public string Title { get; set; } = string.Empty;
-
+    public string Title { get => _title; set => _title = value; }
     /// <summary>
     ///     Gets or sets the icon that will be saved to the server.
     /// </summary>
@@ -66,7 +67,7 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     /// <returns>
     ///     true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.
     /// </returns>
-    public bool Equals(WaypointTemplate other) => Id.Equals(other?.Id, StringComparison.InvariantCultureIgnoreCase);
+    public bool Equals(WaypointTemplateBase other) => Id.Equals(other?.Id, StringComparison.InvariantCultureIgnoreCase);
 
     /// <summary>
     ///     Determines whether the specified <see cref="object" />, is equal to this instance.
@@ -79,7 +80,7 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     {
         if (obj is null) return false;
         if (ReferenceEquals(this, obj)) return true;
-        return obj.GetType() == GetType() && Equals(obj.To<WaypointTemplate>());
+        return obj.GetType() == GetType() && Equals(obj.To<WaypointTemplateBase>());
     }
 
     /// <summary>
@@ -93,12 +94,12 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     /// <summary>
     ///     Implements the operator ==.
     /// </summary>
-    public static bool operator ==(WaypointTemplate left, WaypointTemplate right) => Equals(left, right);
+    public static bool operator ==(WaypointTemplateBase left, WaypointTemplateBase right) => Equals(left, right);
 
     /// <summary>
     ///     Implements the operator !=.
     /// </summary>
-    public static bool operator !=(WaypointTemplate left, WaypointTemplate right) => !Equals(left, right);
+    public static bool operator !=(WaypointTemplateBase left, WaypointTemplateBase right) => !Equals(left, right);
 
     /// <summary>
     ///     Creates a new object that is a copy of the current instance.
@@ -117,7 +118,7 @@ public class WaypointTemplate : ICloneable, IEquatable<WaypointTemplate>
     /// <returns>
     ///     A new object that is a copy of this instance.
     /// </returns>
-    public virtual T Clone<T>() where T : WaypointTemplate
+    public virtual T Clone<T>() where T : WaypointTemplateBase
     {
         return (T)MemberwiseClone();
     }
