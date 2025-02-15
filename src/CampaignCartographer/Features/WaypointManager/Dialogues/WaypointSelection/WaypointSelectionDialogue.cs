@@ -1,4 +1,5 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.Imports;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
@@ -209,7 +210,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     private bool OnImportButtonClicked()
     {
-        var dialogue = IOC.Services.Resolve<Imports.WaypointImportDialogue>();
+        var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
         dialogue.OnClosed += () => TryClose();
         return dialogue.TryOpen();
     }

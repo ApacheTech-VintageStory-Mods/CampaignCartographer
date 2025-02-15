@@ -1,5 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.MapLayer;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.MapLayer;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Dialogue;
 using Cairo;

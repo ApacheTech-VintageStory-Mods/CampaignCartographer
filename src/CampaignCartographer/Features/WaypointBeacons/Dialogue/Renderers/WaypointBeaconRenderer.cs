@@ -1,8 +1,6 @@
-﻿using System.Reflection.Emit;
-using Gantry.Core.Extensions.Api;
+﻿using Gantry.Core.Extensions.Api;
 using Gantry.Core.GameContent;
 using Gantry.Core.Maths;
-using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
