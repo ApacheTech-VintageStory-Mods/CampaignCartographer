@@ -1,8 +1,11 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core.Extensions.DotNet;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Services.FileSystem.Abstractions.Contracts;
+using Gantry.Services.FileSystem.Configuration;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Dialogue.PredefinedWaypoints;
 
@@ -14,9 +17,11 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.D
 public class PredefinedWaypointsDialogue : GenericDialogue
 {
     private readonly IFileSystemService _fileSystemService;
+    private readonly TemplatePack _templatePack;
+    private readonly PredefinedWaypointsSettings _settings;
+
     private List<PredefinedWaypointsCellEntry> _waypointCells;
-    private readonly SortedDictionary<string, PredefinedWaypointTemplate> _waypointTypes = [];
-    private readonly IJsonModFile _file;
+    private readonly SortedDictionary<string, PredefinedWaypointTemplate> _templates = [];
     private ElementBounds _clippedBounds;
     private ElementBounds _cellListBounds;
     private GuiElementCellList<PredefinedWaypointsCellEntry> _cellList;
@@ -28,15 +33,17 @@ public class PredefinedWaypointsDialogue : GenericDialogue
     /// </summary>
     /// <param name="capi">Client API pass-through</param>
     /// <param name="fileSystemService">Injected file system service.</param>
-    public PredefinedWaypointsDialogue(ICoreClientAPI capi, IFileSystemService fileSystemService) : base(capi)
+    public PredefinedWaypointsDialogue(ICoreClientAPI capi, IFileSystemService fileSystemService, PredefinedWaypointsSettings settings, TemplatePack templatePack) : base(capi)
     {
         _fileSystemService = fileSystemService;
-        _file = _fileSystemService.GetJsonFile("waypoint-types.json");
-        _waypointTypes.AddOrUpdateRange(_file.ParseAsMany<PredefinedWaypointTemplate>(), w => w.Key);
-
+        _settings = settings;
+        _templatePack = templatePack;
+        _templates.AddOrUpdateRange(templatePack.GetTemplates(), w => w.Key);
         _waypointCells = GetCellEntries();
         Title = LangEntry("Title");
         Alignment = EnumDialogArea.CenterMiddle;
+        Modal = true;
+        ModalTransparency = 0.4f;
 
         ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
         {
@@ -108,9 +115,10 @@ public class PredefinedWaypointsDialogue : GenericDialogue
             .AddVerticalScrollbar(OnScroll, ElementStdBounds.VerticalScrollbar(insetBounds), "scrollbar")
             .BeginClip(_clippedBounds)
             .AddInteractiveElement(_cellList, "waypointsList")
-            .EndClip()
-            .AddSmallButton(LangEntry("LoadDefault"), OnLoadDefaultWaypointTypes, buttonRowBoundsLeftFixed)
-            .AddSmallButton(LangEntry("AddNew"), OnAddNewWaypointTypeButtonPressed, buttonRowBoundsRightFixed);
+            .EndClip();
+
+        if (!_templatePack.Metadata.Custom) return;
+        composer.AddSmallButton(LangEntry("AddNew"), OnAddNewWaypointTypeButtonPressed, buttonRowBoundsRightFixed);
     }
 
     private void AddSearchBox(GuiComposer composer, ref ElementBounds bounds)
@@ -172,25 +180,10 @@ public class PredefinedWaypointsDialogue : GenericDialogue
         _cellList.CallMethod("FilterCells", (System.Func<IGuiElementCell, bool>)Filter);
     }
 
-    private bool OnLoadDefaultWaypointTypes()
-    {
-        MessageBox.Show(LangEntry("LoadDefault"), LangEntry("LoadDefault.Confirmation"),
-            ButtonLayout.OkCancel,
-            () =>
-            {
-                var waypointTypes = _fileSystemService.GetJsonFile("default-waypoints.json").ParseAsMany<PredefinedWaypointTemplate>();
-                _waypointTypes.AddOrUpdateRange(waypointTypes, w => w.Key);
-                _file.SaveFromList(_waypointTypes.Values);
-                _cellList.ReloadCells(_waypointCells = GetCellEntries());
-                FilterCells();
-                RefreshValues();
-            });
-        return true;
-    }
-
     private bool OnAddNewWaypointTypeButtonPressed()
     {
-        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(new PredefinedWaypointTemplate(), WaypointTypeMode.Add).With(p =>
+        var template = new PredefinedWaypointTemplate().With(p => p.TemplatePack = _templatePack);
+        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(template, WaypointTypeMode.Add).With(p =>
         {
             p.Title = LangEntry("AddNew");
             p.OnOkAction = AddNewWaypointType;
@@ -201,13 +194,17 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     private void AddNewWaypointType(PredefinedWaypointTemplate model)
     {
-        if (_waypointTypes.ContainsKey(model.Key))
+        if (_templates.ContainsKey(model.Key))
         {
             MessageBox.Show(LangEntry("Error"), LangEntry("AddNew.Validation", model.Key));
             return;
         }
-        _waypointTypes.Add(model.Key, model);
-        _file.SaveFromList(_waypointTypes.Values);
+        _templates.Add(model.Key, model);
+
+        _templatePack.Templates.Add(model);
+        var file = _fileSystemService.GetJsonFile($"{_templatePack.Metadata.Name}.json");
+        file.SaveFrom(_templatePack);
+
         _cellList.ReloadCells(_waypointCells = GetCellEntries());
         FilterCells();
         RefreshValues();
@@ -221,7 +218,7 @@ public class PredefinedWaypointsDialogue : GenericDialogue
     {
         return new PredefinedWaypointsGuiCell(ApiEx.Client, cell, bounds)
         {
-            On = cell.Model.Enabled,
+            On = cell.Model.Enabled = cell.Enabled,
             OnMouseDownOnCellLeft = OnCellClickLeftSide,
             OnMouseDownOnCellRight = OnCellClickRightSide
         };
@@ -229,21 +226,22 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     private List<PredefinedWaypointsCellEntry> GetCellEntries()
     {
-        if (!_waypointTypes.Any()) return [];
-        return _waypointTypes.Select(kvp =>
+        if (!_templates.Any()) return [];
+        var list = _templates.Select(kvp =>
         {
             var dto = kvp.Value;
             return new PredefinedWaypointsCellEntry
             {
                 Title = dto.Title,
                 DetailText = string.Empty,
-                Enabled = true,
+                Enabled = !_settings.DisabledTemplatesPerPack.ListContains(_templatePack.Metadata.Name, dto.Key),
                 RightTopText = dto.Key,
                 RightTopOffY = 3f,
                 DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
-                Model = dto
+                Model = dto.With(p => p.TemplatePack = _templatePack)
             };
         }).ToList();
+        return list;
     }
 
     #endregion
@@ -259,12 +257,14 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     private void OnCellClickLeftSide(int val)
     {
+        if (!_templatePack.Metadata.Custom) return;
         var cell = _cellList.elementCells.Cast<PredefinedWaypointsGuiCell>().ToList()[val];
         var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(cell.Model, WaypointTypeMode.Edit).With(p =>
         {
             p.Title = LangEntry("Edit");
             p.OnOkAction = EditWaypointType;
             p.OnDeleteAction = DeleteWaypointType;
+            p.OnScopeChange = TryClose;
         });
         dialogue.TryOpen();
     }
@@ -276,13 +276,15 @@ public class PredefinedWaypointsDialogue : GenericDialogue
         MessageBox.Show(title, message, ButtonLayout.OkCancel,
             () =>
             {
-                if (!_waypointTypes.ContainsKey(model.Key))
+                if (!_templates.ContainsKey(model.Key))
                 {
                     MessageBox.Show(LangEntry("Error"), LangEntry("Edit.Validation", model.Key));
                     return;
                 }
-                _waypointTypes.Remove(model.Key);
-                _file.SaveFromList(_waypointTypes.Values);
+                _templates.Remove(model.Key);
+                _templatePack.Templates.RemoveAll(p => p.Key == model.Key);
+                var file = _fileSystemService.GetJsonFile($"{_templatePack.Metadata.Name}.json");
+                file.SaveFrom(_templatePack);
                 _cellList.ReloadCells(_waypointCells = GetCellEntries());
                 FilterCells();
                 RefreshValues();
@@ -291,15 +293,18 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     private void EditWaypointType(PredefinedWaypointTemplate model)
     {
-        if (!_waypointTypes.ContainsKey(model.Key))
+        if (!_templates.ContainsKey(model.Key))
         {
             MessageBox.Show(LangEntry("Error"), LangEntry("Edit.Validation", model.Key));
             return;
         }
-        _waypointTypes[model.Key] = model;
-        _file.SaveFromList(_waypointTypes.Values);
+        _templates[model.Key] = model;
+        var index = _templatePack.Templates.FindIndex(p => p.Key == model.Key);
+        _templatePack.Templates[index] = model;
+        var file = _fileSystemService.GetJsonFile($"{_templatePack.Metadata.Name}.json");
+        file.SaveFrom(_templatePack);
         _cellList.ReloadCells(_waypointCells = GetCellEntries());
-        FilterCells();
+        FilterCells();  
         RefreshValues();
     }
 
@@ -309,6 +314,18 @@ public class PredefinedWaypointsDialogue : GenericDialogue
         cell.On = !cell.On;
         cell.Enabled = cell.On;
         cell.Model.Enabled = cell.On;
+
+        if (cell.On)
+        {
+            _settings.DisabledTemplatesPerPack.RemoveFromList(_templatePack.Metadata.Name, cell.Model.Key);
+        }
+        else
+        {
+            _settings.DisabledTemplatesPerPack.AddToList(_templatePack.Metadata.Name, cell.Model.Key);
+        }
+
+        ModSettings.World.Save(_settings);
+        
         RefreshValues();
     }
 
@@ -316,8 +333,10 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     public override bool TryClose()
     {
-        _file.SaveFromList(_waypointTypes.Values);
         IOC.Services.Resolve<WaypointTemplateService>().LoadWaypointTemplates();
+        OnClose();
         return base.TryClose();
     }
+
+    public Action OnClose { get; set; }
 }

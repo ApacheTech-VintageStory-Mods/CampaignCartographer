@@ -2,7 +2,10 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
+using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Core.Hosting.Annotation;
+using Gantry.Services.FileSystem.Abstractions.Contracts;
+using Gantry.Services.FileSystem.Enums;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
@@ -11,7 +14,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.D
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class AddEditWaypointTypeDialogue : GenericDialogue
 {
-    private readonly PredefinedWaypointTemplate _waypoint;
+    private readonly PredefinedWaypointTemplate _template;
+    private readonly IFileSystemService _fileSystemService;
     private readonly WaypointTypeMode _mode;
 
     private readonly string[] _icons;
@@ -25,10 +29,11 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     /// <param name="mode"></param>
     [Obsolete("Use Factory Method: WaypointInfoDialogue.ShowDialogue()")]
     [SidedConstructor(EnumAppSide.Client)]
-    public AddEditWaypointTypeDialogue(ICoreClientAPI capi, PredefinedWaypointTemplate waypoint, WaypointTypeMode mode) : base(capi)
+    public AddEditWaypointTypeDialogue(ICoreClientAPI capi, IFileSystemService fileSystemService, PredefinedWaypointTemplate waypoint, WaypointTypeMode mode) : base(capi)
     {
         var waypointMapLayer = IOC.Services.GetRequiredService<WaypointMapLayer>();
-        _waypoint = waypoint.Clone().To<PredefinedWaypointTemplate>();
+        _template = waypoint.Clone().To<PredefinedWaypointTemplate>();
+        _fileSystemService = fileSystemService;
         _mode = mode;
         _icons = [.. waypointMapLayer.WaypointIcons.Keys];
         _colours = [.. waypointMapLayer.WaypointColors];
@@ -42,6 +47,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
     public Action<PredefinedWaypointTemplate> OnOkAction { get; set; }
     public Action<PredefinedWaypointTemplate> OnDeleteAction { get; set; }
+    public ActionConsumable OnScopeChange { get; set; }
 
     #region Form Composition
 
@@ -49,16 +55,16 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     {
         if (_mode == WaypointTypeMode.Add)
         {
-            SingleComposer.GetTextInput("txtSyntax").SetValue(_waypoint.Key);
+            SingleComposer.GetTextInput("txtSyntax").SetValue(_template.Key);
         }
-        var colour = _colours.IndexOf(_waypoint.Colour.ColourValue());
-        var icon = _icons.IndexOf(_waypoint.DisplayedIcon);
-        SingleComposer.GetTextInput("txtTitle").SetValue(_waypoint.Title);
+        var colour = _colours.IndexOf(_template.Colour.ColourValue());
+        var icon = _icons.IndexOf(_template.DisplayedIcon);
+        SingleComposer.GetTextInput("txtTitle").SetValue(_template.Title);
         SingleComposer.ColorListPickerSetValue("optColour", Math.Max(colour, 0));
         SingleComposer.IconListPickerSetValue("optIcon", Math.Max(icon, 0));
-        SingleComposer.GetSlider("txtHorizontalRadius").SetValues(_waypoint.HorizontalCoverageRadius, 0, 50, 1);
-        SingleComposer.GetSlider("txtVerticalRadius").SetValues(_waypoint.VerticalCoverageRadius, 0, 50, 1);
-        SingleComposer.GetSwitch("btnPinned").SetValue(_waypoint.Pinned);
+        SingleComposer.GetSlider("txtHorizontalRadius").SetValues(_template.HorizontalCoverageRadius, 0, 50, 1);
+        SingleComposer.GetSlider("txtVerticalRadius").SetValues(_template.VerticalCoverageRadius, 0, 50, 1);
+        SingleComposer.GetSwitch("btnPinned").SetValue(_template.Pinned);
     }
 
     protected override void ComposeBody(GuiComposer composer)
@@ -81,7 +87,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
             .AddTextInput(right, OnSyntaxChanged, txtTitleFont, "txtSyntax")
             .EndIf()
             .AddIf(_mode == WaypointTypeMode.Edit)
-            .AddStaticText(_waypoint.Key, txtTitleFont, EnumTextOrientation.Left, right.WithFixedOffset(0, 5))
+            .AddStaticText(_template.Key, txtTitleFont, EnumTextOrientation.Left, right.WithFixedOffset(0, 5))
             .EndIf();
 
         //
@@ -180,48 +186,87 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
+
+        //
+        // Change Scope Button
+        //
+        // TODO: Add lang entry for change scope button
+        buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10).WithFixedWidth(150);
+        composer.AddSmallButton("Change Scope", OnChangeScopeButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnChangeScope");
     }
 
     #endregion
 
     #region Control Event Handlers
 
+    private bool OnChangeScopeButtonPressed()
+    {
+        // TODO: Add lang entry for change scope confirmation box
+        var currentScope = _template.TemplatePack.Metadata.Scope;
+        var targetScope = currentScope == FileScope.World ? FileScope.Global : FileScope.World;
+        var message = currentScope == FileScope.World
+            ? "This template is currently only available within this world. Would you like to make it available in all worlds?"
+            : "This template is currenly available in all worlds. Would you like to only make it available in this world?";
+
+        MessageBox.Show("Change Scope", message, ButtonLayout.OkCancel, () =>
+        {
+            var currentPack = Systems.PredefinedWaypoints.CustomPacks[currentScope];
+            var targetPack = Systems.PredefinedWaypoints.CustomPacks[targetScope];
+
+            currentPack.Templates.Remove(_template);
+            _template.TemplatePack = targetPack;
+            targetPack.Templates.Add(_template);
+
+            Save(currentPack);
+            Save(targetPack);
+
+            TryClose();
+            OnScopeChange();
+        });
+        return true;
+        void Save(TemplatePack pack)
+        {
+            var file = _fileSystemService.GetJsonFile($"{pack.Metadata.Name}.json");
+            file.SaveFrom(pack);
+        }
+    }
+
     private void OnSyntaxChanged(string syntax)
     {
-        _waypoint.Key = syntax.ToLowerInvariant();
+        _template.Key = syntax.ToLowerInvariant();
     }
 
     private void OnTitleChanged(string title)
     {
-        _waypoint.Title = title;
+        _template.Title = title;
     }
 
     private void OnIconSelected(int index)
     {
-        _waypoint.DisplayedIcon = _icons[index];
-        _waypoint.ServerIcon = _icons[index];
+        _template.DisplayedIcon = _icons[index];
+        _template.ServerIcon = _icons[index];
     }
 
     private void OnColourSelected(int index)
     {
-        _waypoint.Colour = ColorUtil.Int2Hex(_colours[index]);
+        _template.Colour = ColorUtil.Int2Hex(_colours[index]);
     }
 
     private bool OnHorizontalRadiusChanged(int radius)
     {
-        _waypoint.HorizontalCoverageRadius = radius;
+        _template.HorizontalCoverageRadius = radius;
         return true;
     }
 
     private bool OnVerticalRadiusChanged(int radius)
     {
-        _waypoint.VerticalCoverageRadius = radius;
+        _template.VerticalCoverageRadius = radius;
         return true;
     }
 
     private void OnPinnedChanged(bool state)
     {
-        _waypoint.Pinned = state;
+        _template.Pinned = state;
     }
 
     private bool OnCancelButtonPressed()
@@ -235,14 +280,14 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         var validationErrors = false;
         var message = new StringBuilder();
 
-        if (string.IsNullOrWhiteSpace(_waypoint.Key) || _waypoint.Key.Contains(' '))
+        if (string.IsNullOrWhiteSpace(_template.Key) || _template.Key.Contains(' '))
         {
             message.AppendLine(T("Syntax.Validation"));
             message.AppendLine();
             validationErrors = true;
         }
 
-        if (_waypoint.HorizontalCoverageRadius < 0 || _waypoint.VerticalCoverageRadius < 0)
+        if (_template.HorizontalCoverageRadius < 0 || _template.VerticalCoverageRadius < 0)
         {
             message.AppendLine(T("Coverage.Validation"));
             message.AppendLine();
@@ -256,13 +301,13 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
             return false;
         }
 
-        OnOkAction?.Invoke(_waypoint);
+        OnOkAction?.Invoke(_template);
         return TryClose();
     }
 
     private bool OnDeleteButtonPressed()
     {
-        OnDeleteAction?.Invoke(_waypoint);
+        OnDeleteAction?.Invoke(_template);
         return TryClose();
     }
 
@@ -274,6 +319,6 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     /// <param name="path">The entry to return.</param>
     /// <param name="args">The entry to return.</param>
     /// <returns>A localised <see cref="string"/>, for the specified language file code.</returns>
-    protected string T(string path, params object[] args)
+    protected static string T(string path, params object[] args)
         => LangEx.FeatureString($"PredefinedWaypoints.Dialogue.WaypointType", path, args);
 }
