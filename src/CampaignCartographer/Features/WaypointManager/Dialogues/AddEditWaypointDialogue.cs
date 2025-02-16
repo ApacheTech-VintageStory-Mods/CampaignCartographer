@@ -246,7 +246,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnShareButtonPressed()
     {
-        var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, _waypoint);
+        var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, [_waypoint]);
         dialogue.ToggleGui();
         return true;
     }

@@ -6,7 +6,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 internal class ShareWaypointDialogue : GenericDialogue
 {
     private readonly WaypointSharingService _waypointSharingService;
-    private readonly Waypoint _waypoint;
+    private readonly IEnumerable<Waypoint> _waypoints;
     private readonly IPlayer[] _onlinePlayers;
     private IPlayer _selectedPlayer;
 
@@ -25,9 +25,9 @@ internal class ShareWaypointDialogue : GenericDialogue
     /// <inheritdoc />
     public override bool CaptureRawMouse() => true;
 
-    public ShareWaypointDialogue(ICoreClientAPI capi, IPlayer[] onlinePlayers, Waypoint waypoint) : base(capi)
+    public ShareWaypointDialogue(ICoreClientAPI capi, IPlayer[] onlinePlayers, IEnumerable<Waypoint> waypoints) : base(capi)
     {
-        _waypoint = waypoint;
+        _waypoints = waypoints;
         _onlinePlayers = onlinePlayers;
         _selectedPlayer = _onlinePlayers[0];
         _waypointSharingService = IOC.Services.GetRequiredService<WaypointSharingService>();
@@ -84,13 +84,13 @@ internal class ShareWaypointDialogue : GenericDialogue
 
     private bool OnBroadcast()
     {
-        _waypointSharingService.BroadcastWaypoint(_waypoint);
+        _waypointSharingService.BroadcastWaypoints(_waypoints);
         return TryClose();
     }
 
     private bool OnShare()
     {
-        _waypointSharingService.ShareWaypoint(_waypoint, _selectedPlayer.PlayerUID);
+        _waypointSharingService.ShareWaypoints(_waypoints, _selectedPlayer.PlayerUID);
         return TryClose();
     }
 

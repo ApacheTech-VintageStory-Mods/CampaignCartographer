@@ -32,9 +32,9 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
         Alignment = EnumDialogArea.CenterMiddle;
         Modal = true;
         ModalTransparency = 0f;
-        LeftButtonText = LangEntry("OpenExportsFolder");
-        RightButtonText = LangEntry("ExportSelectedWaypoints");
-        ShowTopRightButton = true;
+        LeftButtonText = T("OpenExportsFolder");
+        RightButtonText = T("ExportSelectedWaypoints");
+        ShowExtraButtons = true;
 
         ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
         {

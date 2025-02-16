@@ -56,8 +56,10 @@ public class WaypointSharingService : UniversalModSystem
         {
             if (waypointMapLayer.Waypoints.Any(p => p.OwningPlayerUid == player.PlayerUID && p.Guid == packet.Waypoint.Guid)) continue;
             var waypoint = packet.Waypoint.With(p => p.OwningPlayerUid = player.PlayerUID);
-            ApiEx.Logger.VerboseDebug($"Sharing waypoint {{{waypoint.Guid}}} with {player.PlayerName}.");
+            ApiEx.Logger.VerboseDebug($"{sender.PlayerName} is sharing waypoint {{{waypoint.Guid}}} with {player.PlayerName}.");
             waypointMapLayer.AddWaypoint(waypoint, player as IServerPlayer);
+            // TODO: Per user translation
+            Sapi.SendMessage(player, GlobalConstants.InfoLogChatGroup, $"{sender.PlayerName} has shared waypoint {{{waypoint.Guid}}} with you.", EnumChatType.Notification);
         }
     }
 
@@ -91,6 +93,19 @@ public class WaypointSharingService : UniversalModSystem
     }
 
     /// <summary>
+    ///     Shares an array of waypoints to a player.
+    /// </summary>
+    /// <param name="waypoints">The waypoints to share.</param>
+    [ClientSide]
+    public void ShareWaypoints(IEnumerable<Waypoint> waypoints, string playerId)
+    {
+        foreach (var waypoint in waypoints)
+        {
+            ShareWaypoint(waypoint, playerId);
+        }
+    }
+
+    /// <summary>
     ///     Broadcasts a waypoint to all players.
     /// </summary>
     /// <param name="waypoint">The waypoint to broadcast.</param>
@@ -102,6 +117,19 @@ public class WaypointSharingService : UniversalModSystem
         {
             Waypoint = waypoint
         });
+    }
+
+    /// <summary>
+    ///     Broadcasts an array of waypoints to all players.
+    /// </summary>
+    /// <param name="waypoints">The waypoints to broadcast.</param>
+    [ClientSide]
+    public void BroadcastWaypoints(IEnumerable<Waypoint> waypoints)
+    {
+        foreach (var waypoint in waypoints)
+        {
+            BroadcastWaypoint(waypoint);
+        }
     }
 
     #endregion

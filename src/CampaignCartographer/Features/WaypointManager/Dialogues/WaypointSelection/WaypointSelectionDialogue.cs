@@ -18,12 +18,12 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public abstract class WaypointSelectionDialogue : GenericDialogue
 {
-    private readonly WaypointQueriesRepository _queriesRepo;
     private ElementBounds _clippedBounds;
     private ElementBounds _cellListBounds;
     private GuiElementDynamicText _lblSelectedCount;
     private static WaypointSelectionDialogue _instance;
     private string _filterString;
+    private readonly IPlayer[] _onlinePlayers;
     protected readonly WorldMapManager WorldMap;
 
     protected List<WaypointSelectionCellEntry> Waypoints { get; set; } = [];
@@ -32,7 +32,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     protected WaypointSortType SortOrder { get; private set; } = WaypointSortType.IndexAscending;
 
-    protected bool ShowTopRightButton { private get; init; }
+    protected bool ShowExtraButtons { private get; init; }
 
     protected string LeftButtonText { private get; init; }
 
@@ -47,10 +47,10 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     /// <param name="queriesRepo">IOC Injected Waypoint Service.</param>
     protected WaypointSelectionDialogue(ICoreClientAPI capi, WaypointQueriesRepository queriesRepo) : base(capi)
     {
-        _queriesRepo = queriesRepo;
         WorldMap = IOC.Services.Resolve<WorldMapManager>();
         Title = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "Title");
         Alignment = EnumDialogArea.CenterMiddle;
+        _onlinePlayers = capi.World.AllOnlinePlayers.Except([capi.World.Player]).ToArray();
 
         ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
         {
@@ -124,8 +124,8 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
             .WithFixedPadding(10, 2);
 
         var textBounds = ElementBounds
-            .FixedSize(EnumDialogArea.CenterFixed, 420, 0)
-            .WithFixedPadding(10, 5);
+            .FixedSize(EnumDialogArea.CenterFixed, 0, 30)
+            .WithFixedPadding(10, 2);
 
         var outerBounds = ElementBounds
             .Fixed(EnumDialogArea.LeftTop, 0, 0, scaledWidth, 35);
@@ -156,11 +156,11 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
             buttonRowBounds.FlatCopy().FixedUnder(insetBounds, 10.0),
             EnumButtonStyle.Normal, "btnOpenExportsFolder");
 
-        composer.AddInteractiveElement(
-            _lblSelectedCount =
-                new GuiElementDynamicText(capi, "",
-                    CairoFont.WhiteDetailText().WithOrientation(EnumTextOrientation.Center),
-                    textBounds.FlatCopy().FixedUnder(insetBounds, 10.0)), "lblSelectedCount");
+        if (ShowExtraButtons && _onlinePlayers.Length > 0)
+        {
+            composer.AddSmallButton(T("ShareSelected"),OnShareButtonPressed, 
+                textBounds.FlatCopy().FixedUnder(insetBounds, 10.0), EnumButtonStyle.Normal, "btnShareSelected");
+        }
 
         composer.AddSmallButton(RightButtonText, OnRightButtonPressed, buttonRowBoundsRightFixed.FlatCopy().FixedUnder(insetBounds, 10.0));
     }
@@ -172,29 +172,33 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         var font = CairoFont.WhiteSmallText();
         var lblSearchText = $"{Lang.Get("Search")}...";
 
-        var left = ElementBounds.Fixed(0, 0, 200, switchSize).FixedUnder(bounds, 3);
-        var right = ElementBounds.Fixed(210, 0, 300, switchSize).FixedUnder(bounds, 3);
+        var first = ElementBounds.Fixed(0, 0, 200, switchSize).FixedUnder(bounds, 3);
+        var second = ElementBounds.FixedSize(250, switchSize).FixedUnder(bounds, 3).FixedRightOf(first, 10);
 
-        var txtSearchBox = new GuiElementTextInput(ApiEx.Client, left, OnFilterTextChanged, CairoFont.TextInput());
+        var txtSearchBox = new GuiElementTextInput(ApiEx.Client, first, OnFilterTextChanged, CairoFont.TextInput());
         txtSearchBox.SetPlaceHolderText(lblSearchText);
         composer.AddInteractiveElement(txtSearchBox, "txtSearchBox");
 
         var keys = Enum.GetNames(typeof(WaypointSortType));
-        var values = keys.Select(p => LangEntry(p)).ToArray();
+        var values = keys.Select(p => T(p)).ToArray();
 
-        var cbxSortType = new GuiElementDropDown(ApiEx.Client, keys, values, 0, OnSortOrderChanged, right, font, false);
+        var cbxSortType = new GuiElementDropDown(ApiEx.Client, keys, values, 0, OnSortOrderChanged, second, font, false);
         composer.AddInteractiveElement(cbxSortType, "cbxSortType");
 
-        if (ShowTopRightButton)
+        var btnShareBounds = ElementBounds.FixedSize(250, 0).WithFixedPadding(10, 2).FixedUnder(bounds, 10).FixedRightOf(second, 10);
+        _lblSelectedCount = new GuiElementDynamicText(capi, "", CairoFont.WhiteDetailText().WithOrientation(EnumTextOrientation.Left), btnShareBounds);
+        composer.AddInteractiveElement(_lblSelectedCount, "lblSelectedCount");
+
+        if (ShowExtraButtons)
         {
-            right = ElementBounds
+            var btnOpenImportsBounds = ElementBounds
                 .FixedSize(60, 30)
                 .WithFixedPadding(10, 2)
                 .WithAlignment(EnumDialogArea.RightFixed)
                 .FixedUnder(bounds);
 
             composer.AddSmallButton(LangEx.FeatureString("WaypointManager.Dialogue.Imports", "Title"),
-                OnImportButtonClicked, right, EnumButtonStyle.Normal, "btnOpenImports");
+                OnImportButtonClicked, btnOpenImportsBounds, EnumButtonStyle.Normal, "btnOpenImports");
         }
 
         bounds = bounds.BelowCopy(fixedDeltaY: gapBetweenRows);
@@ -208,6 +212,15 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         RefreshValues();
     }
 
+    private bool OnShareButtonPressed()
+    {
+        var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);        
+        var waypoints = cellList.Select(p => p.Model.ToWaypoint());
+        var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, waypoints);
+        dialogue.ToggleGui();
+        return true;
+    }
+
     private bool OnImportButtonClicked()
     {
         var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
@@ -215,10 +228,8 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         return dialogue.TryOpen();
     }
 
-    protected static string LangEntry(string text, params object[] args)
-    {
-        return LangEx.FeatureString("WaypointManager.Dialogue.Exports", text, args);
-    }
+    protected static string T(string text, params object[] args) 
+        => LangEx.FeatureString("WaypointManager.Dialogue.Exports", text, args);
 
     private void OnFilterTextChanged(string filterString)
     {

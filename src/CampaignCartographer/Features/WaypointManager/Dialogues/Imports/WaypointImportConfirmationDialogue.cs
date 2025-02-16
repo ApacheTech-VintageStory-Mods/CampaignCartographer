@@ -35,7 +35,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
         ModalTransparency = 0f;
         LeftButtonText = LangEx.FeatureString("WaypointManager.Dialogue.ImportConfirmation", "LeftButtonText");
         RightButtonText = LangEx.FeatureString("WaypointManager.Dialogue.ImportConfirmation", "RightButtonText");
-        ShowTopRightButton = false;
+        ShowExtraButtons = false;
 
         ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
         {

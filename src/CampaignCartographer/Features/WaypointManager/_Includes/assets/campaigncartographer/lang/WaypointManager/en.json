@@ -33,6 +33,7 @@
   "Features.WaypointManager.Dialogue.Exports.FileName.HoverText": "The name to give the export file.",
   "Features.WaypointManager.Dialogue.Exports.DefaultName": "Exported Waypoints",
   "Features.WaypointManager.Dialogue.Exports.DefaultWorldName": "Single-player World",
+  "Features.WaypointManager.Dialogue.Exports.ShareSelected": "Share Selected Waypoints",
 
   "Features.WaypointManager.Dialogue.Exports.IndexAscending": "Sort by Index (Ascending)",
   "Features.WaypointManager.Dialogue.Exports.IndexDescending": "Sort by Index (Descending)",
