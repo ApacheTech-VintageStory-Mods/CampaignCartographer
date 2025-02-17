@@ -58,11 +58,12 @@ public class WaypointSharingService : UniversalModSystem
             var waypoint = packet.Waypoint.With(p => p.OwningPlayerUid = player.PlayerUID);
             ApiEx.Logger.VerboseDebug($"{sender.PlayerName} is sharing waypoint {{{waypoint.Guid}}} with {player.PlayerName}.");
             waypointMapLayer.AddWaypoint(waypoint, player as IServerPlayer);
-            // TODO: Per user translation
-            Sapi.SendMessage(player, GlobalConstants.InfoLogChatGroup, $"{sender.PlayerName} has shared waypoint {{{waypoint.Guid}}} with you.", EnumChatType.Notification);
+            var culture = LangEx.GetPlayerLanguageCode(player);
+            var feedback = LangEx.CultureString(culture, "WaypointSharing", "WaypointIdShared", sender.PlayerName, waypoint.Guid);
+            Sapi.SendMessage(player, GlobalConstants.InfoLogChatGroup, feedback, EnumChatType.Notification);
         }
     }
-
+    
     #endregion
 
     #region Client Side
