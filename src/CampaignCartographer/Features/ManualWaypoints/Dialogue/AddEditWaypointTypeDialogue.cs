@@ -230,7 +230,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
     private void OnSyntaxChanged(string syntax)
     {
-        _template.Key = syntax.ToLowerInvariant();
+        _template.Key = syntax.Replace(" ", "").ToLowerInvariant();
     }
 
     private void OnTitleChanged(string title)
@@ -273,13 +273,19 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        // ROADMAP: O/C issues with validation. FluentValidation???
         var validationErrors = false;
         var message = new StringBuilder();
 
         if (string.IsNullOrWhiteSpace(_template.Key) || _template.Key.Contains(' '))
         {
             message.AppendLine(T("Syntax.Validation"));
+            message.AppendLine();
+            validationErrors = true;
+        }
+
+        if (string.IsNullOrWhiteSpace(_template.Title))
+        {
+            message.AppendLine(T("WaypointTitle.Validation"));
             message.AppendLine();
             validationErrors = true;
         }
