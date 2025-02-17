@@ -190,9 +190,9 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         //
         // Change Scope Button
         //
-        // TODO: Add lang entry for change scope button
+
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10).WithFixedWidth(150);
-        composer.AddSmallButton("Change Scope", OnChangeScopeButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnChangeScope");
+        composer.AddSmallButton(T("ChangeScope"), OnChangeScopeButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnChangeScope");
     }
 
     #endregion
@@ -201,14 +201,11 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
     private bool OnChangeScopeButtonPressed()
     {
-        // TODO: Add lang entry for change scope confirmation box
         var currentScope = _template.TemplatePack.Metadata.Scope;
         var targetScope = currentScope == FileScope.World ? FileScope.Global : FileScope.World;
-        var message = currentScope == FileScope.World
-            ? "This template is currently only available within this world. Would you like to make it available in all worlds?"
-            : "This template is currenly available in all worlds. Would you like to only make it available in this world?";
+        var message = T($"ChangeScope.To{targetScope}");
 
-        MessageBox.Show("Change Scope", message, ButtonLayout.OkCancel, () =>
+        MessageBox.Show(T("ChangeScope"), message, ButtonLayout.OkCancel, () =>
         {
             var currentPack = Systems.PredefinedWaypoints.CustomPacks[currentScope];
             var targetPack = Systems.PredefinedWaypoints.CustomPacks[targetScope];

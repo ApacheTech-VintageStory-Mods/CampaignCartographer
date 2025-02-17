@@ -27,7 +27,7 @@ public class WaypointTemplatePackDialogue : GenericDialogue
     public WaypointTemplatePackDialogue(ICoreClientAPI capi, PredefinedWaypointsSettings settings) : base(capi)
     {
         _settings = settings;
-        Title = LangEx.FeatureString("PredefinedWaypoints", "Title");
+        Title = LangEx.FeatureString("PredefinedWaypoints.Dialogue", "Title");
         Alignment = EnumDialogArea.CenterMiddle;
 
         ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
