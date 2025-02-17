@@ -108,13 +108,6 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
 
         context.Operator = Operator.Add;
         EmbossRoundRectangleElement(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, false, 4, 0);
-        // TODO: What is this?
-        //if (string.IsNullOrWhiteSpace(Model.Title))
-        //{
-        //    context.SetSourceRGBA(0.0, 0.0, 0.0, 0.5);
-        //    RoundRectangle(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, 1.0);
-        //    context.Fill();
-        //}
         var scaledSwitchSize = scaled(UnscaledSwitchSize);
         var scaledSwitchPadding = scaled(UnscaledSwitchPadding);
         var x = Bounds.absPaddingX + Bounds.InnerWidth - scaled(0.0) - scaledSwitchSize - scaledSwitchPadding;
