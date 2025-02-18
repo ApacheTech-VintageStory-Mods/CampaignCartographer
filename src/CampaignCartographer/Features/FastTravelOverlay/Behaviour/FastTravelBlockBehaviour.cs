@@ -1,6 +1,7 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Extensions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.MapLayer;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
 using Gantry.Services.FileSystem.Configuration;
@@ -123,9 +124,12 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
     /// <param name="blockPos">The position of the block to remove the overlay node for.</param>
     private void RemoveOverlayNode(BlockPos blockPos)
     {
-        if (_settings.Nodes.RemoveAll(p => p.Location.SourcePos == blockPos) > 0)
+        if (_settings.Nodes.RemoveAll(p => p.Location.SourcePos == blockPos) 
+          + _settings.Nodes.RemoveAll(p => p.Location.TargetPos == blockPos) > 0)
         {
+            ApiEx.Logger.VerboseDebug($"Removed Fast Travel Node: {blockPos}");
             ModSettings.World.Save(_settings);
+            ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
         }
     }
 }
