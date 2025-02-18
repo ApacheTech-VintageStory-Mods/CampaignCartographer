@@ -233,7 +233,7 @@ public class FastTravelOverlayMapComponent : MapComponent
         if (_node.Location.TargetPos is not null)
         {
             var targetPosition = (originHover ? _node.Location.TargetPos : _node.Location.SourcePos).ToRelativeCoordinateString();
-        hoverText.AppendLine(T("HoverText.Target", targetPosition));
+            hoverText.AppendLine(T("HoverText.Target", targetPosition));
         }
 
         return hoverText.ToString();
@@ -269,27 +269,27 @@ public class FastTravelOverlayMapComponent : MapComponent
         worldPos = null;
         try
         {
-        var blockAccessor = ApiEx.ClientMain.BlockAccessor;
-        var blockEntity = blockAccessor.GetBlockEntity(_node.Location.SourcePos);
-        switch (blockEntity)
-        {
-            case BlockEntityStaticTranslocator translocator:
-                {
+            var blockAccessor = ApiEx.ClientMain.BlockAccessor;
+            var blockEntity = blockAccessor.GetBlockEntity(_node.Location.SourcePos);
+            switch (blockEntity)
+            {
+                case BlockEntityStaticTranslocator translocator:
+                    {
                         if (!translocator.FullyRepaired) return false;
                         if (translocator.TargetLocation is null) return false;
                         translocator.TargetLocation.ToVec3d();
-                    return worldPos is not null;
-                }
-            case BlockEntityTeleporter:
-                {
-                    var location = _clientService.Teleporters.FirstOrDefault(p => p.SourcePos == _node.Location.SourcePos);
-                    worldPos = location?.TargetPos?.ToVec3d();
-                    return worldPos is not null;
-                }
-            default:
-                return false;
+                        return worldPos is not null;
+                    }
+                case BlockEntityTeleporter:
+                    {
+                        var location = _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == _node.Location.SourcePos);
+                        worldPos = location?.TargetPos?.ToVec3d();
+                        return worldPos is not null;
+                    }
+                default:
+                    return false;
+            }
         }
-    }
         catch (Exception ex)
         {
             ApiEx.Logger.Error("Could not find destination for fast travel node.", ex);

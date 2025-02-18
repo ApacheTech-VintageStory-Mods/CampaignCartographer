@@ -31,7 +31,7 @@ public class TeleporterClientService : ClientModSystem
     private void OnLocationsReceived(TeleporterLocationsPacket p)
     {
         ApiEx.Logger.VerboseDebug("Teleporter locations updated.");
-        Teleporters = p.Teleporters;
+        TeleporterLocations = p.Teleporters;
     }
 
     /// <summary>
@@ -48,5 +48,5 @@ public class TeleporterClientService : ClientModSystem
     /// <summary>
     ///     A list of known teleporter locations received from the server.
     /// </summary>
-    public List<TeleporterLocation> Teleporters { get; set; }
+    public List<TeleporterLocation> TeleporterLocations { get; set; }
 }

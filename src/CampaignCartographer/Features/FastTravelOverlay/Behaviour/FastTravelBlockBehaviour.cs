@@ -1,5 +1,6 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Dialogue;
+using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
 using Gantry.Services.FileSystem.Configuration;
@@ -72,7 +73,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         return blockEntity switch
         {
             BlockEntityStaticTranslocator translocator => translocator.FullyRepaired && translocator.TargetLocation is not null,
-            BlockEntityTeleporter teleporter => teleporter.GetField<TeleporterLocation>("tpLocation")?.TargetName is not null,
+            BlockEntityTeleporter teleporter => _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == teleporter.Pos).HasTargetLocation(),
             _ => false
         };
     }
@@ -99,7 +100,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
                 break;
             case BlockEntityTeleporter:
                 node.Type = FastTravelBlockType.Teleporter;
-                node.Location = _clientService.Teleporters.FirstOrDefault(p => p.SourcePos == selection.Position);
+                node.Location = _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == selection.Position);
                 node.NodeColour = _settings.TeleporterColour;
                 break;
             default:
