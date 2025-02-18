@@ -41,11 +41,9 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         if (!byPlayer.Entity.Controls.CtrlKey) return false;
         if (!ShouldHandle(world, selection, out var blockEntity)) return false;
 
-        var node = _settings.Nodes.FirstOrDefault(p => p.Location.SourcePos == selection.Position);
-
-        var dialogue = node is null
-            ? FastTravelOverlayNodeDialogue.Create(GetOrCreateNode(selection, blockEntity))
-            : FastTravelOverlayNodeDialogue.Edit(node);
+        var dialogue = TryGetNode(selection, blockEntity, out var node)
+            ? FastTravelOverlayNodeDialogue.Edit(node)
+            : FastTravelOverlayNodeDialogue.Create(node);
 
         dialogue.ToggleGui();
         handling = EnumHandling.Handled;
@@ -68,12 +66,12 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
     /// <param name="selection">The block selection for the block to check.</param>
     /// <param name="blockEntity">The block entity at the selection position.</param>
     /// <returns><c>true</c> if the block should be handled; otherwise, <c>false</c>.</returns>
-    private static bool ShouldHandle(IWorldAccessor world, BlockSelection selection, out BlockEntity blockEntity)
+    private bool ShouldHandle(IWorldAccessor world, BlockSelection selection, out BlockEntity blockEntity)
     {
         blockEntity = world.BlockAccessor.GetBlockEntity(selection.Position);
         return blockEntity switch
         {
-            BlockEntityStaticTranslocator translocator => translocator.FullyRepaired,
+            BlockEntityStaticTranslocator translocator => translocator.FullyRepaired && translocator.TargetLocation is not null,
             BlockEntityTeleporter teleporter => teleporter.GetField<TeleporterLocation>("tpLocation")?.TargetName is not null,
             _ => false
         };
@@ -85,10 +83,12 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
     /// <param name="selection">The block selection to create the node for.</param>
     /// <param name="blockEntity">The block entity that determines the node type and properties.</param>
     /// <returns>A new or existing fast travel overlay node.</returns>
-    private FastTravelOverlayNode GetOrCreateNode(BlockSelection selection, BlockEntity blockEntity)
+    private bool TryGetNode(BlockSelection selection, BlockEntity blockEntity, out FastTravelOverlayNode node)
     {
-        var node = new FastTravelOverlayNode();
+        node = _settings.Nodes.FirstOrDefault(p => p.Location.SourcePos == selection.Position);
+        if (node is not null) return true;
 
+        node = new FastTravelOverlayNode();
         switch (blockEntity)
         {
             case BlockEntityStaticTranslocator translocator:
@@ -113,7 +113,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         }
 
         node.Location!.SourcePos = selection.Position;
-        return node;
+        return false;
     }
 
     /// <summary>

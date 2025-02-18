@@ -55,7 +55,8 @@ public class FastTravelOverlayMapComponent : MapComponent
         args.Handled = false;
         if (args.Button != EnumMouseButton.Right) return;
         if (!_hovering) return;
-        capi.Event.EnqueueMainThreadTask(() => {
+        capi.Event.EnqueueMainThreadTask(() =>
+        {
             var dialogue = FastTravelOverlayNodeDialogue.Edit(_node);
             dialogue.ToggleGui();
         }, "");
@@ -224,12 +225,17 @@ public class FastTravelOverlayMapComponent : MapComponent
     private string GetHoverText(bool originHover)
     {
         var hoverText = new StringBuilder();
-        var type = T($"FastTravelBlockType.{_node.Type}").UcFirst();
-        var targetPosition = (originHover ? _node.Location.TargetPos : _node.Location.SourcePos).ToRelativeCoordinateString();
-        var title = originHover ? GetTitle(_node.Location.SourceName) : _node.Location.TargetName.IfNullOrEmpty(T("DefaultTitle"));
 
+        var type = T($"FastTravelBlockType.{_node.Type}").UcFirst();
+        var title = originHover ? GetTitle(_node.Location.SourceName) : _node.Location.TargetName.IfNullOrEmpty(T("DefaultTitle"));
         hoverText.AppendLine($"{type}: {title}");
+
+        if (_node.Location.TargetPos is not null)
+        {
+            var targetPosition = (originHover ? _node.Location.TargetPos : _node.Location.SourcePos).ToRelativeCoordinateString();
         hoverText.AppendLine(T("HoverText.Target", targetPosition));
+        }
+
         return hoverText.ToString();
     }
 
@@ -260,15 +266,18 @@ public class FastTravelOverlayMapComponent : MapComponent
     /// <returns><c>true</c> if the destination was found; otherwise, <c>false</c>.</returns>
     private bool TryFindDestination(out Vec3d worldPos)
     {
-        worldPos = new Vec3d();
+        worldPos = null;
+        try
+        {
         var blockAccessor = ApiEx.ClientMain.BlockAccessor;
         var blockEntity = blockAccessor.GetBlockEntity(_node.Location.SourcePos);
         switch (blockEntity)
         {
             case BlockEntityStaticTranslocator translocator:
                 {
-                    worldPos = translocator.FullyRepaired
-                        ? translocator.TargetLocation.ToVec3d() : null;
+                        if (!translocator.FullyRepaired) return false;
+                        if (translocator.TargetLocation is null) return false;
+                        translocator.TargetLocation.ToVec3d();
                     return worldPos is not null;
                 }
             case BlockEntityTeleporter:
@@ -279,6 +288,12 @@ public class FastTravelOverlayMapComponent : MapComponent
                 }
             default:
                 return false;
+        }
+    }
+        catch (Exception ex)
+        {
+            ApiEx.Logger.Error("Could not find destination for fast travel node.", ex);
+            return false;
         }
     }
 }
