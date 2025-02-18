@@ -54,6 +54,54 @@
       "Enabled": true
     },
     {
+      "Key": "stuff",
+      "Title": "Stuff",
+      "DetailText": "",
+      "ServerIcon": "circle",
+      "DisplayedIcon": "circle",
+      "Colour": "Black",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "things",
+      "Title": "Things",
+      "DetailText": "",
+      "ServerIcon": "circle",
+      "DisplayedIcon": "circle",
+      "Colour": "Black",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
+      "Key": "temple",
+      "Enabled": true,
+      "Title": "Temple",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-temple",
+      "DisplayedIcon": "cc-temple",
+      "Colour": "#FFFFE0",
+      "Pinned": false
+    },
+    {
+      "Key": "teleporter",
+      "Title": "Teleporter",
+      "DetailText": "",
+      "ServerIcon": "Spiral",
+      "DisplayedIcon": "Spiral",
+      "Colour": "SpringGreen",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Pinned": false,
+      "Enabled": true
+    },
+    {
       "Key": "tl",
       "Title": "Translocator",
       "DetailText": "",
@@ -88,6 +136,54 @@
       "VerticalCoverageRadius": 10,
       "Pinned": false,
       "Enabled": true
+    },
+    {
+      "Key": "village",
+      "Enabled": true,
+      "Title": "Village",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-village",
+      "DisplayedIcon": "cc-village",
+      "Colour": "#FF8C00",
+      "Pinned": false
+    },
+    {
+      "Key": "town",
+      "Enabled": true,
+      "Title": "Town",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-village2",
+      "DisplayedIcon": "cc-village2",
+      "Colour": "#6495ED",
+      "Pinned": false
+    },
+    {
+      "Key": "city",
+      "Enabled": true,
+      "Title": "City",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-buildings",
+      "DisplayedIcon": "cc-buildings",
+      "Colour": "#9370DB",
+      "Pinned": false
+    },
+    {
+      "Key": "outpost",
+      "Enabled": true,
+      "Title": "Outpost",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-tower",
+      "DisplayedIcon": "cc-tower",
+      "Colour": "#CD5C5C",
+      "Pinned": false
     }
   ]
 }

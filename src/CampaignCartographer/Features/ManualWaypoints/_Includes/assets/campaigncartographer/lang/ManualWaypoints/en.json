@@ -34,6 +34,7 @@
   "Features.PredefinedWaypoints.Dialogue.WaypointType.Syntax.Validation": "The key word can only be a single word.",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.WaypointTitle": "Title:",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.WaypointTitle.HoverText": "The default title to give the waypoint.",
+  "Features.PredefinedWaypoints.Dialogue.WaypointType.WaypointTitle.Validation": "A title is required.",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.DetailText": "Detail Text:",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.DetailText.HoverText": "Any extra information you would like to show on the waypoint marker.",
   "Features.PredefinedWaypoints.Dialogue.WaypointType.Colour": "Colour:",
