@@ -1,5 +1,10 @@
 ﻿// ReSharper disable StringLiteralTypo
 
+using System.Reflection;
+
+[assembly: AssemblyMetadata("ModDB Page", "https://mods.vintagestory.at/campaigncartographer")]
+[assembly: AssemblyMetadata("Issue Tracker", "https://github.com/ApacheTech-VintageStory-Mods/CampaignCartographer/issues")]
+
 [assembly: ModDependency("game", "1.20.1")]
 [assembly: ModDependency("survival", "1.20.1")]
 
@@ -8,7 +13,7 @@
     "campaigncartographer",
     Description = "The original map mod, reborn. Adds multiple Cartography related features to the game, such as custom player pins, GPS, auto waypoint markers, and more.",
     Side = "Universal",
-    Version = "4.2.4",
+    Version = "4.3.0",
     RequiredOnClient = true,
     RequiredOnServer = true,
     NetworkVersion = "1.0.0",
