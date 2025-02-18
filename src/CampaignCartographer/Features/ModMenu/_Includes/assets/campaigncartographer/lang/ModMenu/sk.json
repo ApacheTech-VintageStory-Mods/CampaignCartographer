@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Upravit marker bodu výberu bloku",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Upravit preddefinované body",
-  "Features.ModMenu.Dialogue.WaypointManager": "Správca waypointov",
-
-  "Features.ModMenu.Dialogue.Title": "Kampaní kartograf",
-  "Features.ModMenu.Dialogue.Support": "Podporiť autora modifikácie",
-
-  "Features.Support.Dialogue.Patreon": "Pripojte sa k môjmu Patreonu",
-  "Features.Support.Dialogue.Donate": "Darujte cez PayPal",
-  "Features.Support.Dialogue.Coffee": "Kúpte mi kávu",
-  "Features.Support.Dialogue.Twitch": "Prihláste sa na Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Prihláste sa na YouTube",
-  "Features.Support.Dialogue.WishList": "Amazon zoznam prianí",
-  "Features.Support.Dialogue.Website": "Navštívte moju webovú stránku",
-  "Features.Support.Dialogue.Back": "Späť"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Správca trasových bodov",
+    "Features.Support.Dialogue.YouTube":  "Prihláste sa na odber na YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Kartograf kampane",
+    "Features.Support.Dialogue.Back":  "Chrbát",
+    "Features.Support.Dialogue.Coffee":  "Kúp mi kávu",
+    "Features.ModMenu.Dialogue.Support":  "Podporte autora modu",
+    "Features.Support.Dialogue.Twitch":  "Prihláste sa na odber na Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Upraviť značku zemepisného bodu výberu bloku",
+    "Features.Support.Dialogue.WishList":  "Zoznam želaní Amazonu",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Úprava preddefinovaných zemepisných bodov",
+    "Features.Support.Dialogue.Website":  "Navštívte moju webovú stránku",
+    "Features.Support.Dialogue.Patreon":  "Pripojte sa k môjmu Patreonu",
+    "Features.Support.Dialogue.Donate":  "Prispejte cez PayPal"
 }

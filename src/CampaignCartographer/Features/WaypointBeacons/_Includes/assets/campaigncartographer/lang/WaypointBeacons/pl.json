@@ -1,22 +1,16 @@
-{
-  "Features.WaypointBeacons.WaypointPrefix": "Waypoint",
-
-  "Features.WaypointBeacons.Dialogue.Title": "Ustawienia Beaconu Waypoint",
-  "Features.WaypointBeacons.Dialogue.IconRange": "Zakres Ikony",
-  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Zasięg, w blokach, w którym widoczne są ikony waypointów.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Pokaż Prefiks",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Określa, czy prefiksy waypointów powinny być wyświetlane.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Pokaż Indeks",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Określa, czy indeksy waypointów powinny być wyświetlane.",
-
-  "Features.WaypointBeacons.Dialogue.ShowPillars": "Pokaż Filarze",
-  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Określa, czy filary waypointów powinny być wyświetlane.",
-
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Zablokuj pozycję",
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Przytwierdza ikonę punktu kontrolnego do boku ekranu, gdy punkt kontrolny wychodzi poza widok.",
-
-  "Features.WaypointBeacons.Dialogue.TitleRange": "Zakres Tytułów",
-  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Zasięg, w blokach, w którym tytuły waypointów są widoczne."
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Pokaż filary",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Zakres, w blokach, w którym widoczne są ikony punktów trasy.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Pokaż prefiks",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Pozycja zacisku",
+    "Features.WaypointBeacons.Dialogue.Title":  "Ustawienia sygnalizatora punktów trasy",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Zakres, w blokach, w którym widoczne są tytuły punktów trasy.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Zakres tytułu",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Wskazuje, czy mają być wyświetlane indeksy punktów trasy.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Pokaż indeks",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Wskazuje, czy mają być wyświetlane prefiksy punktów trasy.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Wskazuje, czy powinny być wyświetlane filary punktów trasy.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Zakres ikon",
+    "Features.WaypointBeacons.WaypointPrefix":  "Punkt trasy",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Przypina ikonę punktu trasy do boku ekranu, gdy punkt trasy znika z pola widzenia."
 }

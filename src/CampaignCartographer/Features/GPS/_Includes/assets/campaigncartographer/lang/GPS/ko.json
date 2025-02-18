@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "세계 내에서 현재 위치를 표시합니다.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "현재 위치를 서버에 방송합니다.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "현재 위치를 클립보드에 복사합니다.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "현재 위치를 다른 플레이어에게 전송합니다.",
-  "Features.GPS.ClipboardTextSet": "플레이어 위치가 클립보드에 복사되었습니다.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "같은 이름을 가진 여러 플레이어가 발견되었습니다.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "플레이어가 발견되지 않았습니다.",
-  "Features.GPS.player-not-found": "서버에서 플레이어를 찾을 수 없습니다.",
-  "Features.GPS.whisper-received": "[{0}로부터]: {1}",
-  "Features.GPS.whisper-sent": "[{0}에게]: {1}",
-  "Features.GPS.ShowOnMap": "맵에 표시"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "같은 이름을 가진 여러 플레이어를 찾았습니다.",
+    "Features.GPS.player-not-found":  "서버에서 플레이어를 찾을 수 없습니다.",
+    "Features.GPS.ClipboardTextSet":  "플레이어 위치가 클립보드에 복사되었습니다.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "현재 위치를 다른 플레이어에게 보냅니다.",
+    "Features.GPS.Command.Description.Default":  "월드 내에서의 현재 위치를 표시합니다.",
+    "Features.GPS.whisper-received":  "[{0}부터]: {1}",
+    "Features.GPS.whisper-sent":  "[To {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "현재 위치를 서버에 브로드캐스트합니다.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "현재 위치를 클립보드에 복사합니다.",
+    "Features.GPS.ShowOnMap":  "지도에 표시",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "플레이어를 찾을 수 없습니다."
 }

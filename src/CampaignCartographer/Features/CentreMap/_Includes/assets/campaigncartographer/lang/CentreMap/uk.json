@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Переміщає карту на задане місце або гравця.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Неможливо знайти гравця `{0}` у цей момент. Можливо, він за межами діапазону. Перезавантаження відобразить його на карті.",
-  "Features.CentreMap.CentreMapOnPlayer": "Карта переміщена на гравця: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Карта переміщена на точку відродження гравця: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Карта переміщена на позицію: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Карта переміщена на точку відродження світу: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Карта переміщена на точку {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Перецентрована карта на маршрутній точці {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Наразі не вдається знайти гравця \"{0}\". Вони можуть бути поза зоною досяжності. Повторне ведення журналу відобразить їх на карті.",
+    "Features.CentreMap.CentreMapOnPosition":  "Перецентрована карта за позицією: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Перецентрована карта на гравця: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Перецентрована карта на точці відродження гравця: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Переміщує карту в центр на вказаному місці або гравцеві.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Перецентрована карта на світовому спавні: ({0}, {1})"
 }

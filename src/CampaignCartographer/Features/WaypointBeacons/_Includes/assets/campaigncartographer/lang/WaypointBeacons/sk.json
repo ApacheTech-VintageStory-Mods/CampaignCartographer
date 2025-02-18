@@ -1,22 +1,16 @@
-{
-  "Features.WaypointBeacons.WaypointPrefix": "Značka",
-
-  "Features.WaypointBeacons.Dialogue.Title": "Nastavenia Waypoint Beacon",
-  "Features.WaypointBeacons.Dialogue.IconRange": "Rozsah Ikony",
-  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Rozsah, v blokoch, v ktorom sú ikony waypointov viditeľné.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Zobraziť Prefix",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Určuje, či by sa mali zobraziť prefixy waypointov.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Zobraziť Index",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Určuje, či by sa mali zobraziť indexy waypointov.",
-
-  "Features.WaypointBeacons.Dialogue.ShowPillars": "Zobraziť Stĺpy",
-  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Určuje, či by sa mali zobraziť stĺpy waypointov.",
-
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Upevniť polohu",
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Prichytí ikonu waypointu na bočnú stranu obrazovky, keď waypoint vyjde mimo zobrazenia.",
-
-  "Features.WaypointBeacons.Dialogue.TitleRange": "Rozsah Títulov",
-  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Rozsah, v blokoch, v ktorom sú tituly waypointov viditeľné."
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Zobraziť stĺpy",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Rozsah v blokoch, v ktorom sú viditeľné ikony zemepisných bodov.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Zobraziť predponu",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Poloha svorky",
+    "Features.WaypointBeacons.Dialogue.Title":  "Nastavenia majáka trasového bodu",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Rozsah v blokoch, v ktorom sú viditeľné názvy trasových bodov.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Rozsah titulov",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Označuje, či sa majú zobraziť indexy zemepisných bodov.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Zobraziť register",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Označuje, či sa majú zobraziť predpony zemepisných bodov.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Označuje, či sa majú zobraziť stĺpiky zemepisných bodov.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Rozsah ikon",
+    "Features.WaypointBeacons.WaypointPrefix":  "Zemepisný bod",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Pripne ikonu zemepisného bodu na bočnú stranu obrazovky, keď sa bod trasy zmení zo zobrazenia."
 }

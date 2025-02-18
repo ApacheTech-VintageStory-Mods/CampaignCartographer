@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "블록 선택 웨이포인트 마커 편집",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "미리 정의된 웨이포인트 편집",
-  "Features.ModMenu.Dialogue.WaypointManager": "웨이포인트 관리자",
-
-  "Features.ModMenu.Dialogue.Title": "캠페인 지도 작성자",
-  "Features.ModMenu.Dialogue.Support": "모드 제작자 지원",
-
-  "Features.Support.Dialogue.Patreon": "내 Patreon에 가입",
-  "Features.Support.Dialogue.Donate": "PayPal로 기부",
-  "Features.Support.Dialogue.Coffee": "커피 한 잔 사 주세요",
-  "Features.Support.Dialogue.Twitch": "Twitch.tv에서 구독",
-  "Features.Support.Dialogue.YouTube": "YouTube에서 구독",
-  "Features.Support.Dialogue.WishList": "Amazon 위시리스트",
-  "Features.Support.Dialogue.Website": "내 웹사이트 방문",
-  "Features.Support.Dialogue.Back": "뒤로"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "웨이포인트 매니저",
+    "Features.Support.Dialogue.YouTube":  "YouTube에서 구독하기",
+    "Features.ModMenu.Dialogue.Title":  "캠페인 지도 제작자",
+    "Features.Support.Dialogue.Back":  "뒤로",
+    "Features.Support.Dialogue.Coffee":  "커피 사주세요",
+    "Features.ModMenu.Dialogue.Support":  "모드 작성자 지원",
+    "Features.Support.Dialogue.Twitch":  "Twitch.tv 에서 구독하기",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "블록 선택 웨이포인트 표식기 편집",
+    "Features.Support.Dialogue.WishList":  "아마존 위시리스트",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "사전 정의된 웨이포인트 편집",
+    "Features.Support.Dialogue.Website":  "내 웹사이트 방문",
+    "Features.Support.Dialogue.Patreon":  "내 Patreon에 가입하세요",
+    "Features.Support.Dialogue.Donate":  "PayPal을 통한 기부"
 }

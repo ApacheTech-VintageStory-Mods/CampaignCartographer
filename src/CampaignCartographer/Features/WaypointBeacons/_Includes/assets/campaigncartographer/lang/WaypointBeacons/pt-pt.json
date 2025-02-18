@@ -1,22 +1,16 @@
-{
-  "Features.WaypointBeacons.WaypointPrefix": "Ponto de Referência",
-
-  "Features.WaypointBeacons.Dialogue.Title": "Configurações do Beacon de Ponto de Referência",
-  "Features.WaypointBeacons.Dialogue.IconRange": "Raio do Ícone",
-  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "A gama, em blocos, dentro da qual os ícones dos pontos de referência são visíveis.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Mostrar Prefixo",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indica se os prefixos dos pontos de referência devem ser exibidos.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Mostrar Índice",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indica se os índices dos pontos de referência devem ser exibidos.",
-
-  "Features.WaypointBeacons.Dialogue.ShowPillars": "Mostrar Colunas",
-  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indica se as colunas dos pontos de referência devem ser exibidas.",
-
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Fixar posição",
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Fixa o ícone do waypoint ao lado da tela quando o waypoint sai de vista.",
-
-  "Features.WaypointBeacons.Dialogue.TitleRange": "Raio do Título",
-  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "A gama, em blocos, dentro da qual os títulos dos pontos de referência são visíveis."
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Mostrar Pilares",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "O intervalo, em blocos, dentro do qual os ícones de waypoint são visíveis.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Mostrar prefixo",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Posição da braçadeira",
+    "Features.WaypointBeacons.Dialogue.Title":  "Configurações do Waypoint Beacon",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "O intervalo, em blocos, dentro do qual os títulos de waypoint são visíveis.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Intervalo de títulos",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Indica se os índices de waypoint devem ser exibidos.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Mostrar índice",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Indica se os prefixos de ponto de passagem devem ser exibidos.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Indica se os pilares de waypoint devem ser exibidos.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Intervalo de ícones",
+    "Features.WaypointBeacons.WaypointPrefix":  "Ponto de passagem",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Fixa o ícone do waypoint na lateral da tela quando o waypoint sai da vista."
 }

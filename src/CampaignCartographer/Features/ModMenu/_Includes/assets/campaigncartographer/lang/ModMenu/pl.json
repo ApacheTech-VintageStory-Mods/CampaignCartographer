@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Edytuj znacznik punktu wyboru bloku",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Edytuj zdefiniowane punkty",
-  "Features.ModMenu.Dialogue.WaypointManager": "Menedżer punktów orientacyjnych",
-
-  "Features.ModMenu.Dialogue.Title": "Kartograf Kampanii",
-  "Features.ModMenu.Dialogue.Support": "Wsparcie autora modyfikacji",
-
-  "Features.Support.Dialogue.Patreon": "Dołącz do mojego Patreona",
-  "Features.Support.Dialogue.Donate": "Przekaż darowiznę przez PayPal",
-  "Features.Support.Dialogue.Coffee": "Kup mi kawę",
-  "Features.Support.Dialogue.Twitch": "Subskrybuj na Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Subskrybuj na YouTube",
-  "Features.Support.Dialogue.WishList": "Lista życzeń Amazon",
-  "Features.Support.Dialogue.Website": "Odwiedź moją stronę internetową",
-  "Features.Support.Dialogue.Back": "Wróć"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Menedżer punktów trasy",
+    "Features.Support.Dialogue.YouTube":  "Subskrybuj na YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Kartograf kampanii",
+    "Features.Support.Dialogue.Back":  "Wstecz",
+    "Features.Support.Dialogue.Coffee":  "Kup mi kawę",
+    "Features.ModMenu.Dialogue.Support":  "Wesprzyj autora modów",
+    "Features.Support.Dialogue.Twitch":  "Zapisz się na Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Edytuj znacznik punktu trasy wyboru bloku",
+    "Features.Support.Dialogue.WishList":  "Lista życzeń Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Edytowanie wstępnie zdefiniowanych punktów trasy",
+    "Features.Support.Dialogue.Website":  "Odwiedź moją stronę internetową",
+    "Features.Support.Dialogue.Patreon":  "Dołącz do mojego Patreona",
+    "Features.Support.Dialogue.Donate":  "Przekaż darowiznę przez PayPal"
 }

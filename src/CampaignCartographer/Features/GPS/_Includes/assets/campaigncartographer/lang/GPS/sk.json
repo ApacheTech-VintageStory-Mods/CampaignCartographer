@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Zobrazuje vašu aktuálnu pozíciu vo svete.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Vysiela vašu aktuálnu polohu na server.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Skopíruje vašu aktuálnu polohu do schránky.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Pošle vašu aktuálnu polohu inému hráčovi.",
-  "Features.GPS.ClipboardTextSet": "Poloha hráča skopírovaná do schránky.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Našli sa viacerí hráči s rovnakým menom.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Žiadni hráči neboli nájdení.",
-  "Features.GPS.player-not-found": "Hráč nebol nájdený na serveri.",
-  "Features.GPS.whisper-received": "[Od {0}]: {1}",
-  "Features.GPS.whisper-sent": "[Pre {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Zobraziť na mape"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Našli sa viacerí hráči s rovnakým menom.",
+    "Features.GPS.player-not-found":  "Hráč sa na serveri nenašiel.",
+    "Features.GPS.ClipboardTextSet":  "Poloha prehrávača skopírovaná do schránky.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Odošlite svoju aktuálnu polohu inému hráčovi.",
+    "Features.GPS.Command.Description.Default":  "Zobrazuje vašu aktuálnu pozíciu vo svete.",
+    "Features.GPS.whisper-received":  "[Z {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Pre {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Odošlite svoju aktuálnu polohu na server.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Skopírujte svoju aktuálnu polohu do schránky.",
+    "Features.GPS.ShowOnMap":  "Ukáž na mape",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Nenašli sa žiadni hráči."
 }

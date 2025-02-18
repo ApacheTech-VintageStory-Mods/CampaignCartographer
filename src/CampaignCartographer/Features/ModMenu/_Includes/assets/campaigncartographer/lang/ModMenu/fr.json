@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Modifier le marqueur de sélection du point de repère de bloc",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Modifier les points de repère prédéfinis",
-  "Features.ModMenu.Dialogue.WaypointManager": "Gestionnaire de points de repère",
-
-  "Features.ModMenu.Dialogue.Title": "Cartographe de campagne",
-  "Features.ModMenu.Dialogue.Support": "Soutenir l'auteur du mod",
-
-  "Features.Support.Dialogue.Patreon": "Rejoindre mon Patreon",
-  "Features.Support.Dialogue.Donate": "Faire un don via PayPal",
-  "Features.Support.Dialogue.Coffee": "Achetez-moi un café",
-  "Features.Support.Dialogue.Twitch": "Abonnez-vous sur Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Abonnez-vous sur YouTube",
-  "Features.Support.Dialogue.WishList": "Liste de souhaits Amazon",
-  "Features.Support.Dialogue.Website": "Visitez mon site web",
-  "Features.Support.Dialogue.Back": "Retour"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Gestionnaire de points de cheminement",
+    "Features.Support.Dialogue.YouTube":  "Abonnez-vous sur YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Cartographe de la campagne",
+    "Features.Support.Dialogue.Back":  "Précédent",
+    "Features.Support.Dialogue.Coffee":  "Achetez-moi un café",
+    "Features.ModMenu.Dialogue.Support":  "Soutenez l’auteur du mod",
+    "Features.Support.Dialogue.Twitch":  "Abonnez-vous sur Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Modifier la sélection de bloc Marqueur de point de cheminement",
+    "Features.Support.Dialogue.WishList":  "Liste de souhaits Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Modifier des points de cheminement prédéfinis",
+    "Features.Support.Dialogue.Website":  "Visitez mon site Web",
+    "Features.Support.Dialogue.Patreon":  "Rejoignez mon Patreon",
+    "Features.Support.Dialogue.Donate":  "Faites un don via PayPal"
 }

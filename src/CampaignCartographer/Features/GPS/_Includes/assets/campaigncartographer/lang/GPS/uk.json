@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Показує вашу поточну позицію у світі.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Транслює ваше поточне місцезнаходження на сервер.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Копіює ваше поточне місцезнаходження в буфер обміну.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Надсилає ваше поточне місцезнаходження іншому гравцеві.",
-  "Features.GPS.ClipboardTextSet": "Місцезнаходження гравця скопійовано в буфер обміну.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Знайдено кілька гравців з однаковим ім'ям.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Гравців не знайдено.",
-  "Features.GPS.player-not-found": "Гравець не знайдений на сервері.",
-  "Features.GPS.whisper-received": "[Від {0}]: {1}",
-  "Features.GPS.whisper-sent": "[До {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Показати на карті"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Знайдено кілька гравців з однаковим іменем.",
+    "Features.GPS.player-not-found":  "Плеєр не знайдено на сервері.",
+    "Features.GPS.ClipboardTextSet":  "Місцезнаходження гравця скопійовано в буфер обміну.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Надішліть своє поточне місцезнаходження іншому гравцеві.",
+    "Features.GPS.Command.Description.Default":  "Показує ваше поточне становище у світі.",
+    "Features.GPS.whisper-received":  "[З {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[До {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Надішліть своє поточне місцезнаходження на сервер.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Скопіюйте своє поточне місцезнаходження в буфер обміну.",
+    "Features.GPS.ShowOnMap":  "Показати на карті",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Гравців не знайдено."
 }

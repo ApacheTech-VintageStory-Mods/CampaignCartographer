@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Visar din aktuella position i världen.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Sänd din aktuella plats till servern.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Kopiera din aktuella plats till urklipp.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Skicka din aktuella plats till en annan spelare.",
-  "Features.GPS.ClipboardTextSet": "Spelarens plats kopierad till urklipp.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Flera spelare hittades med samma namn.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Inga spelare hittades.",
-  "Features.GPS.player-not-found": "Spelare hittades inte på servern.",
-  "Features.GPS.whisper-received": "[Från {0}]: {1}",
-  "Features.GPS.whisper-sent": "[Till {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Visa på kartan"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Flera spelare hittas med samma namn.",
+    "Features.GPS.player-not-found":  "Spelaren hittades inte på servern.",
+    "Features.GPS.ClipboardTextSet":  "Spelarens plats kopieras till Urklipp.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Skicka din nuvarande plats till en annan spelare.",
+    "Features.GPS.Command.Description.Default":  "Visar din nuvarande position i världen.",
+    "Features.GPS.whisper-received":  "[Från {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Till {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Sänd din nuvarande plats till servern.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Kopiera din nuvarande plats till Urklipp.",
+    "Features.GPS.ShowOnMap":  "Visa på karta",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Inga spelare hittades."
 }

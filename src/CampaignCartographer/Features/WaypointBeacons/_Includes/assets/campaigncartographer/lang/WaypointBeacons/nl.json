@@ -1,22 +1,16 @@
-{
-  "Features.WaypointBeacons.WaypointPrefix": "Waypoint",
-
-  "Features.WaypointBeacons.Dialogue.Title": "Waypoint Beacon Instellingen",
-  "Features.WaypointBeacons.Dialogue.IconRange": "Pictogram Bereik",
-  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Het bereik, in blokken, waarin de waypoint-pictogrammen zichtbaar zijn.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Toon Prefix",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Geeft aan of waypoint-prefixen weergegeven moeten worden.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Toon Index",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Geeft aan of waypoint-indexen weergegeven moeten worden.",
-
-  "Features.WaypointBeacons.Dialogue.ShowPillars": "Toon Zuilen",
-  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Geeft aan of waypoint-zuilen weergegeven moeten worden.",
-
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Positie vastzetten",
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Pint het waypoint-pictogram aan de zijkant van het scherm wanneer het waypoint uit beeld beweegt.",
-
-  "Features.WaypointBeacons.Dialogue.TitleRange": "Titel Bereik",
-  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Het bereik, in blokken, waarin waypoint-titels zichtbaar zijn."
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Toon pijlers",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Het bereik, in blokken, waarbinnen waypoint-iconen zichtbaar zijn.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Voorvoegsel weergeven",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Klem positie",
+    "Features.WaypointBeacons.Dialogue.Title":  "Instellingen voor waypointbaken",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Het bereik, in blokken, waarbinnen de titels van waypoints zichtbaar zijn.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Titel bereik",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Geeft aan of waypoint-indexen moeten worden weergegeven.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Index weergeven",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Geeft aan of voorvoegsels voor waypoints moeten worden weergegeven.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Geeft aan of waypointpilaren moeten worden weergegeven.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Icon Bereik",
+    "Features.WaypointBeacons.WaypointPrefix":  "Waypoint",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Hiermee wordt het waypointpictogram aan de zijkant van het scherm vastgezet wanneer het waypoint uit het zicht verdwijnt."
 }

@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Ricentra la mappa sulla posizione o sul giocatore specificato.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Impossibile trovare il giocatore `{0}` in questo momento. Potrebbe essere fuori portata. Ricollegandosi verrà visualizzato sulla mappa.",
-  "Features.CentreMap.CentreMapOnPlayer": "Mappa ricentrata sul giocatore: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mappa ricentrata sul punto di apparizione del giocatore: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Mappa ricentrata sulla posizione: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Mappa ricentrata sul punto di apparizione del mondo: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Mappa ricentrata sul punto di riferimento {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Mappa ricentrata sul waypoint {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Impossibile trovare il giocatore \u0027{0}\u0027 in questo momento. Potrebbero essere fuori portata. La riregistrazione li visualizzerà sulla mappa.",
+    "Features.CentreMap.CentreMapOnPosition":  "Mappa ricentrata sulla posizione: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Mappa ricentrata sul giocatore: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Mappa ricentrata sul punto di spawn del giocatore: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Centra nuovamente la mappa sulla posizione o sul giocatore specificato.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Mappa ricentrata sullo spawn del mondo: ({0}, {1})"
 }

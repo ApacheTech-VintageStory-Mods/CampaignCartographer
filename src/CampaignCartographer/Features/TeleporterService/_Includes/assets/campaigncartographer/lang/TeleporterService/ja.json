@@ -1,11 +1,8 @@
-{
-  "game:blockhelp-set-teleporter-location": "テレポーターの位置を設定する",
-
-  "Features.TeleporterService.Dialogue.Title": "テレポーターの位置を設定する",
-
-  "Features.TeleporterService.Dialogue.lblName": "名前",
-  "Features.TeleporterService.Dialogue.lblName.HoverText": "このテレポーターに付ける名前。",
-
-  "Features.TeleporterService.Dialogue.lblTargetLocation": "ターゲット",
-  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "このブロックが移動させるターゲットのテレポーター。"
+﻿{
+    "Features.TeleporterService.Dialogue.lblName.HoverText":  "このテレポーターに付ける名前。",
+    "game:blockhelp-set-teleporter-location":  "テレポーターの位置を設定する",
+    "Features.TeleporterService.Dialogue.Title":  "テレポーターの位置を設定",
+    "Features.TeleporterService.Dialogue.lblName":  "名前",
+    "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText":  "このブロックが送る対象のテレポーター。",
+    "Features.TeleporterService.Dialogue.lblTargetLocation":  "ターゲット"
 }

@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Zentriert die Karte auf den angegebenen Ort oder Spieler.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Spieler `{0}` kann derzeit nicht gefunden werden. Er könnte außerhalb der Reichweite sein. Ein erneutes Einloggen zeigt ihn auf der Karte an.",
-  "Features.CentreMap.CentreMapOnPlayer": "Karte zentriert auf Spieler: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Karte zentriert auf den Spawnpunkt des Spielers: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Karte zentriert auf Position: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Karte zentriert auf Welt-Spawnpunkt: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Karte zentriert auf Wegpunkt {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Karte auf Wegpunkt {0} neu zentriert: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Spieler \u0027{0}\u0027 kann zu diesem Zeitpunkt nicht gefunden werden. Sie könnten sich außerhalb der Reichweite befinden. Wenn Sie sich erneut einloggen, werden sie auf der Karte angezeigt.",
+    "Features.CentreMap.CentreMapOnPosition":  "Karte auf Position neu zentriert: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Karte auf Spieler neu zentriert: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Karte auf den Spawnpunkt des Spielers neu zentriert: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Zentriert die Karte wieder auf den angegebenen Ort oder Spieler.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Karte auf den Weltspawn neu zentriert: ({0}, {1})"
 }

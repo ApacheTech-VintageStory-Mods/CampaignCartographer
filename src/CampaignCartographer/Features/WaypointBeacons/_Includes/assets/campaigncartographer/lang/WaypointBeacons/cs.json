@@ -1,22 +1,16 @@
-{
-  "Features.WaypointBeacons.WaypointPrefix": "Bod cesty",
-
-  "Features.WaypointBeacons.Dialogue.Title": "Nastavení bodu cesty",
-  "Features.WaypointBeacons.Dialogue.IconRange": "Rozsah ikony",
-  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "Rozsah, v blocích, ve kterém jsou ikony bodů cesty viditelné.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Zobrazit předponu",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Určuje, zda mají být zobrazeny předpony bodů cesty.",
-
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Zobrazit index",
-  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Určuje, zda mají být zobrazeny indexy bodů cesty.",
-
-  "Features.WaypointBeacons.Dialogue.ShowPillars": "Zobrazit pilíře",
-  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Určuje, zda mají být zobrazeny pilíře bodů cesty.",
-
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Pevná pozice",
-  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Připne ikonu waypointu na stranu obrazovky, když se waypoint dostane mimo zobrazení.",
-
-  "Features.WaypointBeacons.Dialogue.TitleRange": "Rozsah názvu",
-  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "Rozsah, v blocích, ve kterém jsou názvy bodů cesty viditelné."
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Zobrazit pilíře",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Rozsah v blocích, ve kterém jsou viditelné ikony trasových bodů.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Zobrazit předponu",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Poloha svorky",
+    "Features.WaypointBeacons.Dialogue.Title":  "Nastavení signálu trasových bodů",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Rozsah v blocích, ve kterém jsou viditelné názvy trasových bodů.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Rozsah titulů",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Označuje, zda mají být zobrazeny indexy trasových bodů.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Zobrazit rejstřík",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Označuje, zda se mají zobrazovat předpony trasových bodů.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Označuje, zda mají být zobrazeny sloupky trasových bodů.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Rozsah ikon",
+    "Features.WaypointBeacons.WaypointPrefix":  "Průjezdní bod",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Přišpendlí ikonu trasového bodu na stranu obrazovky, když se trasový bod přesune mimo zobrazení."
 }

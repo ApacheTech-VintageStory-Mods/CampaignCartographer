@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Recentra o mapa na localização ou jogador especificado.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Não é possível encontrar o jogador `{0}` neste momento. Pode estar fora de alcance. Reentrar mostrará o jogador no mapa.",
-  "Features.CentreMap.CentreMapOnPlayer": "Mapa recentrado no jogador: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa recentrado no ponto de spawn do jogador: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Mapa recentrado na posição: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa recentrado no ponto de spawn mundial: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Mapa recentrado no ponto de referência {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Mapa recentrada no ponto de passagem {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Não é possível encontrar o jogador \u0027{0}\u0027 neste momento. Podem estar fora do alcance. O novo registo irá exibi-los no mapa.",
+    "Features.CentreMap.CentreMapOnPosition":  "Mapa recentrado na posição: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Mapa recentrada no jogador: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Mapa recentrada no ponto de desova do jogador: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Recentra o mapa no local ou jogador indicado.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Mapa recentrada na desova mundial: ({0}, {1})"
 }

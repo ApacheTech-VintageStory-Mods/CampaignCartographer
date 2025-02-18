@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Återcentrerar kartan på den angivna platsen eller spelaren.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Kunde inte hitta spelaren `{0}` just nu. De kan vara utom räckhåll. Att logga in igen kommer att visa dem på kartan.",
-  "Features.CentreMap.CentreMapOnPlayer": "Återcentrerade kartan på spelaren: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Återcentrerade kartan på spelaren spawnpunkt: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Återcentrerade kartan på position: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Återcentrerade kartan på världens spawnpunkt: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Återcentrerade kartan på waypoint {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Omcentrerad karta på waypoint {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Det går inte att hitta spelarens \"{0}\" just nu. De kan vara utom räckhåll. Om du loggar om visas de på kartan.",
+    "Features.CentreMap.CentreMapOnPosition":  "Omcentrerad karta på position: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Omcentrerad karta på spelaren: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Omcentrerad karta på spelarens spawn-punkt: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Centrerar om kartan på den givna platsen eller spelaren.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Omcentrerad karta på världens spawn: ({0}, {1})"
 }

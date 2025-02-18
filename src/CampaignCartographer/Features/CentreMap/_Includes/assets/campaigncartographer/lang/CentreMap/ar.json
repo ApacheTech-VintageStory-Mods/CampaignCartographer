@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "يعيد توسيط الخريطة على الموقع أو اللاعب المحدد.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "لا يمكن العثور على اللاعب `{0}` في هذا الوقت. قد يكون خارج النطاق. إعادة تسجيل الدخول ستعرضه على الخريطة.",
-  "Features.CentreMap.CentreMapOnPlayer": "تم إعادة توسيط الخريطة على اللاعب: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "تم إعادة توسيط الخريطة على نقطة تواجد اللاعب: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "تم إعادة توسيط الخريطة على الموقع: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "تم إعادة توسيط الخريطة على نقطة تواجد العالم: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "تم إعادة توسيط الخريطة على نقطة الطريق {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "الخريطة المعاد توسيطها على {0} الإحداث: {1} ({2} ، {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "لا يمكن العثور على \"{0}\" اللاعب في الوقت الحالي. قد تكون خارج النطاق. ستؤدي إعادة التسجيل إلى عرضها على الخريطة.",
+    "Features.CentreMap.CentreMapOnPosition":  "الخريطة المعاد توسيطها في الموقع: ({0} ، {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "إعادة توسيط الخريطة على اللاعب: {0} ({1} ، {2} ، {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "الخريطة المعاد توسيطها على نقطة نشر اللاعب: ({0} ، {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "إعادة توسيط الخريطة على الموقع أو المشغل المحدد.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "خريطة معاد توسيطها على تفريخ العالم: ({0} ، {1})"
 }

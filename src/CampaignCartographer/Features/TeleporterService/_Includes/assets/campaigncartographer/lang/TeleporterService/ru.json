@@ -1,11 +1,8 @@
-{
-  "game:blockhelp-set-teleporter-location": "Установить местоположение телепортера",
-
-  "Features.TeleporterService.Dialogue.Title": "Установить местоположение телепортера",
-
-  "Features.TeleporterService.Dialogue.lblName": "Имя",
-  "Features.TeleporterService.Dialogue.lblName.HoverText": "Имя, которое будет присвоено этому телепортеру.",
-
-  "Features.TeleporterService.Dialogue.lblTargetLocation": "Цель",
-  "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText": "Телепортер, в который этот блок отправит вас."
+﻿{
+    "Features.TeleporterService.Dialogue.lblName.HoverText":  "Имя, которое нужно дать этому телепорту.",
+    "game:blockhelp-set-teleporter-location":  "Установка местоположения телепорта",
+    "Features.TeleporterService.Dialogue.Title":  "Установка местоположения телепорта",
+    "Features.TeleporterService.Dialogue.lblName":  "Имя",
+    "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText":  "Целевой телепорт, на который вас отправляет этот блок.",
+    "Features.TeleporterService.Dialogue.lblTargetLocation":  "Цель"
 }

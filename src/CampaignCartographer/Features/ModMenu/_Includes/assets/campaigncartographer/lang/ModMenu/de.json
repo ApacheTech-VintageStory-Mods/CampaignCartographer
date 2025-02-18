@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Bearbeiten Sie die Blockauswahl-Wegpunktmarkierung",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Bearbeiten Sie vordefinierte Wegpunkte",
-  "Features.ModMenu.Dialogue.WaypointManager": "Wegpunktmanager",
-
-  "Features.ModMenu.Dialogue.Title": "Kampagnenkartograf",
-  "Features.ModMenu.Dialogue.Support": "Unterstützen Sie den Mod-Autor",
-
-  "Features.Support.Dialogue.Patreon": "Treten Sie meinem Patreon bei",
-  "Features.Support.Dialogue.Donate": "Spenden Sie über PayPal",
-  "Features.Support.Dialogue.Coffee": "Kaufen Sie mir einen Kaffee",
-  "Features.Support.Dialogue.Twitch": "Abonnieren Sie auf Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Abonnieren Sie auf YouTube",
-  "Features.Support.Dialogue.WishList": "Amazon-Wunschliste",
-  "Features.Support.Dialogue.Website": "Besuchen Sie meine Website",
-  "Features.Support.Dialogue.Back": "Zurück"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Wegpunkt-Manager",
+    "Features.Support.Dialogue.YouTube":  "Auf YouTube abonnieren",
+    "Features.ModMenu.Dialogue.Title":  "Kampagne Kartograph",
+    "Features.Support.Dialogue.Back":  "Zurück",
+    "Features.Support.Dialogue.Coffee":  "Kauf mir einen Kaffee",
+    "Features.ModMenu.Dialogue.Support":  "Unterstützen Sie den Mod-Autor",
+    "Features.Support.Dialogue.Twitch":  "Abonnieren Sie auf Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Blockauswahl-Wegpunktmarkierung bearbeiten",
+    "Features.Support.Dialogue.WishList":  "Amazon Wunschliste",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Vordefinierte Wegpunkte bearbeiten",
+    "Features.Support.Dialogue.Website":  "Besuchen Sie meine Website",
+    "Features.Support.Dialogue.Patreon":  "Treten Sie meinem Patreon bei",
+    "Features.Support.Dialogue.Donate":  "Spenden Sie per PayPal"
 }

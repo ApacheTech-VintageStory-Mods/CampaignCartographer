@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Przywraca mapę do określonej lokalizacji lub gracza.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Nie można znaleźć gracza `{0}` w tym momencie. Może być poza zasięgiem. Ponowne zalogowanie wyświetli go na mapie.",
-  "Features.CentreMap.CentreMapOnPlayer": "Mapa została przywrócona do gracza: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa została przywrócona do punktu odrodzenia gracza: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Mapa została przywrócona do pozycji: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa została przywrócona do punktu odrodzenia świata: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Mapa została przywrócona do punktu orientacyjnego {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Ponownie wyśrodkowana mapa na punkcie {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "W tej chwili nie można znaleźć gracza \"{0}\". Mogą być poza zasięgiem. Ponowne rejestrowanie spowoduje wyświetlenie ich na mapie.",
+    "Features.CentreMap.CentreMapOnPosition":  "Ponownie wyśrodkowana mapa na pozycji: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Ponownie wyśrodkowana mapa na graczu: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Ponownie wyśrodkowana mapa w punkcie odrodzenia gracza: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Ponownie wyśrodkowuje mapę na danej lokacji lub graczu.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Ponownie wyśrodkowana mapa w miejscu odradzania się świata: ({0}, {1})"
 }

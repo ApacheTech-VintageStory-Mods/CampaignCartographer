@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Recentraliza o mapa na localização ou jogador especificado.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Não é possível encontrar o jogador `{0}` no momento. Eles podem estar fora de alcance. Reentrar exibirá o jogador no mapa.",
-  "Features.CentreMap.CentreMapOnPlayer": "Mapa recentralizado no jogador: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa recentralizado no ponto de respawn do jogador: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Mapa recentralizado na posição: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa recentralizado no ponto de respawn do mundo: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Mapa recentralizado no ponto de referência {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Mapa recentralizado no waypoint {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Não é possível encontrar o jogador \u0027{0}\u0027 no momento. Eles podem estar fora de alcance. O novo registro os exibirá no mapa.",
+    "Features.CentreMap.CentreMapOnPosition":  "Mapa recentrado na posição: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Mapa recentralizado no jogador: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Mapa centralizado novamente no ponto de surgimento do jogador: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Centraliza novamente o mapa no local ou jogador fornecido.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Mapa recentralizado no surgimento do mundo: ({0}, {1})"
 }

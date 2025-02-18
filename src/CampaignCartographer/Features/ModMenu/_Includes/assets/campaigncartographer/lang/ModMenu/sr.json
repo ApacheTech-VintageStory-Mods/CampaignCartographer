@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Uredi marker tačke izbora bloka",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Uredi unapred definisane tačke",
-  "Features.ModMenu.Dialogue.WaypointManager": "Menadžer tačaka",
-
-  "Features.ModMenu.Dialogue.Title": "Kampanjski kartograf",
-  "Features.ModMenu.Dialogue.Support": "Podržite autora moda",
-
-  "Features.Support.Dialogue.Patreon": "Pridružite se mom Patreonu",
-  "Features.Support.Dialogue.Donate": "Donirajte putem PayPal-a",
-  "Features.Support.Dialogue.Coffee": "Kupite mi kafu",
-  "Features.Support.Dialogue.Twitch": "Pretplatite se na Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Pretplatite se na YouTube",
-  "Features.Support.Dialogue.WishList": "Amazon lista želja",
-  "Features.Support.Dialogue.Website": "Posetite moj veb sajt",
-  "Features.Support.Dialogue.Back": "Nazad"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Menadžer putnih tačaka",
+    "Features.Support.Dialogue.YouTube":  "Pretplatite se na IouTube",
+    "Features.ModMenu.Dialogue.Title":  "Kampanja Kartograf",
+    "Features.Support.Dialogue.Back":  "Povratak",
+    "Features.Support.Dialogue.Coffee":  "Kupi mi kafu",
+    "Features.ModMenu.Dialogue.Support":  "Podržite autora moda",
+    "Features.Support.Dialogue.Twitch":  "Pretplatite se na Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Izmeni Blok Izbor Vaipoint Marker",
+    "Features.Support.Dialogue.WishList":  "Amazon Lista želja",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Izmena unapred definisanih putnih tačaka",
+    "Features.Support.Dialogue.Website":  "Posetite moj sajt",
+    "Features.Support.Dialogue.Patreon":  "Pridružite se mom Patreonu",
+    "Features.Support.Dialogue.Donate":  "Donirajte preko PayPal-a"
 }

@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Affiche votre position actuelle dans le monde.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Diffusez votre position actuelle au serveur.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Copiez votre position actuelle dans le presse-papiers.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Envoyez votre position actuelle à un autre joueur.",
-  "Features.GPS.ClipboardTextSet": "Position du joueur copiée dans le presse-papiers.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Plusieurs joueurs trouvés avec le même nom.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Aucun joueur trouvé.",
-  "Features.GPS.player-not-found": "Joueur non trouvé sur le serveur.",
-  "Features.GPS.whisper-received": "[De {0}]: {1}",
-  "Features.GPS.whisper-sent": "[À {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Afficher sur la carte"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Plusieurs joueurs trouvés avec le même nom.",
+    "Features.GPS.player-not-found":  "Joueur introuvable sur le serveur.",
+    "Features.GPS.ClipboardTextSet":  "L’emplacement du joueur est copié dans le presse-papiers.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Envoyez votre position actuelle à un autre joueur.",
+    "Features.GPS.Command.Description.Default":  "Affiche votre position actuelle dans le monde.",
+    "Features.GPS.whisper-received":  "[Extrait de {0}] : {1}",
+    "Features.GPS.whisper-sent":  "[À {0}] : {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Diffusez votre position actuelle sur le serveur.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Copiez votre position actuelle dans le presse-papiers.",
+    "Features.GPS.ShowOnMap":  "Afficher sur la carte",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Aucun joueur n’a été trouvé."
 }

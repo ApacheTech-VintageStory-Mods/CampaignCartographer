@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Показывает ваше текущее местоположение в мире.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Транслирует ваше текущее местоположение на сервер.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Копирует ваше текущее местоположение в буфер обмена.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Отправить ваше текущее местоположение другому игроку.",
-  "Features.GPS.ClipboardTextSet": "Местоположение игрока скопировано в буфер обмена.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Найдено несколько игроков с одинаковым именем.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Игроки не найдены.",
-  "Features.GPS.player-not-found": "Игрок не найден на сервере.",
-  "Features.GPS.whisper-received": "[От {0}]: {1}",
-  "Features.GPS.whisper-sent": "[К {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Показать на карте"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Найдено несколько игроков с одинаковыми именами.",
+    "Features.GPS.player-not-found":  "Игрок не найден на сервере.",
+    "Features.GPS.ClipboardTextSet":  "Местоположение плеера скопировано в буфер обмена.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Отправьте свое текущее местоположение другому игроку.",
+    "Features.GPS.Command.Description.Default":  "Показывает ваше текущее положение в мире.",
+    "Features.GPS.whisper-received":  "[Из {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Кому {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Транслируйте свое текущее местоположение на сервер.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Скопируйте текущее местоположение в буфер обмена.",
+    "Features.GPS.ShowOnMap":  "Показать на карте",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Игроки не найдены."
 }

@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "编辑块选择航点标记",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "编辑预定义航点",
-  "Features.ModMenu.Dialogue.WaypointManager": "航点管理器",
-
-  "Features.ModMenu.Dialogue.Title": "战役制图师",
-  "Features.ModMenu.Dialogue.Support": "支持mod作者",
-
-  "Features.Support.Dialogue.Patreon": "加入我的Patreon",
-  "Features.Support.Dialogue.Donate": "通过PayPal捐赠",
-  "Features.Support.Dialogue.Coffee": "请给我买一杯咖啡",
-  "Features.Support.Dialogue.Twitch": "在Twitch.tv上订阅",
-  "Features.Support.Dialogue.YouTube": "在YouTube上订阅",
-  "Features.Support.Dialogue.WishList": "Amazon愿望清单",
-  "Features.Support.Dialogue.Website": "访问我的网站",
-  "Features.Support.Dialogue.Back": "返回"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "航点管理器",
+    "Features.Support.Dialogue.YouTube":  "在 YouTube 上订阅",
+    "Features.ModMenu.Dialogue.Title":  "战役制图师",
+    "Features.Support.Dialogue.Back":  "返回",
+    "Features.Support.Dialogue.Coffee":  "请给我买杯咖啡",
+    "Features.ModMenu.Dialogue.Support":  "支持 Mod 作者",
+    "Features.Support.Dialogue.Twitch":  "在 Twitch.tv 上订阅",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "编辑块选择航点标记",
+    "Features.Support.Dialogue.WishList":  "亚马逊愿望单",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "编辑预定义的航点",
+    "Features.Support.Dialogue.Website":  "访问我的网站",
+    "Features.Support.Dialogue.Patreon":  "加入我的 Patreon",
+    "Features.Support.Dialogue.Donate":  "通过 PayPal 捐款"
 }

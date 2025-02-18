@@ -1,13 +1,13 @@
-{
-  "Features.GPS.Command.Description.Default": "Mostra a tua posição atual no mundo.",
-  "Features.GPS.Command.Description.BroadcastSubCommand": "Transmite a tua localização atual para o servidor.",
-  "Features.GPS.Command.Description.ClipboardSubCommand": "Copia a tua localização atual para a área de transferência.",
-  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Envia a tua localização atual para outro jogador.",
-  "Features.GPS.ClipboardTextSet": "Localização do jogador copiada para a área de transferência.",
-  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Foram encontrados vários jogadores com o mesmo nome.",
-  "Features.GPS.FuzzyPlayerSearch.NoResults": "Nenhum jogador encontrado.",
-  "Features.GPS.player-not-found": "Jogador não encontrado no servidor.",
-  "Features.GPS.whisper-received": "[De {0}]: {1}",
-  "Features.GPS.whisper-sent": "[Para {0}]: {1}",
-  "Features.GPS.ShowOnMap": "Mostrar no mapa"
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Vários jogadores encontrados com o mesmo nome.",
+    "Features.GPS.player-not-found":  "Player não encontrado no servidor.",
+    "Features.GPS.ClipboardTextSet":  "Localização do leitor copiada para a área de transferência.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Envie a sua localização atual para outro jogador.",
+    "Features.GPS.Command.Description.Default":  "Mostra a sua posição atual no mundo.",
+    "Features.GPS.whisper-received":  "[Do {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Para {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Difunda sua localização atual para o servidor.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Copie a sua localização atual para a área de transferência.",
+    "Features.GPS.ShowOnMap":  "Mostrar no mapa",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Nenhum jogador encontrado."
 }

@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Bewerk blokselectie waypointmarkeerder",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Bewerk vooraf gedefinieerde waypoints",
-  "Features.ModMenu.Dialogue.WaypointManager": "Waypointmanager",
-
-  "Features.ModMenu.Dialogue.Title": "Campagne Cartograaf",
-  "Features.ModMenu.Dialogue.Support": "Steun de mod-auteur",
-
-  "Features.Support.Dialogue.Patreon": "Word lid van mijn Patreon",
-  "Features.Support.Dialogue.Donate": "Doneer via PayPal",
-  "Features.Support.Dialogue.Coffee": "Koop me een koffie",
-  "Features.Support.Dialogue.Twitch": "Abonneer op Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Abonneer op YouTube",
-  "Features.Support.Dialogue.WishList": "Amazon verlanglijst",
-  "Features.Support.Dialogue.Website": "Bezoek mijn website",
-  "Features.Support.Dialogue.Back": "Terug"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Waypoint Manager",
+    "Features.Support.Dialogue.YouTube":  "Abonneer je op YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Campagne cartograaf",
+    "Features.Support.Dialogue.Back":  "Terug",
+    "Features.Support.Dialogue.Coffee":  "Koop een koffie voor me",
+    "Features.ModMenu.Dialogue.Support":  "Steun de Mod-auteur",
+    "Features.Support.Dialogue.Twitch":  "Abonneer je op Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Blokselectie bewerken Waypointmarkering",
+    "Features.Support.Dialogue.WishList":  "Amazon-verlanglijst",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Vooraf gedefinieerde waypoints bewerken",
+    "Features.Support.Dialogue.Website":  "Bezoek mijn website",
+    "Features.Support.Dialogue.Patreon":  "Word lid van mijn Patreon",
+    "Features.Support.Dialogue.Donate":  "Doneer via PayPal"
 }

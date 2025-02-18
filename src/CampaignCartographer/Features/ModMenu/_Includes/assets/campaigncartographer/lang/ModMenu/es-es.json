@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Editar marcador de punto de selección de bloque",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Editar puntos predefinidos",
-  "Features.ModMenu.Dialogue.WaypointManager": "Administrador de puntos de referencia",
-
-  "Features.ModMenu.Dialogue.Title": "Cartógrafo de campaña",
-  "Features.ModMenu.Dialogue.Support": "Apoya al autor del mod",
-
-  "Features.Support.Dialogue.Patreon": "Únete a mi Patreon",
-  "Features.Support.Dialogue.Donate": "Dona a través de PayPal",
-  "Features.Support.Dialogue.Coffee": "Cómprame un café",
-  "Features.Support.Dialogue.Twitch": "Suscríbete en Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Suscríbete en YouTube",
-  "Features.Support.Dialogue.WishList": "Lista de deseos de Amazon",
-  "Features.Support.Dialogue.Website": "Visita mi sitio web",
-  "Features.Support.Dialogue.Back": "Atrás"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Administrador de puntos de referencia",
+    "Features.Support.Dialogue.YouTube":  "Suscríbete en YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Cartógrafo de campaña",
+    "Features.Support.Dialogue.Back":  "Atrás",
+    "Features.Support.Dialogue.Coffee":  "Cómprame un café",
+    "Features.ModMenu.Dialogue.Support":  "Apoya al autor del mod",
+    "Features.Support.Dialogue.Twitch":  "Suscríbete en Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Editar marcador de punto de referencia de selección de bloque",
+    "Features.Support.Dialogue.WishList":  "Lista de deseos de Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Editar puntos de referencia predefinidos",
+    "Features.Support.Dialogue.Website":  "Visite mi sitio web",
+    "Features.Support.Dialogue.Patreon":  "Únete a mi Patreon",
+    "Features.Support.Dialogue.Donate":  "Donar a través de PayPal"
 }

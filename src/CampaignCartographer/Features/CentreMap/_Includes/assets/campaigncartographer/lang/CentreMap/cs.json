@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "Znovu zarovná mapu na zadané místo nebo hráče.",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "Nelze najít hráče `{0}` v tuto chvíli. Může být mimo dosah. Přihlášení znovu jej zobrazí na mapě.",
-  "Features.CentreMap.CentreMapOnPlayer": "Mapa byla znovu zarovnána na hráče: {0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa byla znovu zarovnána na bod zrodu hráče: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "Mapa byla znovu zarovnána na pozici: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa byla znovu zarovnána na bod zrodu světa: ({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "Mapa byla znovu zarovnána na bod zájmu {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Vycentrovaná mapa na trasový bod {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "V tuto chvíli nelze najít hráče \u0027{0}\u0027. Mohou být mimo dosah. Po opětovném přihlášení se zobrazí na mapě.",
+    "Features.CentreMap.CentreMapOnPosition":  "Znovu vycentrovaná mapa na pozici: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Znovu vycentrovaná mapa na přehrávač: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Vycentrovaná mapa na místo výsadku hráče: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Znovu vycentruje mapu na dané místo nebo hráče.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Znovu vycentrovaná mapa na spawn světa: ({0}, {1})"
 }

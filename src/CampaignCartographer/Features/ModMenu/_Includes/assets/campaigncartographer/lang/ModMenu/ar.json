@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "تحرير علامة نقطة الطريق لاختيار الكتل",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "تحرير النقاط المحددة مسبقًا",
-  "Features.ModMenu.Dialogue.WaypointManager": "مدير النقاط المرجعية",
-
-  "Features.ModMenu.Dialogue.Title": "رسام الحملة",
-  "Features.ModMenu.Dialogue.Support": "دعم مؤلف التعديل",
-
-  "Features.Support.Dialogue.Patreon": "انضم إلى باتريون الخاص بي",
-  "Features.Support.Dialogue.Donate": "تبرع عبر باي بال",
-  "Features.Support.Dialogue.Coffee": "اشترِ لي قهوة",
-  "Features.Support.Dialogue.Twitch": "اشترك على تويتش",
-  "Features.Support.Dialogue.YouTube": "اشترك على يوتيوب",
-  "Features.Support.Dialogue.WishList": "قائمة أمنيات أمازون",
-  "Features.Support.Dialogue.Website": "زيارة موقعي الإلكتروني",
-  "Features.Support.Dialogue.Back": "عودة"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "مدير الإحداثيات",
+    "Features.Support.Dialogue.YouTube":  "اشترك على موقع يوتيوب",
+    "Features.ModMenu.Dialogue.Title":  "رسام خرائط الحملة",
+    "Features.Support.Dialogue.Back":  "ظهر",
+    "Features.Support.Dialogue.Coffee":  "اشتر لي قهوة",
+    "Features.ModMenu.Dialogue.Support":  "دعم مؤلف وزارة الدفاع",
+    "Features.Support.Dialogue.Twitch":  "اشترك في Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "تحرير تحديد كتلة علامة إحداثية",
+    "Features.Support.Dialogue.WishList":  "قائمة أمنيات أمازون",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "تحرير نقاط الطريق المحددة مسبقا",
+    "Features.Support.Dialogue.Website":  "قم بزيارة موقع الويب الخاص بي",
+    "Features.Support.Dialogue.Patreon":  "انضم إلى Patreon الخاص بي",
+    "Features.Support.Dialogue.Donate":  "تبرع عبر PayPal"
 }

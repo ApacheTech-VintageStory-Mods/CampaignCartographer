@@ -1,17 +1,15 @@
-{
-  "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Редагувати маркер точки вибору блоку",
-  "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Редагувати попередньо визначені точки",
-  "Features.ModMenu.Dialogue.WaypointManager": "Менеджер точок маршруту",
-
-  "Features.ModMenu.Dialogue.Title": "Картограф кампанії",
-  "Features.ModMenu.Dialogue.Support": "Підтримати автора мода",
-
-  "Features.Support.Dialogue.Patreon": "Приєднуйтесь до мого Patreon",
-  "Features.Support.Dialogue.Donate": "Пожертвувати через PayPal",
-  "Features.Support.Dialogue.Coffee": "Купіть мені каву",
-  "Features.Support.Dialogue.Twitch": "Підпишіться на Twitch.tv",
-  "Features.Support.Dialogue.YouTube": "Підпишіться на YouTube",
-  "Features.Support.Dialogue.WishList": "Список бажаного Amazon",
-  "Features.Support.Dialogue.Website": "Відвідайте мій вебсайт",
-  "Features.Support.Dialogue.Back": "Назад"
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Менеджер маршрутних точок",
+    "Features.Support.Dialogue.YouTube":  "Підписатися на YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Кампанія картографа",
+    "Features.Support.Dialogue.Back":  "Задній",
+    "Features.Support.Dialogue.Coffee":  "Купи мені каву",
+    "Features.ModMenu.Dialogue.Support":  "Підтримайте автора мода",
+    "Features.Support.Dialogue.Twitch":  "Підписатися на Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Редагувати маркер маршрутної точки вибору блоку",
+    "Features.Support.Dialogue.WishList":  "Список бажань Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Редагування попередньо визначених маршрутних точок",
+    "Features.Support.Dialogue.Website":  "Відвідайте мій веб-сайт",
+    "Features.Support.Dialogue.Patreon":  "Приєднатися до мого Patreon",
+    "Features.Support.Dialogue.Donate":  "Пожертвувати через PayPal"
 }

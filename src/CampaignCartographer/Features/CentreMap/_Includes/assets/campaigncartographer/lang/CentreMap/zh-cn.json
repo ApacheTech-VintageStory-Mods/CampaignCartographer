@@ -1,9 +1,9 @@
-{
-  "Features.CentreMap.SettingsCommandDescription": "将地图重新集中在指定位置或玩家上。",
-  "Features.CentreMap.CannotCentreMapOnPlayer": "当前无法找到玩家 `{0}`。他们可能超出了范围。重新登录将会在地图上显示他们。",
-  "Features.CentreMap.CentreMapOnPlayer": "地图已重新集中在玩家：{0} ({1}, {2}, {3})",
-  "Features.CentreMap.CentreMapOnPlayerSpawn": "地图已重新集中在玩家重生点：({0}, {1})",
-  "Features.CentreMap.CentreMapOnPosition": "地图已重新集中在位置：({0}, {1})",
-  "Features.CentreMap.CentreMapOnWorldSpawn": "地图已重新集中在世界重生点：({0}, {1})",
-  "Features.CentreMap.CentreMapOnWaypoint": "地图已重新集中在路标 {0}: {1} ({2}, {3})"
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "航点{0}重新居中地图：{1}（{2}、{3}）",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "此时找不到玩家“{0}”。它们可能超出范围。重新记录将在地图上显示它们。",
+    "Features.CentreMap.CentreMapOnPosition":  "位置重新居中地图：（{0}、{1}）",
+    "Features.CentreMap.CentreMapOnPlayer":  "重新调整了以玩家为中心的地图：{0}（{1}、{2}、{3}）",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "地图重新居中于玩家出生点：（{0}、{1}）",
+    "Features.CentreMap.SettingsCommandDescription":  "将地图重新置于给定位置或玩家的中心。",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "重新居中世界生成的地图：（{0}、{1}）"
 }
