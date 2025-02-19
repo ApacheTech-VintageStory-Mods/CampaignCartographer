@@ -56,7 +56,7 @@ public class WaypointSharingService : UniversalModSystem
         {
             if (waypointMapLayer.Waypoints.Any(p => p.OwningPlayerUid == player.PlayerUID && p.Guid == packet.Waypoint.Guid)) continue;
             var waypoint = packet.Waypoint.With(p => p.OwningPlayerUid = player.PlayerUID);
-            ApiEx.Logger.VerboseDebug($"{sender.PlayerName} is sharing waypoint {{{waypoint.Guid}}} with {player.PlayerName}.");
+            ApiEx.Logger.VerboseDebug($"{sender.PlayerName} is sharing waypoint {waypoint.Guid} with {player.PlayerName}.");
             waypointMapLayer.AddWaypoint(waypoint, player as IServerPlayer);
             var culture = LangEx.GetPlayerLanguageCode(player);
             var feedback = LangEx.CultureString(culture, "WaypointSharing", "WaypointIdShared", sender.PlayerName, waypoint.Guid);
