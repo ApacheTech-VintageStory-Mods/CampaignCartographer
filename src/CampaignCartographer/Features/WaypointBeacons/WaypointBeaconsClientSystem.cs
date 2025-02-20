@@ -24,7 +24,7 @@ public class WaypointBeaconsClientSystem : ClientSystem
     private readonly ICoreClientAPI _capi;
 
     private static WaypointBeaconsSettings _settings;
-    private static readonly ConcurrentDictionary<string, WaypointBeaconHudElement> WaypointElements = [];
+    private static readonly ConcurrentDictionary<string, WaypointBeaconHudElement> _waypointElements = [];
 
     /// <summary>
     ///     Initialises the waypoint beacons system, including registering hotkeys and configuring the system settings.
@@ -39,7 +39,7 @@ public class WaypointBeaconsClientSystem : ClientSystem
         _settings = IOC.Services.GetRequiredService<WaypointBeaconsSettings>();
 
         _capi.Input.RegisterHotKey("EditWaypointFromBeacon", "Edit Selected Waypoint Beacon", GlKeys.U, HotkeyType.GUIOrOtherControls);
-        _capi.Input.SetHotKeyHandler("EditWaypointFromBeacon", _ => WaypointElements.Values.TryInvokeFirst(p => p.IsAligned, p => p.OpenEditDialogue()));
+        _capi.Input.SetHotKeyHandler("EditWaypointFromBeacon", _ => _waypointElements.Values.TryInvokeFirst(p => p.IsAligned, p => p.OpenEditDialogue()));
 
         Update();
     }
@@ -58,8 +58,8 @@ public class WaypointBeaconsClientSystem : ClientSystem
     {
         if (_capi.IsGamePaused) return;
         Repopulate();
-        WaypointElements.Values.InvokeWhere(p => p.Closeable, p => _capi.Event.AwaitMainThreadTask(() => p.TryClose()));
-        WaypointElements.Values.InvokeWhere(p => p.Openable, p => _capi.Event.AwaitMainThreadTask(() => p.TryOpen()));
+        _waypointElements.Values.InvokeWhere(p => p.Closeable, p => _capi.Event.AwaitMainThreadTask(() => p.TryClose()));
+        _waypointElements.Values.InvokeWhere(p => p.Openable, p => _capi.Event.AwaitMainThreadTask(() => p.TryOpen()));
     }
 
     /// <summary>
@@ -68,32 +68,32 @@ public class WaypointBeaconsClientSystem : ClientSystem
     private static void Repopulate()
     {
         // Remove elements with null keys
-        foreach (var kvp in WaypointElements)
+        foreach (var kvp in _waypointElements)
         {
             if (kvp.Key is null)
             {
                 kvp.Value.TryClose();
                 kvp.Value.Dispose();
-                WaypointElements.TryRemove(kvp);
+                _waypointElements.TryRemove(kvp);
             }
         }
 
         // Remove elements not in ActiveBeacons
-        foreach (var kvp in WaypointElements)
+        foreach (var kvp in _waypointElements)
         {
             if (_settings.ActiveBeacons.Contains(kvp.Key)) continue;
             kvp.Value.TryClose();
             kvp.Value.Dispose();
-            WaypointElements.TryRemove(kvp.Key, out _);
+            _waypointElements.TryRemove(kvp.Key, out _);
         }
 
         // Add elements present in ActiveBeacons but missing in WaypointElements
-        foreach (var id in _settings.ActiveBeacons.Where(id => id is not null && !WaypointElements.ContainsKey(id)))
+        foreach (var id in _settings.ActiveBeacons.Where(id => id is not null && !_waypointElements.ContainsKey(id)))
         {
             ApiEx.Client.Event.AwaitMainThreadTask(() =>
             {
                 var element = new WaypointBeaconHudElement(ApiEx.Client, id);
-                WaypointElements.TryAdd(id, element);
+                _waypointElements.TryAdd(id, element);
             });
         }
     }
@@ -111,12 +111,12 @@ public class WaypointBeaconsClientSystem : ClientSystem
 
     private static void ClearElements()
     {
-        WaypointElements?.Values.InvokeForAll(p =>
+        _waypointElements?.Values.InvokeForAll(p =>
         {
             p.TryClose();
             p.Dispose();
         });
-        WaypointElements?.Clear();
+        _waypointElements?.Clear();
     }
 
     /// <inheritdoc />

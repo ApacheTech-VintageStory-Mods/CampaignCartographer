@@ -2,7 +2,6 @@
 using ApacheTech.Common.FunctionalCSharp.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.Extensions.Api;
-using Gantry.Core.GameContent.AssetEnum;
 using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
@@ -137,13 +136,10 @@ public static class WaypointTemplateExtensions
     /// </summary>
     /// <param name="colourString">The colour string to convert.</param>
     /// <returns>The integer representation of the colour.</returns>
-    public static int ToInt(this string colourString)
-    {
-        if (colourString.StartsWith("#")) return ColorUtil.Hex2Int(colourString);
-        return !NamedColour.TryParse(colourString, false, out var namedColour)
-            ? Color.FromName(NamedColour.Black).ToArgb() | -16777216
-            : Color.FromName(namedColour).ToArgb() | -16777216;
-    }
+    public static int ToInt(this string colourString) 
+        => (colourString.StartsWith("#")
+            ? ColorUtil.Hex2Int(colourString)
+            : ColorUtil.Hex2Int(Color.FromName(colourString).ToRgbaHexString())) | -16777216;
 
     /// <summary>
     ///     Converts an integer representing a colour to its hexadecimal string representation.
