@@ -264,8 +264,13 @@ public class WaypointImportDialogue : GenericDialogue
 
         if (!files.Any()) return false;
 
-        var list = new List<PositionedWaypointTemplate>();
-        foreach (var file in files) list.AddRange(file.Model.Waypoints.Select(p => p.With(w => w.Position = w.Position.AddCopy(file.Model.SpawnPosition.XYZ))));
+        var list = new List<ImportedWaypointTemplate>();
+        foreach (var file in files)
+        {
+            var waypoints = file.Model.Waypoints
+                .Select(p => new ImportedWaypointTemplate(p, file.Model.SpawnPosition));
+            list.AddRange(waypoints);
+        }
         
         var dialogue = WaypointImportConfirmationDialogue.Create(list);
         dialogue.TryOpen();

@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System.Xml.Linq;
+using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 

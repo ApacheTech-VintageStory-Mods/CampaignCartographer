@@ -1,5 +1,7 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
 
@@ -44,4 +46,13 @@ public class WaypointFileModel
     /// </summary>
     /// <value>The list of exported waypoints.</value>
     public List<PositionedWaypointTemplate> Waypoints { get; set; }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    public Vec3d Relative(PositionedWaypointTemplate waypoint)
+    {
+        var pos = SpawnPosition.XYZ + waypoint.Position;
+        return pos;
+    }
 }

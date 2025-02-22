@@ -33,12 +33,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gantry", "..\..\..\Gantry\s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLauncher", "..\..\..\CoreClrLauncher\src\ClientLauncher\ClientLauncher.csproj", "{8331DEE8-7E25-43FC-825F-143064F7B342}"
 	ProjectSection(ProjectDependencies) = postProject
+		{70987259-0649-403A-95E7-12AB5AF5C82C} = {70987259-0649-403A-95E7-12AB5AF5C82C}
 		{FC5B486D-5440-48A7-8F6A-ECE178556884} = {FC5B486D-5440-48A7-8F6A-ECE178556884}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLauncherCA", "..\..\..\CoreClrLauncher\src\ClientLauncherCA\ClientLauncherCA.csproj", "{4E1601F6-727F-4803-B18E-86C80517B04F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70987259-0649-403A-95E7-12AB5AF5C82C} = {70987259-0649-403A-95E7-12AB5AF5C82C}
+		{FC5B486D-5440-48A7-8F6A-ECE178556884} = {FC5B486D-5440-48A7-8F6A-ECE178556884}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerLauncher", "..\..\..\CoreClrLauncher\src\ServerLauncher\ServerLauncher.csproj", "{E7BF2A26-47AD-4CC3-AB5A-C2EDDC53FA73}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70987259-0649-403A-95E7-12AB5AF5C82C} = {70987259-0649-403A-95E7-12AB5AF5C82C}
+		{FC5B486D-5440-48A7-8F6A-ECE178556884} = {FC5B486D-5440-48A7-8F6A-ECE178556884}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B9E00F31-824B-4FE9-A3DB-95811BEFFE6A}"
 	ProjectSection(SolutionItems) = preProject

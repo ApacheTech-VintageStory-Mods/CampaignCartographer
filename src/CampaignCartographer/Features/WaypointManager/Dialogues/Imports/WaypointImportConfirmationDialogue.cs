@@ -1,6 +1,7 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Core.Hosting.Annotation;
@@ -11,11 +12,10 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 ///     Dialogue Window: Allows the user to export waypoints to JSON files.
 /// </summary>
 /// <seealso cref="GenericDialogue" />
-[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
 {
     private readonly WaypointQueriesRepository _queriesRepo;
-    private readonly List<PositionedWaypointTemplate> _waypoints;
+    private readonly List<ImportedWaypointTemplate> _waypoints;
 
     /// <summary>
     /// 	Initialises a new instance of the <see cref="WaypointImportConfirmationDialogue" /> class.
@@ -25,7 +25,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
     /// <param name="waypoints"></param>
     [SidedConstructor]
     public WaypointImportConfirmationDialogue(
-        ICoreClientAPI capi, WaypointQueriesRepository queriesRepo, List<PositionedWaypointTemplate> waypoints) : base(capi, queriesRepo)
+        ICoreClientAPI capi, WaypointQueriesRepository queriesRepo, List<ImportedWaypointTemplate> waypoints) : base(capi, queriesRepo)
     {
         _queriesRepo = queriesRepo;
         _waypoints = waypoints;
@@ -44,7 +44,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
         });
     }
 
-    public static WaypointImportConfirmationDialogue Create(List<PositionedWaypointTemplate> waypoints)
+    public static WaypointImportConfirmationDialogue Create(List<ImportedWaypointTemplate> waypoints)
     {
         return IOC.Services.CreateInstance<WaypointImportConfirmationDialogue>(waypoints);
     }
@@ -65,16 +65,33 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
     {
         var world = ApiEx.Client.World;
         var playerPos = world.Player.Entity.Pos.AsBlockPos;
-        var waypoints = _queriesRepo.SortWaypoints(_waypoints, SortOrder);
-        return waypoints.Select(dto => new WaypointSelectionCellEntry
+
+        ImportedWaypointTemplate WithRelativePosition(ImportedWaypointTemplate template)
         {
-            Title = dto.Value.Title,
-            RightTopText = $"{dto.Value.Position.AsBlockPos.RelativeToSpawn()} ({dto.Value.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
-            RightTopOffY = 3f,
-            DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
-            Model = SelectableWaypointTemplate.FromWaypoint(dto.Value, selected: true),
-            Index = dto.Key
+            var originalPosition = template.Position;
+            var absoluteOnFile = originalPosition.ToAbsolute(template.SpawnPosition.XYZ);
+            var relativeInWorld = absoluteOnFile.RelativeToSpawn();
+            var absoluteInWorld = relativeInWorld.ToAbsolute();
+            return template.With(p => p.Position = absoluteInWorld);
+        }
+
+        var waypoints = _queriesRepo.SortWaypoints(_waypoints.Select(WithRelativePosition), SortOrder);      
+
+        var list = waypoints.Select(dto =>
+        {
+            var w = new WaypointSelectionCellEntry
+            {
+                Title = dto.Value.Title,
+                RightTopText = $"{dto.Value.Position.AsBlockPos.RelativeToSpawn()} ({dto.Value.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+                RightTopOffY = 3f,
+                DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
+                Model = SelectableWaypointTemplate.FromWaypoint(dto.Value, selected: true),
+                Index = dto.Key
+            };
+
+            return w;
         }).ToList();
+        return list;
     }
 
     #endregion
@@ -95,9 +112,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
         var waypoints = WaypointsList.elementCells      
             .Cast<WaypointSelectionGuiCell>()
             .Where(p => p.On)
-            .Select(w => w.Model.With(x => {
-                x.Position = x.Position.AsBlockPos.RelativeToSpawn().ToVec3d();
-            }))
+            .Select(w => w.Model)
             .ToList();
 
         var code = LangEx.FeatureCode("WaypointManager.Dialogue.Imports", "File");
