@@ -11,6 +11,7 @@ public class WaypointBeaconViewModel
     private readonly string _id;
     private readonly WaypointBeaconsSettings _settings;
     private readonly WaypointMapLayer _mapLayer;
+    private Waypoint _memento;
 
     private Waypoint ThisWaypoint
     {
@@ -18,9 +19,11 @@ public class WaypointBeaconViewModel
         {
             try
             {
+                if (_memento is not null) return _memento;
                 var mapLayer = _mapLayer;
                 var ownWaypoints = mapLayer?.ownWaypoints?.ToArray();
-                return ownWaypoints?.FirstOrDefault(p => p.Guid == _id);
+                _memento = ownWaypoints?.FirstOrDefault(p => p.Guid == _id);
+                return _memento;
             }
             catch
             {
@@ -98,5 +101,15 @@ public class WaypointBeaconViewModel
     /// <typeparam name="T">The type of the value to retrieve.</typeparam>
     /// <param name="f">A function to retrieve the value from the waypoint.</param>
     /// <returns>The retrieved value, or the default if the waypoint is unavailable.</returns>
-    private T Get<T>(System.Func<Waypoint, T> f) => !Available ? default : f(ThisWaypoint);
+    private T Get<T>(System.Func<Waypoint, T> f)
+    {
+        try
+        {
+            return Available ? f(ThisWaypoint) : default;
+        }
+        catch
+        {
+            return default;
+        }
+    }
 }
