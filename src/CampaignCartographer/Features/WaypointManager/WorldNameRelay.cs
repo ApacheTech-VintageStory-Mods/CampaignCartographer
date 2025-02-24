@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Packets;
 using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
+using Gantry.Services.Network.Packets;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
