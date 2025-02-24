@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "الترتيب حسب الفهرس (تنازلي)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "لون نقطة الطريق.",
     "Features.WaypointManager.Dialogue.Share":  "سهم",
+    "Features.WaypointManager.Dialogue.Teleport":  "النقل الفضائي",
     "Features.WaypointManager.Dialogue.Beacon":  "منارة",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "أنت على وشك استيراد {0} نقاط الطريق.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "الرمز المراد عرضه لنقطة الطريق.",

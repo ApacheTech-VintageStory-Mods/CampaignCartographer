@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Ordenar por índice (decrescente)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "A cor do ponto de passagem.",
     "Features.WaypointManager.Dialogue.Share":  "Partilhar",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teletransporte",
     "Features.WaypointManager.Dialogue.Beacon":  "Farol",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Você está prestes a importar {0} waypoints.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "O ícone a ser exibido para o waypoint.",

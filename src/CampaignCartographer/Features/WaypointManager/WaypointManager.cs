@@ -6,14 +6,33 @@ using Gantry.Core.GameContent.AssetEnum;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.Maths;
+using Vintagestory.API.Server;
+using Gantry.Services.Network;
+using Gantry.Core.Annotation;
+using Gantry.Services.Network.Extensions;
+using Gantry.Services.Network.Packets;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 [HarmonyClientSidePatch]
-public sealed class WaypointManager : ClientModSystem, IClientServiceRegistrar
+public sealed class WaypointManager : UniversalModSystem, IClientServiceRegistrar
 {
     public override double ExecuteOrder() => 0.11;
+
+    public override void StartServerSide(ICoreServerAPI api)
+    {
+        IOC.Services
+            .GetRequiredService<IServerNetworkService>()
+            .DefaultServerChannel
+            .RegisterMessageHandler<WorldMapTeleportPacket>(OnTeleportPacketReceived);
+    }
+
+    [ServerSide]
+    private void OnTeleportPacketReceived(IServerPlayer fromPlayer, WorldMapTeleportPacket packet)
+    {
+        fromPlayer.Entity.TeleportTo(packet.Position);
+    }
 
     /// <summary>
     ///     Allows a mod to include Singleton, or Transient services to the IOC Container.
@@ -34,6 +53,11 @@ public sealed class WaypointManager : ClientModSystem, IClientServiceRegistrar
 
     public override void StartClientSide(ICoreClientAPI capi)
     {
+        IOC.Services
+            .GetRequiredService<IClientNetworkService>()
+            .DefaultClientChannel
+            .RegisterMessageType<WorldMapTeleportPacket>();
+
         capi.AddModMenuDialogue<WaypointExportDialogue>("WaypointManager");
     }
 
@@ -49,7 +73,7 @@ public sealed class WaypointManager : ClientModSystem, IClientServiceRegistrar
 
         colours.Sort(new ColourRampComparer { Repetitions = 18, SmoothHueBlending = true });
 
-        __instance.WaypointColors = colours.Select(x => x.ToArgb()).ToList();
+        __instance.WaypointColors = [.. colours.Select(x => x.ToArgb())];
     }
 
     /// <summary>

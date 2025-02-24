@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Сортувати за індексом (за спаданням)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Колір маршрутної точки.",
     "Features.WaypointManager.Dialogue.Share":  "Ділити",
+    "Features.WaypointManager.Dialogue.Teleport":  "Телепорт",
     "Features.WaypointManager.Dialogue.Beacon":  "Маяк",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Ви збираєтеся імпортувати {0} маршрутні точки.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Піктограма для відображення маршрутної точки.",

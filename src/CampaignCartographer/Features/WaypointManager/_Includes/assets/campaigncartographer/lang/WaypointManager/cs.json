@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Seřadit podle indexu (sestupně)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Barva průjezdního bodu.",
     "Features.WaypointManager.Dialogue.Share":  "Sdílet",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleportovat",
     "Features.WaypointManager.Dialogue.Beacon":  "Maják",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Chystáte se importovat {0} trasové body.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona, která se má zobrazit pro trasový bod.",

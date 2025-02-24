@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Сортировка по индексу (по убыванию)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Цвет путевой точки.",
     "Features.WaypointManager.Dialogue.Share":  "Предоставить общий доступ",
+    "Features.WaypointManager.Dialogue.Teleport":  "Телепорт",
     "Features.WaypointManager.Dialogue.Beacon":  "Маяк",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Вы собираетесь импортировать {0} путевые точки.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Значок для отображения путевой точки.",

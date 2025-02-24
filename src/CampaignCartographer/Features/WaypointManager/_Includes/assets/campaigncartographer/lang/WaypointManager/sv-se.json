@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Sortera efter index (fallande)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Färgen på waypointen.",
     "Features.WaypointManager.Dialogue.Share":  "Aktie",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleportera",
     "Features.WaypointManager.Dialogue.Beacon":  "Vårdkase",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Du är på väg att importera {0} waypoints.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikonen som ska visas för waypointen.",

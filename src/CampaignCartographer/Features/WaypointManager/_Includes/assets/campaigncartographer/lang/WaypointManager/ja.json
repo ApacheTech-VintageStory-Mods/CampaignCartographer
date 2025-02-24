@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "インデックスで並べ替え (降順)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "ウェイポイントの色。",
     "Features.WaypointManager.Dialogue.Share":  "共有",
+    "Features.WaypointManager.Dialogue.Teleport":  "テレポート",
     "Features.WaypointManager.Dialogue.Beacon":  "ビーコン",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "ウェイポイントをインポートし{0}しようとしています。",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "ウェイポイントに表示するアイコン。",

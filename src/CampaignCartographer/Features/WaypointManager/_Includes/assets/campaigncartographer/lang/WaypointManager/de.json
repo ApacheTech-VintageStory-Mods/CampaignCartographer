@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Sortieren nach Index (absteigend)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Die Farbe des Wegpunkts.",
     "Features.WaypointManager.Dialogue.Share":  "Freigeben",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleportieren",
     "Features.WaypointManager.Dialogue.Beacon":  "Bake",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Sie sind dabei, {0} Wegpunkte zu importieren.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Das Symbol, das für den Wegpunkt angezeigt werden soll.",

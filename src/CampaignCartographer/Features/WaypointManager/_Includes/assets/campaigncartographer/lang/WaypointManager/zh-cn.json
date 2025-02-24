@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "按索引排序 （降序）",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "航点的颜色。",
     "Features.WaypointManager.Dialogue.Share":  "共享",
+    "Features.WaypointManager.Dialogue.Teleport":  "传送",
     "Features.WaypointManager.Dialogue.Beacon":  "灯塔",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "您将要导入 {0} 个航点。",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "要为航点显示的图标。",

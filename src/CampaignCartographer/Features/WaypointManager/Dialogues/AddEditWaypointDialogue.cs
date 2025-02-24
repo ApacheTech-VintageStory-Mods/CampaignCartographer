@@ -6,8 +6,11 @@ using Gantry.Core.Contracts;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Services.FileSystem.Configuration;
+using Gantry.Services.Network.Packets;
+using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
+using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 
@@ -59,7 +62,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         _mode = mode;
 
         _waypointBeaconSettings = IOC.Services.Resolve<WaypointBeaconsSettings>();
-        _onlinePlayers = capi.World.AllOnlinePlayers.Except([capi.World.Player]).ToArray();
+        _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;
@@ -86,7 +89,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         var labelFont = CairoFont.WhiteSmallText();
         var txtTitleFont = CairoFont.WhiteDetailText();
         var topBounds = ElementBounds.FixedSize(600, 30);
-        
+
         //
         // Title
         //
@@ -179,9 +182,28 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Share Button
         //
 
-        if (_onlinePlayers.Length <= 0) return; 
-        buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
-        composer.AddSmallButton(T("Share"), OnShareButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnShare");
+        if (_onlinePlayers.Length > 0)
+        {
+            buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
+            composer.AddSmallButton(T("Share"), OnShareButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnShare");
+        }
+
+        //
+        // Teleport Button
+        //
+
+        if (capi.World.Player.HasPrivilege(Privilege.tp))
+        {
+            buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
+            composer.AddSmallButton(T("Teleport"), OnTeleportButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnTeleport");
+        }
+    }
+
+    private bool OnTeleportButtonPressed()
+    {
+        IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel
+            .SendPacket<WorldMapTeleportPacket>(new() { Position = _waypoint.Position });
+        return TryClose();
     }
 
     private void AutoSuggestTitle()

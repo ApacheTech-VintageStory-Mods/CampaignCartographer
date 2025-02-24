@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Sortuj według indeksu (malejąco)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Kolor punktu trasy.",
     "Features.WaypointManager.Dialogue.Share":  "Udostępnij",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleport",
     "Features.WaypointManager.Dialogue.Beacon":  "Beacon",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Za chwilę zaimportujesz {0} punkty trasy.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona do wyświetlenia dla punktu trasy.",

@@ -59,6 +59,7 @@ public static class WaypointDialoguePatches
         int ___waypointIndex)
     {
         if (args.Button != EnumMouseButton.Right) return true;
+        if (ApiEx.Client.World.Player.Entity.Controls.ShiftKey) return true;
 
         var viewPos = new Vec2f();
         mapElem.TranslateWorldPosToViewPos(___waypoint.Position, ref viewPos);

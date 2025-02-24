@@ -66,6 +66,7 @@
   "Features.WaypointManager.Dialogue.Share.optPlayerSelection.HoverText": "Select who to share the waypoint with.",
   "Features.WaypointManager.Dialogue.Share.btnShare": "Share with {0}",
   "Features.WaypointManager.Dialogue.Share.btnBroadcast": "Share with everyone",
+  "Features.WaypointManager.Dialogue.Teleport": "Teleport",
   "Features.WaypointManager.Dialogue.DeleteConfirmationTitle": "Delete Waypoint",
   "Features.WaypointManager.Dialogue.DeleteConfirmationMessage": "Are you sure you want to delete this waypoint?",
 

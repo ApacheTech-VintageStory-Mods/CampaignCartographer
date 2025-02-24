@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Sorteren op Index (aflopend)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "De kleur van het waypoint.",
     "Features.WaypointManager.Dialogue.Share":  "Delen",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleport",
     "Features.WaypointManager.Dialogue.Beacon":  "Baken",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "U staat op het punt om {0} waypoints te importeren.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Het pictogram dat moet worden weergegeven voor het waypoint.",

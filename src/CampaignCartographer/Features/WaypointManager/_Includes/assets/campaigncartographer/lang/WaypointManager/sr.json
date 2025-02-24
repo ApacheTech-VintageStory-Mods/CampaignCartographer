@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "Sortiraj po indeksu (opadajuće)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "Boja putne tačke.",
     "Features.WaypointManager.Dialogue.Share":  "Delite",
+    "Features.WaypointManager.Dialogue.Teleport":  "Teleportujeљ",
     "Features.WaypointManager.Dialogue.Beacon":  "Signal",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Spremate se da uvezete {0} putne tačke.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona za prikaz za putnu tačku.",

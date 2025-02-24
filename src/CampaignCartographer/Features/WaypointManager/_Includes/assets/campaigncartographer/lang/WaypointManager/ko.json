@@ -22,6 +22,7 @@
     "Features.WaypointManager.Dialogue.Exports.IndexDescending":  "인덱스별 정렬(내림차순)",
     "Features.WaypointManager.Dialogue.Colour.HoverText":  "웨이포인트의 색상입니다.",
     "Features.WaypointManager.Dialogue.Share":  "공유",
+    "Features.WaypointManager.Dialogue.Teleport":  "텔 레 포트",
     "Features.WaypointManager.Dialogue.Beacon":  "신호",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "{0} 웨이포인트를 가져오려고 합니다.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "웨이포인트에 대해 표시할 아이콘입니다.",
