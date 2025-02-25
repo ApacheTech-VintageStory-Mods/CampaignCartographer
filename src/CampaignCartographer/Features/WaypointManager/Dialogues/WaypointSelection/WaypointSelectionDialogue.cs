@@ -26,7 +26,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     private readonly IPlayer[] _onlinePlayers;
     protected readonly WorldMapManager WorldMap;
 
-    protected List<WaypointSelectionCellEntry> Waypoints { get; set; } = [];
+    protected IEnumerable<WaypointSelectionCellEntry> Waypoints { get; set; } = [];
 
     protected GuiElementCellList<WaypointSelectionCellEntry> WaypointsList { get; private set; }
 
@@ -64,7 +64,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     public static void Patch_WaypointMapLayer_OnDataFromServer_PostFix(byte[] data)
     {
         _instance?.RefreshWaypoints(data);
-        _instance?.SingleComposer.ReCompose();
+        _instance?.SingleComposer?.ReCompose();
     }
 
     #region Form Composition
@@ -158,7 +158,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
         if (ShowExtraButtons && _onlinePlayers.Length > 0)
         {
-            composer.AddSmallButton(T("ShareSelected"),OnShareButtonPressed, 
+            composer.AddSmallButton(T("ShareSelected"), OnShareButtonPressed,
                 textBounds.FlatCopy().FixedUnder(insetBounds, 10.0), EnumButtonStyle.Normal, "btnShareSelected");
         }
 
@@ -214,7 +214,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     private bool OnShareButtonPressed()
     {
-        var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);        
+        var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);
         var waypoints = cellList.Select(p => p.Model.ToWaypoint());
         var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, waypoints);
         dialogue.ToggleGui();
@@ -228,7 +228,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         return dialogue.TryOpen();
     }
 
-    protected static string T(string text, params object[] args) 
+    protected static string T(string text, params object[] args)
         => LangEx.FeatureString("WaypointManager.Dialogue.Exports", text, args);
 
     private void OnFilterTextChanged(string filterString)
@@ -285,7 +285,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         if (args.Button != EnumMouseButton.Right) return;
 
         var dialogue = new AddEditWaypointDialogue(
-            ApiEx.Client, 
+            ApiEx.Client,
             cell.Model.ToWaypoint(),
             cell.CellEntry.Index);
 
@@ -303,33 +303,63 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     {
         var waypoints = SerializerUtil.Deserialize<List<Waypoint>>(data);
         Waypoints = RefreshWaypointCellEntries(waypoints);
-        WaypointsList.ReloadCells(Waypoints);
+        WaypointsList?.ReloadCells(Waypoints);
         RefreshValues();
     }
 
-    private List<WaypointSelectionCellEntry> RefreshWaypointCellEntries(List<Waypoint> ownWaypoints)
+    /// <summary>
+    ///     Refreshes the waypoint cell entries, ensuring that no null values are included in the returned list.
+    /// </summary>
+    /// <param name="ownWaypoints">The list of own waypoints to process.</param>
+    /// <returns>
+    ///     A list of <see cref="WaypointSelectionCellEntry"/> in which all entries have been validated to be non-null.
+    /// </returns>
+    private IEnumerable<WaypointSelectionCellEntry> RefreshWaypointCellEntries(List<Waypoint> ownWaypoints)
     {
+        if (ownWaypoints is null || ownWaypoints.Count == 0) return [];
+
+        // Convert the list of waypoints to a sorted dictionary.
         var sortedWaypoints = ownWaypoints.ToSortedDictionary();
-        var waypoints = WaypointQueriesRepository.Sort(SortOrder, sortedWaypoints)
-            .Select(x => new KeyValuePair<int, SelectableWaypointTemplate>(x.Key, SelectableWaypointTemplate.FromWaypoint(x.Value)));
+
+        // Retrieve the player's position.
         var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
 
-        return waypoints.Select(w =>
-        {
-            var dto = w.Value;
-            var current = Waypoints.FirstOrDefault(p => p.Model.Equals(w.Value));
-            dto.Selected = current?.Model.Selected ?? true;
+        // Cache the current Waypoints to prevent re-evaluation during iteration,
+        // which might be causing a recursive call and leading to a stack overflow.
+        var cachedWaypoints = Waypoints?.ToList() ?? [];
 
-            return new WaypointSelectionCellEntry
+        // Sort the waypoints and convert each to a selectable template,
+        // filtering out any null conversions.
+        return WaypointQueriesRepository
+            .Sort(SortOrder, sortedWaypoints)
+            .Select(x => new KeyValuePair<int, SelectableWaypointTemplate>(x.Key, SelectableWaypointTemplate.FromWaypoint(x.Value)))
+            .Where(w => w.Value is not null)
+            .Select(w =>
             {
-                Title = dto.Title,
-                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn()} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
-                RightTopOffY = 3f,
-                DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
-                Model = dto,
-                Index = w.Key
-            };
-        }).ToList();
+                var dto = w.Value;
+
+                // Check for any critical null values; if any are found, skip this entry.
+                if (dto is null || dto.Title is null || dto.Position is null) return null;
+
+                // Update the 'Selected' flag based on the current state from the global Waypoints collection.
+                var current = cachedWaypoints.FirstOrDefault(p => p.Model?.Id == dto.Id);
+                dto.Selected = current?.Model?.Selected ?? true;
+
+                // Check the relative position; if unavailable, skip this entry.
+                var relativePos = dto.Position.AsBlockPos.RelativeToSpawn();
+                if (relativePos is null) return null;
+
+                return new WaypointSelectionCellEntry
+                {
+                    Title = dto.Title,
+                    RightTopText = $"{relativePos} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+                    RightTopOffY = 3f,
+                    DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
+                    Model = dto,
+                    Index = w.Key
+                };
+            })
+            .Where(entry => entry is not null);
     }
 
     protected void OnCellClickRightSide(MouseEvent args, int elementIndex)

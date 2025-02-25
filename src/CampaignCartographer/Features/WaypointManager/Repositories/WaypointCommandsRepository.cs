@@ -29,6 +29,7 @@ internal class WaypointCommandsRepository
     ///     Handles the waypoint data received from the server, resetting the processing state.
     /// </summary>
     [HarmonyPostfix]
+    [HarmonyPriority(Priority.First)]
     [HarmonyPatch(typeof(WaypointMapLayer), nameof(WaypointMapLayer.OnDataFromServer))]
     private static void Patch_WaypointMapLayer_OnDataFromServer_Postfix()
     {
