@@ -1,6 +1,8 @@
 ﻿using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Helpers;
 
+#pragma warning disable IDE1006 // Naming Styles
+
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Dialogue;
 
 /// <summary>
@@ -26,7 +28,7 @@ public sealed class ModMenuDialogue : GenericDialogue
         Title = LangEx.ModTitle();
         ModalTransparency = 0f;
         ShowTitleBar = true;
-        _dialogues = system.FeatureDialogues;
+        _dialogues = system.FeatureDialogues.OrderBy(p => p.Value).ToDictionary(p => p.Key, p => p.Value);
     }
 
     /// <summary>
