@@ -19,6 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CampaignCartographer.Tests.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{02AF42D2-1FD8-4903-A4F1-5D587F06DF34}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		src\Directory.Build.props = src\Directory.Build.props
 		src\Directory.Build.targets = src\Directory.Build.targets
 		gitupdate.bat = gitupdate.bat
