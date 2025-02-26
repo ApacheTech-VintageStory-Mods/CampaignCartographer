@@ -21,7 +21,7 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly Waypoint _waypoint;
     private readonly BlockPos _position;
     private readonly int _index;
-    private readonly WaypointTypeMode _mode;
+    private readonly AddEditDialogueMode _mode;
     private readonly IPlayer[] _onlinePlayers;
     private readonly WaypointBeaconsSettings _waypointBeaconSettings;
 
@@ -30,12 +30,12 @@ public class AddEditWaypointDialogue : GenericDialogue
     private bool _ignoreNextAutoSuggestDisable;
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, Waypoint waypoint, int index)
-        : this(capi, WaypointTypeMode.Edit, waypoint, index: index)
+        : this(capi, AddEditDialogueMode.Edit, waypoint, index: index)
     {
     }
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, BlockPos position)
-        : this(capi, WaypointTypeMode.Add, null, position: position)
+        : this(capi, AddEditDialogueMode.Add, null, position: position)
     {
         _waypoint = new Waypoint
         {
@@ -47,7 +47,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private AddEditWaypointDialogue(        
         ICoreClientAPI capi,
-        WaypointTypeMode mode,
+        AddEditDialogueMode mode,
         Waypoint waypoint,
         int index = 0,
         BlockPos position = null)
@@ -79,7 +79,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         SingleComposer.ColorListPickerSetValue("optColour", Math.Max(_colours.IndexOf(_waypoint.Color), 0));
         SingleComposer.IconListPickerSetValue("optIcon", Math.Max(_icons.IndexOf(_waypoint.Icon), 0));
 
-        if (_mode != WaypointTypeMode.Edit) return;
+        if (_mode != AddEditDialogueMode.Edit) return;
         txtTitle.SetField("hasFocus", false);
         SingleComposer.GetSwitch("btnBeacon").SetValue(_beacon);
     }
@@ -118,7 +118,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Beacon
         //
 
-        if (_mode == WaypointTypeMode.Edit)
+        if (_mode == AddEditDialogueMode.Edit)
         {
             left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
             right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
@@ -174,7 +174,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Delete Button
         //
 
-        if (_mode == WaypointTypeMode.Add) return;
+        if (_mode == AddEditDialogueMode.Add) return;
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
 
@@ -275,13 +275,13 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        ICommand command = _mode == WaypointTypeMode.Add
+        ICommand command = _mode == AddEditDialogueMode.Add
             ? new AddWaypointCommand(_position, _waypoint)
             : new ModifyWaypointCommand(_index, _waypoint);
 
         command.Execute();
         
-        if (_waypoint.Guid is not null && _mode == WaypointTypeMode.Edit && (_beacon
+        if (_waypoint.Guid is not null && _mode == AddEditDialogueMode.Edit && (_beacon
             ? _waypointBeaconSettings.ActiveBeacons.AddIfNotPresent(_waypoint.Guid)
             : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))) 
             ModSettings.World.Save(_waypointBeaconSettings);

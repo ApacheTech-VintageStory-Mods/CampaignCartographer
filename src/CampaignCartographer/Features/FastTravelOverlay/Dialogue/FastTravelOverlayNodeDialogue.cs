@@ -13,7 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay
 
 public class FastTravelOverlayNodeDialogue : GenericDialogue
 {
-    private readonly WaypointTypeMode _mode;
+    private readonly AddEditDialogueMode _mode;
     private readonly FastTravelOverlayNode _node;
     private readonly FastTravelOverlayNode _original;
     private readonly FastTravelOverlaySettings _fastTravelOverlaySettings;
@@ -28,13 +28,13 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
     };
 
     public static FastTravelOverlayNodeDialogue Create(FastTravelOverlayNode node) 
-        => new(WaypointTypeMode.Add, node);
+        => new(AddEditDialogueMode.Add, node);
 
     public static FastTravelOverlayNodeDialogue Edit(FastTravelOverlayNode node) 
-        => new(WaypointTypeMode.Edit, node);
+        => new(AddEditDialogueMode.Edit, node);
 
     private FastTravelOverlayNodeDialogue(
-        WaypointTypeMode mode,
+        AddEditDialogueMode mode,
         FastTravelOverlayNode node
         ) : base(ApiEx.Client)
     {
@@ -59,7 +59,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
         SingleComposer.GetDropDown("cbxColour").SetSelectedIndex(index);
         SingleComposer.GetCustomDraw("pbxColour").Redraw();
 
-        if (_mode == WaypointTypeMode.Add) return;
+        if (_mode == AddEditDialogueMode.Add) return;
         SingleComposer.GetSwitch("btnEnabled").SetValue(_node.Enabled);
     }
 
@@ -116,7 +116,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
         // Enabled
         //
 
-        if (_mode == WaypointTypeMode.Edit)
+        if (_mode == AddEditDialogueMode.Edit)
         {
             left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
             right = ElementBounds.FixedSize(370, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
@@ -145,7 +145,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
         // Delete Button
         //
 
-        if (_mode == WaypointTypeMode.Add) return;
+        if (_mode == AddEditDialogueMode.Add) return;
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
 
@@ -153,7 +153,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
         // Reset Button
         //
 
-        if (_mode == WaypointTypeMode.Add) return;
+        if (_mode == AddEditDialogueMode.Add) return;
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(T("btnReset"), OnResetButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnReset");
     }
