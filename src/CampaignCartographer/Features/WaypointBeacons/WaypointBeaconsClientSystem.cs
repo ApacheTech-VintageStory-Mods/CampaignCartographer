@@ -136,10 +136,9 @@ public class WaypointBeaconsClientSystem : ClientSystem
     /// </param>
     [HarmonyPostfix]
     [HarmonyPatch(typeof(WaypointMapLayer), nameof(WaypointMapLayer.OnDataFromServer))]
-    public static void Harmony_WaypointMapLayer_OnDataFromServer_Postfix(byte[] data)
+    public static void Harmony_WaypointMapLayer_OnDataFromServer_Postfix(List<Waypoint> ___ownWaypoints)
     {
-        var incomingWaypoints = SerializerUtil.Deserialize<IEnumerable<Waypoint>>(data);
-        var waypointIds = incomingWaypoints.Select(p => p.Guid);
+        var waypointIds = ___ownWaypoints.Select(p => p.Guid);
         if (_settings.ActiveBeacons.RemoveAll(id => !waypointIds.Contains(id)) > 0)
         {
             ModSettings.World.Save(_settings);
