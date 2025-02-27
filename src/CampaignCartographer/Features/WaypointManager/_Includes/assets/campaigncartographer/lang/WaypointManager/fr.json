@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Fichier : {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Monde:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Confirmation de l’importation des points de cheminement",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Couche de carte",
     "Features.WaypointUtil.ConfirmationMessage":  "Tapez \u0027.wpUtil {0}\u0027 pour confirmer votre choix.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Fichiers",
     "Features.WaypointManager.Dialogue.Icon":  "Icône",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Partager",
     "Features.WaypointManager.Dialogue.Teleport":  "Téléporter",
     "Features.WaypointManager.Dialogue.Beacon":  "Balise",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Vous êtes sur le point d’importer {0} waypoints.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Sur quelle couche de carte le waypoint doit apparaître.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "L’icône à afficher pour le waypoint.",
     "Features.WaypointManager.Dialogue.Pinned":  "Épinglé",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Trier par indice (croissant)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Trier par couleur (décroissant)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Trier par couleur (croissant)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Êtes-vous sûr de vouloir supprimer ce waypoint ?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Vous êtes sur le point d’importer {0} waypoints.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Création : {0 :G}"
 }

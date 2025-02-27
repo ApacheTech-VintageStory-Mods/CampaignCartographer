@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Файл: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Мир:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Подтверждение импорта путевых точек",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Слой карты",
     "Features.WaypointUtil.ConfirmationMessage":  "Введите «.wpUtil {0}», чтобы подтвердить свой выбор.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Файлы",
     "Features.WaypointManager.Dialogue.Icon":  "Икона",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Предоставить общий доступ",
     "Features.WaypointManager.Dialogue.Teleport":  "Телепорт",
     "Features.WaypointManager.Dialogue.Beacon":  "Маяк",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Вы собираетесь импортировать {0} путевые точки.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "На каком слое карты должна отображаться путевая точка.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Значок для отображения путевой точки.",
     "Features.WaypointManager.Dialogue.Pinned":  "Закрепленных",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Сортировка по индексу (по возрастанию)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Сортировка по цвету (по убыванию)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Сортировка по цвету (по возрастанию)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Вы уверены, что хотите удалить эту путевую точку?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Вы собираетесь импортировать {0} путевые точки.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Создано: {0:G}"
 }

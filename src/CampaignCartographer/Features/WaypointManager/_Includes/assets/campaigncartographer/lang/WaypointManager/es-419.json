@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Archivo: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Mundo:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Confirmación de importación de waypoints",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Capa de mapa",
     "Features.WaypointUtil.ConfirmationMessage":  "Escribe \u0027.wpUtil {0}\u0027 para confirmar tu elección.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Archivos",
     "Features.WaypointManager.Dialogue.Icon":  "Icono",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Compartir",
     "Features.WaypointManager.Dialogue.Teleport":  "Teletransportar",
     "Features.WaypointManager.Dialogue.Beacon":  "Almenara",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Estás a punto de importar {0} waypoints.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "En qué capa de mapa debe aparecer el waypoint.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "El icono que se mostrará para el waypoint.",
     "Features.WaypointManager.Dialogue.Pinned":  "Fijado",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Ordenar por índice (ascendente)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Ordenar por color (descendente)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Ordenar por color (ascendente)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "¿Estás seguro de que quieres eliminar este waypoint?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Estás a punto de importar {0} waypoints.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Creado: {0:G}"
 }

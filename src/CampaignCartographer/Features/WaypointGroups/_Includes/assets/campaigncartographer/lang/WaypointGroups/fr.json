@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Le titre à afficher sur la carte.",
+    "Features.WaypointGroups.Dialogue.Title":  "Groupes de points de repère",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Vous ne pouvez créer qu’un maximum de {0} groupes.",
+    "Features.WaypointGroups.DefaultGroupName":  "Faire défaut",
+    "Features.WaypointGroups.Dialogue.Edit":  "Modifier le groupe",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titre:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Ajouter un nouveau groupe",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Le titre est obligatoire."
+}

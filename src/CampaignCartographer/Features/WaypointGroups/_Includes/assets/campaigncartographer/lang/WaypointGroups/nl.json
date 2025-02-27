@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "De titel die op de kaart moet worden weergegeven.",
+    "Features.WaypointGroups.Dialogue.Title":  "Waypoint-groepen",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Je kunt maximaal {0} groepen maken.",
+    "Features.WaypointGroups.DefaultGroupName":  "Verstek",
+    "Features.WaypointGroups.Dialogue.Edit":  "Groep bewerken",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titel:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Nieuwe groep toevoegen",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "De titel is vereist."
+}

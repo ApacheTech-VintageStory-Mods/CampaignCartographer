@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Назва для відображення на карті.",
+    "Features.WaypointGroups.Dialogue.Title":  "Групи маршрутних точок",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Можна зробити максимум {0} груп.",
+    "Features.WaypointGroups.DefaultGroupName":  "За промовчанням",
+    "Features.WaypointGroups.Dialogue.Edit":  "Редагувати групу",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Назва:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Додати нову групу",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Назва обов\u0027язкова для заповнення."
+}

@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Название, которое будет отображаться на карте.",
+    "Features.WaypointGroups.Dialogue.Title":  "Группы путевых точек",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Вы можете создать не более {0} групп.",
+    "Features.WaypointGroups.DefaultGroupName":  "По умолчанию",
+    "Features.WaypointGroups.Dialogue.Edit":  "Редактировать группу",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Титул:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Добавить новую группу",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Титул обязателен для заполнения."
+}

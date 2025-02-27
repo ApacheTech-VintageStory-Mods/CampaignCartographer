@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Файл: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Світ:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Підтвердження імпорту маршрутних точок",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Шар карти",
     "Features.WaypointUtil.ConfirmationMessage":  "Введіть \".wpUtil {0}\", щоб підтвердити свій вибір.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Файли",
     "Features.WaypointManager.Dialogue.Icon":  "Ікона",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Ділити",
     "Features.WaypointManager.Dialogue.Teleport":  "Телепорт",
     "Features.WaypointManager.Dialogue.Beacon":  "Маяк",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Ви збираєтеся імпортувати {0} маршрутні точки.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "На якому шарі карти має з\u0027явитися маршрутна точка.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Піктограма для відображення маршрутної точки.",
     "Features.WaypointManager.Dialogue.Pinned":  "Закріплені",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Сортувати за індексом (за зростанням)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Сортувати за кольором (за спаданням)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Сортувати за кольором (за зростанням)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Ви впевнені, що хочете видалити цю маршрутну точку?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Ви збираєтеся імпортувати {0} маршрутні точки.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Створено: {0:G}"
 }

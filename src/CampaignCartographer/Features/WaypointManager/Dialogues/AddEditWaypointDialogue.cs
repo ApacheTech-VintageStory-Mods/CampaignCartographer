@@ -1,7 +1,8 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories.Commands;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Core.Contracts;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
@@ -11,6 +12,7 @@ using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.API.Server;
+using Groups = ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Systems.WaypointGroups;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 
@@ -23,11 +25,15 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly int _index;
     private readonly AddEditDialogueMode _mode;
     private readonly IPlayer[] _onlinePlayers;
+    private readonly Dictionary<string, string> _waypointGroups;
+    private readonly WaypointGroupsSettings _waypointGroupsSettings;
     private readonly WaypointBeaconsSettings _waypointBeaconSettings;
 
     private bool _beacon;
     private bool _autoSuggest = true;
     private bool _ignoreNextAutoSuggestDisable;
+    private string _selectedGroupId;
+    private WaypointGroup _group;
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, Waypoint waypoint, int index)
         : this(capi, AddEditDialogueMode.Edit, waypoint, index: index)
@@ -60,9 +66,10 @@ public class AddEditWaypointDialogue : GenericDialogue
         _index = index;
         _position = position;
         _mode = mode;
-
+        _waypointGroupsSettings = IOC.Services.Resolve<WaypointGroupsSettings>();
         _waypointBeaconSettings = IOC.Services.Resolve<WaypointBeaconsSettings>();
-        _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];
+        _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];        
+        _waypointGroups = Groups.GetWaypointGroupListItems();
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;
@@ -82,6 +89,13 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_mode != AddEditDialogueMode.Edit) return;
         txtTitle.SetField("hasFocus", false);
         SingleComposer.GetSwitch("btnBeacon").SetValue(_beacon);
+
+        if (_waypointGroups.Count > 1)
+        {
+            _group = Groups.GetWaypointGroup(_waypoint);
+            var index = _waypointGroups.Keys.IndexOf(p => p == _group?.Id.ToString());
+            SingleComposer.GetDropDown("btnWaypointGroup").SetSelectedIndex(Math.Max(0, index));
+        }
     }
 
     protected override void ComposeBody(GuiComposer composer)
@@ -101,6 +115,24 @@ public class AddEditWaypointDialogue : GenericDialogue
             .AddStaticText(T("WaypointTitle"), labelFont, EnumTextOrientation.Right, left, "lblTitle")
             .AddAutoSizeHoverText(T("WaypointTitle.HoverText"), txtTitleFont, 260, left)
             .AddTextInput(right, OnTitleChanged, txtTitleFont, "txtTitle");
+
+        //
+        // Waypoint Group
+        //
+
+        if (_mode == AddEditDialogueMode.Edit && _waypointGroups.Count > 1) 
+        {
+            left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
+            right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+
+            var keys = _waypointGroups.Keys.ToArray();
+            var values = _waypointGroups.Values.ToArray();
+
+            composer
+                .AddStaticText(T("WaypointGroup"), labelFont, EnumTextOrientation.Right, left, "lblWaypointGroup")
+                .AddAutoSizeHoverText(T("WaypointGroup.HoverText"), txtTitleFont, 260, left)
+                .AddDropDown(keys, values, 0, OnWaypointGroupChanged, right, CairoFont.WhiteSmallText(), "btnWaypointGroup");
+        }
 
         //
         // Pinned
@@ -199,6 +231,11 @@ public class AddEditWaypointDialogue : GenericDialogue
         }
     }
 
+    private void OnWaypointGroupChanged(string code, bool selected)
+    {
+        _selectedGroupId = code;
+    }
+
     private bool OnTeleportButtonPressed()
     {
         IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel
@@ -262,6 +299,7 @@ public class AddEditWaypointDialogue : GenericDialogue
                 ModSettings.World.Save(_waypointBeaconSettings);
             }
             capi.SendChatMessage($"/waypoint remove {_index}");
+            RemoveWaypointGroup();
             TryClose();
         }
     }
@@ -286,7 +324,42 @@ public class AddEditWaypointDialogue : GenericDialogue
             : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))) 
             ModSettings.World.Save(_waypointBeaconSettings);
 
+        UpdateWaypointGroup();
         return TryClose();
+    }
+
+    private void RemoveWaypointGroup()
+    {
+        // 0. Don't do anything if the group is null.
+        if (_group is null) return;
+
+        // 1. Remove the waypoint from the current group.
+        var waypointId = Guid.Parse(_waypoint.Guid);
+        _group.Waypoints.RemoveIfPresent(waypointId);
+
+        // 2. Save the changes.
+        ModSettings.World.Save(_waypointGroupsSettings);
+    }
+
+    private void UpdateWaypointGroup()
+    {
+        // 0. Don't do anything if the group hasn't changed.
+        if (_selectedGroupId == _group?.Id.ToString().IfNullOrEmpty(string.Empty)) return;
+
+        // 1. Remove the waypoint from the current group.
+        var waypointId = Guid.Parse(_waypoint.Guid);
+        _group?.Waypoints.RemoveIfPresent(waypointId);
+
+        // 2. Add the waypoint to the new group, if required.
+        if (!string.IsNullOrEmpty(_selectedGroupId))
+        {
+            var groupId = Guid.Parse(_selectedGroupId);
+            var newGroup = _waypointGroupsSettings.Groups.FirstOrDefault(p => p.Id == groupId);
+            newGroup?.Waypoints.AddIfNotPresent(waypointId);
+        }
+
+        // 3. Save the changes.
+        ModSettings.World.Save(_waypointGroupsSettings);
     }
 
     private bool OnCancelButtonPressed()

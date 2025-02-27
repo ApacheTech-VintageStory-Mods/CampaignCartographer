@@ -1,0 +1,10 @@
+{
+  "Features.WaypointGroups.DefaultGroupName":  "Default",
+  "Features.WaypointGroups.Dialogue.Title": "Waypoint Groups",
+  "Features.WaypointGroups.Dialogue.AddNew": "Add New Group",
+  "Features.WaypointGroups.Dialogue.Edit": "Edit Group",
+  "Features.WaypointGroups.Dialogue.MaxReached": "You can only make a maximum of {0} groups.",
+  "Features.WaypointGroups.Dialogue.lblTitle": "Title:",
+  "Features.WaypointGroups.Dialogue.lblTitle.HoverText": "The title to show on the map.",
+  "Features.WaypointGroups.Dialogue.lblTitle.ValidationError": "The title is required."
+}

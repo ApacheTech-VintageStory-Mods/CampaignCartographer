@@ -52,6 +52,8 @@
   "Features.WaypointManager.Dialogue.Edit.Title": "Edit Existing Waypoint",
   "Features.WaypointManager.Dialogue.WaypointTitle": "Title",
   "Features.WaypointManager.Dialogue.WaypointTitle.HoverText": "The title of the waypoint.",
+  "Features.WaypointManager.Dialogue.WaypointGroup": "Map Layer",
+  "Features.WaypointManager.Dialogue.WaypointGroup.HoverText": "Which map layer the waypoint should appear on.",
   "Features.WaypointManager.Dialogue.Pinned": "Pinned",
   "Features.WaypointManager.Dialogue.Pinned.HoverText": "Pin the waypoint so it is always visible on the map.",
   "Features.WaypointManager.Dialogue.Beacon": "Beacon",

@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Titeln som ska visas på kartan.",
+    "Features.WaypointGroups.Dialogue.Title":  "Waypoint-grupper",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Du kan bara skapa maximalt {0} grupper.",
+    "Features.WaypointGroups.DefaultGroupName":  "Standard",
+    "Features.WaypointGroups.Dialogue.Edit":  "Redigera grupp",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titel:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Lägg till ny grupp",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Titeln är obligatorisk."
+}

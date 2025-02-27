@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Naslov koji će se prikazati na mapi.",
+    "Features.WaypointGroups.Dialogue.Title":  "Grupe putnih tačaka",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Možete napraviti samo maksimalno {0} grupe.",
+    "Features.WaypointGroups.DefaultGroupName":  "Podrazumevani",
+    "Features.WaypointGroups.Dialogue.Edit":  "Grupa za uređivanje",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Naslov:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Dodaj novu grupu",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Naslov je obavezan."
+}

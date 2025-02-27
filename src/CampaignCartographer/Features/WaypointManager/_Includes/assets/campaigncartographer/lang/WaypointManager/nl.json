@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Bestand: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Wereld:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Bevestiging van waypoints importeren",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Kaart laag",
     "Features.WaypointUtil.ConfirmationMessage":  "Typ \u0027.wpUtil {0}\u0027 om je keuze te bevestigen.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "archief",
     "Features.WaypointManager.Dialogue.Icon":  "Pictogram",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Delen",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleport",
     "Features.WaypointManager.Dialogue.Beacon":  "Baken",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "U staat op het punt om {0} waypoints te importeren.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Op welke kaartlaag het waypoint moet verschijnen.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Het pictogram dat moet worden weergegeven voor het waypoint.",
     "Features.WaypointManager.Dialogue.Pinned":  "Vastgemaakt",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Sorteren op index (oplopend)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Sorteren op kleur (aflopend)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Sorteren op kleur (oplopend)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Weet je zeker dat je dit waypoint wilt verwijderen?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "U staat op het punt om {0} waypoints te importeren.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Gemaakt: {0:G}"
 }

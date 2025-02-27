@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "ファイル: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "世界：",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "ウェイポイントのインポート確認",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "マップレイヤー",
     "Features.WaypointUtil.ConfirmationMessage":  "「.wpUtil {0}」と入力して選択を確認します。",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "ファイル",
     "Features.WaypointManager.Dialogue.Icon":  "アイコン",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "共有",
     "Features.WaypointManager.Dialogue.Teleport":  "テレポート",
     "Features.WaypointManager.Dialogue.Beacon":  "ビーコン",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "ウェイポイントをインポートし{0}しようとしています。",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "ウェイポイントを表示するマップレイヤー。",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "ウェイポイントに表示するアイコン。",
     "Features.WaypointManager.Dialogue.Pinned":  "固定",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "インデックスで並べ替え (昇順)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "色で並べ替え(降順)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "色で並べ替え(昇順)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "このウェイポイントを削除してもよろしいですか?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "ウェイポイントをインポートし{0}しようとしています。",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "作成日: {0:G}"
 }

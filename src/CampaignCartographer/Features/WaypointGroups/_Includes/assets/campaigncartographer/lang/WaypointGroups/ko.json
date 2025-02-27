@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "지도에 표시할 제목입니다.",
+    "Features.WaypointGroups.Dialogue.Title":  "웨이포인트 그룹",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "그룹은 최대 {0}개까지만 만들 수 있습니다.",
+    "Features.WaypointGroups.DefaultGroupName":  "기본값",
+    "Features.WaypointGroups.Dialogue.Edit":  "그룹 편집",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "타이틀:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "새 그룹 추가",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "제목은 필수 항목입니다."
+}

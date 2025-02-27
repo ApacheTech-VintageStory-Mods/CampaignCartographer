@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "マップ上に表示するタイトル。",
+    "Features.WaypointGroups.Dialogue.Title":  "ウェイポイントグループ",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "作成できるグループは最大 {0} 個までです。",
+    "Features.WaypointGroups.DefaultGroupName":  "デフォルト",
+    "Features.WaypointGroups.Dialogue.Edit":  "グループの編集",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "タイトル：",
+    "Features.WaypointGroups.Dialogue.AddNew":  "新しいグループを追加",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "タイトルは必須です。"
+}

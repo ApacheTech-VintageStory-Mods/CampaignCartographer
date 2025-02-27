@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Datoteka: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Svetu:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Potvrda uvoznih tačaka",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Sloj mape",
     "Features.WaypointUtil.ConfirmationMessage":  "Upišite \u0027.vpUtil {0}\u0027 da biste potvrdili svoj izbor.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Datoteke",
     "Features.WaypointManager.Dialogue.Icon":  "Ikonu",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Delite",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleportujeљ",
     "Features.WaypointManager.Dialogue.Beacon":  "Signal",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Spremate se da uvezete {0} putne tačke.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Na kojem sloju mape treba da se pojavi putna tačka.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona za prikaz za putnu tačku.",
     "Features.WaypointManager.Dialogue.Pinned":  "sadržina",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Sortiraj po indeksu (uzlazno)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Sortiraj po boji (opadajuće)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Sortiraj po boji (uzlazno)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Da li ste sigurni da želite da izbrišete ovu putnu tačku?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Spremate se da uvezete {0} putne tačke.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Kreirano: {0:G}"
 }

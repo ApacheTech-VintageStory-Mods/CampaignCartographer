@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Fil: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Värld:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Bekräftelse av import av waypoints",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Kart Skikt",
     "Features.WaypointUtil.ConfirmationMessage":  "Skriv \u0027.wpUtil {0}\u0027 för att bekräfta ditt val.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "ﬁler",
     "Features.WaypointManager.Dialogue.Icon":  "Ikon",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Aktie",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleportera",
     "Features.WaypointManager.Dialogue.Beacon":  "Vårdkase",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Du är på väg att importera {0} waypoints.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Vilket kartlager waypointen ska visas på.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikonen som ska visas för waypointen.",
     "Features.WaypointManager.Dialogue.Pinned":  "Nålas",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Sortera efter Index (Stigande)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Sortera efter färg (fallande)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Sortera efter Färg (stigande)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Är du säker på att du vill ta bort den här waypointen?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Du är på väg att importera {0} waypoints.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Skapad: {0:G}"
 }

@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Soubor: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Svět:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Potvrzení importu trasových bodů",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Mapová vrstva",
     "Features.WaypointUtil.ConfirmationMessage":  "Zadejte \u0027.wpUtil {0}\u0027 pro potvrzení vaší volby.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "soubory",
     "Features.WaypointManager.Dialogue.Icon":  "Ikona",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Sdílet",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleportovat",
     "Features.WaypointManager.Dialogue.Beacon":  "Maják",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Chystáte se importovat {0} trasové body.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Ve které vrstvě mapy se má trasový bod zobrazit.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona, která se má zobrazit pro trasový bod.",
     "Features.WaypointManager.Dialogue.Pinned":  "Přišpendlený",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Seřadit podle indexu (vzestupně)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Seřadit podle barvy (sestupně)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Seřadit podle barvy (vzestupně)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Opravdu chcete tento trasový bod smazat?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Chystáte se importovat {0} trasové body.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Vytvořeno: {0:G}"
 }

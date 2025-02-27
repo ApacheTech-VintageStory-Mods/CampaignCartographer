@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "文件：{0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "世界：",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "导入航点确认",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "地图图层",
     "Features.WaypointUtil.ConfirmationMessage":  "键入 \u0027.wpUtil {0}\u0027 以确认您的选择。",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "文件",
     "Features.WaypointManager.Dialogue.Icon":  "图标",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "共享",
     "Features.WaypointManager.Dialogue.Teleport":  "传送",
     "Features.WaypointManager.Dialogue.Beacon":  "灯塔",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "您将要导入 {0} 个航点。",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "航点应显示在哪个地图图层上。",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "要为航点显示的图标。",
     "Features.WaypointManager.Dialogue.Pinned":  "寄托",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "按索引排序 （升序）",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "按颜色排序 （降序）",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "按颜色排序 （升序）",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "您确定要删除此航点吗？",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "您将要导入 {0} 个航点。",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "创建时间： {0：G}"
 }

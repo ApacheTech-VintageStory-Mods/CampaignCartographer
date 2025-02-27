@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "ملف: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "عالم:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "تأكيد استيراد نقاط الطريق",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "طبقة الخريطة",
     "Features.WaypointUtil.ConfirmationMessage":  "اكتب \".wpUtil {0}\" لتأكيد اختيارك.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "الملفات",
     "Features.WaypointManager.Dialogue.Icon":  "رمز",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "سهم",
     "Features.WaypointManager.Dialogue.Teleport":  "النقل الفضائي",
     "Features.WaypointManager.Dialogue.Beacon":  "منارة",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "أنت على وشك استيراد {0} نقاط الطريق.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "طبقة الخريطة التي يجب أن تظهر عليها نقطة الطريق.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "الرمز المراد عرضه لنقطة الطريق.",
     "Features.WaypointManager.Dialogue.Pinned":  "المثبته",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "فرز حسب الفهرس (تصاعدي)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "الترتيب حسب اللون (تنازلي)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "الترتيب حسب اللون (تصاعدي)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "هل أنت متأكد من أنك تريد حذف نقطة الطريق هذه؟",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "أنت على وشك استيراد {0} نقاط الطريق.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "تم الإنشاء: {0: G}"
 }

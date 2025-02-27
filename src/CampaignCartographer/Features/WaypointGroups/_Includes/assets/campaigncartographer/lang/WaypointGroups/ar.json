@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "العنوان الذي سيتم إظهاره على الخريطة.",
+    "Features.WaypointGroups.Dialogue.Title":  "مجموعات الإحداثيات",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "يمكنك فقط إنشاء مجموعات {0} كحد أقصى.",
+    "Features.WaypointGroups.DefaultGroupName":  "افتراضي",
+    "Features.WaypointGroups.Dialogue.Edit":  "تحرير المجموعة",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "عنوان:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "إضافة مجموعة جديدة",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "العنوان مطلوب."
+}

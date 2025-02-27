@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "要在地图上显示的标题。",
+    "Features.WaypointGroups.Dialogue.Title":  "航点组",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "您最多只能创建 {0} 个组。",
+    "Features.WaypointGroups.DefaultGroupName":  "违约",
+    "Features.WaypointGroups.Dialogue.Edit":  "编辑组",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "标题：",
+    "Features.WaypointGroups.Dialogue.AddNew":  "添加新组",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "标题为必填项。"
+}

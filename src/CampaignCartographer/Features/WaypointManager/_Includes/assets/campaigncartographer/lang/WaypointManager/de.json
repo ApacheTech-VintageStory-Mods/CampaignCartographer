@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Datei: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Welt:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Bestätigung des Importierens von Wegpunkten",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Karten-Ebene",
     "Features.WaypointUtil.ConfirmationMessage":  "Geben Sie \".wpUtil {0}\" ein, um Ihre Auswahl zu bestätigen.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Dateien",
     "Features.WaypointManager.Dialogue.Icon":  "Ikone",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Freigeben",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleportieren",
     "Features.WaypointManager.Dialogue.Beacon":  "Bake",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Sie sind dabei, {0} Wegpunkte zu importieren.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Auf welcher Kartenebene der Wegpunkt angezeigt werden soll.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Das Symbol, das für den Wegpunkt angezeigt werden soll.",
     "Features.WaypointManager.Dialogue.Pinned":  "Angeheftet",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Sortieren nach Index (aufsteigend)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Sortieren nach Farbe (absteigend)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Sortieren nach Farbe (aufsteigend)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Sind Sie sicher, dass Sie diesen Wegpunkt löschen möchten?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Sie sind dabei, {0} Wegpunkte zu importieren.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Erstellt: {0:G}"
 }

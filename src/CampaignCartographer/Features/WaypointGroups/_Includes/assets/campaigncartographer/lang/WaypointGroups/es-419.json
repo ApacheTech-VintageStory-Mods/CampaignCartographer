@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "El título que se mostrará en el mapa.",
+    "Features.WaypointGroups.Dialogue.Title":  "Grupos de puntos de referencia",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Solo puedes hacer un máximo de {0} grupos.",
+    "Features.WaypointGroups.DefaultGroupName":  "Predeterminado",
+    "Features.WaypointGroups.Dialogue.Edit":  "Editar grupo",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Título:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Agregar nuevo grupo",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "El título es obligatorio."
+}

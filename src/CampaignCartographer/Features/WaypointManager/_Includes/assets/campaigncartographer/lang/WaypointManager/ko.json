@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "파일: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "세계:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Import Waypoints Confirmation(웨이포인트 가져오기 확인)",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "맵 레이어",
     "Features.WaypointUtil.ConfirmationMessage":  "\u0027.wpUtil {0}\u0027을 입력하여 선택을 확인합니다.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "파일",
     "Features.WaypointManager.Dialogue.Icon":  "아이콘",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "공유",
     "Features.WaypointManager.Dialogue.Teleport":  "텔 레 포트",
     "Features.WaypointManager.Dialogue.Beacon":  "신호",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "{0} 웨이포인트를 가져오려고 합니다.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "웨이포인트가 표시되어야 하는 맵 레이어입니다.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "웨이포인트에 대해 표시할 아이콘입니다.",
     "Features.WaypointManager.Dialogue.Pinned":  "고정",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "인덱스별 정렬(오름차순)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "색상순 정렬(내림차순)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "색상별 정렬(오름차순)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "이 웨이 포인트를 삭제 하시겠습니까?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "{0} 웨이포인트를 가져오려고 합니다.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "생성됨: {0:G}"
 }

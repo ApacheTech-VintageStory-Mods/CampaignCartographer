@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Der Titel, der auf der Karte angezeigt werden soll.",
+    "Features.WaypointGroups.Dialogue.Title":  "Wegpunkt-Gruppen",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Sie können nur maximal {0} Gruppen erstellen.",
+    "Features.WaypointGroups.DefaultGroupName":  "Vorgabe",
+    "Features.WaypointGroups.Dialogue.Edit":  "Gruppe bearbeiten",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titel:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Neue Gruppe hinzufügen",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Der Titel ist erforderlich."
+}

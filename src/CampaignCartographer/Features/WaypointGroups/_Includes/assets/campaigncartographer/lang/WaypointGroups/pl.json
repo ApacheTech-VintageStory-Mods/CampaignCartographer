@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Tytuł, który ma być wyświetlany na mapie.",
+    "Features.WaypointGroups.Dialogue.Title":  "Grupy punktów trasy",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Możesz utworzyć maksymalnie {0} grupy.",
+    "Features.WaypointGroups.DefaultGroupName":  "Domyślny",
+    "Features.WaypointGroups.Dialogue.Edit":  "Edytuj grupę",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Tytuł:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Dodaj nową grupę",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Tytuł jest wymagany."
+}

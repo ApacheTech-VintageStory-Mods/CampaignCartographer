@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Název, který se má zobrazit na mapě.",
+    "Features.WaypointGroups.Dialogue.Title":  "Skupiny trasových bodů",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Můžete vytvořit maximálně {0} skupin.",
+    "Features.WaypointGroups.DefaultGroupName":  "Výchozí",
+    "Features.WaypointGroups.Dialogue.Edit":  "Upravit skupinu",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titul:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Přidat novou skupinu",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Název je povinný."
+}

@@ -9,6 +9,7 @@
     "Features.WaypointManager.Dialogue.Imports.FileText":  "Plik: {0}",
     "Features.WaypointManager.Dialogue.Exports.World":  "Świat:",
     "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationTitle":  "Potwierdzenie importu punktów trasy",
+    "Features.WaypointManager.Dialogue.WaypointGroup":  "Warstwa mapy",
     "Features.WaypointUtil.ConfirmationMessage":  "Wpisz \".wpUtil {0}\", aby potwierdzić swój wybór.",
     "Features.WaypointManager.Dialogue.Imports.File-plural":  "Pliki",
     "Features.WaypointManager.Dialogue.Icon":  "Ikona",
@@ -24,7 +25,7 @@
     "Features.WaypointManager.Dialogue.Share":  "Udostępnij",
     "Features.WaypointManager.Dialogue.Teleport":  "Teleport",
     "Features.WaypointManager.Dialogue.Beacon":  "Beacon",
-    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Za chwilę zaimportujesz {0} punkty trasy.",
+    "Features.WaypointManager.Dialogue.WaypointGroup.HoverText":  "Na której warstwie mapy powinien pojawić się punkt trasy.",
     "Features.WaypointManager.Dialogue.Icon.HoverText":  "Ikona do wyświetlenia dla punktu trasy.",
     "Features.WaypointManager.Dialogue.Pinned":  "Przypięte",
     "Features.WaypointManager.Dialogue.Exports.IndexAscending":  "Sortuj według indeksu (rosnąco)",
@@ -68,5 +69,6 @@
     "Features.WaypointManager.Dialogue.Exports.ColourDescending":  "Sortuj według koloru (malejąco)",
     "Features.WaypointManager.Dialogue.Exports.ColourAscending":  "Sortuj według koloru (rosnąco)",
     "Features.WaypointManager.Dialogue.DeleteConfirmationMessage":  "Czy na pewno chcesz usunąć ten punkt trasy?",
+    "Features.WaypointManager.Dialogue.ImportConfirmation.ConfirmationMessage":  "Za chwilę zaimportujesz {0} punkty trasy.",
     "Features.WaypointManager.Dialogue.Imports.CreatedText":  "Utworzono: {0:G}"
 }
