@@ -8,19 +8,6 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Ex
 public static class WorldMapManagerExtensions
 {
     /// <summary>
-    ///     Builds a world map dialogue instance for the specified map manager.
-    /// </summary>
-    /// <param name="mapManager">The world map manager.</param>
-    public static void BuildWorldMapDialogue(this WorldMapManager mapManager)
-    {
-        if (mapManager.worldMapDlg is null) return;
-        var onViewChangedClient = new OnViewChangedDelegate((nowVisible, nowHidden)
-            => mapManager.CallMethod("onViewChangedClient", nowVisible, nowHidden));
-        var getTabsOrdered = mapManager.CallMethod<List<string>>("getTabsOrdered");
-        mapManager.worldMapDlg = new GuiDialogWorldMap(onViewChangedClient, ApiEx.Client, getTabsOrdered);
-    }
-
-    /// <summary>
     ///     Unregisters a map layer from the world map manager using the specified key.
     /// </summary>
     /// <param name="mapManager">The world map manager.</param>

@@ -1,5 +1,4 @@
 ﻿using ApacheTech.Common.BrighterSlim;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 using Gantry.Services.Brighter.Abstractions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
@@ -31,7 +30,8 @@ public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : Comm
     /// <returns>The processed command.</returns>
     public override T Handle(T command)
     {
-        MapManager.BuildWorldMapDialogue();
+        MapManager.worldMapDlg = null;
+        MapManager.ToggleMap(EnumDialogType.HUD);
         return base.Handle(command);
     }
 }
