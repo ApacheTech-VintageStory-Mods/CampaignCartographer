@@ -2,6 +2,8 @@
 using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 using Gantry.Core.Extensions.Harmony;
+using Gantry.Services.Network.Packets;
+using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
 
 // ReSharper disable InconsistentNaming
@@ -48,18 +50,18 @@ public static class WaypointDialoguePatches
         composer.GetElement("mapElem").To<GuiElementMap>().TranslateViewPosToWorldPos(new Vec2f((float)x, (float)y), ref worldPos);
         worldPos.Y += 1.0;
     }
-    
+
     [HarmonyPrefix]
     [HarmonyPatch(typeof(WaypointMapComponent), nameof(WaypointMapComponent.OnMouseUpOnElement))]
     public static bool Harmony_WaypointMapComponent_OnMouseUpOnElement_Prefix(
-        WaypointMapComponent __instance, 
+        WaypointMapComponent __instance,
         MouseEvent args,
         GuiElementMap mapElem,
         Waypoint ___waypoint,
         int ___waypointIndex)
     {
         if (args.Button != EnumMouseButton.Right) return true;
-        if (ApiEx.Client.World.Player.Entity.Controls.ShiftKey) return true;
+        var player = ApiEx.Client.World.Player;
 
         var viewPos = new Vec2f();
         mapElem.TranslateWorldPosToViewPos(___waypoint.Position, ref viewPos);
@@ -77,7 +79,14 @@ public static class WaypointDialoguePatches
         var dY = args.Y - y;
         var size = RuntimeEnv.GUIScale * 8f;
         if (!(Math.Abs(value) < size) || !(Math.Abs(dY) < size)) return false;
-        
+        if (player.Entity.Controls.ShiftKey && player.WorldData.CurrentGameMode == EnumGameMode.Creative)
+        {
+            IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel
+                .SendPacket<WorldMapTeleportPacket>(new() { Position = ___waypoint.Position });
+            args.Handled = true;
+            return false;
+        }
+
         var map = __instance.capi.ModLoader.GetModSystem<WorldMapManager>().worldMapDlg;
         var dialogue = new AddEditWaypointDialogue(ApiEx.Client, ___waypoint, ___waypointIndex);
         dialogue.ToggleGui();
