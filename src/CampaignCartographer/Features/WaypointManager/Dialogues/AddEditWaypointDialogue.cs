@@ -93,7 +93,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_waypointGroups.Count > 1)
         {
             _group = Groups.GetWaypointGroup(_waypoint);
-            var index = _waypointGroups.Keys.IndexOf(p => p == _group?.Id.ToString());
+            _selectedGroupId = _group?.Id.ToString();
+            var index = _waypointGroups.Keys.IndexOf(p => p == _selectedGroupId);
             SingleComposer.GetDropDown("btnWaypointGroup").SetSelectedIndex(Math.Max(0, index));
         }
     }
@@ -334,7 +335,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_group is null) return;
 
         // 1. Remove the waypoint from the current group.
-        if (!Guid.TryParse(_selectedGroupId, out var waypointId)) return;
+        if (!Guid.TryParse(_waypoint.Guid, out var waypointId)) return;
         _group.Waypoints.RemoveIfPresent(waypointId);
 
         // 2. Save the changes.
@@ -347,7 +348,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_selectedGroupId == _group?.Id.ToString().IfNullOrEmpty(string.Empty)) return;
 
         // 1. Remove the waypoint from the current group.
-        if (!Guid.TryParse(_selectedGroupId, out var waypointId)) return;
+        if (!Guid.TryParse(_waypoint.Guid, out var waypointId)) return;
         _group?.Waypoints.RemoveIfPresent(waypointId);
 
         // 2. Add the waypoint to the new group, if required.
