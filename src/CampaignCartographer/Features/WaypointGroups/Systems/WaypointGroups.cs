@@ -1,4 +1,5 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
+﻿using System.Linq;
+using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
@@ -72,7 +73,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     /// <param name="waypoint">The waypoint to look up.</param>
     /// <returns>The waypoint group that contains the waypoint, or <c>null</c> if none is found.</returns>
     public static WaypointGroup GetWaypointGroup(Waypoint waypoint)
-         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Contains(Guid.Parse(waypoint.Guid)));
+         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid));
 
     /// <summary>
     ///     Retrieves the identifier of the waypoint group associated with the specified waypoint.
@@ -82,7 +83,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     ///     The waypoint group ID as a string, or <c>null</c> if the waypoint does not belong to a group.
     /// </returns>
     public static string GetWaypointGroupId(Waypoint waypoint)
-         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Contains(Guid.Parse(waypoint.Guid)))?.Id.ToString();
+         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid))?.Id.ToString();
 
     /// <summary>
     ///     Retrieves the map layer corresponding to the waypoint group that contains the specified waypoint.

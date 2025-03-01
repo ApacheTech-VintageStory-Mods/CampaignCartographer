@@ -334,7 +334,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_group is null) return;
 
         // 1. Remove the waypoint from the current group.
-        var waypointId = Guid.Parse(_waypoint.Guid);
+        if (!Guid.TryParse(_selectedGroupId, out var waypointId)) return;
         _group.Waypoints.RemoveIfPresent(waypointId);
 
         // 2. Save the changes.
@@ -347,13 +347,12 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_selectedGroupId == _group?.Id.ToString().IfNullOrEmpty(string.Empty)) return;
 
         // 1. Remove the waypoint from the current group.
-        var waypointId = Guid.Parse(_waypoint.Guid);
+        if (!Guid.TryParse(_selectedGroupId, out var waypointId)) return;
         _group?.Waypoints.RemoveIfPresent(waypointId);
 
         // 2. Add the waypoint to the new group, if required.
-        if (!string.IsNullOrEmpty(_selectedGroupId))
+        if (Guid.TryParse(_selectedGroupId, out var groupId))
         {
-            var groupId = Guid.Parse(_selectedGroupId);
             var newGroup = _waypointGroupsSettings.Groups.FirstOrDefault(p => p.Id == groupId);
             newGroup?.Waypoints.AddIfNotPresent(waypointId);
         }
