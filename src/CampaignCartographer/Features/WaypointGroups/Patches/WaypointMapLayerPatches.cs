@@ -71,7 +71,16 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
         var saveChanges = false;
         try
         {
-            var waypointGuidSet = ___ownWaypoints.Select(p => Guid.Parse(p.Guid)).ToHashSet();
+            var waypointGuidSet = ___ownWaypoints
+                .Select(p =>
+                {
+                    if (!Guid.TryParse(p.Guid, out var waypointGuid)) return null;
+                    return (Guid?)waypointGuid;
+                })
+                .Where(p => p.HasValue)
+                .Select(p => p!.Value)
+                .ToHashSet();
+
             foreach (var group in Settings.Groups)
             {
                 var orphans = group.Waypoints.Where(p => !waypointGuidSet.Contains(p)).ToArray();
@@ -79,6 +88,10 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
                 group.Waypoints = [.. group.Waypoints.Except(orphans)];
                 saveChanges = true;
             }
+        }
+        catch (Exception ex)
+        {
+            ApiEx.Logger.Error(ex);
         }
         finally
         {
