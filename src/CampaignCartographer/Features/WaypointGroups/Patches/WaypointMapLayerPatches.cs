@@ -10,6 +10,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Pa
 [HarmonyClientSidePatch]
 public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSettings>
 {
+    private static object _localLock = new();
+
     /// <summary>
     ///     Adjusts waypoint map components after rebuilding to ensure waypoints in groups 
     ///     are assigned to their respective group layers.
@@ -23,19 +25,22 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
         ref List<MapComponent> ___wayPointComponents
     )
     {
-        if (!___mapSink.IsOpened) return;
-        var inGroup = new List<MapComponent>();
-        Systems.WaypointGroups.ClearAllGroupMapComponents();
-        foreach (var mapComponent in ___wayPointComponents)
+        lock (_localLock)
         {
-            var waypoint = mapComponent.GetField<Waypoint>("waypoint");
-            var group = Systems.WaypointGroups.GetWaypointGroupMapLayer(waypoint);
-            if (group is null) continue;
-            inGroup.Add(mapComponent);
-            group.AddComponent(mapComponent as WaypointMapComponent);
-        }
+            if (!___mapSink.IsOpened) return;
+            var inGroup = new List<MapComponent>();
+            Systems.WaypointGroups.ClearAllGroupMapComponents();
+            foreach (var mapComponent in ___wayPointComponents)
+            {
+                var waypoint = mapComponent.GetField<Waypoint>("waypoint");
+                var group = Systems.WaypointGroups.GetWaypointGroupMapLayer(waypoint);
+                if (group is null) continue;
+                inGroup.Add(mapComponent);
+                group.AddComponent(mapComponent as WaypointMapComponent);
+            }
 
-        ___wayPointComponents = [.. ___wayPointComponents.Except(inGroup)];
+            ___wayPointComponents = [.. ___wayPointComponents.Except(inGroup)];
+        }
     }
 
     /// <summary>

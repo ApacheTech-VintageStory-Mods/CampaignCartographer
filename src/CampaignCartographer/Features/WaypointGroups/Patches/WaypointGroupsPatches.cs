@@ -38,9 +38,16 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
     [HarmonyPatch(typeof(WorldMapManager), "OnLvlFinalize")]
     public static void Harmony_WorldMapManager_OnLvlFinalize_Postfix()
     {
-        foreach (var group in Settings.Groups)
+        try
         {
-            IOC.Brighter.Send(new AddWaypointGroupLayerCommand() { Group = group });
+            foreach (var group in Settings.Groups)
+            {
+                IOC.Brighter.Send(new AddWaypointGroupLayerCommand() { Group = group });
+            }
+        }
+        catch (Exception ex)
+        {
+            ApiEx.Logger.Error(ex);
         }
     }
 }

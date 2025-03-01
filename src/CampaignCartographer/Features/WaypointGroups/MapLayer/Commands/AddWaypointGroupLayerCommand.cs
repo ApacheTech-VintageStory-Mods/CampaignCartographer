@@ -1,7 +1,6 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Services.Brighter.Abstractions;
+using Gantry.Services.Brighter.Filters;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
 
@@ -22,12 +21,15 @@ public class AddWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<AddWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
+        [HandledOnClient]
         public override AddWaypointGroupLayerCommand Handle(AddWaypointGroupLayerCommand command)
         {
             MapManager.RegisterMapLayer<WaypointGroupMapLayer>(command.Group.Id.ToString(), 100);
             var mapLayer = WaypointGroupMapLayer.Create(command.Group, MapManager);
             MapManager.MapLayers.Add(mapLayer);
             mapLayer.OnLoaded();
+
+            ApiEx.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }
     }

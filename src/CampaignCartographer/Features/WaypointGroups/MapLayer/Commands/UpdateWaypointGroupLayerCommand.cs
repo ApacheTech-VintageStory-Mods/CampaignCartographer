@@ -1,5 +1,6 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Services.Brighter.Abstractions;
+using Gantry.Services.Brighter.Filters;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
 
@@ -20,6 +21,7 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<UpdateWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
+        [HandledOnClient]
         public override UpdateWaypointGroupLayerCommand Handle(UpdateWaypointGroupLayerCommand command)
         {
             var mapLayer = MapManager.MapLayers
@@ -28,6 +30,8 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
 
             mapLayer?.UpdateTitle(command.Group.Title);
             mapLayer?.UpdateWaypoints(command.Group.Waypoints);
+
+            ApiEx.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} updated map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }
     }

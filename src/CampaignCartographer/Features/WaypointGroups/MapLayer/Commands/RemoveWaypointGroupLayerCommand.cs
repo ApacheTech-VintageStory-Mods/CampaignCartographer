@@ -1,5 +1,6 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 using Gantry.Services.Brighter.Abstractions;
+using Gantry.Services.Brighter.Filters;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
 
@@ -20,9 +21,12 @@ public class RemoveWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<RemoveWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
+        [HandledOnClient]
         public override RemoveWaypointGroupLayerCommand Handle(RemoveWaypointGroupLayerCommand command)
         {
             MapManager.UnregisterMapLayer(command.GroupId);
+
+            ApiEx.Logger.VerboseDebug($"Waypoint group with id {command.GroupId} removed from map.");
             return base.Handle(command);
         }
     }

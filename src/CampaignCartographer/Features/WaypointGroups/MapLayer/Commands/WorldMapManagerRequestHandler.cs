@@ -1,5 +1,7 @@
 ﻿using ApacheTech.Common.BrighterSlim;
+using Gantry.Core.Annotation;
 using Gantry.Services.Brighter.Abstractions;
+using Gantry.Services.Brighter.Filters;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
 
@@ -10,6 +12,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Ma
 /// <remarks>
 ///     This class ensures that the world map dialogue is properly managed when handling commands.
 /// </remarks>
+[ClientSide]
 public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : CommandBase
 {
     /// <summary>
@@ -28,10 +31,16 @@ public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : Comm
     /// </summary>
     /// <param name="command">The command to handle.</param>
     /// <returns>The processed command.</returns>
+    [HandledOnClient]
     public override T Handle(T command)
     {
-        MapManager.worldMapDlg = null;
-        MapManager.ToggleMap(EnumDialogType.HUD);
+        if (MapManager.worldMapDlg is not null)
+        {
+            MapManager.worldMapDlg.Dispose();
+            MapManager.worldMapDlg = null;
+            MapManager.ToggleMap(EnumDialogType.HUD);
+            ApiEx.Logger.VerboseDebug($"Rebuilt world map after map layer updates.");
+        }
         return base.Handle(command);
     }
 }
