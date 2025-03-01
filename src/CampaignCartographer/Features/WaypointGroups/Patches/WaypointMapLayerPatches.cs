@@ -64,18 +64,25 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
     /// </summary>
     /// <param name="___ownWaypoints">The collection of waypoints owned by the player.</param>
     [HarmonyPostfix]
+    [HarmonyPriority(Priority.Last)]
     [HarmonyPatch(typeof(WaypointMapLayer), nameof(WaypointMapLayer.OnDataFromServer))]
     public static void Harmony_WaypointMapLayer_OnDataFromServer_Postfix_Last(IEnumerable<Waypoint> ___ownWaypoints)
     {
-        var waypointGuidSet = ___ownWaypoints.Select(p => Guid.Parse(p.Guid)).ToHashSet();
         var saveChanges = false;
-        foreach (var group in Settings.Groups)
+        try
         {
-            var orphans = group.Waypoints.Where(p => !waypointGuidSet.Contains(p)).ToArray();
-            if (orphans.Length == 0) continue;
-            group.Waypoints = [.. group.Waypoints.Except(orphans)];
-            saveChanges = true;
+            var waypointGuidSet = ___ownWaypoints.Select(p => Guid.Parse(p.Guid)).ToHashSet();
+            foreach (var group in Settings.Groups)
+            {
+                var orphans = group.Waypoints.Where(p => !waypointGuidSet.Contains(p)).ToArray();
+                if (orphans.Length == 0) continue;
+                group.Waypoints = [.. group.Waypoints.Except(orphans)];
+                saveChanges = true;
+            }
         }
-        if (saveChanges) ModSettings.World.Save(Settings);
+        finally
+        {
+            if (saveChanges) ModSettings.World.Save(Settings);
+        }
     }
 }
