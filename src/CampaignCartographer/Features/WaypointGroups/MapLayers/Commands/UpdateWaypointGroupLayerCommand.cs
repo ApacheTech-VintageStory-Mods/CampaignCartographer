@@ -1,8 +1,9 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Services.Brighter.Abstractions;
 using Gantry.Services.Brighter.Filters;
 
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 
 /// <summary>
 ///     Represents a command to update a waypoint group layer on the map.
@@ -21,7 +22,7 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<UpdateWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
-        [HandledOnClient]
+        [LockMapLayerGeneration]
         public override UpdateWaypointGroupLayerCommand Handle(UpdateWaypointGroupLayerCommand command)
         {
             var mapLayer = MapManager.MapLayers

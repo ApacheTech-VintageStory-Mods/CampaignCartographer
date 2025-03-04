@@ -1,4 +1,4 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;

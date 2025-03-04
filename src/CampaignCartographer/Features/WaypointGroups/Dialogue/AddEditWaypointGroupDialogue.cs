@@ -1,7 +1,7 @@
 ﻿#nullable enable
 using System.Text;
 using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Core.Extensions.Helpers;
 using Gantry.Core.GameContent.GUI.Abstractions;

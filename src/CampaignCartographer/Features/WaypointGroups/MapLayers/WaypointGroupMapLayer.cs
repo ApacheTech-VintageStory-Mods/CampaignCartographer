@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers;
 
 public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : WaypointMapLayer(api, mapSink)
 {

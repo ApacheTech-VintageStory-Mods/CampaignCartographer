@@ -3,7 +3,7 @@ using Gantry.Core.Annotation;
 using Gantry.Services.Brighter.Abstractions;
 using Gantry.Services.Brighter.Filters;
 
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 
 /// <summary>
 ///     Handles requests related to the world map manager.
