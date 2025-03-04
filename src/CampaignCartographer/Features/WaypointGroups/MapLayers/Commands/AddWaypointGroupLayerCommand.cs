@@ -1,8 +1,11 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
+﻿using System.Threading;
+using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Services.Brighter.Abstractions;
 using Gantry.Services.Brighter.Filters;
 
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 
 /// <summary>
 ///     Represents a command to add a waypoint group as a map layer.
@@ -21,14 +24,13 @@ public class AddWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<AddWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
-        [HandledOnClient]
+        [LockMapLayerGeneration]
         public override AddWaypointGroupLayerCommand Handle(AddWaypointGroupLayerCommand command)
         {
             MapManager.RegisterMapLayer<WaypointGroupMapLayer>(command.Group.Id.ToString(), 100);
             var mapLayer = WaypointGroupMapLayer.Create(command.Group, MapManager);
             MapManager.MapLayers.Add(mapLayer);
             mapLayer.OnLoaded();
-
             ApiEx.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }

@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Dialogue;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 using Gantry.Core.Extensions.DotNet;
 using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
@@ -31,6 +33,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     {
         services.AddFeatureWorldSettings<WaypointGroupsSettings>();
         services.TryAddTransient<WaypointGroupsDialogue>();
+        services.AddSingleton<IMapLayerGeneration, MapLayerGeneration>();
     }
 
     /// <inheritdoc />

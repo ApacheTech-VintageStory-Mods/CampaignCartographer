@@ -1,8 +1,9 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 using Gantry.Services.Brighter.Abstractions;
 using Gantry.Services.Brighter.Filters;
 
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayer.Commands;
+namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 
 /// <summary>
 ///     Represents a command to remove a waypoint group layer from the map.
@@ -21,7 +22,7 @@ public class RemoveWaypointGroupLayerCommand : CommandBase
         : WorldMapManagerRequestHandler<RemoveWaypointGroupLayerCommand>(mapManager)
     {
         /// <inheritdoc />
-        [HandledOnClient]
+        [LockMapLayerGeneration]
         public override RemoveWaypointGroupLayerCommand Handle(RemoveWaypointGroupLayerCommand command)
         {
             MapManager.UnregisterMapLayer(command.GroupId);
