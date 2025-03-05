@@ -49,7 +49,7 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
         command.BeginSubCommand("pm")
             .WithDescription(T("Command.Description.PrivateMessageSubCommand"))
-            .WithArgs(parsers.FuzzyPlayerSearch())
+            .WithArgs(parsers.ServerPlayers())
             .HandleWith(OnClientSubCommandPrivateMessage)
             .EndSubCommand();
 
@@ -79,15 +79,15 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
     private TextCommandResult OnClientSubCommandPrivateMessage(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
-        var players = parser.Results;
-        var searchTerm = parser.Value;
+        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var searchTerm = parser.SearchTerm;
+        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
 
         switch (players.Count)
         {
             case 1:
                 var target = players[0];
-                SendLocationTo(args.Caller.Player, target.PlayerUID);
+                SendLocationTo(args.Caller.Player, target.Uid);
                 return TextCommandResult.Success();
             case > 1:
                 return TextCommandResult.Error(T("FuzzyPlayerSearch.MultipleResults", searchTerm));

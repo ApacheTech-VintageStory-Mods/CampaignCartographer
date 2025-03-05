@@ -1,4 +1,5 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
+﻿using System.Collections.Generic;
+using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
 using Gantry.Core.GameContent.ChatCommands.Parsers;
 using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
@@ -72,29 +73,29 @@ public sealed class CentreMapClient : ClientModSystem
             .EndSubCommand();
 
         cm.BeginSubCommand("home")
-            .WithDescription(LangEx.FeatureString("CentreMap", "Self.Description"))
+            .WithDescription(LangEx.FeatureString("CentreMap", "Home.Description"))
             .HandleWith(OnHomeOption)
             .EndSubCommand();
 
         cm.BeginSubCommand("player")
-            .WithDescription(LangEx.FeatureString("CentreMap", "Self.Description"))
-            .WithArgs(parsers.FuzzyPlayerSearch())
+            .WithDescription(LangEx.FeatureString("CentreMap", "Player.Description"))
+            .WithArgs(parsers.ServerPlayers())
             .HandleWith(OnPlayerOption)
             .EndSubCommand();
 
         cm.BeginSubCommand("pos")
-            .WithDescription(LangEx.FeatureString("CentreMap", "Self.Description"))
+            .WithDescription(LangEx.FeatureString("CentreMap", "Position.Description"))
             .WithArgs(parsers.WorldPosition2D("position"))
             .HandleWith(OnPositionOption)
             .EndSubCommand();
 
         cm.BeginSubCommand("spawn")
-            .WithDescription(LangEx.FeatureString("CentreMap", "Self.Description"))
+            .WithDescription(LangEx.FeatureString("CentreMap", "Spawn.Description"))
             .HandleWith(OnSpawnOption)
             .EndSubCommand();
 
         cm.BeginSubCommand("waypoint")
-            .WithDescription(LangEx.FeatureString("CentreMap", "Self.Description"))
+            .WithDescription(LangEx.FeatureString("CentreMap", "Waypoint.Description"))
             .WithArgs(parsers.Int("id"))
             .HandleWith(OnWaypointOption)
             .EndSubCommand();
@@ -149,13 +150,14 @@ public sealed class CentreMapClient : ClientModSystem
     /// </summary>
     private TextCommandResult OnPlayerOption(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
-        var players = parser.Results;
-        var searchTerm = parser.Value;
+        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var searchTerm = parser.SearchTerm;
+        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
+
 
         return players.Count switch
         {
-            1 => OnPlayerFound(players.First()),
+            1 => OnPlayerFound(ApiEx.ClientMain.PlayerByUid(players.First().Uid)),
             > 1 => TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults",
                 searchTerm)),
             _ => TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm)),

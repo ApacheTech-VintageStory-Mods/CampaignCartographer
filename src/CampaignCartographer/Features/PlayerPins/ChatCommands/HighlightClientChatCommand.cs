@@ -36,14 +36,14 @@ public class HighlightClientChatCommand
         highlight
             .BeginSubCommand("add")
             .WithDescription(LangEx.FeatureString("PlayerPins", "Highlight.Add.Description"))
-            .WithArgs(parsers.FuzzyPlayerSearch())
+            .WithArgs(parsers.ServerPlayers())
             .HandleWith(OnAdd)
             .EndSubCommand();
 
         highlight
             .BeginSubCommand("remove")
             .WithDescription(LangEx.FeatureString("PlayerPins", "Highlight.Remove.Description"))
-            .WithArgs(parsers.FuzzyPlayerSearch())
+            .WithArgs(parsers.ServerPlayers())
             .HandleWith(OnRemove)
             .EndSubCommand();
 
@@ -52,21 +52,21 @@ public class HighlightClientChatCommand
 
     private TextCommandResult OnAdd(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
-        var players = parser.Results;
-        var searchTerm = parser.Value;
+        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var searchTerm = parser.SearchTerm;
+        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
 
         switch (players.Count)
         {
             case 1:
                 var player = players.First();
-                if (_settings.HighlightedPlayers.ContainsValue(player.PlayerUID))
+                if (_settings.HighlightedPlayers.ContainsValue(player.Uid))
                 {
-                    return UserFeedback("PlayerAlreadyAdded", player.PlayerName);
+                    return UserFeedback("PlayerAlreadyAdded", player.Name);
                 }
-                _settings.HighlightedPlayers.Add(player.PlayerName, player.PlayerUID);
+                _settings.HighlightedPlayers.Add(player.Name, player.Uid);
                 ModSettings.World.Save(_settings);
-                return UserFeedback("PlayerAdded", player.PlayerName);
+                return UserFeedback("PlayerAdded", player.Name);
             case > 1:
                 return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults", searchTerm));
             default:
@@ -76,21 +76,21 @@ public class HighlightClientChatCommand
 
     private TextCommandResult OnRemove(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<FuzzyPlayerParser>();
-        var players = parser.Results;
-        var searchTerm = parser.Value;
+        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var searchTerm = parser.SearchTerm;
+        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
 
         switch (players.Count)
         {
             case 1:
                 var player = players.First();
-                if (!_settings.HighlightedPlayers.ContainsValue(player.PlayerUID))
+                if (!_settings.HighlightedPlayers.ContainsValue(player.Uid))
                 {
-                    return UserFeedback("PlayerNotOnList", player.PlayerName);
+                    return UserFeedback("PlayerNotOnList", player.Name);
                 }
-                _settings.HighlightedPlayers.Remove(player.PlayerName);
+                _settings.HighlightedPlayers.Remove(player.Name);
                 ModSettings.World.Save(_settings);
-                return UserFeedback("PlayerRemoved", player.PlayerName);
+                return UserFeedback("PlayerRemoved", player.Name);
             case > 1:
                 return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults", searchTerm));
             default:
@@ -100,7 +100,7 @@ public class HighlightClientChatCommand
 
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
     {
-        if (!_settings.HighlightedPlayers.Any())
+        if (_settings.HighlightedPlayers.Count == 0)
         {
             return UserFeedback("NoPlayersHighlighted");
         }
