@@ -22,7 +22,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     private ElementBounds _cellListBounds;
     private GuiElementDynamicText _lblSelectedCount;
     private static WaypointSelectionDialogue _instance;
-    private string _filterString;
+    private static string _filterString;
     private readonly IPlayer[] _onlinePlayers;
     protected readonly WorldMapManager WorldMap;
 
@@ -97,6 +97,9 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
     protected override void RefreshValues()
     {
         if (SingleComposer is null) return;
+
+        SingleComposer.GetTextInput("txtSearchBox").SetValue(_filterString);
+        FilterCells();
 
         var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>();
         var count = cellList.Count(p => p.On);
@@ -179,7 +182,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         txtSearchBox.SetPlaceHolderText(lblSearchText);
         composer.AddInteractiveElement(txtSearchBox, "txtSearchBox");
 
-        var keys = Enum.GetNames(typeof(WaypointSortType));
+        var keys = Enum.GetNames<WaypointSortType>();
         var values = keys.Select(p => T(p)).ToArray();
 
         var cbxSortType = new GuiElementDropDown(ApiEx.Client, keys, values, 0, OnSortOrderChanged, second, font, false);
@@ -233,8 +236,8 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     private void OnFilterTextChanged(string filterString)
     {
+        if (filterString == _filterString) return;
         _filterString = filterString;
-        FilterCells();
         RefreshValues();
     }
 
@@ -243,13 +246,12 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         WaypointsList.CallMethod("FilterCells", (System.Func<IGuiElementCell, bool>)Filter);
         return;
 
-        bool Filter(IGuiElementCell cell)
+        static bool Filter(IGuiElementCell cell)
         {
             var c = (WaypointSelectionGuiCell)cell;
-            var model = c.Model;
-            var state = string.IsNullOrWhiteSpace(_filterString) ||
-                        model.Title.ToLowerInvariant().Contains(_filterString.ToLowerInvariant());
-            return state;
+            c.On = string.IsNullOrWhiteSpace(_filterString) 
+                || c.Model.Title.Contains(_filterString, StringComparison.InvariantCultureIgnoreCase);
+            return c.On;
         }
     }
 
