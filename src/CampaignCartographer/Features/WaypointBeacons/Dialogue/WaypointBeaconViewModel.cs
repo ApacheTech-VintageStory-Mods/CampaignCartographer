@@ -45,6 +45,11 @@ public class WaypointBeaconViewModel
     }
 
     /// <summary>
+    ///     Resets the cached waypoint data, forcing a refresh of the waypoint information.
+    /// </summary>
+    public void Rehydrate() => _memento = null;
+
+    /// <summary>
     ///     The waypoint associated with this view model.
     /// </summary>
     public Waypoint Waypoint => Get(p => p);

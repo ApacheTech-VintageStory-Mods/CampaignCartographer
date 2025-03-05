@@ -144,5 +144,12 @@ public class WaypointBeaconsClientSystem : ClientSystem
             ModSettings.World.Save(_settings);
         }
         Repopulate();
+
+        foreach (var beacon in _waypointElements.Values)
+        {
+            var waypoint = ___ownWaypoints.FirstOrDefault(p => p.Guid == beacon.Waypoint.Guid);
+            if (beacon.Waypoint.IsSameAs(waypoint)) continue;
+            beacon.Rehydrate();
+        }    
     }
 }

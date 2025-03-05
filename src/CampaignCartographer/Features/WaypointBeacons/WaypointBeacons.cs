@@ -35,7 +35,6 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         ApiEx.Logger.VerboseDebug("Starting waypoint beacons client mod system.");
         capi.Event.LevelFinalize += OnLevelFinalise;
         capi.AddModMenuDialogue<WaypointBeaconsSettingsDialogue>("WaypointBeacons");
-        capi.Event.LevelFinalize += () => WaypointIconFactory.PreCacheAllIcons(capi);
     }
 
     /// <summary>
@@ -43,6 +42,9 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// </summary>
     private void OnLevelFinalise()
     {
+        ApiEx.Logger.VerboseDebug("Caching all waypoint icons for beacons");
+        Capi.Event.LevelFinalize += () => WaypointIconFactory.PreCacheAllIcons(Capi);
+
         ApiEx.Logger.VerboseDebug("Creating Waypoint Beacons render mesh flyweight");
         WaypointBeaconStore.Create();
 

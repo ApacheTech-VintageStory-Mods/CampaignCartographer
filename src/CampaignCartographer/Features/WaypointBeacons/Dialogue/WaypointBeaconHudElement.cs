@@ -1,4 +1,5 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
+﻿using ApacheTech.Common.FunctionalCSharp.Memento;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 using Gantry.Core.Annotation;
 
@@ -24,6 +25,16 @@ public class WaypointBeaconHudElement : HudElement
         _viewModel = new WaypointBeaconViewModel(waypointGuid, Settings);
         _renderer = new WaypointBeaconRenderer(this, _viewModel);
     }
+
+    /// <summary>
+    ///     Gets the waypoint associated with this HUD element.
+    /// </summary>
+    public Waypoint Waypoint => _viewModel.Waypoint;
+
+    /// <summary>
+    ///     Resets the cached waypoint data, forcing a refresh of the waypoint information.
+    /// </summary>
+    public void Rehydrate() => _viewModel.Rehydrate();
 
     /// <summary>
     ///     The settings for waypoint beacons.
