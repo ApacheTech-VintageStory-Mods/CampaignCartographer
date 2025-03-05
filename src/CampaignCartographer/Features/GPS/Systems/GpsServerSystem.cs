@@ -39,18 +39,18 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
         command.BeginSubCommand("chat")
             .WithDescription(T("Command.Description.BroadcastSubCommand"))
-            .HandleWith(OnClientSubCommandBroadcast)
+            .HandleWith(OnServerSubCommandBroadcast)
             .EndSubCommand();
 
         command.BeginSubCommand("copy")
             .WithDescription(T("Command.Description.ClipboardSubCommand"))
-            .HandleWith(OnClientSubCommandClipboard)
+            .HandleWith(OnServerSubCommandClipboard)
             .EndSubCommand();
 
         command.BeginSubCommand("pm")
             .WithDescription(T("Command.Description.PrivateMessageSubCommand"))
             .WithArgs(parsers.ServerPlayers())
-            .HandleWith(OnClientSubCommandPrivateMessage)
+            .HandleWith(OnServerSubCommandPrivateMessage)
             .EndSubCommand();
 
         _serverChannel = IOC.Services
@@ -65,19 +65,19 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
         return TextCommandResult.Success(pos);
     }
 
-    private TextCommandResult OnClientSubCommandBroadcast(TextCommandCallingArgs args)
+    private TextCommandResult OnServerSubCommandBroadcast(TextCommandCallingArgs args)
     {
         _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Broadcast }, args.Caller.Player as IServerPlayer);
         return TextCommandResult.Success();
     }
 
-    private TextCommandResult OnClientSubCommandClipboard(TextCommandCallingArgs args)
+    private TextCommandResult OnServerSubCommandClipboard(TextCommandCallingArgs args)
     {
         _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Clipboard }, args.Caller.Player as IServerPlayer);
         return TextCommandResult.Success(T("ClipboardTextSet"));
     }
 
-    private TextCommandResult OnClientSubCommandPrivateMessage(TextCommandCallingArgs args)
+    private TextCommandResult OnServerSubCommandPrivateMessage(TextCommandCallingArgs args)
     {
         var parser = args.Parsers[0].To<GantryPlayersArgParser>();
         var searchTerm = parser.SearchTerm;

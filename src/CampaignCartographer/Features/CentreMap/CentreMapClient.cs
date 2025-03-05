@@ -3,6 +3,7 @@ using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
 using Gantry.Core.GameContent.ChatCommands.Parsers;
 using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
+using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 
@@ -79,7 +80,7 @@ public sealed class CentreMapClient : ClientModSystem
 
         cm.BeginSubCommand("player")
             .WithDescription(LangEx.FeatureString("CentreMap", "Player.Description"))
-            .WithArgs(parsers.ServerPlayers())
+            .WithArgs(parsers.ClientPlayer())
             .HandleWith(OnPlayerOption)
             .EndSubCommand();
 
@@ -150,26 +151,18 @@ public sealed class CentreMapClient : ClientModSystem
     /// </summary>
     private TextCommandResult OnPlayerOption(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var parser = args.Parsers[0].To<GantryOnlinePlayersArgParser>();
         var searchTerm = parser.SearchTerm;
-        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
-
-
-        return players.Count switch
+        var result = parser.GetValue();
+        if (result is null)
         {
-            1 => OnPlayerFound(ApiEx.ClientMain.PlayerByUid(players.First().Uid)),
-            > 1 => TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults",
-                searchTerm)),
-            _ => TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm)),
-        };
-
-        TextCommandResult OnPlayerFound(IPlayer player)
-        {
-            var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn();
-            var message = LangEx.FeatureString("CentreMap", "CentreMapOnPlayer", player.PlayerName, displayPos.X,
-                displayPos.Y, displayPos.Z);
-            return RecentreAndProvideFeedback(player.Entity.Pos.XYZ, message);
+            return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
         }
+        var player = result.To<IPlayer>();
+        var displayPos = player.Entity.Pos.AsBlockPos.RelativeToSpawn();
+        var message = LangEx.FeatureString("CentreMap", "CentreMapOnPlayer", player.PlayerName, displayPos.X,
+            displayPos.Y, displayPos.Z);
+        return RecentreAndProvideFeedback(player.Entity.Pos.XYZ, message);
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using Gantry.Core.GameContent.ChatCommands.Parsers;
 using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
 using Gantry.Services.FileSystem.Configuration;
@@ -36,14 +37,14 @@ public class HighlightClientChatCommand
         highlight
             .BeginSubCommand("add")
             .WithDescription(LangEx.FeatureString("PlayerPins", "Highlight.Add.Description"))
-            .WithArgs(parsers.ServerPlayers())
+            .WithArgs(parsers.ClientPlayer())
             .HandleWith(OnAdd)
             .EndSubCommand();
 
         highlight
             .BeginSubCommand("remove")
             .WithDescription(LangEx.FeatureString("PlayerPins", "Highlight.Remove.Description"))
-            .WithArgs(parsers.ServerPlayers())
+            .WithArgs(parsers.ClientPlayer())
             .HandleWith(OnRemove)
             .EndSubCommand();
 
@@ -52,50 +53,40 @@ public class HighlightClientChatCommand
 
     private TextCommandResult OnAdd(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var parser = args.Parsers[0].To<GantryOnlinePlayersArgParser>();
         var searchTerm = parser.SearchTerm;
-        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
-
-        switch (players.Count)
+        var result = parser.GetValue();
+        if (result is null)
         {
-            case 1:
-                var player = players.First();
-                if (_settings.HighlightedPlayers.ContainsValue(player.Uid))
-                {
-                    return UserFeedback("PlayerAlreadyAdded", player.Name);
-                }
-                _settings.HighlightedPlayers.Add(player.Name, player.Uid);
-                ModSettings.World.Save(_settings);
-                return UserFeedback("PlayerAdded", player.Name);
-            case > 1:
-                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults", searchTerm));
-            default:
-                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
+            return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
         }
+        var player = result.To<IPlayer>();
+        if (_settings.HighlightedPlayers.ContainsValue(player.PlayerUID))
+        {
+            return UserFeedback("PlayerAlreadyAdded", player.PlayerName);
+        }
+        _settings.HighlightedPlayers.Add(player.PlayerName, player.PlayerUID);
+        ModSettings.World.Save(_settings);
+        return UserFeedback("PlayerAdded", player.PlayerName);
     }
 
     private TextCommandResult OnRemove(TextCommandCallingArgs args)
     {
-        var parser = args.Parsers[0].To<GantryPlayersArgParser>();
+        var parser = args.Parsers[0].To<GantryOnlinePlayersArgParser>();
         var searchTerm = parser.SearchTerm;
-        var players = parser.GetValue().To<PlayerUidName[]>().ToList();
-
-        switch (players.Count)
+        var result = parser.GetValue();
+        if (result is null)
         {
-            case 1:
-                var player = players.First();
-                if (!_settings.HighlightedPlayers.ContainsValue(player.Uid))
-                {
-                    return UserFeedback("PlayerNotOnList", player.Name);
-                }
-                _settings.HighlightedPlayers.Remove(player.Name);
-                ModSettings.World.Save(_settings);
-                return UserFeedback("PlayerRemoved", player.Name);
-            case > 1:
-                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "MultipleResults", searchTerm));
-            default:
-                return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
+            return TextCommandResult.Error(LangEx.FeatureString("FuzzyPlayerSearch", "NoResults", searchTerm));
         }
+        var player = result.To<IPlayer>();
+        if (!_settings.HighlightedPlayers.ContainsValue(player.PlayerUID))
+        {
+            return UserFeedback("PlayerNotOnList", player.PlayerName);
+        }
+        _settings.HighlightedPlayers.Remove(player.PlayerName);
+        ModSettings.World.Save(_settings);
+        return UserFeedback("PlayerRemoved", player.PlayerName);
     }
 
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
