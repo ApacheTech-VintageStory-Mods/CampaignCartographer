@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "Overflate avleiringer:",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "Harpiks:",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "Handelsfolk:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "Legg automatisk til veipunkter når du dør. Dette vil deaktivere vaniljedødsveipunkt.",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "Løse steiner:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "Teleporter blokker:",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "Legg automatisk til veipunkter for ulike bergarter, når du samler overflateavsetninger.",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "Legg automatisk til veipunkter for tradere når du samhandler med dem.",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "Legg automatisk til veipunkter for forskjellige metalltyper, mens du samler overflateavleiringer.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "Legg automatisk til veipunkter for sopp mens du fôrer.",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "Bærbusker:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "Legg automatisk til veipunkter for teleportere når du reiser mellom dem.",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "Du døde her: {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "Legg automatisk til veipunkter for translokatorer når du reiser mellom dem.",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "Legg automatisk til veipunkter for harpiks etter hvert som du fôrer.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "Sopp:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "Veipunkter for døden:",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "Endre innstillinger for automatiske veipunkter",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "Statiske translokatorer:",
+    "Features.AutoWaypoints.Dialogue.Title":  "Automatiske veipunkter",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "Legg automatisk til veipunkter for bærbusker mens du fôrer."
+}

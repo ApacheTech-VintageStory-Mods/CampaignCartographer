@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Tittelen som skal vises på kartet.",
+    "Features.WaypointGroups.Dialogue.Title":  "Veipunkt-grupper",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Du kan bare lage maksimalt {0} grupper.",
+    "Features.WaypointGroups.DefaultGroupName":  "Standard",
+    "Features.WaypointGroups.Dialogue.Edit":  "Rediger gruppe",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Tittel:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Legg til ny gruppe",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Tittelen er påkrevd."
+}

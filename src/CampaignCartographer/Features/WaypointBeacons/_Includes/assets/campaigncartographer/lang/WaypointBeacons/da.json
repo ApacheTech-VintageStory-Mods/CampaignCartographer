@@ -1,0 +1,16 @@
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Vis søjler",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Området, i blokke, inden for hvilket waypoint-ikoner er synlige.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Vis præfiks",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Klemme position",
+    "Features.WaypointBeacons.Dialogue.Title":  "Waypoint Beacon-indstillinger",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Det område, i blokke, inden for hvilket waypoint-titler er synlige.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Titel Interval",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Angiver, om waypoint-indekser skal vises.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Vis indeks",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Angiver, om waypoint-præfikser skal vises.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Angiver, om waypoint-søjler skal vises.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Ikon rækkevidde",
+    "Features.WaypointBeacons.WaypointPrefix":  "Waypoint",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Fastgør waypoint-ikonet til siden af skærmen, når waypointet bevæger sig ud af syne."
+}

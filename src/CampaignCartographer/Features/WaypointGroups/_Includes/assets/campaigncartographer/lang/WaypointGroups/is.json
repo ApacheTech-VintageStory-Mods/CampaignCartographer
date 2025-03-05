@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Titillinn sem á að sýna á kortinu.",
+    "Features.WaypointGroups.Dialogue.Title":  "Waypoint hópar",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "Aðeins er hægt að búa til að hámarki {0} hópa.",
+    "Features.WaypointGroups.DefaultGroupName":  "Sjálfgefinn",
+    "Features.WaypointGroups.Dialogue.Edit":  "Breyta hópi",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Titill:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Bæta við nýjum hópi",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Titillinn er nauðsynlegur."
+}

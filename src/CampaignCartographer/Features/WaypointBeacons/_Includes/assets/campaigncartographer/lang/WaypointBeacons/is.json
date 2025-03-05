@@ -1,0 +1,16 @@
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Sýna stoðir",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Sviðið, í blokkum, þar sem leiðarpunktatákn eru sýnileg.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Sýna forskeyti",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Klemma staða",
+    "Features.WaypointBeacons.Dialogue.Title":  "Stillingar Waypoint Beacon",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Sviðið, í blokkum, þar sem titlar leiðarpunkta eru sýnilegir.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Titill svið",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Gefur til kynna hvort vísitölur leiðarpunkta eigi að birtast.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Sýna atriðaskrá",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Gefur til kynna hvort forskeyti leiðarpunkta eigi að birtast.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Gefur til kynna hvort skjápunktasúlur eigi að birtast.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Tákn svið",
+    "Features.WaypointBeacons.WaypointPrefix":  "Leiðarpunktur",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Festir leiðarpunktstáknið við hlið skjásins þegar leiðarpunkturinn færist úr augsýn."
+}

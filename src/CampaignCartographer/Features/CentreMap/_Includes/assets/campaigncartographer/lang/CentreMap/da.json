@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Omcentreret kort på waypoint {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Kan ikke finde spiller \u0027{0}\u0027 på nuværende tidspunkt. De kan være uden for rækkevidde. Genlogning vil vise dem på kortet.",
+    "Features.CentreMap.CentreMapOnPosition":  "Omcentreret kort på position: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Omcentreret bane på spiller: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Re-centreret bane på spillerens spawn-punkt: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Centrerer kortet på den givne placering eller afspiller.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Re-centreret kort på verdensspawn: ({0}, {1})"
+}

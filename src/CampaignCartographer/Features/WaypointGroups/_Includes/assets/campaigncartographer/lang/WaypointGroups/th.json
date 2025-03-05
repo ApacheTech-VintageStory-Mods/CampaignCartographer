@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "ชื่อเรื่องที่จะแสดงบนแผนที่",
+    "Features.WaypointGroups.Dialogue.Title":  "กลุ่มจุดอ้างอิง",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "คุณสามารถสร้างกลุ่มได้สูงสุด {0} กลุ่มเท่านั้น",
+    "Features.WaypointGroups.DefaultGroupName":  "เริ่ม ต้น",
+    "Features.WaypointGroups.Dialogue.Edit":  "แก้ไขกลุ่ม",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "ชื่อเรื่อง:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "เพิ่มกลุ่มใหม่",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "ชื่อเรื่องเป็นสิ่งจําเป็น"
+}

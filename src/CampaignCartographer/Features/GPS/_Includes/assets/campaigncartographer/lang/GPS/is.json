@@ -1,0 +1,13 @@
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Margir leikmenn fundust með sama nafni.",
+    "Features.GPS.player-not-found":  "Leikmaður fannst ekki á netþjóni.",
+    "Features.GPS.ClipboardTextSet":  "Staðsetning spilara afrituð á klemmuspjald.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Sendu núverandi staðsetningu þína til annars leikmanns.",
+    "Features.GPS.Command.Description.Default":  "Sýnir núverandi stöðu þína í heiminum.",
+    "Features.GPS.whisper-received":  "[Úr {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Til {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Sendu núverandi staðsetningu þína á netþjóninn.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Afritaðu núverandi staðsetningu þína á klemmuspjaldið.",
+    "Features.GPS.ShowOnMap":  "Sýna á korti",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Engir leikmenn fundust."
+}

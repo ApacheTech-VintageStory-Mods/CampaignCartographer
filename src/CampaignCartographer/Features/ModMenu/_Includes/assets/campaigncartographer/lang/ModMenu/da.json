@@ -1,0 +1,15 @@
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Waypoint Manager",
+    "Features.Support.Dialogue.YouTube":  "Abonner på YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Kampagne kartograf",
+    "Features.Support.Dialogue.Back":  "Ryg",
+    "Features.Support.Dialogue.Coffee":  "Køb mig en kaffe",
+    "Features.ModMenu.Dialogue.Support":  "Støt mod-forfatteren",
+    "Features.Support.Dialogue.Twitch":  "Tilmeld dig på Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Rediger rutepunktmarkør for blokvalg",
+    "Features.Support.Dialogue.WishList":  "Amazon ønskeliste",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Rediger foruddefinerede waypoints",
+    "Features.Support.Dialogue.Website":  "Besøg min hjemmeside",
+    "Features.Support.Dialogue.Patreon":  "Tilmeld dig min Patreon",
+    "Features.Support.Dialogue.Donate":  "Donér via PayPal"
+}

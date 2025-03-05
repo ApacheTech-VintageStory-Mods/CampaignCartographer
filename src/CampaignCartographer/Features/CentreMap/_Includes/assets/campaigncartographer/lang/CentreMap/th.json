@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "แผนที่ปรับศูนย์ใหม่บนจุดอ้างอิง {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "ไม่พบผู้เล่น \u0027{0}\u0027 ในขณะนี้ พวกเขาอาจอยู่นอกระยะ การบันทึกซ้ําจะแสดงบนแผนที่",
+    "Features.CentreMap.CentreMapOnPosition":  "แผนที่ตําแหน่งที่ปรับให้อยู่ตรงกลาง: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "แผนที่ใหม่ตรงกลางผู้เล่น: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "แผนที่ที่ปรับศูนย์กลางใหม่บนจุดเกิดของผู้เล่น: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "จัดกึ่งกลางแผนที่ใหม่ในตําแหน่งหรือผู้เล่นที่กําหนด",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "แผนที่ตั้งศูนย์ใหม่บนโลกวางไข่: ({0}, {1})"
+}

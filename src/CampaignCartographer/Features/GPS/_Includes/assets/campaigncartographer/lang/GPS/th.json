@@ -1,0 +1,13 @@
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "พบผู้เล่นหลายคนที่มีชื่อเดียวกัน",
+    "Features.GPS.player-not-found":  "ไม่พบผู้เล่นบนเซิร์ฟเวอร์",
+    "Features.GPS.ClipboardTextSet":  "คัดลอกตําแหน่งของผู้เล่นไปยังคลิปบอร์ด",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "ส่งตําแหน่งปัจจุบันของคุณไปยังผู้เล่นคนอื่น",
+    "Features.GPS.Command.Description.Default":  "แสดงตําแหน่งปัจจุบันของคุณในโลก",
+    "Features.GPS.whisper-received":  "[จาก {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[ถึง{0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "ออกอากาศตําแหน่งปัจจุบันของคุณไปยังเซิร์ฟเวอร์",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "คัดลอกตําแหน่งที่ตั้งปัจจุบันของคุณไปยังคลิปบอร์ด",
+    "Features.GPS.ShowOnMap":  "แสดงบนแผนที่",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "ไม่พบผู้เล่น"
+}

@@ -1,0 +1,15 @@
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "ผู้จัดการจุดอ้างอิง",
+    "Features.Support.Dialogue.YouTube":  "สมัครสมาชิกบน YouTube",
+    "Features.ModMenu.Dialogue.Title":  "นักทําแผนที่แคมเปญ",
+    "Features.Support.Dialogue.Back":  "ย้อนกลับ",
+    "Features.Support.Dialogue.Coffee":  "ซื้อกาแฟให้ฉัน",
+    "Features.ModMenu.Dialogue.Support":  "สนับสนุน Mod Author",
+    "Features.Support.Dialogue.Twitch":  "สมัครสมาชิกบน Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "แก้ไขเครื่องหมายจุดอ้างอิงการเลือกบล็อก",
+    "Features.Support.Dialogue.WishList":  "รายการสิ่งที่อยากได้ของ Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "แก้ไขจุดอ้างอิงที่กําหนดไว้ล่วงหน้า",
+    "Features.Support.Dialogue.Website":  "เยี่ยมชมเว็บไซต์ของฉัน",
+    "Features.Support.Dialogue.Patreon":  "เข้าร่วม Patreon ของฉัน",
+    "Features.Support.Dialogue.Donate":  "บริจาคผ่าน PayPal"
+}

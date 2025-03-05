@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Omsentrert kart på veipunkt {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Finner ikke spiller «{0}» for øyeblikket. De kan være utenfor rekkevidde. Omlogging vil vise dem på kartet.",
+    "Features.CentreMap.CentreMapOnPosition":  "Omsentrert kart på posisjon: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Re-sentrert kart på spilleren: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Re-sentrert kart på spillerens spawn-punkt: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Sentrerer kartet på nytt på det gitte stedet eller spilleren.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Re-sentrert kart på verdensspawn: ({0}, {1})"
+}

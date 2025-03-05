@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Endurmiðað kort á leiðarpunkti {0}: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Get ekki fundið spilara \"{0}\" eins og er. Þeir gætu verið utan sviðs. Endurskráning mun birta þau á kortinu.",
+    "Features.CentreMap.CentreMapOnPosition":  "Endurmiðað kort á staðsetningu: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Endurmiðað kort á spilara: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Endurmiðað kort á hrygningarstað leikmanns: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Miðjar kortið aftur á tilteknum stað eða leikmanni.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Endurmiðað kort á heimshrygnu: ({0}, {1})"
+}

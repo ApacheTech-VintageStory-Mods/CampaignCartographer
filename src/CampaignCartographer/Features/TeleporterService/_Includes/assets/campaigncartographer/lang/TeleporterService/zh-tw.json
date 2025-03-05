@@ -1,0 +1,8 @@
+﻿{
+    "Features.TeleporterService.Dialogue.lblName.HoverText":  "要賦予此傳送裝置的名稱。",
+    "game:blockhelp-set-teleporter-location":  "設置傳送門位置",
+    "Features.TeleporterService.Dialogue.Title":  "設置 Teleporter 位置",
+    "Features.TeleporterService.Dialogue.lblName":  "名字",
+    "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText":  "此塊將您發送到的目標傳送器。",
+    "Features.TeleporterService.Dialogue.lblTargetLocation":  "目標"
+}

@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "Yfirborð útfellingar:",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "Trjákvoða:",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "Kaupmenn:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "Bættu sjálfkrafa við leiðarpunktum þegar þú deyrð. Þetta mun slökkva á vanilludauða leiðarpunkti.",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "Lausir steinar:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "Teleporter blokkir:",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir mismunandi bergtegundir þegar þú safnar yfirborðsútfellingum.",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir kaupmenn þegar þú hefur samskipti við þá.",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir mismunandi málmgerðir þegar þú safnar yfirborðsútfellingum.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir sveppi þegar þú leitar.",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "Berjarunnar:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir Teleporters þegar þú ferð á milli þeirra.",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "Þú dóst hér: {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir Translocators, þegar þú ferð á milli þeirra.",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir plastefni þegar þú leitar.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "Sveppir:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "Leiðarpunktar dauða:",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "Breyttu sjálfvirkum stillingum leiðarpunkta",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "Statískar translocators:",
+    "Features.AutoWaypoints.Dialogue.Title":  "Sjálfvirkir leiðarpunktar",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "Bættu sjálfkrafa við leiðarpunktum fyrir berjarunna þegar þú leitar."
+}

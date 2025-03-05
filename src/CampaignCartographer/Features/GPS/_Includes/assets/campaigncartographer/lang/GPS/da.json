@@ -1,0 +1,13 @@
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Flere spillere fundet med samme navn.",
+    "Features.GPS.player-not-found":  "Spilleren blev ikke fundet på serveren.",
+    "Features.GPS.ClipboardTextSet":  "Afspillerens placering kopieret til Udklipsholder.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Send din aktuelle placering til en anden spiller.",
+    "Features.GPS.Command.Description.Default":  "Viser din nuværende position i verden.",
+    "Features.GPS.whisper-received":  "[Fra {0}]: {1}",
+    "Features.GPS.whisper-sent":  "[Til {0}]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Udsend din aktuelle placering til serveren.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Kopier din aktuelle placering til udklipsholderen.",
+    "Features.GPS.ShowOnMap":  "Vis på kort",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Ingen spillere fundet."
+}

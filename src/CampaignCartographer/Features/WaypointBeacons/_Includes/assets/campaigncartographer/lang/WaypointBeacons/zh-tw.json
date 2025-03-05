@@ -1,0 +1,16 @@
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "顯示 Pillars",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "航路點圖示可見的範圍（以塊為單位）。",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "顯示前綴",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Clamp 位置",
+    "Features.WaypointBeacons.Dialogue.Title":  "Waypoint Beacon 設置",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "航路點標題可見的範圍（以塊為單位）。",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "標題範圍",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "指示是否應顯示航點索引。",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "顯示索引",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "指示是否應顯示航點前綴。",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "指示是否應顯示航點支柱。",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "圖示範圍",
+    "Features.WaypointBeacons.WaypointPrefix":  "航點",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "當航點移出檢視時，將航點圖示固定到螢幕一側。"
+}

@@ -1,0 +1,8 @@
+﻿{
+    "Features.TeleporterService.Dialogue.lblName.HoverText":  "Navnet skal gives til denne teleporter.",
+    "game:blockhelp-set-teleporter-location":  "Indstil teleporterens placering",
+    "Features.TeleporterService.Dialogue.Title":  "Indstil teleporterplacering",
+    "Features.TeleporterService.Dialogue.lblName":  "Navn",
+    "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText":  "Målteleporteren, som denne blok sender dig til.",
+    "Features.TeleporterService.Dialogue.lblTargetLocation":  "Mål"
+}

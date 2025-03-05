@@ -1,0 +1,16 @@
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "แสดงเสา",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "ช่วงเป็นบล็อกซึ่งมองเห็นไอคอนจุดอ้างอิง",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "แสดงคํานําหน้า",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "ตําแหน่งแคลมป์",
+    "Features.WaypointBeacons.Dialogue.Title":  "การตั้งค่า Waypoint Beacon",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "ช่วงเป็นบล็อกที่มองเห็นชื่อจุดอ้างอิง",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "ช่วงชื่อเรื่อง",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "ระบุว่าควรแสดงดัชนีเวย์พอยต์หรือไม่",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "แสดงดัชนี",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "ระบุว่าควรแสดงคํานําหน้าจุดอ้างอิงหรือไม่",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "ระบุว่าควรแสดงเสาเวย์พอยต์หรือไม่",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "ช่วงไอคอน",
+    "Features.WaypointBeacons.WaypointPrefix":  "จุดอ้างอิง",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "ปักหมุดไอคอนจุดอ้างอิงไว้ที่ด้านข้างของหน้าจอเมื่อจุดอ้างอิงเคลื่อนออกจากมุมมอง"
+}

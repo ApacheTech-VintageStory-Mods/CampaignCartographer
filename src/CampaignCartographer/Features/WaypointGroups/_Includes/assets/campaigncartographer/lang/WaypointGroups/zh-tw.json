@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "要在地圖上顯示的標題。",
+    "Features.WaypointGroups.Dialogue.Title":  "航點組",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "您最多只能建立 {0} 個組。",
+    "Features.WaypointGroups.DefaultGroupName":  "違約",
+    "Features.WaypointGroups.Dialogue.Edit":  "編輯組",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "標題：",
+    "Features.WaypointGroups.Dialogue.AddNew":  "添加新組",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "標題為必填項。"
+}

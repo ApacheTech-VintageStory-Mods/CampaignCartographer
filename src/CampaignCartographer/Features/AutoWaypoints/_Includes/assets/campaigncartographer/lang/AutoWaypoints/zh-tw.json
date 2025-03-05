@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "地表沉積物：",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "樹脂：",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "交易員：",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "每當你死亡時自動添加傳送點。這將禁用原版死亡傳送點。",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "鬆散的寶石：",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "傳送裝置塊：",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "在收集地表沉積物時，自動為不同類型的岩石添加航路點。",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "在您與交易者互動時自動為 Traders 添加航點。",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "在收集表面沉積物時，自動為不同的金屬類型添加航點。",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "在您覓食時自動為蘑菇添加路徑點。",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "漿果灌木：",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "當您在傳送機之間移動時，自動為它們添加航路點。",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "你死在這裡： {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "當您在 Translocator 之間移動時，自動為 Translocator 添加航點。",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "在您覓食時自動添加樹脂的航路點。",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "蘑菇：",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "死亡路徑點：",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "更改自動航點設置",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "靜態轉譯器：",
+    "Features.AutoWaypoints.Dialogue.Title":  "自動航點",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "在您覓食時自動為漿果灌木添加航路點。"
+}

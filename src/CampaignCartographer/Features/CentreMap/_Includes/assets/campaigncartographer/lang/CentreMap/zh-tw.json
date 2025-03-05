@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "航點{0}重新居中地圖：{1}（{2}、{3}）",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "此時找不到玩家“{0}”。它們可能超出範圍。重新記錄將在地圖上顯示它們。",
+    "Features.CentreMap.CentreMapOnPosition":  "位置重新居中地圖：（{0}、{1}）",
+    "Features.CentreMap.CentreMapOnPlayer":  "重新調整了以玩家為中心的地圖：{0}（{1}、{2}、{3}）",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "地圖重新居中於玩家出生點：（{0}、{1}）",
+    "Features.CentreMap.SettingsCommandDescription":  "將地圖重新置於給定位置或玩家的中心。",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "重新居中世界生成的地圖：（{0}、{1}）"
+}

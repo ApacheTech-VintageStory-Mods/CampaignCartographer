@@ -1,0 +1,15 @@
+﻿{
+    "Features.ModMenu.Dialogue.WaypointManager":  "Veipunkt-leder",
+    "Features.Support.Dialogue.YouTube":  "Abonner på YouTube",
+    "Features.ModMenu.Dialogue.Title":  "Kampanje kartograf",
+    "Features.Support.Dialogue.Back":  "Tilbake",
+    "Features.Support.Dialogue.Coffee":  "Kjøp meg en kaffe",
+    "Features.ModMenu.Dialogue.Support":  "Støtt Mod-forfatteren",
+    "Features.Support.Dialogue.Twitch":  "Abonner på Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker":  "Rediger veipunktmarkør for blokkvalg",
+    "Features.Support.Dialogue.WishList":  "Amazons ønskeliste",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints":  "Rediger forhåndsdefinerte veipunkter",
+    "Features.Support.Dialogue.Website":  "Besøk nettstedet mitt",
+    "Features.Support.Dialogue.Patreon":  "Bli med i min Patreon",
+    "Features.Support.Dialogue.Donate":  "Doner via PayPal"
+}

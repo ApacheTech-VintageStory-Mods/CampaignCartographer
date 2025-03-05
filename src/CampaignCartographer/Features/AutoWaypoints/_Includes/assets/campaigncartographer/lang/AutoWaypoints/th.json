@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "เงินฝากพื้นผิว:",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "ยางไม้:",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "เทรด เดอร์:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "เพิ่มจุดอ้างอิงโดยอัตโนมัติทุกครั้งที่คุณตาย การดําเนินการนี้จะปิดใช้งานจุดอ้างอิงความตายวานิลลา",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "หินหลวม:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "บล็อกเครื่องเคลื่อนย้ายมวลสาร:",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "เพิ่มจุดอ้างอิงสําหรับหินประเภทต่างๆ โดยอัตโนมัติ ในขณะที่คุณรวบรวมคราบสกปรกบนพื้นผิว",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "เพิ่มจุดอ้างอิงสําหรับเทรดเดอร์โดยอัตโนมัติในขณะที่คุณโต้ตอบกับพวกเขา",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "เพิ่มจุดอ้างอิงโดยอัตโนมัติสําหรับโลหะประเภทต่างๆ ในขณะที่คุณรวบรวมคราบสกปรกบนพื้นผิว",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "เพิ่มจุดอ้างอิงสําหรับเห็ดโดยอัตโนมัติในขณะที่คุณหาอาหาร",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "พุ่มไม้เบอร์รี่:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "เพิ่มจุดอ้างอิงสําหรับเครื่องเคลื่อนย้ายมวลสารโดยอัตโนมัติเมื่อคุณเดินทางระหว่างพวกเขา",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "คุณเสียชีวิตที่นี่: {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "เพิ่มจุดอ้างอิงสําหรับ Translocators โดยอัตโนมัติในขณะที่คุณเดินทางระหว่างกัน",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "เพิ่มจุดอ้างอิงสําหรับเรซินโดยอัตโนมัติในขณะที่คุณหาอาหาร",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "เห็ด:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "จุดอ้างอิงความตาย:",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "เปลี่ยนการตั้งค่าจุดอ้างอิงอัตโนมัติ",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "Translocators แบบคงที่:",
+    "Features.AutoWaypoints.Dialogue.Title":  "จุดอ้างอิงอัตโนมัติ",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "เพิ่มจุดอ้างอิงสําหรับพุ่มไม้เบอร์รี่โดยอัตโนมัติในขณะที่คุณหาอาหาร"
+}

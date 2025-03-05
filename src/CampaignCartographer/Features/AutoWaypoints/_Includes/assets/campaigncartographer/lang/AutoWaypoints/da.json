@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "Overfladeaflejringer:",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "Harpiks:",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "Handlende:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "Tilføj automatisk waypoints, når du dør. Dette vil deaktivere vaniljedød waypoint.",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "Løse sten:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "Teleporter blokke:",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "Tilføj automatisk waypoints for forskellige stentyper, når du indsamler overfladeaflejringer.",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "Tilføj automatisk waypoints for tradere, når du interagerer med dem.",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "Tilføj automatisk waypoints for forskellige metaltyper, når du opsamler overfladeaflejringer.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "Tilføj automatisk waypoints for svampe, når du fouragerer.",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "Bærbuske:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "Tilføj automatisk waypoints til teleportere, når du rejser mellem dem.",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "Du døde her: {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "Tilføj automatisk waypoints for Translocators, når du rejser mellem dem.",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "Tilføj automatisk waypoints til harpiks, mens du fouragerer.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "Svampe:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "Dødens waypoints:",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "Skift indstillinger for automatiske waypoint",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "Statiske translokatorer:",
+    "Features.AutoWaypoints.Dialogue.Title":  "Automatiske waypoints",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "Tilføj automatisk waypoints til bærbuske, mens du fouragerer."
+}

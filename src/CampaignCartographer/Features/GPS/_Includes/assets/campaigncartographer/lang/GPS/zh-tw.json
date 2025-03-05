@@ -1,0 +1,13 @@
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "找到多個同名玩家。",
+    "Features.GPS.player-not-found":  "在伺服器上找不到玩家。",
+    "Features.GPS.ClipboardTextSet":  "播放器位置已複製到剪貼板。",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "將您的當前位置發送給其他玩家。",
+    "Features.GPS.Command.Description.Default":  "顯示您在世界中的目前位置。",
+    "Features.GPS.whisper-received":  "[從 {0} 起]： {1}",
+    "Features.GPS.whisper-sent":  "[To {0}]： {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "將您的目前位置廣播到伺服器。",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "將當前位置複製到剪貼簿。",
+    "Features.GPS.ShowOnMap":  "在地圖上顯示",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "未找到玩家。"
+}
