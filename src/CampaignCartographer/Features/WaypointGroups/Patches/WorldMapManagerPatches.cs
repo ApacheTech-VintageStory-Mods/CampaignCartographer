@@ -2,6 +2,7 @@
 using Gantry.Services.FileSystem.Configuration.Consumers;
 using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+using Vintagestory.API.Util;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 
@@ -16,8 +17,10 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
     [HarmonyPatch(typeof(WorldMapManager), "OnLvlFinalize")]
     public static bool Harmony_WorldMapManager_OnLvlFinalize_Prefix(WorldMapManager __instance, ref Thread ___mapLayerGenThread, GuiDialogWorldMap ___worldMapDlg)
     {
+        // In singleplayer, this patch also runs on the server. They use the same instance.
         var capi = ApiEx.Client;
-        var mapAllowedClient = __instance.CallMethod<bool>("mapAllowedClient");
+        if (capi is null) return true;
+        var mapAllowedClient = capi.World.Config.GetBool("allowMap", true) || capi.World.Player.Privileges.IndexOf("allowMap") != -1;
         if (mapAllowedClient)
         {
             ApiEx.Logger.VerboseDebug("Registering world map hotkeys");
@@ -29,7 +32,7 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
             capi.Input.SetHotKeyHandler("worldmapdialog", key => __instance.CallMethod<bool>("OnHotKeyWorldMapDlg", key));
 
             ApiEx.Logger.VerboseDebug("Registering world map link protocols");
-            capi.RegisterLinkProtocol("worldmap", link => __instance.CallMethod("onWorldMapLinkClicked"));
+            capi.RegisterLinkProtocol("worldmap", link => __instance.CallMethod("onWorldMapLinkClicked", link));
         }
 
         lock (MapLayerGeneration.MapLayersLock)
