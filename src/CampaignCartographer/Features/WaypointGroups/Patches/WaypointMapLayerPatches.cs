@@ -11,7 +11,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Pa
 [HarmonyClientSidePatch]
 public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSettings>
 {
-    private static object _localLock = new();
+    private static readonly object _localLock = new();
     private static TextureAtlasManager? _textureAtlasManager;
 
     /// <summary>

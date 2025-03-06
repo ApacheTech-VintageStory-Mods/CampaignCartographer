@@ -137,7 +137,7 @@ public static class WaypointTemplateExtensions
     /// <param name="colourString">The colour string to convert.</param>
     /// <returns>The integer representation of the colour.</returns>
     public static int ToInt(this string colourString) 
-        => (colourString.StartsWith("#")
+        => (colourString.StartsWith('#')
             ? ColorUtil.Hex2Int(colourString)
             : ColorUtil.Hex2Int(Color.FromName(colourString).ToRgbaHexString())) | -16777216;
 
