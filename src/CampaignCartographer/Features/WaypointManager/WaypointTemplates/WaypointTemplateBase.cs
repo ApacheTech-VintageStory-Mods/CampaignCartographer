@@ -1,4 +1,5 @@
-﻿using Gantry.Core.GameContent.AssetEnum;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
+using Gantry.Core.GameContent.AssetEnum;
 
 // ReSharper disable NonReadonlyMemberInGetHashCode
 
@@ -67,7 +68,7 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <returns>
     ///     true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.
     /// </returns>
-    public bool Equals(WaypointTemplateBase other) => Id.Equals(other?.Id, StringComparison.InvariantCultureIgnoreCase);
+    public bool Equals(WaypointTemplateBase other) => other.IsSameAs(this);
 
     /// <summary>
     ///     Determines whether the specified <see cref="object" />, is equal to this instance.
@@ -78,9 +79,8 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// </returns>
     public override bool Equals(object obj)
     {
-        if (obj is null) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        return obj.GetType() == GetType() && Equals(obj.To<WaypointTemplateBase>());
+        if (obj is not WaypointTemplateBase other) return false;
+        return other.IsSameAs(this);
     }
 
     /// <summary>
@@ -94,12 +94,12 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <summary>
     ///     Implements the operator ==.
     /// </summary>
-    public static bool operator ==(WaypointTemplateBase left, WaypointTemplateBase right) => Equals(left, right);
+    public static bool operator ==(WaypointTemplateBase left, WaypointTemplateBase right) => left.IsSameAs(right);
 
     /// <summary>
     ///     Implements the operator !=.
     /// </summary>
-    public static bool operator !=(WaypointTemplateBase left, WaypointTemplateBase right) => !Equals(left, right);
+    public static bool operator !=(WaypointTemplateBase left, WaypointTemplateBase right) => !left.IsSameAs(right);
 
     /// <summary>
     ///     Creates a new object that is a copy of the current instance.
