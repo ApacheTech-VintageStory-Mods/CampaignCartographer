@@ -1,5 +1,6 @@
-﻿using System.IO;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.Imports;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
@@ -12,90 +13,145 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 ///     Dialogue Window: Allows the user to export waypoints to JSON files.
 /// </summary>
 /// <seealso cref="GenericDialogue" />
-[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+[HarmonyClientSidePatch]
 public class WaypointExportDialogue : WaypointSelectionDialogue
 {
-    private readonly WaypointQueriesRepository _queriesRepo;
+    private readonly IPlayer[] _onlinePlayers;
+    private static string _searchTerm;
 
-    private readonly string _exportsDirectory =
-        ModPaths.CreateDirectory(Path.Combine(ModPaths.ModDataWorldPath, "Saves"));
-
-    /// <summary>
-    /// 	Initialises a new instance of the <see cref="WaypointExportDialogue" /> class.
-    /// </summary>
-    /// <param name="capi">Client API pass-through</param>
-    /// <param name="queriesRepo">IOC Injected Waypoint Service.</param>
-    public WaypointExportDialogue(ICoreClientAPI capi, WaypointQueriesRepository queriesRepo) : base(capi, queriesRepo)
+    public WaypointExportDialogue(ICoreClientAPI capi) : base(capi)
     {
-        _queriesRepo = queriesRepo;
-        Title = LangEx.FeatureString("WaypointManager.Dialogue", "Title");
-        Alignment = EnumDialogArea.CenterMiddle;
+        Title = T("Title");
         Modal = true;
         ModalTransparency = 0f;
-        LeftButtonText = T("OpenExportsFolder");
-        RightButtonText = T("ExportSelectedWaypoints");
-        ShowExtraButtons = true;
 
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
-        {
-            Compose();
-            RefreshValues();
-        });
+        _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];
     }
+    
+    protected override string SearchTerm { get => _searchTerm; set => _searchTerm = value; }
 
-    #region Form Composition
+    #region Cell Management
 
-    protected override void PopulateCellList()
+    private static WaypointExportDialogue _instance;
+
+    protected override IEnumerable<WaypointSelectionCellEntry> GetCellEntries(System.Func<SelectableWaypointTemplate, bool> filter)
     {
-        Waypoints = GetWaypointExportCellEntries();
-        base.PopulateCellList();
-    }
-
-    #endregion
-
-    #region Cell List Management
-
-    private List<WaypointSelectionCellEntry> GetWaypointExportCellEntries()
-    {
+        // Retrieve the player's position.
         var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
-        var waypoints = _queriesRepo.GetSortedWaypoints(SortOrder, w => SelectableWaypointTemplate.FromWaypoint(w, selected: false));
-        return waypoints.Select(w =>
+
+        // Convert the list of waypoints to a sorted dictionary.
+        
+        var query = IOC.Services.GetRequiredService<WaypointQueriesRepository>();
+        var waypoints = query.GetSortedWaypoints(SortOrder, w => SelectableWaypointTemplate.FromWaypoint(w, selected: true));
+
+        // Sort the waypoints and convert each to a selectable template,
+        // filtering out any null conversions.
+        return waypoints.Where(p => filter(p.Value)).Select(w =>
         {
             var dto = w.Value;
-            var current = Waypoints.FirstOrDefault(p => p.Model.Equals(w.Value));
-            dto.Selected = current?.Model.Selected ?? true;
+
+            // Check for any critical null values; if any are found, skip this entry.
+            if (dto is null || dto.Title is null || dto.Position is null) return null;
+
+            // Check the relative position; if unavailable, skip this entry.
+            var relativePos = dto.Position.AsBlockPos.RelativeToSpawn();
+            if (relativePos is null) return null;
 
             return new WaypointSelectionCellEntry
             {
                 Title = dto.Title,
-                RightTopText = $"{dto.Position.AsBlockPos.RelativeToSpawn()} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
+                RightTopText = $"{relativePos} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
                 RightTopOffY = 3f,
                 DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
                 Model = dto,
                 Index = w.Key
             };
-        }).ToList();
+        })
+        .Where(entry => entry is not null);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(WaypointMapLayer), "OnDataFromServer")]
+    public static void UpdateWaypointExportDialogueCells() => _instance?.RecomposeBody();
+
+    public override bool TryOpen()
+    {
+        var success = base.TryOpen();
+        if (success) _instance = this;
+        return success;
+    }
+
+    public override bool TryClose()
+    {
+        var success = base.TryClose();
+        if (success) _instance = null;
+        return success;
     }
 
     #endregion
 
-    #region Control Event Handlers
+    #region Primary Button: Export Selected Waypoints
 
-    protected override bool OnLeftButtonPressed()
-    {
-        NetUtil.OpenUrlInBrowser(_exportsDirectory);
-        return true;
-    }
+    protected override string PrimaryButtonText => T("Exports.ExportSelectedWaypoints");
 
-    protected override bool OnRightButtonPressed()
+    protected override ActionConsumable PrimaryButtonAction => ExportSelectedWaypoints;
+
+    private bool ExportSelectedWaypoints()
     {
-        var waypoints = WaypointsList.elementCells
+        var waypoints = CellList.elementCells
             .Cast<WaypointSelectionGuiCell>()
             .Where(p => p.On)
             .Select(w => (PositionedWaypointTemplate)w.Model)
             .ToList();
         WaypointExportConfirmationDialogue.ShowDialogue(waypoints);
         return true;
+    }
+
+    #endregion
+
+    #region Secondary Button: Open Exports Folder
+
+    protected override string SecondaryButtonText => T("Exports.OpenExportsFolder");
+
+    protected override ActionConsumable SecondaryButtonAction => OpenExportsFolder;
+
+    private bool OpenExportsFolder()
+    {
+        var folder = ModPaths.CreateDirectory(System.IO.Path.Combine(ModPaths.ModDataWorldPath, "Saves"));
+        NetUtil.OpenUrlInBrowser(folder);
+        return true;
+    }
+
+    #endregion
+
+    #region Tertiary Button: Share Waypoint
+
+    protected override string TertiaryButtonText => T("Exports.ShareSelected");
+
+    protected override ActionConsumable TertiaryButtonAction => _onlinePlayers.Length > 0 ? ShareSelectedWaypoints : null;
+
+    private bool ShareSelectedWaypoints()
+    {
+        var cellList = CellList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);
+        var waypoints = cellList.Select(p => p.Model.ToWaypoint());
+        var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, waypoints);
+        dialogue.ToggleGui();
+        return true;
+    }
+
+    #endregion
+
+    #region Header Button: Import Waypoints
+
+    protected override string HeaderButtonText => T("Imports.Title");
+
+    protected override ActionConsumable HeaderButtonAction => OnImportButtonClicked;
+
+    private bool OnImportButtonClicked()
+    {
+        var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
+        dialogue.OnClosed += () => TryClose();
+        return dialogue.TryOpen();
     }
 
     #endregion

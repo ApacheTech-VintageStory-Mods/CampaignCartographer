@@ -1,4 +1,5 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.Extensions.DotNet;
@@ -33,7 +34,7 @@ public class WaypointQueriesRepository
     ///     An enumerable of key-value pairs, where the key is the waypoint's index, 
     ///     and the value is the corresponding <see cref="Waypoint"/>.
     /// </returns>
-    public IEnumerable<KeyValuePair<int, Waypoint>> SortWaypoints(
+    public static IEnumerable<KeyValuePair<int, Waypoint>> SortWaypoints(
         IEnumerable<PositionedWaypointTemplate> waypoints,
         WaypointSortType sortOrder)
     {
@@ -84,6 +85,36 @@ public class WaypointQueriesRepository
     /// <param name="waypoints">The collection of waypoints to sort, represented as a sorted dictionary.</param>
     /// <returns>
     ///     An enumerable of key-value pairs, where the key is the waypoint's index, 
+    ///     and the value is the corresponding <see cref="PositionedWaypointTemplate"/>, ordered as specified.
+    /// </returns>
+    public static IEnumerable<WaypointSelectionCellEntry> SortCells(
+        WaypointSortType sortOrder,
+        IEnumerable<WaypointSelectionCellEntry> waypoints)
+    {
+        var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
+        return sortOrder switch
+        {
+            WaypointSortType.IndexAscending => waypoints.OrderBy(p => p.Index),
+            WaypointSortType.IndexDescending => waypoints.OrderByDescending(p => p.Index),
+            WaypointSortType.ColourAscending => waypoints.OrderBy(p => ColorUtil.Int2Hex(p.Model.Colour.ToInt())),
+            WaypointSortType.ColourDescending => waypoints.OrderByDescending(p => ColorUtil.Int2Hex(p.Model.Colour.ToInt())),
+            WaypointSortType.NameAscending => waypoints.OrderBy(p => p.Model.Title),
+            WaypointSortType.NameDescending => waypoints.OrderByDescending(p => p.Model.Title),
+            WaypointSortType.DistanceAscending => waypoints.OrderBy(p =>
+                p.Model.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
+            WaypointSortType.DistanceDescending => waypoints.OrderByDescending(p =>
+                p.Model.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
+            _ => waypoints
+        };
+    }
+
+    /// <summary>
+    ///     Sorts a collection of waypoints based on the specified sorting order.
+    /// </summary>
+    /// <param name="sortOrder">The type of sorting to apply.</param>
+    /// <param name="waypoints">The collection of waypoints to sort, represented as a sorted dictionary.</param>
+    /// <returns>
+    ///     An enumerable of key-value pairs, where the key is the waypoint's index, 
     ///     and the value is the corresponding <see cref="Waypoint"/>, ordered as specified.
     /// </returns>
     public static IEnumerable<KeyValuePair<int, Waypoint>> Sort(
@@ -93,8 +124,8 @@ public class WaypointQueriesRepository
         var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
         return sortOrder switch
         {
-            WaypointSortType.IndexAscending => waypoints.Reverse(),
-            WaypointSortType.IndexDescending => waypoints,
+            WaypointSortType.IndexAscending => waypoints,
+            WaypointSortType.IndexDescending => waypoints.Reverse(),
             WaypointSortType.ColourAscending => waypoints.OrderBy(p => ColorUtil.Int2Hex(p.Value.Color)),
             WaypointSortType.ColourDescending => waypoints.OrderByDescending(p => ColorUtil.Int2Hex(p.Value.Color)),
             WaypointSortType.NameAscending => waypoints.OrderBy(p => p.Value.Title),

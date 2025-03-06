@@ -29,12 +29,6 @@ public class WaypointTemplatePackDialogue : GenericDialogue
         _settings = settings;
         Title = LangEx.FeatureString("PredefinedWaypoints.Dialogue", "Title");
         Alignment = EnumDialogArea.CenterMiddle;
-
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
-        {
-            Compose();
-            RefreshValues();
-        });
     }
 
     #region Form Composition

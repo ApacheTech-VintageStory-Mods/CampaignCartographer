@@ -1,182 +1,72 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.Imports;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
-using Gantry.Core.Extensions.DotNet;
 using Gantry.Core.GameContent.GUI.Abstractions;
-using Vintagestory.API.Util;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
 
-/// <summary>
-///     Dialogue Window: Allows the user to export waypoints to JSON files.
-/// </summary>
-/// <seealso cref="GenericDialogue" />
-[HarmonyClientSidePatch]
-[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public abstract class WaypointSelectionDialogue : GenericDialogue
 {
-    private ElementBounds _clippedBounds;
-    private ElementBounds _cellListBounds;
     private GuiElementDynamicText _lblSelectedCount;
-    private static WaypointSelectionDialogue _instance;
-    private static string _filterString;
-    private readonly IPlayer[] _onlinePlayers;
-    protected readonly WorldMapManager WorldMap;
 
-    protected IEnumerable<WaypointSelectionCellEntry> Waypoints { get; set; } = [];
-
-    protected GuiElementCellList<WaypointSelectionCellEntry> WaypointsList { get; private set; }
-
-    protected WaypointSortType SortOrder { get; private set; } = WaypointSortType.IndexAscending;
-
-    protected bool ShowExtraButtons { private get; init; }
-
-    protected string LeftButtonText { private get; init; }
-
-    protected string RightButtonText { private get; init; }
-
-    public override bool DisableMouseGrab => true;
-
-    /// <summary>
-    /// 	Initialises a new instance of the <see cref="WaypointSelectionDialogue" /> class.
-    /// </summary>
-    /// <param name="capi">Client API pass-through</param>
-    /// <param name="queriesRepo">IOC Injected Waypoint Service.</param>
-    protected WaypointSelectionDialogue(ICoreClientAPI capi, WaypointQueriesRepository queriesRepo) : base(capi)
+    protected WaypointSelectionDialogue(ICoreClientAPI capi) : base(capi)
     {
-        WorldMap = IOC.Services.Resolve<WorldMapManager>();
-        Title = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "Title");
         Alignment = EnumDialogArea.CenterMiddle;
-        _onlinePlayers = capi.World.AllOnlinePlayers.Except([capi.World.Player]).ToArray();
-
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
-        {
-            Compose();
-            RefreshValues();
-        });
-    }
-
-    [HarmonyPostfix]
-    [HarmonyPatch(typeof(WaypointMapLayer), "OnDataFromServer")]
-    public static void Patch_WaypointMapLayer_OnDataFromServer_PostFix(byte[] data)
-    {
-        _instance?.RefreshWaypoints(data);
-        _instance?.SingleComposer?.ReCompose();
     }
 
     #region Form Composition
 
-    public override bool TryOpen()
+    protected WaypointSelectionDialogueBounds Bounds { get; } = new();
+
+    protected override void PreCompose()
     {
-        var success = base.TryOpen();
-        if (success) _instance = this;
-        return success;
-    }
-
-    public override bool TryClose()
-    {
-        var success = base.TryClose();
-        if (success) _instance = null;
-        return success;
-    }
-
-    protected override void Compose()
-    {
-        base.Compose();
-        PopulateCellList();
-    }
-
-    protected virtual void PopulateCellList()
-    {
-        WaypointsList.ReloadCells(Waypoints);
-    }
-
-    protected override void RefreshValues()
-    {
-        if (SingleComposer is null) return;
-
-        SingleComposer.GetTextInput("txtSearchBox").SetValue(_filterString);
-        FilterCells();
-
-        var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>();
-        var count = cellList.Count(p => p.On);
-        var selectedCountText = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "SelectedWaypoints", count.ToString("N0"));
-        _lblSelectedCount.SetNewText(selectedCountText, true, true);
-
-        _cellListBounds.CalcWorldBounds();
-        _clippedBounds.CalcWorldBounds();
-        SingleComposer.GetScrollbar("scrollbar").SetHeights((float)_clippedBounds.fixedHeight, (float)_cellListBounds.fixedHeight);
+        RefreshCells();
     }
 
     protected override void ComposeBody(GuiComposer composer)
     {
-        var platform = capi.World.GetField<ClientPlatformAbstract>("Platform");
-        var scaledWidth = Math.Max(600, platform.WindowSize.Width * 0.5) / ClientSettings.GUIScale;
-        var scaledHeight = Math.Min(600, (platform.WindowSize.Height - 65) * 0.85) / ClientSettings.GUIScale;
-
-        var buttonRowBoundsRightFixed = ElementBounds
-            .FixedSize(60, 30)
-            .WithFixedPadding(10, 2)
-            .WithAlignment(EnumDialogArea.RightFixed);
-
-        var buttonRowBounds = ElementBounds
-            .FixedSize(60, 30)
-            .WithFixedPadding(10, 2);
-
-        var textBounds = ElementBounds
-            .FixedSize(EnumDialogArea.CenterFixed, 0, 30)
-            .WithFixedPadding(10, 2);
-
-        var outerBounds = ElementBounds
-            .Fixed(EnumDialogArea.LeftTop, 0, 0, scaledWidth, 35);
-
-        AddSearchBox(composer, ref outerBounds);
-
-        var insetBounds = outerBounds
-            .BelowCopy(0, 3)
-            .WithFixedSize(scaledWidth, scaledHeight);
-
-        _clippedBounds = insetBounds
-            .ForkContainingChild(3, 3, 3, 3);
-
-        _cellListBounds = _clippedBounds
-            .ForkContainingChild(0.0, 0.0, 0.0, -3.0)
-            .WithFixedPadding(10.0);
-
-        WaypointsList = new GuiElementCellList<WaypointSelectionCellEntry>(capi, _cellListBounds, CellCreator, Waypoints);
-
-        composer
-            .AddInset(insetBounds)
-            .AddVerticalScrollbar(OnScroll, ElementStdBounds.VerticalScrollbar(insetBounds), "scrollbar")
-            .BeginClip(_clippedBounds)
-            .AddInteractiveElement(WaypointsList, "waypointsList")
-            .EndClip();
-
-        composer.AddSmallButton(LeftButtonText, OnLeftButtonPressed,
-            buttonRowBounds.FlatCopy().FixedUnder(insetBounds, 10.0),
-            EnumButtonStyle.Normal, "btnOpenExportsFolder");
-
-        if (ShowExtraButtons && _onlinePlayers.Length > 0)
-        {
-            composer.AddSmallButton(T("ShareSelected"), OnShareButtonPressed,
-                textBounds.FlatCopy().FixedUnder(insetBounds, 10.0), EnumButtonStyle.Normal, "btnShareSelected");
-        }
-
-        composer.AddSmallButton(RightButtonText, OnRightButtonPressed, buttonRowBoundsRightFixed.FlatCopy().FixedUnder(insetBounds, 10.0));
+        AddHeaderRow(composer);
+        AddCellListPanel(composer);
+        AddFooterRow(composer);
     }
 
-    private void AddSearchBox(GuiComposer composer, ref ElementBounds bounds)
+    protected override void RefreshValues()
     {
-        const int switchSize = 30;
-        const int gapBetweenRows = 20;
+        base.RefreshValues();
+        if (SingleComposer is null) return;
+        SingleComposer.GetTextInput("txtSearchBox").SetValue(SearchTerm);
+
+        var cellList = CellList.elementCells.Cast<WaypointSelectionGuiCell>();
+        var count = cellList.Count(p => p.On);
+        var selectedCountText = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "SelectedWaypoints", count.ToString("N0"));
+        _lblSelectedCount.SetNewText(selectedCountText, true, true);
+        UpdateCellListBounds();
+    }
+
+    protected void RecomposeBody()
+    {
+        PreCompose();
+        Compose();
+        RefreshValues();
+    }
+
+    #endregion
+
+    #region Header
+
+    protected virtual string HeaderButtonText { get; set; } = string.Empty;
+
+    protected WaypointSortType SortOrder { get; private set; } = WaypointSortType.IndexAscending;
+
+    protected virtual ActionConsumable HeaderButtonAction { get; set; } = null!;
+
+    private void AddHeaderRow(GuiComposer composer)
+    {
         var font = CairoFont.WhiteSmallText();
         var lblSearchText = $"{Lang.Get("Search")}...";
 
-        var first = ElementBounds.Fixed(0, 0, 200, switchSize).FixedUnder(bounds, 3);
-        var second = ElementBounds.FixedSize(250, switchSize).FixedUnder(bounds, 3).FixedRightOf(first, 10);
+        var first = ElementBounds.Fixed(0, 0, 200, Bounds.SwitchSize).FixedUnder(Bounds.HeaderBounds, 3);
+        var second = ElementBounds.FixedSize(250, Bounds.SwitchSize).FixedUnder(Bounds.HeaderBounds, 3).FixedRightOf(first, 10);
 
         var txtSearchBox = new GuiElementTextInput(ApiEx.Client, first, OnFilterTextChanged, CairoFont.TextInput());
         txtSearchBox.SetPlaceHolderText(lblSearchText);
@@ -185,83 +75,114 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         var keys = Enum.GetNames<WaypointSortType>();
         var values = keys.Select(p => T(p)).ToArray();
 
-        var cbxSortType = new GuiElementDropDown(ApiEx.Client, keys, values, 0, OnSortOrderChanged, second, font, false);
+        var selectedIndex = SortOrder.To<int>();
+        var cbxSortType = new GuiElementDropDown(ApiEx.Client, keys, values, selectedIndex, OnSortOrderChanged, second, font, false);
         composer.AddInteractiveElement(cbxSortType, "cbxSortType");
 
-        var btnShareBounds = ElementBounds.FixedSize(250, 0).WithFixedPadding(10, 2).FixedUnder(bounds, 10).FixedRightOf(second, 10);
-        _lblSelectedCount = new GuiElementDynamicText(capi, "", CairoFont.WhiteDetailText().WithOrientation(EnumTextOrientation.Left), btnShareBounds);
+        var lblSelectedCountBounds = ElementBounds.FixedSize(250, 0).WithFixedPadding(10, 2).FixedUnder(Bounds.HeaderBounds, 10).FixedRightOf(second, 10);
+
+        _lblSelectedCount = new GuiElementDynamicText(capi, "", CairoFont.WhiteDetailText().WithOrientation(EnumTextOrientation.Left), lblSelectedCountBounds);
         composer.AddInteractiveElement(_lblSelectedCount, "lblSelectedCount");
 
-        if (ShowExtraButtons)
+        if (HeaderButtonAction is not null && !string.IsNullOrEmpty(HeaderButtonText))
         {
-            var btnOpenImportsBounds = ElementBounds
-                .FixedSize(60, 30)
-                .WithFixedPadding(10, 2)
-                .WithAlignment(EnumDialogArea.RightFixed)
-                .FixedUnder(bounds);
-
-            composer.AddSmallButton(LangEx.FeatureString("WaypointManager.Dialogue.Imports", "Title"),
-                OnImportButtonClicked, btnOpenImportsBounds, EnumButtonStyle.Normal, "btnOpenImports");
+            composer.AddSmallButton(
+                text: HeaderButtonText,
+                onClick: HeaderButtonAction,
+                bounds: ElementBounds.FixedSize(60, 30).WithFixedPadding(10, 2).WithAlignment(EnumDialogArea.RightFixed).FixedUnder(Bounds.HeaderBounds),
+                style: EnumButtonStyle.Normal,
+                key: "btnHeader");
         }
+    }
 
-        bounds = bounds.BelowCopy(fixedDeltaY: gapBetweenRows);
+    private void OnFilterTextChanged(string filterString)
+    {
+        if (SearchTerm == filterString) return;
+        SearchTerm = filterString;
+        RecomposeBody();
     }
 
     private void OnSortOrderChanged(string code, bool selected)
     {
-        if (Enum.TryParse(code, false, out WaypointSortType type)) SortOrder = type;
-        PopulateCellList();
-        FilterCells();
-        RefreshValues();
+        var parsed = Enum.TryParse(code, false, out WaypointSortType type);
+        if (!parsed || type == SortOrder) return;
+        SortOrder = type;
+        RecomposeBody();
     }
 
-    private bool OnShareButtonPressed()
+    #endregion
+
+    #region Content
+
+    private void AddCellListPanel(GuiComposer composer)
     {
-        var cellList = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);
-        var waypoints = cellList.Select(p => p.Model.ToWaypoint());
-        var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, waypoints);
-        dialogue.ToggleGui();
-        return true;
+        composer
+            .AddInset(Bounds.InsetBounds)
+            .AddVerticalScrollbar(OnScroll, ElementStdBounds.VerticalScrollbar(Bounds.InsetBounds), "scrollbar")
+            .BeginClip(Bounds.ClippedBounds)
+            .AddInteractiveElement(CellList, "cellList")
+            .EndClip();
     }
 
-    private bool OnImportButtonClicked()
+    private void UpdateCellListBounds()
     {
-        var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
-        dialogue.OnClosed += () => TryClose();
-        return dialogue.TryOpen();
+        Bounds.CellListBounds.CalcWorldBounds();
+        Bounds.ClippedBounds.CalcWorldBounds();
+        SingleComposer.GetScrollbar("scrollbar").SetHeights((float)Bounds.ClippedBounds.fixedHeight, (float)Bounds.CellListBounds.fixedHeight);
     }
 
-    protected static string T(string text, params object[] args)
-        => LangEx.FeatureString("WaypointManager.Dialogue.Exports", text, args);
-
-    private void OnFilterTextChanged(string filterString)
+    private void OnScroll(float dy)
     {
-        if (filterString == _filterString) return;
-        _filterString = filterString;
-        RefreshValues();
-    }
-
-    private void FilterCells()
-    {
-        WaypointsList.CallMethod("FilterCells", (System.Func<IGuiElementCell, bool>)Filter);
-        return;
-
-        static bool Filter(IGuiElementCell cell)
-        {
-            var c = (WaypointSelectionGuiCell)cell;
-            c.On = string.IsNullOrWhiteSpace(_filterString) 
-                || c.Model.Title.Contains(_filterString, StringComparison.InvariantCultureIgnoreCase);
-            return c.On;
-        }
+        var bounds = SingleComposer.GetElement("cellList").Bounds;
+        bounds.fixedY = 0f - dy;
+        bounds.CalcWorldBounds();
     }
 
     #endregion
 
     #region Cell List Management
 
-    private IGuiElementCell CellCreator(WaypointSelectionCellEntry cell, ElementBounds bounds)
+    protected abstract IEnumerable<WaypointSelectionCellEntry> GetCellEntries(System.Func<SelectableWaypointTemplate, bool> filter);
+
+    protected IEnumerable<WaypointSelectionCellEntry> Cells { get; private set; } = [];
+
+    protected GuiElementCellList<WaypointSelectionCellEntry> CellList { get; private set; }
+
+    protected virtual string SearchTerm { get; set; }
+
+    protected virtual void OnCellClickLeftSide(MouseEvent @event, int elementIndex)
     {
-        return new WaypointSelectionGuiCell(ApiEx.Client, cell, bounds)
+        var cell = CellList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+
+        var worldMap = capi.ModLoader.GetModSystem<WorldMapManager>();
+        worldMap.RecentreMap(cell.Model.Position);
+
+        if (@event.Button != EnumMouseButton.Right) return;
+
+        var dialogue = new AddEditWaypointDialogue(
+            ApiEx.Client,
+            cell.Model.ToWaypoint(),
+            cell.CellEntry.Index);
+
+        dialogue.OnClosed += RecomposeBody;
+        dialogue.ToggleGui();
+    }
+
+    private void OnCellClickRightSide(MouseEvent @event, int elementIndex)
+    {
+        var cell = CellList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+        cell.On = !cell.On;
+        cell.Enabled = cell.On;
+        cell.Model.Selected = cell.On;
+        RefreshValues();
+    }
+
+    private void RefreshCells()
+    {
+        Cells = GetCellEntries(Filter);
+        CellList = new GuiElementCellList<WaypointSelectionCellEntry>(capi, Bounds.CellListBounds, CellCreator, Cells);
+
+        WaypointSelectionGuiCell CellCreator(WaypointSelectionCellEntry cell, ElementBounds bounds) => new(capi, cell, bounds)
         {
             On = cell.Model.Selected,
             OnMouseDownOnCellLeft = OnCellClickLeftSide,
@@ -269,119 +190,74 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         };
     }
 
+    private bool Filter(SelectableWaypointTemplate waypoint)
+    {
+        var filtered = string.IsNullOrWhiteSpace(SearchTerm) 
+                    || waypoint.Title.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase);
+        waypoint.Selected = waypoint.Selected && filtered;
+        return filtered;
+    }
+
     #endregion
 
-    #region Control Event Handlers
+    #region Footer
 
-    private void OnScroll(float dy)
+    protected virtual string PrimaryButtonText { get; set; } = string.Empty;
+
+    protected virtual string SecondaryButtonText { get; set; } = string.Empty;
+
+    protected virtual string TertiaryButtonText { get; set; } = string.Empty;
+
+    protected virtual ActionConsumable PrimaryButtonAction { get; set; } = null!;
+
+    protected virtual ActionConsumable SecondaryButtonAction { get; set; } = null!;
+
+    protected virtual ActionConsumable TertiaryButtonAction { get; set; } = null!;
+
+    private void AddFooterRow(GuiComposer composer)
     {
-        var bounds = SingleComposer.GetElement("waypointsList").Bounds;
-        bounds.fixedY = 0f - dy;
-        bounds.CalcWorldBounds();
+        if (PrimaryButtonAction is not null && !string.IsNullOrEmpty(PrimaryButtonText))
+        {
+            composer.AddSmallButton(
+                text: PrimaryButtonText,
+                onClick: PrimaryButtonAction,
+                bounds: Bounds.ButtonRowBoundsRightFixed.FlatCopy().FixedUnder(Bounds.InsetBounds, Bounds.GapBetweenRows),
+                key: "btnPrimary");
+        }
+
+        if (SecondaryButtonAction is not null && !string.IsNullOrEmpty(SecondaryButtonText))
+        {
+            composer.AddSmallButton(
+                text: SecondaryButtonText,
+                onClick: SecondaryButtonAction,
+                bounds: Bounds.ButtonRowBounds.FlatCopy().FixedUnder(Bounds.InsetBounds, Bounds.GapBetweenRows),
+                style: EnumButtonStyle.Normal,
+                key: "btnSecondary");
+        }
+
+        if (TertiaryButtonAction is not null && !string.IsNullOrEmpty(TertiaryButtonText))
+        {
+            composer.AddSmallButton(
+                text: TertiaryButtonText,
+                onClick: TertiaryButtonAction,
+                bounds: Bounds.TextBounds.FlatCopy().FixedUnder(Bounds.InsetBounds, Bounds.GapBetweenRows),
+                style: EnumButtonStyle.Normal,
+                key: "btnTertiary");
+        }
     }
 
-    protected virtual void OnCellClickLeftSide(MouseEvent args, int elementIndex)
-    {
-        var cell = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
-        WorldMap.RecentreMap(cell.Model.Position);
-        if (args.Button != EnumMouseButton.Right) return;
+    #endregion
 
-        var dialogue = new AddEditWaypointDialogue(
-            ApiEx.Client,
-            cell.Model.ToWaypoint(),
-            cell.CellEntry.Index);
+    #region Utility Methods
 
-        dialogue.OnClosed += RefreshWaypoints;
-        dialogue.ToggleGui();
-    }
+    protected static string T(string text, params object[] args)
+        => LangEx.FeatureString("WaypointManager.Dialogue", text, args);
 
-    private void RefreshWaypoints()
-    {
-        PopulateCellList();
-        RefreshValues();
-    }
+    #endregion
 
-    private void RefreshWaypoints(byte[] data)
-    {
-        var waypoints = SerializerUtil.Deserialize<List<Waypoint>>(data);
-        Waypoints = RefreshWaypointCellEntries(waypoints);
-        WaypointsList?.ReloadCells(Waypoints);
-        RefreshValues();
-    }
+    #region Base Overrides
 
-    /// <summary>
-    ///     Refreshes the waypoint cell entries, ensuring that no null values are included in the returned list.
-    /// </summary>
-    /// <param name="ownWaypoints">The list of own waypoints to process.</param>
-    /// <returns>
-    ///     A list of <see cref="WaypointSelectionCellEntry"/> in which all entries have been validated to be non-null.
-    /// </returns>
-    private IEnumerable<WaypointSelectionCellEntry> RefreshWaypointCellEntries(List<Waypoint> ownWaypoints)
-    {
-        if (ownWaypoints is null || ownWaypoints.Count == 0) return [];
-
-        // Convert the list of waypoints to a sorted dictionary.
-        var sortedWaypoints = ownWaypoints.ToSortedDictionary();
-
-        // Retrieve the player's position.
-        var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
-
-        // Cache the current Waypoints to prevent re-evaluation during iteration,
-        // which might be causing a recursive call and leading to a stack overflow.
-        var cachedWaypoints = Waypoints?.ToList() ?? [];
-
-        // Sort the waypoints and convert each to a selectable template,
-        // filtering out any null conversions.
-        return WaypointQueriesRepository
-            .Sort(SortOrder, sortedWaypoints)
-            .Select(x => new KeyValuePair<int, SelectableWaypointTemplate>(x.Key, SelectableWaypointTemplate.FromWaypoint(x.Value)))
-            .Where(w => w.Value is not null)
-            .Select(w =>
-            {
-                var dto = w.Value;
-
-                // Check for any critical null values; if any are found, skip this entry.
-                if (dto is null || dto.Title is null || dto.Position is null) return null;
-
-                // Update the 'Selected' flag based on the current state from the global Waypoints collection.
-                var current = cachedWaypoints.FirstOrDefault(p => p.Model?.Id == dto.Id);
-                dto.Selected = current?.Model?.Selected ?? true;
-
-                // Check the relative position; if unavailable, skip this entry.
-                var relativePos = dto.Position.AsBlockPos.RelativeToSpawn();
-                if (relativePos is null) return null;
-
-                return new WaypointSelectionCellEntry
-                {
-                    Title = dto.Title,
-                    RightTopText = $"{relativePos} ({dto.Position.AsBlockPos.HorizontalManhattenDistance(playerPos):N2}m)",
-                    RightTopOffY = 3f,
-                    DetailTextFont = CairoFont.WhiteDetailText().WithFontSize((float)GuiStyle.SmallFontSize),
-                    Model = dto,
-                    Index = w.Key
-                };
-            })
-            .Where(entry => entry is not null);
-    }
-
-    protected void OnCellClickRightSide(MouseEvent args, int elementIndex)
-    {
-        var cell = WaypointsList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
-        cell.On = !cell.On;
-        cell.Enabled = cell.On;
-        cell.Model.Selected = cell.On;
-        RefreshValues();
-    }
-
-    protected virtual bool OnLeftButtonPressed()
-    {
-        return true;
-    }
-
-    protected virtual bool OnRightButtonPressed()
-    {
-        return true;
-    }
+    public override bool DisableMouseGrab => true;
 
     #endregion
 }

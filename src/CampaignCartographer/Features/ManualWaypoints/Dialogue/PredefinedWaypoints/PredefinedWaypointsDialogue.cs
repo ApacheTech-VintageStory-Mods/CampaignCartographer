@@ -44,12 +44,6 @@ public class PredefinedWaypointsDialogue : GenericDialogue
         Alignment = EnumDialogArea.CenterMiddle;
         Modal = true;
         ModalTransparency = 0.4f;
-
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
-        {
-            Compose();
-            RefreshValues();
-        });
     }
 
     private static string LangEntry(string text, params object[] args)

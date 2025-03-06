@@ -24,8 +24,6 @@ public class WaypointGroupsDialogue : GenericDialogue
         _settings = settings;
         Title = Systems.WaypointGroups.T("Dialogue.Title");
         Alignment = EnumDialogArea.CenterMiddle;
-
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ => Recompose());
     }
 
     #region Form Composition

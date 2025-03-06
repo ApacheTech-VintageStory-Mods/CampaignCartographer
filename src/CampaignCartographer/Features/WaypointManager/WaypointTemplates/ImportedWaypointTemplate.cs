@@ -1,5 +1,4 @@
 ﻿using Vintagestory.API.Common.Entities;
-using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 

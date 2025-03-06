@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
@@ -43,12 +44,6 @@ public class WaypointImportDialogue : GenericDialogue
         _watcher.Created += OnDirectoryChanged;
         _watcher.Deleted += OnDirectoryChanged;
         _watcher.Renamed += OnDirectoryChanged;
-
-        ClientSettings.Inst.AddWatcher<float>("guiScale", _ =>
-        {
-            Compose();
-            RefreshValues();
-        });
     }
 
     #region Form Composition
@@ -202,7 +197,7 @@ public class WaypointImportDialogue : GenericDialogue
     /// <summary>
     ///     Called when the GUI needs to refresh or create a cell to display to the user. 
     /// </summary>
-    private IGuiElementCell OnRequireCell(WaypointImportCellEntry cell, ElementBounds bounds)
+    private WaypointImportGuiCell OnRequireCell(WaypointImportCellEntry cell, ElementBounds bounds)
     {
         return new WaypointImportGuiCell(ApiEx.Client, cell, bounds)
         {
@@ -262,7 +257,7 @@ public class WaypointImportDialogue : GenericDialogue
             .Select(w => w.Cell)
             .ToList();
 
-        if (!files.Any()) return false;
+        if (files.Count == 0) return false;
 
         var list = new List<ImportedWaypointTemplate>();
         foreach (var file in files)
@@ -272,7 +267,7 @@ public class WaypointImportDialogue : GenericDialogue
             list.AddRange(waypoints);
         }
         
-        var dialogue = WaypointImportConfirmationDialogue.Create(list);
+        var dialogue = new WaypointImportConfirmationDialogue(capi, list);
         dialogue.TryOpen();
         return TryClose();
     }

@@ -36,7 +36,7 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
     public WaypointSelectionGuiCell(ICoreClientAPI capi, WaypointSelectionCellEntry cell, ElementBounds bounds) : base(capi, "", null, bounds)
     {
         CellEntry = cell;
-        Bounds = bounds.WithFixedHeight(30);
+        Bounds = bounds.WithFixedHeight(36);
         _cellTexture = new LoadedTexture(capi);
         CellEntry.TitleFont ??= CairoFont.WhiteSmallishText();
         CellEntry.RightTopOffY = 3f;
@@ -190,13 +190,13 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
 
         Font = CellEntry.TitleFont;
         text = CellEntry.Title;
-
         _titleTextHeight = textUtil.GetMultilineTextHeight(Font, CellEntry.Title, width) / RuntimeEnv.GUIScale;
+
         Font = CellEntry.DetailTextFont;
         text = CellEntry.DetailText;
-        var num4 = textUtil.GetMultilineTextHeight(Font, CellEntry.DetailText, width) / RuntimeEnv.GUIScale;
+        var detailTextPadding = textUtil.GetMultilineTextHeight(Font, CellEntry.DetailText, width) / RuntimeEnv.GUIScale;
 
-        Bounds.fixedHeight = paddingY + _titleTextHeight + paddingY + num4 + paddingY;
+        Bounds.fixedHeight = paddingY + _titleTextHeight + paddingY + detailTextPadding + paddingY;
         if (Bounds.fixedHeight > 50.0)
         {
             Bounds.fixedHeight = 50.0;

@@ -25,7 +25,7 @@ public class WaypointExportConfirmationDialogue : GenericDialogue
         _model = new WaypointFileModel
         {
             SpawnPosition = capi.World.DefaultSpawnPosition,
-            Waypoints = waypoints.Select(p => p.With(w => w.Position = w.Position.SubCopy(capi.World.DefaultSpawnPosition.XYZ))).ToList(),
+            Waypoints = [.. waypoints.Select(p => p.With(w => w.Position = w.Position.RelativeToSpawn()))],
             Count = waypoints.Count
         };
     }
