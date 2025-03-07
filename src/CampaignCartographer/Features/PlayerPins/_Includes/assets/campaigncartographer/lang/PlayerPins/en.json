@@ -20,13 +20,13 @@
 
   "Features.PlayerPins.SettingsCommandDescription": "Customise Player Map Pins",
 
-  "Features.PlayerPins.Friends.Description": "Add/Remove players from your friends list. Friends are highlighted on the world map.",
-  "Features.PlayerPins.Friends.FriendsList": "Friends List:",
-  "Features.PlayerPins.Friends.YouHaveNoFriends": "You have no friends.",
-  "Features.PlayerPins.Friends.NoPlayerNameGiven": "Please specify a player's name.'",
-  "Features.PlayerPins.Friends.PlayerNotFound": "No player with the name `{0}` has been found.",
-  "Features.PlayerPins.Friends.MultiplePlayersFound": "Multiple players with the name `{0}` have been found.",
-  "Features.PlayerPins.Friends.PlayerAlreadyAdded": "{0} has already been added to your friends list",
-  "Features.PlayerPins.Friends.PlayerAdded": "{0} has been added to your friends list",
-  "Features.PlayerPins.Friends.PlayerRemoved": "{0} has been removed from your friends list."
+  "Features.PlayerPins.Highlight.Description": "Add/Remove players from your highlighted players list.",
+  "Features.PlayerPins.Highlight.FriendsList": "ighlighted Players:",
+  "Features.PlayerPins.Highlight.YouHaveNoFriends": "You have no friends.",
+  "Features.PlayerPins.Highlight.NoPlayerNameGiven": "Please specify a player's name.",
+  "Features.PlayerPins.Highlight.PlayerNotFound": "No player with the name `{0}` has been found.",
+  "Features.PlayerPins.Highlight.MultiplePlayersFound": "Multiple players with the name `{0}` have been found.",
+  "Features.PlayerPins.Highlight.PlayerAlreadyAdded": "{0} has already been added to your highlighted players list.",
+  "Features.PlayerPins.Highlight.PlayerAdded": "{0} has been added to your highlighted players list.",
+  "Features.PlayerPins.Highlight.PlayerRemoved": "{0} has been removed from your highlighted players list."
 }
