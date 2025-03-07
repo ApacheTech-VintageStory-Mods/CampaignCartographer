@@ -1,4 +1,5 @@
-﻿using Gantry.Core.Extensions.Api;
+﻿using System.Collections.ObjectModel;
+using Gantry.Core.Extensions.Api;
 using Gantry.Core.GameContent;
 using Gantry.Core.Maths;
 using Vintagestory.API.MathTools;
@@ -15,6 +16,7 @@ public class WaypointBeaconRenderer : IDisposable
     private readonly WaypointBeaconHudElement _hudElement;
     private readonly WaypointBeaconViewModel _viewModel;
     private readonly WaypointBeaconPillarRenderer _pillarRenderer;
+    private readonly Dictionary<string, LoadedTexture> _textures;
     private readonly ICoreClientAPI _capi;
     private GuiComposer _singleComposer;
 
@@ -23,13 +25,14 @@ public class WaypointBeaconRenderer : IDisposable
     /// </summary>
     /// <param name="hudElement">The HUD element associated with the waypoint beacon.</param>
     /// <param name="viewModel">The data model containing waypoint beacon information.</param>
-    public WaypointBeaconRenderer(WaypointBeaconHudElement hudElement, WaypointBeaconViewModel viewModel)
+    public WaypointBeaconRenderer(WaypointBeaconHudElement hudElement, WaypointBeaconViewModel viewModel, WaypointMapLayer waypointMapLayer)
     {
         _hudElement = hudElement;
         _viewModel = viewModel;
         _capi = ApiEx.Client;
         _pillarRenderer = new WaypointBeaconPillarRenderer(_hudElement, _viewModel);
         _capi.Event.RegisterRenderer(_pillarRenderer, EnumRenderStage.Opaque);
+        _textures = waypointMapLayer.texturesByIcon;
     }
 
     /// <summary>
@@ -172,15 +175,11 @@ public class WaypointBeaconRenderer : IDisposable
     private void RenderWaypointIcon(bool isClamped)
     {
         var engineShader = _capi.Render.GetEngineShader(EnumShaderProgram.Gui);
-
         var newColour = new Vec4f();
         ColorUtil.ToRGBAVec4f(_viewModel.Waypoint.Color, ref newColour);
         AdjustColourForAlignment(ref newColour);
-
         ConfigureEngineShader(engineShader, newColour);
-
-        if (!WaypointIconFactory.TryCreate(_viewModel.Waypoint.Icon, out var loadedTexture)) return;
-
+        var loadedTexture = _textures[_viewModel.Waypoint.Icon];
         RenderIcon(engineShader, loadedTexture, isClamped);
     }
 

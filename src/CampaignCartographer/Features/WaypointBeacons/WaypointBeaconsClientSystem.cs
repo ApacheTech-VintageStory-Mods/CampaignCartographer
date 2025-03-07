@@ -24,6 +24,7 @@ public class WaypointBeaconsClientSystem : ClientSystem
     private readonly ICoreClientAPI _capi;
 
     private static WaypointBeaconsSettings _settings;
+    private static WaypointMapLayer _waypointMapLayer;
     private static readonly ConcurrentDictionary<string, WaypointBeaconHudElement> _waypointElements = [];
 
     /// <summary>
@@ -40,6 +41,9 @@ public class WaypointBeaconsClientSystem : ClientSystem
 
         _capi.Input.RegisterHotKey("EditWaypointFromBeacon", "Edit Selected Waypoint Beacon", GlKeys.U, HotkeyType.GUIOrOtherControls);
         _capi.Input.SetHotKeyHandler("EditWaypointFromBeacon", _ => _waypointElements.Values.TryInvokeFirst(p => p.IsAligned, p => p.OpenEditDialogue()));
+
+        var mapManager = _capi.ModLoader.GetModSystem<WorldMapManager>();
+        _waypointMapLayer = mapManager.WaypointMapLayer();
 
         Update();
     }
@@ -92,7 +96,7 @@ public class WaypointBeaconsClientSystem : ClientSystem
         {
             ApiEx.Client.Event.AwaitMainThreadTask(() =>
             {
-                var element = new WaypointBeaconHudElement(ApiEx.Client, id);
+                var element = new WaypointBeaconHudElement(ApiEx.Client, id, _waypointMapLayer);
                 _waypointElements.TryAdd(id, element);
             });
         }

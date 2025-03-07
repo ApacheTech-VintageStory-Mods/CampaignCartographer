@@ -19,11 +19,11 @@ public class WaypointBeaconHudElement : HudElement
     /// </summary>
     /// <param name="capi">The core client API used to interact with the game world and client-side features.</param>
     /// <param name="waypointGuid">The ID of the waypoint this beacon tracks.</param>
-    public WaypointBeaconHudElement(ICoreClientAPI capi, string waypointGuid) : base(capi)
+    public WaypointBeaconHudElement(ICoreClientAPI capi, string waypointGuid, WaypointMapLayer waypointMapLayer) : base(capi)
     {
         Settings = IOC.Services.GetRequiredService<WaypointBeaconsSettings>();
         _viewModel = new WaypointBeaconViewModel(waypointGuid, Settings);
-        _renderer = new WaypointBeaconRenderer(this, _viewModel);
+        _renderer = new WaypointBeaconRenderer(this, _viewModel, waypointMapLayer);
     }
 
     /// <summary>
