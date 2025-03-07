@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "Name": "natural-resources",
-    "Version": "1.0.0",
+    "Version": "1.0.1",
     "Custom": false
   },
   "Templates": [
@@ -126,6 +126,30 @@
       "Enabled": true
     },
     {
+      "Key": "ftree",
+      "Enabled": true,
+      "Title": "Fruit Trees",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "tree2",
+      "DisplayedIcon": "tree2",
+      "Colour": "#32CD32",
+      "Pinned": false
+    },
+    {
+      "Key": "fruit-tree",
+      "Enabled": true,
+      "Title": "Fruit Trees",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "tree2",
+      "DisplayedIcon": "tree2",
+      "Colour": "#32CD32",
+      "Pinned": false
+    },
+    {
       "Key": "peat",
       "Title": "Peat",
       "DetailText": "",
@@ -198,6 +222,30 @@
       "Pinned": false
     },
     {
+      "Key": "rclay",
+      "Enabled": true,
+      "Title": "Red Clay",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "pick",
+      "DisplayedIcon": "pick",
+      "Colour": "#A52A2A",
+      "Pinned": false
+    },
+    {
+      "Key": "red-clay",
+      "Enabled": true,
+      "Title": "Red Clay",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "pick",
+      "DisplayedIcon": "pick",
+      "Colour": "#A52A2A",
+      "Pinned": false
+    },
+    {
       "Key": "redwood",
       "Enabled": true,
       "Title": "Redwood Trees",
@@ -207,6 +255,18 @@
       "ServerIcon": "cc-forest",
       "DisplayedIcon": "cc-forest",
       "Colour": "#FFA07A",
+      "Pinned": false
+    },
+    {
+      "Key": "pheart",
+      "Enabled": true,
+      "Title": "Purpleheart Trees",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-forest",
+      "DisplayedIcon": "cc-forest",
+      "Colour": "#9932CC",
       "Pinned": false
     },
     {

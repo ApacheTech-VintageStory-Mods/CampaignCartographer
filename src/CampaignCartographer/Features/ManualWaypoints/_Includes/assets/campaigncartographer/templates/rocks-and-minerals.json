@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "Name": "rocks-and-minerals",
-    "Version": "1.0.0",
+    "Version": "1.0.1",
     "Custom": false
   },
   "Templates": [
@@ -136,6 +136,18 @@
       "VerticalCoverageRadius": 10,
       "Pinned": false,
       "Enabled": true
+    },
+    {
+      "Key": "flint",
+      "Enabled": true,
+      "Title": "Flint",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "pick",
+      "DisplayedIcon": "pick",
+      "Colour": "#778899",
+      "Pinned": false
     },
     {
       "Key": "fluorite",

@@ -82,6 +82,7 @@
   "Templates.copper.Title": "Copper",
   "Templates.corundum.Title": "Corundum",
   "Templates.cranberry.Title": "Cranberry Bush",
+  "Templates.crop.Title": "Crops",
 
   "Templates.deathcap.Title": "Death Cap Mushroom (Poisonous)",
   "Templates.deer.Title": "Deer",
@@ -107,9 +108,12 @@
   "Templates.fire-clay.Title": "Fire Clay",
   "Templates.fish.Title": "Fish",
   "Templates.flax.Title": "Flax",
+  "Templates.flint.Title": "Flint",
   "Templates.fluorite.Title": "Fluorite",
   "Templates.flyagaric.Title": "Fly Agaric Mushroom (Poisonous)",
   "Templates.fox.Title": "Foxes",
+  "Templates.ftree.Title": "Fruit Trees",
+  "Templates.fruit-tree.Title": "Fruit Trees",
   "Templates.funeralbell.Title": "Funeral Bell Mushroom",
   "Templates.fungi.Title": "Mushrooms",
 
@@ -182,12 +186,15 @@
   "Templates.potato.Title": "Potatoes",
   "Templates.pumpkin.Title": "Pumpkin",
   "Templates.puffball.Title": "Puffball Mushroom",
+  "Templates.pheart.Title": "Purpleheart Trees",
   "Templates.purpleheart.Title": "Purpleheart Trees",
 
   "Templates.quartz.Title": "Quartz",
   "Templates.quarry.Title": "Quarry",
 
   "Templates.rabbit.Title": "Rabbits",
+  "Templates.rclay.Title": "Red Clay",
+  "Templates.red-clay.Title": "Red Clay",
   "Templates.redcurrant.Title": "Redcurrant Bush",
   "Templates.redmarble.Title": "Rose Marble",
   "Templates.redwinecap.Title": "Red Wine Cap Mushroom",

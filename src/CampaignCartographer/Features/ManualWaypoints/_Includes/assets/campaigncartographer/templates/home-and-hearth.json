@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "Name": "home-and-hearth",
-    "Version": "1.0.0",
+    "Version": "1.0.1",
     "Custom": false
   },
   "Templates": [
@@ -27,6 +27,18 @@
       "ServerIcon": "cc-campfire",
       "DisplayedIcon": "cc-campfire",
       "Colour": "#FF7F50",
+      "Pinned": false
+    },
+    {
+      "Key": "crop",
+      "Enabled": true,
+      "Title": "Crops",
+      "HorizontalCoverageRadius": 10,
+      "VerticalCoverageRadius": 10,
+      "Id": "",
+      "ServerIcon": "cc-food",
+      "DisplayedIcon": "cc-food",
+      "Colour": "#DEB887",
       "Pinned": false
     },
     {
