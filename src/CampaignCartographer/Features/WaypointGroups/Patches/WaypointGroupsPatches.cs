@@ -1,4 +1,7 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
+﻿using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
+using Gantry.Core.Extensions.DotNet;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
@@ -51,5 +54,26 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         {
             ApiEx.Logger.Error(ex);
         }
+    }
+
+    /// <summary>
+    ///     Ensures waypoint groups are added to the world map manager upon level finalisation.
+    /// </summary>
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(GuiDialogWorldMap), "OnTabClicked")]
+    public static void Harmony_GuiDialogWorldMap_OnTabClicked_Prefix(GuiDialogWorldMap __instance, int arg1, GuiTab tab, 
+        List<string> ___tabnames, List<GuiTab> ___tabs)
+    {
+        if (!ApiEx.Client.World.Player.Entity.Controls.ShiftKey) return;
+        string layerGroupCode = ___tabnames[arg1];
+        if (layerGroupCode != "waypoints") return;
+        __instance.MapLayers.OfType<WaypointGroupMapLayer>().InvokeForAll(p =>
+        {
+            var index = ___tabnames.IndexOf(p.LayerGroupCode);
+            if (index == -1) return;
+            p.Active = tab.Active;
+            ___tabs[index].Active = tab.Active;
+        });
+
     }
 }
