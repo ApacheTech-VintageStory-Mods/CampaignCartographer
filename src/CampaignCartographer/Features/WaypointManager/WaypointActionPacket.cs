@@ -5,6 +5,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
 /// <summary>
 ///     Represents a network packet for performing actions on a waypoint.
 /// </summary>
+[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
 public class WaypointActionPacket
 {
     /// <summary>
