@@ -5,6 +5,7 @@ using Gantry.Core.Extensions.Harmony;
 using Gantry.Services.Network.Packets;
 using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
+using System.Text;
 
 // ReSharper disable InconsistentNaming
 
@@ -93,5 +94,18 @@ public static class WaypointDialoguePatches
         dialogue.OnClosed += () => __instance.capi.Gui.RequestFocus(map);
         args.Handled = true;
         return false;
+    }
+}
+
+[HarmonyClientSidePatch]
+public static class WaypointMapComponentPatches
+{
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(WaypointMapComponent), nameof(WaypointMapComponent.OnMouseMove))]
+    public static void Harmony_WaypointMapComponent_OnMouseMove_Postfix(StringBuilder hoverText, Waypoint ___waypoint)
+    {
+        if (string.IsNullOrEmpty(___waypoint.Text)) return;
+        if (!hoverText.ToString().Contains(___waypoint.Title)) return;
+        hoverText.AppendLine(___waypoint.Text);
     }
 }
