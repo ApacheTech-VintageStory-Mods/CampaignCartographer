@@ -43,8 +43,12 @@ public class AddEditWaypointDialogue : GenericDialogue
         _waypoint = new Waypoint
         {
             Guid = Guid.NewGuid().ToString(),
+            OwningPlayerUid = capi.World.Player.PlayerUID,
             Icon = "circle",
-            Color = ColorUtil.BlackArgb
+            Color = ColorUtil.BlackArgb,
+            Title = "",
+            Text = "",
+            Position = position.ToVec3d()
         };
     }
 
