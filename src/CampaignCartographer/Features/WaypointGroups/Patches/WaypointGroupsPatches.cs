@@ -23,9 +23,10 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
     [HarmonyPatch(typeof(Lang), nameof(Lang.Get))]
     public static bool Harmony_Lang_Get_Postfix(string key, ref string __result)
     {
+        if (ApiEx.Client is null) return true;
         if (!key.StartsWith("maplayer-")) return true;
         if (!Guid.TryParse(key.Replace("maplayer-", ""), out var id)) return true;
-        var group = Settings.Groups.FirstOrDefault(p => p.Id == id);
+        var group = ClientSettings.Groups.FirstOrDefault(p => p.Id == id);
         if (group is null) return true;
         __result = group.Title;
         return false;
@@ -38,9 +39,10 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
     [HarmonyPatch(typeof(WorldMapManager), "OnLvlFinalize")]
     public static void Harmony_WorldMapManager_OnLvlFinalize_Postfix()
     {
+        if (ApiEx.Client is null) return;
         try
         {
-            foreach (var group in Settings.Groups)
+            foreach (var group in ClientSettings.Groups)
             {
                 IOC.Brighter.Send(new AddWaypointGroupLayerCommand() { Group = group });
             }
