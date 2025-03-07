@@ -12,7 +12,6 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Pa
 public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSettings>
 {
     private static readonly object _localLock = new();
-    private static TextureAtlasManager? _textureAtlasManager;
 
     /// <summary>
     ///     Adjusts waypoint map components after rebuilding to ensure waypoints in groups 
@@ -27,8 +26,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
         ref List<MapComponent> ___wayPointComponents
     )
     {
-        _textureAtlasManager ??= ApiEx.Client.BlockTextureAtlas.To<TextureAtlasManager>();
-        _textureAtlasManager.PauseRegenMipmaps();
         lock (_localLock)
         {
             if (!___mapSink.IsOpened) return;
@@ -45,7 +42,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
 
             ___wayPointComponents = [.. ___wayPointComponents.Except(inGroup)];
         }
-        _textureAtlasManager.ResumeRegenMipmaps();
     }
 
     /// <summary>
@@ -56,8 +52,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
     [HarmonyPatch(typeof(WaypointMapLayer), "OnMapClosedClient")]
     public static void Harmony_WaypointMapLayer_OnMapClosedClient_Prefix(ref List<MapComponent> ___tmpWayPointComponents)
     {
-        _textureAtlasManager ??= ApiEx.Client.BlockTextureAtlas.To<TextureAtlasManager>();
-        _textureAtlasManager.PauseRegenMipmaps();
         var inGroup = new List<MapComponent>();
         foreach (var mapComponent in ___tmpWayPointComponents)
         {
@@ -67,9 +61,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
             inGroup.Add(mapComponent);
             group.RemoveComponent(mapComponent as WaypointMapComponent);
         }
-
-        ___tmpWayPointComponents = [.. ___tmpWayPointComponents.Except(inGroup)];
-        _textureAtlasManager.ResumeRegenMipmaps();
     }
 
     /// <summary>
@@ -81,8 +72,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
     [HarmonyPatch(typeof(WaypointMapLayer), nameof(WaypointMapLayer.OnDataFromServer))]
     public static void Harmony_WaypointMapLayer_OnDataFromServer_Postfix_Last(IEnumerable<Waypoint> ___ownWaypoints)
     {
-        _textureAtlasManager ??= ApiEx.Client.BlockTextureAtlas.To<TextureAtlasManager>();
-        _textureAtlasManager.PauseRegenMipmaps();
         var saveChanges = false;
         try
         {
@@ -111,7 +100,6 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
         finally
         {
             if (saveChanges) ModSettings.World.Save(Settings);
-            _textureAtlasManager.ResumeRegenMipmaps();
         }
     }
 }

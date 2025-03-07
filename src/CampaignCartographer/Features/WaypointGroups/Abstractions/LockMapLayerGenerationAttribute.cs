@@ -33,12 +33,9 @@ public class LockMapLayerGenerationAttribute() : RequestHandlerAttribute(1)
         {
             ApiEx.Logger.VerboseDebug($"Suspending map layer generation thread.");
             _mapLayerGeneration.Suspend();
-            var textureAtlasManager = ApiEx.Client.BlockTextureAtlas.To<TextureAtlasManager>();
-            textureAtlasManager.PauseRegenMipmaps();
             Thread.Sleep(20);
             var result = base.Handle(command);
             ApiEx.Logger.VerboseDebug($"Resuming map layer generation thread.");
-            textureAtlasManager.ResumeRegenMipmaps();
             _mapLayerGeneration.Resume();
             return result;
         }
