@@ -1,9 +1,7 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repositories.Commands;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
-using Gantry.Core.Contracts;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Services.FileSystem.Configuration;
@@ -21,7 +19,6 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly string[] _icons;
     private readonly int[] _colours;
     private readonly Waypoint _waypoint;
-    private readonly BlockPos _position;
     private readonly int _index;
     private readonly AddEditDialogueMode _mode;
     private readonly IPlayer[] _onlinePlayers;
@@ -64,7 +61,6 @@ public class AddEditWaypointDialogue : GenericDialogue
         _colours = [.. waypointMapLayer.WaypointColors];
         _waypoint = waypoint.DeepClone();
         _index = index;
-        _position = position;
         _mode = mode;
         _waypointGroupsSettings = IOC.Services.Resolve<WaypointGroupsSettings>();
         _waypointBeaconSettings = IOC.Services.Resolve<WaypointBeaconsSettings>();
@@ -82,6 +78,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         _beacon = _waypointBeaconSettings.ActiveBeacons.Contains(_waypoint.Guid);
         var txtTitle = SingleComposer.GetTextInput("txtTitle");
         txtTitle.SetValue(_waypoint.Title);
+        SingleComposer.GetTextInput("txtDescription").SetValue(_waypoint.Text);
         SingleComposer.GetSwitch("btnPinned").SetValue(_waypoint.Pinned);
         SingleComposer.ColorListPickerSetValue("optColour", Math.Max(_colours.IndexOf(_waypoint.Color), 0));
         SingleComposer.IconListPickerSetValue("optIcon", Math.Max(_icons.IndexOf(_waypoint.Icon), 0));
@@ -113,9 +110,21 @@ public class AddEditWaypointDialogue : GenericDialogue
         var right = ElementBounds.FixedSize(470, 30).FixedUnder(topBounds, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(T("WaypointTitle"), labelFont, EnumTextOrientation.Right, left, "lblTitle")
-            .AddAutoSizeHoverText(T("WaypointTitle.HoverText"), txtTitleFont, 260, left)
+            .AddStaticText(T("lblTitle"), labelFont, EnumTextOrientation.Right, left, "lblTitle")
+            .AddAutoSizeHoverText(T("lblTitle.HoverText"), txtTitleFont, 260, left)
             .AddTextInput(right, OnTitleChanged, txtTitleFont, "txtTitle");
+
+        //
+        // Text
+        //
+
+        left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+
+        composer
+            .AddStaticText(T("lblDescription"), labelFont, EnumTextOrientation.Right, left, "lblDescription")
+            .AddAutoSizeHoverText(T("lblDescription.HoverText"), txtTitleFont, 260, left)
+            .AddTextInput(right, OnDescriptionChanged, txtTitleFont, "txtDescription");
 
         //
         // Waypoint Group
@@ -130,8 +139,8 @@ public class AddEditWaypointDialogue : GenericDialogue
             var values = _waypointGroups.Values.ToArray();
 
             composer
-                .AddStaticText(T("WaypointGroup"), labelFont, EnumTextOrientation.Right, left, "lblWaypointGroup")
-                .AddAutoSizeHoverText(T("WaypointGroup.HoverText"), txtTitleFont, 260, left)
+                .AddStaticText(T("lblWaypointGroup"), labelFont, EnumTextOrientation.Right, left, "lblWaypointGroup")
+                .AddAutoSizeHoverText(T("lblWaypointGroup.HoverText"), txtTitleFont, 260, left)
                 .AddDropDown(keys, values, 0, OnWaypointGroupChanged, right, CairoFont.WhiteSmallText(), "btnWaypointGroup");
         }
 
@@ -143,8 +152,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(T("Pinned"), labelFont, EnumTextOrientation.Right, left, "lblPinned")
-            .AddAutoSizeHoverText(T("Pinned.HoverText"), txtTitleFont, 260, left)
+            .AddStaticText(T("lblPinned"), labelFont, EnumTextOrientation.Right, left, "lblPinned")
+            .AddAutoSizeHoverText(T("lblPinned.HoverText"), txtTitleFont, 260, left)
             .AddSwitch(OnPinnedChanged, right, "btnPinned");
 
         //
@@ -157,8 +166,8 @@ public class AddEditWaypointDialogue : GenericDialogue
             right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
             composer
-                .AddStaticText(T("Beacon"), labelFont, EnumTextOrientation.Right, left, "lblBeacon")
-                .AddAutoSizeHoverText(T("Beacon.HoverText"), txtTitleFont, 260, left)
+                .AddStaticText(T("lblBeacon"), labelFont, EnumTextOrientation.Right, left, "lblBeacon")
+                .AddAutoSizeHoverText(T("lblBeacon.HoverText"), txtTitleFont, 260, left)
                 .AddSwitch(OnBeaconChanged, right, "btnBeacon");
         }
 
@@ -171,8 +180,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(T("Colour"), labelFont, EnumTextOrientation.Right, left, "lblColour")
-            .AddAutoSizeHoverText(T("Colour.HoverText"), txtTitleFont, 260, left)
+            .AddStaticText(T("lblColour"), labelFont, EnumTextOrientation.Right, left, "lblColour")
+            .AddAutoSizeHoverText(T("lblColour.HoverText"), txtTitleFont, 260, left)
             .AddColorListPicker(_colours, OnColourSelected, right.WithFixedSize(colourIconSize, colourIconSize), 470, "optColour");
 
         //
@@ -184,8 +193,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
         composer
-            .AddStaticText(T("Icon"), labelFont, EnumTextOrientation.Right, left, "lblIcon")
-            .AddAutoSizeHoverText(T("Icon.HoverText"), txtTitleFont, 260, left)
+            .AddStaticText(T("lblIcon"), labelFont, EnumTextOrientation.Right, left, "lblIcon")
+            .AddAutoSizeHoverText(T("lblIcon.HoverText"), txtTitleFont, 260, left)
             .AddIconListPicker(_icons, OnIconSelected, right.WithFixedSize(iconIconSize, iconIconSize), 470, "optIcon");
 
         //
@@ -218,7 +227,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (_onlinePlayers.Length > 0)
         {
             buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
-            composer.AddSmallButton(T("Share"), OnShareButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnShare");
+            composer.AddSmallButton(T("btnShare"), OnShareButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnShare");
         }
 
         //
@@ -228,7 +237,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         if (capi.World.Player.HasPrivilege(Privilege.tp))
         {
             buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
-            composer.AddSmallButton(T("Teleport"), OnTeleportButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnTeleport");
+            composer.AddSmallButton(T("btnTeleport"), OnTeleportButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnTeleport");
         }
     }
 
@@ -281,6 +290,11 @@ public class AddEditWaypointDialogue : GenericDialogue
         _waypoint.Pinned = state;
     }
 
+    private void OnDescriptionChanged(string text)
+    {
+        _waypoint.Text = text;
+    }
+
     private void OnTitleChanged(string title)
     {
         _waypoint.Title = title;
@@ -314,12 +328,11 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        ICommand command = _mode == AddEditDialogueMode.Add
-            ? new AddWaypointCommand(_position, _waypoint)
-            : new ModifyWaypointCommand(_index, _waypoint);
-
-        command.Execute();
-        
+        IOC.Services
+            .GetRequiredService<IClientNetworkService>()
+            .DefaultClientChannel
+            .SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
+                
         if (_waypoint.Guid is not null && _mode == AddEditDialogueMode.Edit && (_beacon
             ? _waypointBeaconSettings.ActiveBeacons.AddIfNotPresent(_waypoint.Guid)
             : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))) 
