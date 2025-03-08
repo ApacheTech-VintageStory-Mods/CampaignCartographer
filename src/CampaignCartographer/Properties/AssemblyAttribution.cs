@@ -13,7 +13,7 @@ using System.Reflection;
     "campaigncartographer",
     Description = "The original map mod, reborn. Adds multiple Cartography related features to the game, such as custom player pins, GPS, auto waypoint markers, and more.",
     Side = "Universal",
-    Version = "4.5.0",
+    Version = "4.5.1",
     RequiredOnClient = true,
     RequiredOnServer = true,
     NetworkVersion = "1.0.0",
