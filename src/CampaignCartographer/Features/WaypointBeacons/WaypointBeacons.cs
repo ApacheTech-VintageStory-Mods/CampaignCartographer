@@ -2,6 +2,7 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
 using Gantry.Core.Extensions.Threading;
+using Gantry.Core.GameContent;
 using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
 
@@ -41,6 +42,9 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// </summary>
     private void OnLevelFinalise()
     {
+        ApiEx.Logger.VerboseDebug("Caching all waypoint icons for beacons");
+        Capi.Event.LevelFinalize += () => WaypointIconFactory.PreCacheAllIcons(Capi);
+
         ApiEx.Logger.VerboseDebug("Creating Waypoint Beacons render mesh flyweight");
         WaypointBeaconStore.Create();
 
@@ -53,5 +57,6 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     public override void Dispose()
     {
         Capi.Event.LevelFinalize -= OnLevelFinalise;
+        WaypointIconFactory.Dispose();
     }
 }

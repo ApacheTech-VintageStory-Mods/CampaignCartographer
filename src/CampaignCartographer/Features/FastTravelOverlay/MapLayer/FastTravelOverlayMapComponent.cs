@@ -2,6 +2,7 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
+using Gantry.Core.GameContent;
 using Gantry.Core.Maths.Extensions;
 using Gantry.Services.FileSystem.Configuration;
 using Vintagestory.API.MathTools;
@@ -21,7 +22,6 @@ public class FastTravelOverlayMapComponent : MapComponent
     private readonly FastTravelOverlayMapLayer _mapLayer;
 
     private bool _hovering;
-    private readonly Dictionary<string, LoadedTexture> _textures;
     private readonly TeleporterClientService _clientService;
 
     private string Colour => !_node.Enabled
@@ -40,14 +40,13 @@ public class FastTravelOverlayMapComponent : MapComponent
     /// </summary>
     /// <param name="mapLayer">The map layer containing the fast travel settings.</param>
     /// <param name="node">The fast travel overlay node to be rendered and interacted with.</param>
-    public FastTravelOverlayMapComponent(FastTravelOverlayMapLayer mapLayer, FastTravelOverlayNode node, WaypointMapLayer waypointMapLayer)
+    public FastTravelOverlayMapComponent(FastTravelOverlayMapLayer mapLayer, FastTravelOverlayNode node)
         : base(ApiEx.Client)
     {
         _node = node;
         _mapLayer = mapLayer;
         _settings = mapLayer.Settings;
         _clientService = IOC.Services.GetRequiredService<TeleporterClientService>();
-        _textures = waypointMapLayer.texturesByIcon;
     }
 
     /// <inheritdoc />
@@ -167,7 +166,7 @@ public class FastTravelOverlayMapComponent : MapComponent
         prog.Uniform("noTexture", 0f);
 
         var hover = (_hovering ? 6 : 0) - 1.5f * Math.Max(1f, 1f / map.ZoomLevel);
-        var texture = _textures["circle"];
+        if (!WaypointIconFactory.TryCreate("circle", out var texture)) return;
 
         var scale = (4 + _settings.NodeSize) / 20f;
 

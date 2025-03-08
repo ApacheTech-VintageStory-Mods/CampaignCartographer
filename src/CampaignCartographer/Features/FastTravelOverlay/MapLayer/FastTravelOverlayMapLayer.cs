@@ -11,7 +11,6 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay
 public class FastTravelOverlayMapLayer : MarkerMapLayer
 {
     private readonly List<FastTravelOverlayMapComponent> _components = [];
-    private readonly WaypointMapLayer _waypointMapLayer;
 
     /// <summary>
     ///     The quad mesh model for rendering the map layer.
@@ -28,9 +27,8 @@ public class FastTravelOverlayMapLayer : MarkerMapLayer
     /// </summary>
     /// <param name="api">The core API instance.</param>
     /// <param name="mapSink">The world map manager to sink the map layer into.</param>
-    public FastTravelOverlayMapLayer(ICoreAPI api, WorldMapManager mapSink) : base(api, mapSink)
+    public FastTravelOverlayMapLayer(ICoreAPI api, IWorldMapManager mapSink) : base(api, mapSink)
     {
-        _waypointMapLayer = mapSink.WaypointMapLayer();
     }
 
     /// <summary>
@@ -104,7 +102,7 @@ public class FastTravelOverlayMapLayer : MarkerMapLayer
         _components.Clear();
         foreach (var node in Settings.Nodes)
         {
-            _components.Add(new FastTravelOverlayMapComponent(this, node, _waypointMapLayer));
+            _components.Add(new FastTravelOverlayMapComponent(this, node));
         }
     }
 
