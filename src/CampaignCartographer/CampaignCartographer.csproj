@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Version>4.5.2.0</Version>
+		<Version>4.5.3.0</Version>
 		<Nullable>warnings</Nullable>
 		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
