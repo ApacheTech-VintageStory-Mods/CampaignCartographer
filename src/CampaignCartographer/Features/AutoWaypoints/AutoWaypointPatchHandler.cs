@@ -25,7 +25,9 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     public AutoWaypointPatchHandler(WaypointTemplateService waypointService, IFileSystemService fileSystemService)
     {
         _service = waypointService;
-        _crossMaps = fileSystemService.GetJsonFile("crossmap.json").ParseAs<CrossMaps>();
+        var file = fileSystemService.GetJsonFile("crossmap.json");
+        file.DisembedFrom(ModEx.ModAssembly);
+       _crossMaps = file.ParseAs<CrossMaps>();
     }
 
     /// <summary>
