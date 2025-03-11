@@ -55,7 +55,7 @@ public sealed class WaypointManager : UniversalModSystem, IClientServiceRegistra
     }
 
     [ServerSide]
-    private static void AddWaypoint(Waypoint waypoint, IServerPlayer player)
+    private void AddWaypoint(Waypoint waypoint, IServerPlayer player)
     {
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();
@@ -66,7 +66,7 @@ public sealed class WaypointManager : UniversalModSystem, IClientServiceRegistra
     }
 
     [ServerSide]
-    private static void EditWaypoint(Waypoint waypoint, IServerPlayer player)
+    private void EditWaypoint(Waypoint waypoint, IServerPlayer player)
     {
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();

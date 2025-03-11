@@ -96,7 +96,7 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
         }
     }
 
-    private static void SendLocationTo(IPlayer fromPlayer, string targetUid)
+    private void SendLocationTo(IPlayer fromPlayer, string targetUid)
     {
         var toPlayer = ApiEx.ServerMain.AllOnlinePlayers.FirstOrDefault(p => p.PlayerUID == targetUid);
         var message = fromPlayer.GpsLocation();
