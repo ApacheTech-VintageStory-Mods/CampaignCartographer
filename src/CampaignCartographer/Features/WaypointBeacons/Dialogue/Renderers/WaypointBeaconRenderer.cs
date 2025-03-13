@@ -16,7 +16,8 @@ public class WaypointBeaconRenderer : IDisposable
     private readonly WaypointBeaconViewModel _viewModel;
     private readonly WaypointBeaconPillarRenderer _pillarRenderer;
     private readonly ICoreClientAPI _capi;
-    private GuiComposer _singleComposer;
+
+    private const int _dialogueWidth = 250;
 
     /// <summary>
     ///     Initialises a new instance of the <see cref="WaypointBeaconRenderer"/> class.
@@ -37,20 +38,12 @@ public class WaypointBeaconRenderer : IDisposable
     /// </summary>
     public void Render()
     {
-        _singleComposer ??= _hudElement.SingleComposer = Compose();
-        if (_singleComposer is null) return;
-
-        UpdateDynamicTextColour();
         var projectedPosition = ProjectWaypointPosition();
-        var isClamped = TryClampPosition(projectedPosition);
+        CreateComposer(projectedPosition);
+        if (_hudElement.SingleComposer is null) return;
 
-        if (ShouldDisposeComposer(projectedPosition))
-        {
-            DisposeComposer();
-            return;
-        }
-
-        UpdateComposerBounds(projectedPosition);
+        var isClamped = TryClampPosition(projectedPosition);                
+        UpdateDynamicTextColour();
         UpdateDisplayText(isClamped);
         RenderWaypointIcon(isClamped);
     }
@@ -83,8 +76,8 @@ public class WaypointBeaconRenderer : IDisposable
     {
         var gapi = ApiEx.Client.Gui;
         var dialogBounds = ElementStdBounds.AutosizedMainDialogAtPos(0.0);
-        var textBounds = ElementBounds.Fixed(EnumDialogArea.CenterMiddle, 0, 0, 250, 50);
-
+        var textBounds = ElementBounds.Fixed(EnumDialogArea.CenterMiddle, 0, 0, _dialogueWidth, 50);
+       
         var font = CairoFont
             .WhiteSmallText()
             .WithColor(_viewModel.NormalisedColour)
@@ -104,9 +97,8 @@ public class WaypointBeaconRenderer : IDisposable
     /// </summary>
     private void UpdateDynamicTextColour()
     {
-        var dynamicText = _singleComposer.GetDynamicText("text");
+        var dynamicText = _hudElement.SingleComposer.GetDynamicText("text");
         var colour = ColorUtil.ToRGBADoubles(_viewModel.Waypoint.Color);
-
         dynamicText.Font.Color = colour.With(c => c[3] = 1);
         dynamicText.Font.RenderTwice = true;
         dynamicText.Font.StrokeColor = [0, 0, 0, 1];
@@ -136,24 +128,15 @@ public class WaypointBeaconRenderer : IDisposable
         position.Z < 0 || _viewModel.DistanceFromPlayer > _hudElement.Settings.IconRange;
 
     /// <summary>
-    ///     Disposes of the composer resources and clears the display text.
-    /// </summary>
-    private void DisposeComposer()
-    {
-        _singleComposer.GetDynamicText("text").SetNewText("", forceRedraw: true);
-        _singleComposer.Dispose();
-        _hudElement.SingleComposer.Dispose();
-    }
-
-    /// <summary>
     ///     Updates the composer bounds based on the waypoint's projected position.
     /// </summary>
-    /// <param name="position">The projected screen position.</param>
-    private void UpdateComposerBounds(Vec3d position)
+    /// <param name="projectedPosition">The projected screen position.</param>
+    private void CreateComposer(Vec3d projectedPosition)
     {
-        _singleComposer.Compose();
-        _singleComposer.Bounds.absFixedX = position.X - _singleComposer.Bounds.OuterWidth / 2;
-        _singleComposer.Bounds.absFixedY = _capi.Render.FrameHeight - position.Y - _singleComposer.Bounds.OuterHeight;
+        if (ShouldDisposeComposer(projectedPosition)) return;
+        _hudElement.SingleComposer = Compose();
+        _hudElement.SingleComposer.Bounds.absFixedX = projectedPosition.X - _hudElement.SingleComposer.Bounds.OuterWidth / 2;
+        _hudElement.SingleComposer.Bounds.absFixedY = _capi.Render.FrameHeight - projectedPosition.Y - _hudElement.SingleComposer.Bounds.OuterHeight;
     }
 
     /// <summary>
@@ -162,7 +145,7 @@ public class WaypointBeaconRenderer : IDisposable
     private void UpdateDisplayText(bool isClamped)
     {
         var displayText = !isClamped && (_hudElement.IsAligned || _viewModel.DistanceFromPlayer < _hudElement.Settings.TitleRange);
-        var dynamicText = _singleComposer.GetDynamicText("text");
+        var dynamicText = _hudElement.SingleComposer.GetDynamicText("text");
         dynamicText.SetNewText(displayText ? _viewModel.Label : "", forceRedraw: true);
     }
 
@@ -219,7 +202,7 @@ public class WaypointBeaconRenderer : IDisposable
         engineShader.BindTexture2D("tex2d", loadedTexture.TextureId, 0);
 
         _mvMat.Set(_capi.Render.CurrentModelviewMatrix)
-            .Translate(_singleComposer.Bounds.absFixedX + 125, _singleComposer.Bounds.absFixedY, _hudElement.ZSize)
+            .Translate(_hudElement.SingleComposer.Bounds.absFixedX + (_dialogueWidth / 2), _hudElement.SingleComposer.Bounds.absFixedY - 10, _hudElement.ZSize)
             .Scale(loadedTexture.Width, loadedTexture.Height, 0.0f)
             .Scale(scale, scale, 0.0f);
 
@@ -235,11 +218,7 @@ public class WaypointBeaconRenderer : IDisposable
     public void Dispose()
     {
         GC.SuppressFinalize(this);
-        _capi.Event.AwaitMainThreadTask(() =>
-        {
-            _singleComposer?.Dispose();
-            _hudElement.SingleComposer?.Dispose();
-            _capi.Event.UnregisterRenderer(_pillarRenderer, EnumRenderStage.Opaque);
-        });
+        _hudElement.SingleComposer?.Dispose();
+        _capi.Event.UnregisterRenderer(_pillarRenderer, EnumRenderStage.Opaque);
     }
 }

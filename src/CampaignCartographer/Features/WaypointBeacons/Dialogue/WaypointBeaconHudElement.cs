@@ -57,6 +57,7 @@ public class WaypointBeaconHudElement : HudElement
     {
         get
         {
+            if (SingleComposer is null) return false;
             var xPos = (double)capi.Input.MouseX / capi.Render.FrameWidth;
             var yPos = (double)capi.Input.MouseY / capi.Render.FrameHeight;
             var fX = (SingleComposer.Bounds.absFixedX + SingleComposer.Bounds.InnerWidth / 2) / capi.Render.FrameWidth;
