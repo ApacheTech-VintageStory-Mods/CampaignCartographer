@@ -20,7 +20,9 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly int[] _colours;
     private readonly Waypoint _waypoint;
     private readonly int _index;
+    private readonly BlockPos _position;
     private readonly AddEditDialogueMode _mode;
+    private readonly IClientNetworkChannel _clientChannel;
     private readonly IPlayer[] _onlinePlayers;
     private readonly Dictionary<string, string> _waypointGroups;
     private readonly WaypointGroupsSettings _waypointGroupsSettings;
@@ -65,11 +67,14 @@ public class AddEditWaypointDialogue : GenericDialogue
         _colours = [.. waypointMapLayer.WaypointColors];
         _waypoint = waypoint.DeepClone();
         _index = index;
+        _position = position;
         _mode = mode;
         _waypointGroupsSettings = IOC.Services.Resolve<WaypointGroupsSettings>();
         _waypointBeaconSettings = IOC.Services.Resolve<WaypointBeaconsSettings>();
         _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];        
         _waypointGroups = Groups.GetWaypointGroupListItems();
+
+        _clientChannel = IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel;
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;
@@ -332,10 +337,8 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        IOC.Services
-            .GetRequiredService<IClientNetworkService>()
-            .DefaultClientChannel
-            .SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
+        G.Log.VerboseDebug($"{_mode}ing waypoint: {_waypoint.Guid}");
+        _clientChannel.SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
                 
         if (_waypoint.Guid is not null && _mode == AddEditDialogueMode.Edit && (_beacon
             ? _waypointBeaconSettings.ActiveBeacons.AddIfNotPresent(_waypoint.Guid)
