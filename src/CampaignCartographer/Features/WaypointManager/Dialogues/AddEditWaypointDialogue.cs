@@ -74,7 +74,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];        
         _waypointGroups = Groups.GetWaypointGroupListItems();
 
-        _clientChannel = IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel;
+        _clientChannel = capi.Network.GetChannel(nameof(WaypointManager));
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;
@@ -252,8 +252,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnTeleportButtonPressed()
     {
-        IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel
-            .SendPacket<WorldMapTeleportPacket>(new() { Position = _waypoint.Position });
+        _clientChannel.SendPacket<WorldMapTeleportPacket>(new() { Position = _waypoint.Position });
         return TryClose();
     }
 

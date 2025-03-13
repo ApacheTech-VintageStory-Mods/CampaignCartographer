@@ -7,7 +7,6 @@ using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repos
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.Maths;
 using Vintagestory.API.Server;
-using Gantry.Services.Network;
 using Gantry.Core.Annotation;
 using Gantry.Services.Network.Extensions;
 using Gantry.Services.Network.Packets;
@@ -25,9 +24,7 @@ public sealed class WaypointManager : UniversalModSystem, IClientServiceRegistra
 
     public override void StartServerSide(ICoreServerAPI api)
     {
-        IOC.Services
-            .GetRequiredService<IServerNetworkService>()
-            .DefaultServerChannel
+        api.Network.RegisterChannel(nameof(WaypointManager))
             .RegisterMessageHandler<WorldMapTeleportPacket>(OnTeleportPacketReceived)
             .RegisterMessageHandler<WaypointActionPacket>(OnWaypointPacketReceived);
     }
@@ -114,13 +111,11 @@ public sealed class WaypointManager : UniversalModSystem, IClientServiceRegistra
 
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        IOC.Services
-            .GetRequiredService<IClientNetworkService>()
-            .DefaultClientChannel
+        capi.Network.RegisterChannel(nameof(WaypointManager))
             .RegisterMessageType<WorldMapTeleportPacket>()
             .RegisterMessageType<WaypointActionPacket>();
 
-        capi.AddModMenuDialogue<WaypointExportDialogue>("WaypointManager");
+        capi.AddModMenuDialogue<WaypointExportDialogue>(nameof(WaypointManager));
     }
 
     [HarmonyPostfix]

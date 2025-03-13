@@ -82,7 +82,7 @@ public static class WaypointDialoguePatches
         if (!(Math.Abs(value) < size) || !(Math.Abs(dY) < size)) return false;
         if (player.Entity.Controls.ShiftKey && player.WorldData.CurrentGameMode == EnumGameMode.Creative)
         {
-            IOC.Services.GetRequiredService<IClientNetworkService>().DefaultClientChannel
+            ApiEx.Client.Network.GetChannel(nameof(WaypointManager))
                 .SendPacket<WorldMapTeleportPacket>(new() { Position = ___waypoint.Position });
             args.Handled = true;
             return false;
