@@ -29,7 +29,7 @@ internal class TeleporterBlockBehaviour : BlockBehaviour<BlockTeleporter>
     {
         var service = IOC.Services.GetRequiredService<IClientNetworkService>();
         _clientChannel = service
-            .ClientChannel(nameof(TeleporterManager))
+            .GetOrRegisterChannel(nameof(TeleporterManager))
             .SetMessageHandler<TpLocations>(ShowDialogue);
     }
 

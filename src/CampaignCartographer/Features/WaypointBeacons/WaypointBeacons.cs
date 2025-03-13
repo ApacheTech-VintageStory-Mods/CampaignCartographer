@@ -32,7 +32,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        ApiEx.Logger.VerboseDebug("Starting waypoint beacons client mod system.");
+        G.Log.VerboseDebug("Starting waypoint beacons client mod system.");
         capi.Event.LevelFinalize += OnLevelFinalise;
         capi.AddModMenuDialogue<WaypointBeaconsSettingsDialogue>("WaypointBeacons");
     }
@@ -42,13 +42,13 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// </summary>
     private void OnLevelFinalise()
     {
-        ApiEx.Logger.VerboseDebug("Caching all waypoint icons for beacons");
+        G.Log.VerboseDebug("Caching all waypoint icons for beacons");
         Capi.Event.LevelFinalize += () => WaypointIconFactory.PreCacheAllIcons(Capi);
 
-        ApiEx.Logger.VerboseDebug("Creating Waypoint Beacons render mesh flyweight");
+        G.Log.VerboseDebug("Creating Waypoint Beacons render mesh flyweight");
         WaypointBeaconStore.Create();
 
-        ApiEx.Logger.VerboseDebug("Injecting Waypoint Beacons client system");
+        G.Log.VerboseDebug("Injecting Waypoint Beacons client system");
         _clientSystem = new WaypointBeaconsClientSystem(ApiEx.ClientMain);
         Capi.InjectClientThread("WaypointBeacons", _clientSystem);
     }

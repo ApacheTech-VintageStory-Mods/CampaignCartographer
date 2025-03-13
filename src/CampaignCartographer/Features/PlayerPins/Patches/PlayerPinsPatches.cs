@@ -49,7 +49,7 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
         {
             if (player.Entity == null)
             {
-                ApiEx.Logger.Warning("Can't add player {0} to world map, missing entity :<", player.PlayerUID);
+                G.Log.Warning("Can't add player {0} to world map, missing entity :<", player.PlayerUID);
             }
             else if (!_capi.World.Config.GetBool("mapHideOtherPlayers") || player.PlayerUID == _capi.World.Player.PlayerUID)
             {

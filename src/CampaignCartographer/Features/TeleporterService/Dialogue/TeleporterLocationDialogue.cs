@@ -26,9 +26,7 @@ public class TeleporterLocationDialogue : GenericDialogue
 
         _locationData = locationData;
         _locations = [.. locationData.Locations.Values];
-        _targets = _locations
-            .Select(p => p.SourceName)
-            .ToArray();
+        _targets = [.. _locations.Select(p => p.SourceName)];
     }
 
     /// <summary>
@@ -111,7 +109,7 @@ public class TeleporterLocationDialogue : GenericDialogue
     {
         var networkService = IOC.Services.GetRequiredService<IClientNetworkService>();
 
-        networkService.ClientChannel("tpManager").SendPacket(_locationData.ForLocation);
+        networkService.GetOrRegisterChannel("tpManager").SendPacket(_locationData.ForLocation);
 
         IOC.Services
             .GetRequiredService<FastTravelOverlay.FastTravelOverlay>()

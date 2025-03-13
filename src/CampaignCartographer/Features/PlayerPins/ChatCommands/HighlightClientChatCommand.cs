@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Gantry.Core.GameContent.ChatCommands.Parsers;
 using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
 using Gantry.Services.FileSystem.Configuration;

@@ -1,9 +1,6 @@
-﻿using System.Threading;
-using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Models;
 using Gantry.Services.Brighter.Abstractions;
-using Gantry.Services.Brighter.Filters;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 
@@ -31,7 +28,7 @@ public class AddWaypointGroupLayerCommand : CommandBase
             var mapLayer = WaypointGroupMapLayer.Create(command.Group, MapManager);
             MapManager.MapLayers.Add(mapLayer);
             mapLayer.OnLoaded();
-            ApiEx.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
+            G.Log.VerboseDebug($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }
     }

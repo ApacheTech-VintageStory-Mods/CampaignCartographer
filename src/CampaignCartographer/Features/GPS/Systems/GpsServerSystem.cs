@@ -28,7 +28,7 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
     public override void StartServerSide(ICoreServerAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting GPS service.");
+        G.Log.VerboseDebug("Starting GPS service.");
         var parsers = api.ChatCommands.Parsers;
 
         var command = api.ChatCommands
@@ -55,7 +55,7 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
         _serverChannel = IOC.Services
             .GetRequiredService<IServerNetworkService>()
-            .ServerChannel("CC_GPS")
+            .GetOrRegisterChannel("CC_GPS")
             .RegisterMessageType<GpsPacket>();
     }
 

@@ -35,7 +35,7 @@ public sealed class ModMenuClientSystem : ClientModSystem, IClientServiceRegistr
     /// <param name="capi">The core client API.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        ApiEx.Logger.VerboseDebug("Starting mod menu service");
+        G.Log.VerboseDebug("Starting mod menu service");
 
         // Registers a hotkey to open the mod menu dialogue
         capi.Input.RegisterTransientGuiDialogueHotKey(

@@ -22,12 +22,12 @@ internal class TeleporterServerService : ServerModSystem
     /// <param name="api">The server API instance.</param>
     public override void StartServerSide(ICoreServerAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting teleporter service");
+        G.Log.VerboseDebug("Starting teleporter service");
         _vanillaSystem = Sapi.ModLoader.GetModSystem<TeleporterManager>();
 
         _serverChannel = IOC.Services
             .GetRequiredService<IServerNetworkService>()
-            .ServerChannel(nameof(TeleporterManager))
+            .GetOrRegisterChannel(nameof(TeleporterManager))
             .RegisterMessageType<TpLocations>()
             .RegisterMessageType<TeleporterLocationsPacket>()
             .SetMessageHandler<TpLocations>(SendDataToClient);

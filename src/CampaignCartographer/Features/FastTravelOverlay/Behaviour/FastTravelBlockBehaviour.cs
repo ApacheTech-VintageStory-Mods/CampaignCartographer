@@ -127,7 +127,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         if (_settings.Nodes.RemoveAll(p => p.Location.SourcePos == blockPos) 
           + _settings.Nodes.RemoveAll(p => p.Location.TargetPos == blockPos) > 0)
         {
-            ApiEx.Logger.VerboseDebug($"Removed Fast Travel Node: {blockPos}");
+            G.Log.VerboseDebug($"Removed Fast Travel Node: {blockPos}");
             ModSettings.World.Save(_settings);
             ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
         }

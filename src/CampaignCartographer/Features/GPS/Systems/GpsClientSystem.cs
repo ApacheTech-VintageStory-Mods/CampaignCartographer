@@ -18,10 +18,10 @@ internal class GpsClientSystem : ClientModSystem
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        ApiEx.Logger.VerboseDebug("Starting GPS service.");
+        G.Log.VerboseDebug("Starting GPS service.");
         IOC.Services
             .GetRequiredService<IClientNetworkService>()
-            .ClientChannel("CC_GPS")
+            .GetOrRegisterChannel("CC_GPS")
             .RegisterMessageHandler<GpsPacket>(p =>
             {
                 var message = capi.World.Player.GpsLocation();

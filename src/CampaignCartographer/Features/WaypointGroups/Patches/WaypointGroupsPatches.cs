@@ -1,5 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
 using Gantry.Core.Extensions.DotNet;
 using Gantry.Services.FileSystem.Configuration.Consumers;
@@ -52,7 +51,7 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         }
         catch (Exception ex)
         {
-            ApiEx.Logger.Error(ex);
+            G.Log.Error(ex);
         }
     }
 

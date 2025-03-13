@@ -32,7 +32,7 @@ public class FastTravelOverlay : ClientModSystem, IClientServiceRegistrar
     /// <param name="api">The core client API instance.</param>
     public override void StartClientSide(ICoreClientAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting fast travel map overlay service.");
+        G.Log.VerboseDebug("Starting fast travel map overlay service.");
         _settings = IOC.Services.GetRequiredService<FastTravelOverlaySettings>();
         var mapManager = api.ModLoader.GetModSystem<WorldMapManager>();
         mapManager.RegisterMapLayer<FastTravelOverlayMapLayer>(nameof(FastTravelOverlay), 1.1);
@@ -49,7 +49,7 @@ public class FastTravelOverlay : ClientModSystem, IClientServiceRegistrar
         foreach (var block in api.World.Blocks)
         {
             if (block is not (BlockStaticTranslocator or BlockTeleporter)) continue;
-            ApiEx.Logger.VerboseDebug($"Adding FastTravelBlockBehaviour to: {block.Code}");
+            G.Log.VerboseDebug($"Adding FastTravelBlockBehaviour to: {block.Code}");
             var behaviour = new FastTravelBlockBehaviour(block, _settings);
             block.BlockBehaviors = [.. block.BlockBehaviors, behaviour];
         }

@@ -4,7 +4,6 @@ using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Repos
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
-using Humanizer;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.Imports;
 

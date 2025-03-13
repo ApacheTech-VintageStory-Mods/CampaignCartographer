@@ -292,7 +292,7 @@ public class FastTravelOverlayMapComponent : MapComponent
         }
         catch (Exception ex)
         {
-            ApiEx.Logger.Error("Could not find destination for fast travel node.", ex);
+            G.Log.Error("Could not find destination for fast travel node.", ex);
             return false;
         }
     }

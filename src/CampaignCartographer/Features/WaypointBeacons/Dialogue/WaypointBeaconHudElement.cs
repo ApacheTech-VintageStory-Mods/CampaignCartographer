@@ -1,5 +1,4 @@
-﻿using ApacheTech.Common.FunctionalCSharp.Memento;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
+﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 using Gantry.Core.Annotation;
 

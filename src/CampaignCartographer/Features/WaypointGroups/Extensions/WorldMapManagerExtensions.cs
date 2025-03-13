@@ -1,6 +1,4 @@
-﻿using ApacheTech.Common.Extensions.Harmony;
-
-namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
+﻿namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 
 /// <summary>
 ///     Provides extension methods for <see cref="WorldMapManager"/>.

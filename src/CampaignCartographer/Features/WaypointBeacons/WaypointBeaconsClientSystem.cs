@@ -32,7 +32,7 @@ public class WaypointBeaconsClientSystem : ClientSystem
     /// <param name="game">The client main instance.</param>
     public WaypointBeaconsClientSystem(ClientMain game) : base(game)
     {
-        ApiEx.Logger.VerboseDebug("Starting waypoint beacon client system");
+        G.Log.VerboseDebug("Starting waypoint beacon client system");
 
         _game = game;
         _capi = (ICoreClientAPI)game.Api;

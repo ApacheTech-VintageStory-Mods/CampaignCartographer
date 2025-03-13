@@ -74,7 +74,7 @@ public class WaypointTemplatePackDialogue : GenericDialogue
             }
             catch (Exception exception)
             {
-                ApiEx.Logger.Error(exception);
+                G.Log.Error(exception);
                 return [];
             }
         }

@@ -1,5 +1,6 @@
 ﻿using Gantry.Core.Annotation;
 using Gantry.Services.Network;
+using Gantry.Services.Network.Extensions;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointSharing;
@@ -9,20 +10,11 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointSharing;
 /// </summary>
 public class WaypointSharingService : UniversalModSystem
 {
-    private IUniversalNetworkService _networkService;
     private IClientNetworkChannel _clientChannel;
     private IServerNetworkChannel _serverChannel;
 
     /// <inheritdoc />
     public override double ExecuteOrder() => 0.12;
-
-    /// <inheritdoc />
-    [Universal]
-    public override void Start(ICoreAPI api)
-    {
-        _networkService = IOC.Services.Resolve<IUniversalNetworkService>();
-        _networkService.RegisterChannel(nameof(WaypointSharingService));
-    }
 
     #region Server Side
 
@@ -30,10 +22,11 @@ public class WaypointSharingService : UniversalModSystem
     [ServerSide]
     public override void StartServerSide(ICoreServerAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting waypoint sharing service.");
-        _serverChannel = _networkService.ServerChannel(nameof(WaypointSharingService));
-        _serverChannel.RegisterMessageType<WaypointSharingPacket>();
-        _serverChannel.SetMessageHandler<WaypointSharingPacket>(HandleServerPacket);
+        G.Log.VerboseDebug("Starting waypoint sharing service.");
+        _serverChannel = IOC.Services
+            .GetRequiredService<IServerNetworkService>()
+            .GetOrRegisterChannel(nameof(WaypointSharingService))
+            .RegisterMessageHandler<WaypointSharingPacket>(HandleServerPacket);
     }
 
     /// <summary>
@@ -44,7 +37,7 @@ public class WaypointSharingService : UniversalModSystem
     [ServerSide]
     private void HandleServerPacket(IServerPlayer sender, WaypointSharingPacket packet)
     {
-        ApiEx.Logger.VerboseDebug($"Waypoint sharing packet received from {sender.PlayerName}.");
+        G.Log.VerboseDebug($"Waypoint sharing packet received from {sender.PlayerName}.");
 
         var players = string.IsNullOrEmpty(packet.PlayerId)
             ? Sapi.World.AllOnlinePlayers.Except([sender])
@@ -56,7 +49,7 @@ public class WaypointSharingService : UniversalModSystem
         {
             if (waypointMapLayer.Waypoints.Any(p => p.OwningPlayerUid == player.PlayerUID && p.Guid == packet.Waypoint.Guid)) continue;
             var waypoint = packet.Waypoint.With(p => p.OwningPlayerUid = player.PlayerUID);
-            ApiEx.Logger.VerboseDebug($"{sender.PlayerName} is sharing waypoint {waypoint.Guid} with {player.PlayerName}.");
+            G.Log.VerboseDebug($"{sender.PlayerName} is sharing waypoint {waypoint.Guid} with {player.PlayerName}.");
             waypointMapLayer.AddWaypoint(waypoint, player as IServerPlayer);
             var culture = LangEx.GetPlayerLanguageCode(player);
             var feedback = LangEx.CultureString(culture, "WaypointSharing", "WaypointIdShared", sender.PlayerName, waypoint.Guid);
@@ -72,9 +65,11 @@ public class WaypointSharingService : UniversalModSystem
     [ClientSide]
     public override void StartClientSide(ICoreClientAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting waypoint sharing service.");
-        _clientChannel = _networkService.ClientChannel(nameof(WaypointSharingService));
-        _clientChannel.RegisterMessageType<WaypointSharingPacket>();
+        G.Log.VerboseDebug("Starting waypoint sharing service.");
+        _clientChannel = IOC.Services
+            .GetRequiredService<IClientNetworkService>()
+            .GetOrRegisterChannel(nameof(WaypointSharingService))
+            .RegisterMessageType<WaypointSharingPacket>();
     }
 
     /// <summary>
@@ -85,7 +80,7 @@ public class WaypointSharingService : UniversalModSystem
     [ClientSide]
     public void ShareWaypoint(Waypoint waypoint, string playerId)
     {
-        ApiEx.Logger.VerboseDebug("Sending waypoint sharing packet to server.");
+        G.Log.VerboseDebug("Sending waypoint sharing packet to server.");
         _clientChannel.SendPacket(new WaypointSharingPacket
         {
             Waypoint = waypoint,
@@ -113,7 +108,7 @@ public class WaypointSharingService : UniversalModSystem
     [ClientSide]
     public void BroadcastWaypoint(Waypoint waypoint)
     {
-        ApiEx.Logger.VerboseDebug("Sending waypoint sharing packet to server.");
+        G.Log.VerboseDebug("Sending waypoint sharing packet to server.");
         _clientChannel.SendPacket(new WaypointSharingPacket
         {
             Waypoint = waypoint

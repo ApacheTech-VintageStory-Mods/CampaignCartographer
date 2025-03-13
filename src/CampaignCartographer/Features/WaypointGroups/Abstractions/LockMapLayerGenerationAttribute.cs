@@ -31,11 +31,11 @@ public class LockMapLayerGenerationAttribute() : RequestHandlerAttribute(1)
         [HandledOnClient]
         public override TRequest Handle(TRequest command)
         {
-            ApiEx.Logger.VerboseDebug($"Suspending map layer generation thread.");
+            G.Log.VerboseDebug($"Suspending map layer generation thread.");
             _mapLayerGeneration.Suspend();
             Thread.Sleep(20);
             var result = base.Handle(command);
-            ApiEx.Logger.VerboseDebug($"Resuming map layer generation thread.");
+            G.Log.VerboseDebug($"Resuming map layer generation thread.");
             _mapLayerGeneration.Resume();
             return result;
         }

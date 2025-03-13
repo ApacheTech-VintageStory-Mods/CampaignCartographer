@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using ApacheTech.Common.Extensions.Harmony;
+﻿using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
 using Gantry.Core.GameContent.ChatCommands.Parsers;
 using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
-using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 
@@ -32,7 +30,7 @@ public sealed class CentreMapClient : ClientModSystem
     /// <param name="capi">The core API implemented by the client. The main interface for accessing the client. Contains all sub-components, and some miscellaneous methods.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        ApiEx.Logger.VerboseDebug("Starting centre-map service");
+        G.Log.VerboseDebug("Starting centre-map service");
         _capi = capi;
         _worldMap = capi.ModLoader.GetModSystem<WorldMapManager>();
 

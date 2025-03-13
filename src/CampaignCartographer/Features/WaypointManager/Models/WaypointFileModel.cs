@@ -1,5 +1,4 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
-using Gantry.Core;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 

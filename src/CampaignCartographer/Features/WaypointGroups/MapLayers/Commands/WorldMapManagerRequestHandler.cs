@@ -39,7 +39,7 @@ public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : Comm
             MapManager.worldMapDlg.Dispose();
             MapManager.worldMapDlg = null;
             MapManager.ToggleMap(EnumDialogType.HUD);
-            ApiEx.Logger.VerboseDebug($"Rebuilt world map after map layer updates.");
+            G.Log.VerboseDebug($"Rebuilt world map after map layer updates.");
         }
         return base.Handle(command);
     }

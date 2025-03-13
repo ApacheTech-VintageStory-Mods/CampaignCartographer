@@ -31,7 +31,7 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        ApiEx.Logger.VerboseDebug("Starting player pins system");
+        G.Log.VerboseDebug("Starting player pins system");
         capi.ChatCommands
             .Create("playerpins")
             .WithDescription(LangEx.FeatureString("PlayerPins", "SettingsCommandDescription"))

@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text;
 using ApacheTech.Common.Extensions.Harmony;
-using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues.WaypointSelection;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Models;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.GUI.Abstractions;
@@ -96,8 +95,8 @@ public class WaypointImportDialogue : GenericDialogue
             }
             catch (Exception exception)
             {
-                ApiEx.Logger.Error("Error caught while loading waypoints from import file.");
-                ApiEx.Logger.Error(exception);
+                G.Log.Error("Error caught while loading waypoints from import file.");
+                G.Log.Error(exception);
                 return [];
             }
         }

@@ -1,5 +1,6 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Behaviours;
 using Gantry.Services.Network;
+using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
 
@@ -15,13 +16,12 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="api">The client API instance.</param>
     public override void StartClientSide(ICoreClientAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Starting teleporter service");
+        G.Log.VerboseDebug("Starting teleporter service");
         IOC.Services
            .GetRequiredService<IClientNetworkService>()
-           .ClientChannel(nameof(TeleporterManager))
+           .GetOrRegisterChannel(nameof(TeleporterManager))
            .RegisterMessageType<TpLocations>()
-           .RegisterMessageType<TeleporterLocationsPacket>()
-           .SetMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
+           .RegisterMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="p">The packet containing teleporter location data.</param>
     private void OnLocationsReceived(TeleporterLocationsPacket p)
     {
-        ApiEx.Logger.VerboseDebug("Teleporter locations updated.");
+        G.Log.VerboseDebug("Teleporter locations updated.");
         TeleporterLocations = p.Teleporters;
     }
 
@@ -41,7 +41,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="api">The client API instance.</param>
     public override void AssetsFinalise(ICoreClientAPI api)
     {
-        ApiEx.Logger.VerboseDebug("Adding teleporter behaviours to blocks.");
+        G.Log.VerboseDebug("Adding teleporter behaviours to blocks.");
         api.World.Blocks.AddBehaviourToBlocks<BlockTeleporter, TeleporterBlockBehaviour>(b => new TeleporterBlockBehaviour(b));
     }
 
