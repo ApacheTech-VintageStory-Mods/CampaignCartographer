@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 using Vintagestory.Server;
@@ -61,12 +62,14 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(PlayerMapLayer), "Render")]
-    public static bool Patch_PlayerMapLayer_Render_Prefix(GuiElementMap mapElem, float dt)
+    public static bool Patch_PlayerMapLayer_Render_Prefix(PlayerMapLayer __instance, GuiElementMap mapElem, float dt)
     {
         if (_capi is null) return true;
+        if (!__instance.Active) return true;
         foreach (var pin in PlayerPins)
         {
             if (mapElem.Api.ModLoader.IsModEnabled("th3rp") && !pin.Value.entity.WatchedAttributes.GetBool("maptag", true)) continue;
+            if (pin.Value.Texture.Disposed) continue;
             pin.Value.Render(mapElem, dt);
         }
         return false;
@@ -99,7 +102,6 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
     private static void OnPlayerDespawn(IPlayer player)
     {
         if (!PlayerPins.TryGetValue(player, out var entityMapComponent)) return;
-        entityMapComponent.Texture.Dispose();
         entityMapComponent.Dispose();
         PlayerPins.Remove(player);
     }

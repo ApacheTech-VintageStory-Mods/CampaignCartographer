@@ -54,7 +54,6 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
     public void LoadTextures()
     {
         var settings = IOC.Services.Resolve<PlayerPinsSettings>();
-        TextureCache.PurgeValues();
         TextureCache[PlayerRelation.Self] = LoadTexture(settings.SelfColour, settings.SelfScale);
         TextureCache[PlayerRelation.Highlighted] = LoadTexture(settings.HighlightColour, settings.HighlightScale);
         TextureCache[PlayerRelation.Others] = LoadTexture(settings.OthersColour, settings.OthersScale);
