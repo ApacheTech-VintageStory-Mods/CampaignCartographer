@@ -26,4 +26,13 @@ public static class WaypointBeaconStore
         PillarMeshRef = ApiEx.Client.Render.UploadMesh(pillar);
         QuadModel = ApiEx.Client.Render.UploadMesh(QuadMeshUtil.GetQuad());
     }
+
+    /// <summary>
+    ///     Disposes the pillar and quad models as the mod unloads; saves leaking memory.
+    /// </summary>
+    public static void Dispose()
+    {
+        PillarMeshRef.Dispose();
+        QuadModel.Dispose();
+    }
 }

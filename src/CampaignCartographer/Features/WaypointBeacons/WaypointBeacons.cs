@@ -156,5 +156,6 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         ClearElements();
         Capi.Event.UnregisterGameTickListener(_listener);
         WaypointIconFactory.Dispose();
+        WaypointBeaconStore.Dispose();
     }
 }
