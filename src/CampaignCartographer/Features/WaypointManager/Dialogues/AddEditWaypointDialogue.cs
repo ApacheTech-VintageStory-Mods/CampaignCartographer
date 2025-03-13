@@ -92,10 +92,8 @@ public class AddEditWaypointDialogue : GenericDialogue
         SingleComposer.ColorListPickerSetValue("optColour", Math.Max(_colours.IndexOf(_waypoint.Color), 0));
         SingleComposer.IconListPickerSetValue("optIcon", Math.Max(_icons.IndexOf(_waypoint.Icon), 0));
 
-        if (_mode != AddEditDialogueMode.Edit) return;
         txtTitle.SetField("hasFocus", false);
         SingleComposer.GetSwitch("btnBeacon").SetValue(_beacon);
-
         if (_waypointGroups.Count > 1)
         {
             _group = Groups.GetWaypointGroup(_waypoint);
@@ -139,7 +137,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Waypoint Group
         //
 
-        if (_mode == AddEditDialogueMode.Edit && _waypointGroups.Count > 1) 
+        if (_waypointGroups.Count > 1) 
         {
             left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
             right = ElementBounds.FixedSize(470, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
@@ -169,16 +167,13 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Beacon
         //
 
-        if (_mode == AddEditDialogueMode.Edit)
-        {
-            left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
-            right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
+        left = ElementBounds.FixedSize(100, 30).FixedUnder(left, 10);
+        right = ElementBounds.FixedSize(270, 30).FixedUnder(right, 10).FixedRightOf(left, 10);
 
-            composer
-                .AddStaticText(T("lblBeacon"), labelFont, EnumTextOrientation.Right, left, "lblBeacon")
-                .AddAutoSizeHoverText(T("lblBeacon.HoverText"), txtTitleFont, 260, left)
-                .AddSwitch(OnBeaconChanged, right, "btnBeacon");
-        }
+        composer
+            .AddStaticText(T("lblBeacon"), labelFont, EnumTextOrientation.Right, left, "lblBeacon")
+            .AddAutoSizeHoverText(T("lblBeacon.HoverText"), txtTitleFont, 260, left)
+            .AddSwitch(OnBeaconChanged, right, "btnBeacon");
 
         //
         // Colour
@@ -340,9 +335,9 @@ public class AddEditWaypointDialogue : GenericDialogue
         G.Log.VerboseDebug($"{_mode}ing waypoint: {_waypoint.Guid}");
         _clientChannel.SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
                 
-        if (_waypoint.Guid is not null && _mode == AddEditDialogueMode.Edit && (_beacon
+        if (_beacon
             ? _waypointBeaconSettings.ActiveBeacons.AddIfNotPresent(_waypoint.Guid)
-            : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))) 
+            : _waypointBeaconSettings.ActiveBeacons.RemoveIfPresent(_waypoint.Guid))
             ModSettings.World.Save(_waypointBeaconSettings);
 
         UpdateWaypointGroup();
