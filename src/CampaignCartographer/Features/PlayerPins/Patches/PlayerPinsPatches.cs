@@ -1,9 +1,7 @@
 ﻿using System.Text;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
-using Cairo;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 using Vintagestory.Server;
-using Color = System.Drawing.Color;
 
 // ReSharper disable StringLiteralTypo
 // ReSharper disable IdentifierTypo
@@ -15,6 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.Patche
 public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
 {
     private static ICoreClientAPI _capi;
+    private static PlayerPins _system;
     private static IWorldMapManager _mapSink;
     private static IDictionary<IPlayer, EntityMapComponent> PlayerPins { get; set; }
 
@@ -24,6 +23,7 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
     {
         if (api is ServerCoreAPI) return;
         _capi = (ICoreClientAPI)api;
+        _system = _capi.ModLoader.GetModSystem<PlayerPins>();
         _mapSink = mapsink;
         PlayerPins = new Dictionary<IPlayer, EntityMapComponent>();
     }
@@ -118,40 +118,10 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
         var textureType = player.PlayerUID == _capi.World.Player.PlayerUID
             ? PlayerRelation.Self
             : Settings.HighlightedPlayers.ContainsValue(player.PlayerUID) ? PlayerRelation.Highlighted : PlayerRelation.Others;
-            
-        var texture = textureType switch
-        {
-            PlayerRelation.Self => LoadTexture(Settings.SelfColour, Settings.SelfScale),
-            PlayerRelation.Highlighted => LoadTexture(Settings.HighlightColour, Settings.HighlightScale),
-            PlayerRelation.Others => LoadTexture(Settings.OthersColour, Settings.OthersScale),
-            _ => throw new ArgumentOutOfRangeException(nameof(player), textureType, "Cannot add player to map.")
-        };
 
+        var texture = _system.TextureCache[textureType];
         var comp = new EntityMapComponent(_capi, texture, player.Entity);
         PlayerPins.Add(player, comp);
-    }
-
-    private static LoadedTexture LoadTexture(Color colour, int scale)
-    {
-        scale += 16;
-
-        var rgba = colour.ToNormalisedRgba();
-        var outline = new[] { 0d, 0d, 0d, rgba[3] };
-
-        var imageSurface = new ImageSurface(Format.Argb32, scale, scale);
-        var context = new Context(imageSurface);
-
-        context.SetSourceRGBA(0.0, 0.0, 0.0, 0.0);
-        context.Paint();
-        _capi.Gui.Icons.DrawMapPlayer(context, 0, 0, scale, scale, outline, rgba);
-        var texture = _capi.Gui.LoadCairoTexture(imageSurface, false);
-        var loadedTexture = new LoadedTexture(_capi, texture, scale, scale);
-
-        // Explicitly disposing the context and surface, after each use.
-        context.Dispose();
-        imageSurface.Dispose();
-
-        return loadedTexture;
     }
 
     [HarmonyPrefix]

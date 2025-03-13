@@ -1,4 +1,5 @@
 ﻿ using ApacheTech.Common.Extensions.Enum;
+using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Cairo;
 using Gantry.Core.Hosting.Annotation;
@@ -15,11 +16,24 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.Dialog
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
 {
+    private readonly PlayerPins _playerPins;
+
     [SidedConstructor(EnumAppSide.Client)]
     public PlayerPinsDialogue(ICoreClientAPI capi, PlayerPinsSettings settings)
         : base(capi, settings, "PlayerPins")
     {
         Movable = true;
+        _playerPins = capi.ModLoader.GetModSystem<PlayerPins>();
+    }
+
+    private void RefreshTextures()
+    {
+        _playerPins.LoadTextures();
+
+        capi.ModLoader
+            .GetModSystem<WorldMapManager>()
+            .PlayerMapLayer()
+            .OnMapOpenedClient();
     }
 
     protected override void RefreshValues()
@@ -35,11 +49,6 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
         SetColourSliderValue("sliderA", colour.A);
         SetScaleSliderValue("sliderScale", PlayerPinHelper.Scale);
         SetPreviewColour("pnlPreview");
-
-        capi.ModLoader
-            .GetModSystem<WorldMapManager>()
-            .PlayerMapLayer()
-            .OnMapOpenedClient();
     }
 
     protected override void ComposeBody(GuiComposer composer)
@@ -105,9 +114,16 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
         SingleComposer = composer.EndChildElements().Compose();
     }
 
+    public override bool TryClose()
+    {
+        RefreshTextures();
+        return base.TryClose();
+    }
+
     private void OnSelectionChanged(string code, bool selected)
     {
         PlayerPinHelper.Relation = Enum.TryParse(code, out PlayerRelation relation) ? relation : PlayerRelation.Self;
+        RefreshTextures();
         RefreshValues();
     }
 
@@ -136,11 +152,13 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
     #endregion
 
     #region GUI Business Logic Callbacks
+
     private bool OnRandomise()
     {
         var rng = new Random(DateTime.Now.Millisecond);
         PlayerPinHelper.Colour = Color.FromArgb(rng.Next(0, 256), rng.Next(0, 256), rng.Next(0, 256), rng.Next(0, 256));
         PlayerPinHelper.Scale = rng.Next(-5, 21);
+        RefreshTextures();
         RefreshValues();
         return true;
     }
@@ -170,6 +188,7 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
     private bool OnColourChanged(ColourChannel channel, int value)
     {
         PlayerPinHelper.Colour = PlayerPinHelper.Colour.UpdateColourChannel(channel, (byte)value);
+        RefreshTextures();
         RefreshValues();
         return true;
     }
@@ -177,6 +196,7 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
     private bool OnScaleChanged(int s)
     {
         PlayerPinHelper.Scale = s;
+        RefreshTextures();
         RefreshValues();
         return true;
     }
