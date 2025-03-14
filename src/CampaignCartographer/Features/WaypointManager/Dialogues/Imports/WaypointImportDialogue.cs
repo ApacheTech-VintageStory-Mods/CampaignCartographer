@@ -95,8 +95,8 @@ public class WaypointImportDialogue : GenericDialogue
             }
             catch (Exception exception)
             {
-                G.Log.Error("Error caught while loading waypoints from import file.");
-                G.Log.Error(exception);
+                G.Logger.Error("Error caught while loading waypoints from import file.");
+                G.Logger.Error(exception);
                 return [];
             }
         }

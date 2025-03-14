@@ -21,7 +21,7 @@ public sealed class TraderWaypoints : ClientModSystem
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Log.VerboseDebug("Starting the trader waypoint service.");
+        G.Logger.VerboseDebug("Starting the trader waypoint service.");
         _waypointService = IOC.Services.Resolve<WaypointTemplateService>();
 
         (_capi = capi).ChatCommands

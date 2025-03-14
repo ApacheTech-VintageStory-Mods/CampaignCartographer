@@ -43,6 +43,6 @@ public static class BlockEntityTeleporterExtensions
             ServerIcon = WaypointIcon.Spiral
         }.AddToMap(sourcePos);
 
-        G.Log.VerboseDebug($"Added Waypoint: {title}");
+        G.Logger.VerboseDebug($"Added Waypoint: {title}");
     }
 }

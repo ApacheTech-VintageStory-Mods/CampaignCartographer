@@ -74,7 +74,7 @@ public static class BlockEntityStaticTranslocatorExtensions
             ServerIcon = WaypointIcon.Spiral
         }.AddToMap(sourcePos, forceWaypoint);
 
-        G.Log.VerboseDebug($"Added Waypoint: Translocator to ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
+        G.Logger.VerboseDebug($"Added Waypoint: Translocator to ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static class BlockEntityStaticTranslocatorExtensions
             ServerIcon = WaypointIcon.Spiral
         }.AddToMap(blockPos);
 
-        G.Log.VerboseDebug($"Added Waypoint: Broken Translocator at ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
+        G.Logger.VerboseDebug($"Added Waypoint: Broken Translocator at ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
     }
 
     /// <summary>

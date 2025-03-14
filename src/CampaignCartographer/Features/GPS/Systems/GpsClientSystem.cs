@@ -18,7 +18,7 @@ internal class GpsClientSystem : ClientModSystem
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Log.VerboseDebug("Starting GPS service.");
+        G.Logger.VerboseDebug("Starting GPS service.");
         IOC.Services
             .GetRequiredService<IClientNetworkService>()
             .GetOrRegisterChannel("CC_GPS")

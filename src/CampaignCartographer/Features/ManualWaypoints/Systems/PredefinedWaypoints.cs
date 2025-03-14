@@ -35,7 +35,7 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
 
     protected override void StartPreClientSide(ICoreClientAPI capi)
     {
-        G.Log.VerboseDebug("Starting the manual waypoint service.");
+        G.Logger.VerboseDebug("Starting the manual waypoint service.");
         AssetCategory.categories["templates"] = new AssetCategory("templates", false, EnumAppSide.Client);
         _settings = IOC.Services.GetRequiredService<PredefinedWaypointsSettings>();
         _fileSystemService = IOC.Services.GetRequiredService<IFileSystemService>()
@@ -49,22 +49,22 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
         var templatePack = _fileSystemService.GetJsonFile(fileName).ParseAs<TemplatePack>();
         if (!TemplatePacks.AddIfNotPresent(templatePack)) return;
         CustomPacks[templatePack.Metadata.Scope] = templatePack;
-        G.Log.VerboseDebug($" - {templatePack.Metadata.Title} ({templatePack.Templates.Count} templates)");
+        G.Logger.VerboseDebug($" - {templatePack.Metadata.Title} ({templatePack.Templates.Count} templates)");
     }
 
     public override void AssetsLoaded(ICoreClientAPI api)
     {
-        G.Log.VerboseDebug("Loading custom template packs.");
+        G.Logger.VerboseDebug("Loading custom template packs.");
         RegisterTemplatePack("custom-world-template-pack.json");
         RegisterTemplatePack("custom-global-template-pack.json");
 
-        G.Log.VerboseDebug("Loading template packs from assets.");
-        var templatePacks = Capi.Assets.GetMany<TemplatePack>(G.Log, pathBegins: "templates", domain: ModEx.ModInfo.ModID);
+        G.Logger.VerboseDebug("Loading template packs from assets.");
+        var templatePacks = Capi.Assets.GetMany<TemplatePack>(G.Logger, pathBegins: "templates", domain: ModEx.ModInfo.ModID);
         foreach (var templatePack in templatePacks.Values)
         {
             if (!TemplatePacks.AddIfNotPresent(templatePack)) continue;
             templatePack.Metadata.Enabled = !_settings.DisabledTemplatePacks.Contains(templatePack.Metadata.Name);
-            G.Log.VerboseDebug($" - {templatePack.Metadata.Title} v{templatePack.Metadata.Version} ({templatePack.Templates.Count} templates)");
+            G.Logger.VerboseDebug($" - {templatePack.Metadata.Title} v{templatePack.Metadata.Version} ({templatePack.Templates.Count} templates)");
         }
     }
 

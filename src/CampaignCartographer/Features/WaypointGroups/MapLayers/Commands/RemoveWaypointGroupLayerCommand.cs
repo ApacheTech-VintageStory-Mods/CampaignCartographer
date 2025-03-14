@@ -26,7 +26,7 @@ public class RemoveWaypointGroupLayerCommand : CommandBase
         {
             MapManager.UnregisterMapLayer(command.GroupId);
 
-            G.Log.VerboseDebug($"Waypoint group with id {command.GroupId} removed from map.");
+            G.Logger.VerboseDebug($"Waypoint group with id {command.GroupId} removed from map.");
             return base.Handle(command);
         }
     }

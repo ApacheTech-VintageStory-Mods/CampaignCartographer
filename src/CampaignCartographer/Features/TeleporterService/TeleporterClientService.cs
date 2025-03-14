@@ -16,7 +16,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="api">The client API instance.</param>
     public override void StartClientSide(ICoreClientAPI api)
     {
-        G.Log.VerboseDebug("Starting teleporter service");
+        G.Logger.VerboseDebug("Starting teleporter service");
         IOC.Services
            .GetRequiredService<IClientNetworkService>()
            .GetOrRegisterChannel(nameof(TeleporterManager))
@@ -30,7 +30,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="p">The packet containing teleporter location data.</param>
     private void OnLocationsReceived(TeleporterLocationsPacket p)
     {
-        G.Log.VerboseDebug("Teleporter locations updated.");
+        G.Logger.VerboseDebug("Teleporter locations updated.");
         TeleporterLocations = p.Teleporters;
     }
 
@@ -41,7 +41,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="api">The client API instance.</param>
     public override void AssetsFinalise(ICoreClientAPI api)
     {
-        G.Log.VerboseDebug("Adding teleporter behaviours to blocks.");
+        G.Logger.VerboseDebug("Adding teleporter behaviours to blocks.");
         api.World.Blocks.AddBehaviourToBlocks<BlockTeleporter, TeleporterBlockBehaviour>(b => new TeleporterBlockBehaviour(b));
     }
 

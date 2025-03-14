@@ -51,7 +51,7 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         }
         catch (Exception ex)
         {
-            G.Log.Error(ex);
+            G.Logger.Error(ex);
         }
     }
 

@@ -129,7 +129,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
         var value = dictionary.FirstOrNull(p => assetCode.Contains(p.Key));
         if (!string.IsNullOrWhiteSpace(value)) return value;
         var exception = new ArgumentOutOfRangeException(nameof(assetCode), assetCode, $"Could not map {assetCode} to any waypoint template.");
-        G.Log.Error(exception);
+        G.Logger.Error(exception);
         return null;
     }
 

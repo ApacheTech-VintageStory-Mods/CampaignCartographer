@@ -95,7 +95,7 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
         }
         catch (Exception ex)
         {
-            G.Log.Error(ex);
+            G.Logger.Error(ex);
         }
         finally
         {

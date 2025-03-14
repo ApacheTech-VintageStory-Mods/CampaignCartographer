@@ -331,7 +331,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        G.Log.VerboseDebug($"{_mode}ing waypoint: {_waypoint.Guid}");
+        G.Logger.VerboseDebug($"{_mode}ing waypoint: {_waypoint.Guid}");
         _clientChannel.SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
                 
         if (_beacon

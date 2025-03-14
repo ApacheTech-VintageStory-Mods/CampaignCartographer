@@ -24,7 +24,7 @@ public sealed class BlockSelectionWaypoints : ClientModSystem
     /// </param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Log.VerboseDebug("Starting the block selection waypoint service.");
+        G.Logger.VerboseDebug("Starting the block selection waypoint service.");
         (_capi = capi).ChatCommands
             .Create("wps")
             .WithDescription(LangEx.FeatureString("PredefinedWaypoints.BlockSelectionWaypoints", "Description"))

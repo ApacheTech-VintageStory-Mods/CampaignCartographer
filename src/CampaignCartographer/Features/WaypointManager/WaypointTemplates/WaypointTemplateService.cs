@@ -57,12 +57,12 @@ public class WaypointTemplateService
                 }
             }
 
-            G.Log.VerboseDebug($"{WaypointTemplates.Count} waypoint extensions loaded from {templatePacks.Count} template packs.");
+            G.Logger.VerboseDebug($"{WaypointTemplates.Count} waypoint extensions loaded from {templatePacks.Count} template packs.");
         }
         catch (Exception e)
         {
-            G.Log.Error("Error loading syntax for .wp command.");
-            G.Log.Error(e);
+            G.Logger.Error("Error loading syntax for .wp command.");
+            G.Logger.Error(e);
         }
     }
 

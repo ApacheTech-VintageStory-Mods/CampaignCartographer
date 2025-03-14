@@ -70,7 +70,7 @@ public class WaypointGroupsDialogue : GenericDialogue
             }
             catch (Exception exception)
             {
-                G.Log.Error(exception);
+                G.Logger.Error(exception);
                 return [];
             }
         }
