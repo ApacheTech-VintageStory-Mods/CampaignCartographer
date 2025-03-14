@@ -30,7 +30,7 @@ public sealed class CentreMapClient : ClientModSystem
     /// <param name="capi">The core API implemented by the client. The main interface for accessing the client. Contains all sub-components, and some miscellaneous methods.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting centre-map service");
+        G.Log("Starting centre-map service");
         _capi = capi;
         _worldMap = capi.ModLoader.GetModSystem<WorldMapManager>();
 

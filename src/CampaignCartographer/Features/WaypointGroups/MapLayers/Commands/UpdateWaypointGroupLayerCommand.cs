@@ -31,7 +31,7 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
             mapLayer?.UpdateTitle(command.Group.Title);
             mapLayer?.UpdateWaypoints(command.Group.Waypoints);
 
-            G.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} updated map with name '{command.Group.Title}'.");
+            G.Log($"Waypoint group with id {command.Group.Id} updated map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }
     }

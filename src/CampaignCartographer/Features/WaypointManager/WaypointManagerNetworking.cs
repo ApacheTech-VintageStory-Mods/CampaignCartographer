@@ -20,7 +20,7 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
             .RegisterMessageType<SignalPacket>();
 
         var state = capi.Network.GetChannelState(nameof(WaypointManager));
-        G.Logger("Registered WaypointManager network channel.");
+        G.Log("Registered WaypointManager network channel.");
     }
 
     [ServerSide]

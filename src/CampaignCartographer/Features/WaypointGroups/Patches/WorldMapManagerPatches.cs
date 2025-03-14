@@ -23,7 +23,7 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
         var mapAllowedClient = ___capi.World.Config.GetBool("allowMap", true) || ___capi.World.Player.Privileges.IndexOf("allowMap") != -1;
         if (mapAllowedClient)
         {
-            G.Logger.VerboseDebug("Registering world map hotkeys");
+            G.Log("Registering world map hotkeys");
             ___capi.Input.RegisterHotKey("worldmaphud", Lang.Get("Show/Hide Minimap"), GlKeys.F6, HotkeyType.HelpAndOverlays);
             ___capi.Input.RegisterHotKey("minimapposition", Lang.Get("keycontrol-minimap-position"), GlKeys.F6, HotkeyType.HelpAndOverlays, false, true, false);
             ___capi.Input.RegisterHotKey("worldmapdialog", Lang.Get("Show World Map"), GlKeys.M, HotkeyType.HelpAndOverlays);
@@ -31,24 +31,24 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
             ___capi.Input.SetHotKeyHandler("minimapposition", key => __instance.CallMethod<bool>("OnHotKeyMinimapPosition", key));
             ___capi.Input.SetHotKeyHandler("worldmapdialog", key => __instance.CallMethod<bool>("OnHotKeyWorldMapDlg", key));
 
-            G.Logger.VerboseDebug("Registering world map link protocols");
+            G.Log("Registering world map link protocols");
             ___capi.RegisterLinkProtocol("worldmap", link => __instance.CallMethod("onWorldMapLinkClicked", link));
         }
 
         lock (MapLayerGeneration.MapLayersLock)
         {
-            G.Logger.VerboseDebug("Creating map layer instances");
+            G.Log("Creating map layer instances");
             foreach (var (key, value) in __instance.MapLayerRegistry)
             {
                 if (key == "entities" && !___capi.World.Config.GetAsBool("entityMapLayer")) continue;
-                G.Logger.VerboseDebug($" - {key}: {value.Name}");
+                G.Log($" - {key}: {value.Name}");
                 var instance = ActivatorUtilities.CreateInstance(IOC.Services, value, __instance).To<MapLayer>();
                 __instance.MapLayers.Add(instance);
                 instance.OnLoaded();
             }
         }
 
-        G.Logger.VerboseDebug("Creating map layer generation thread");
+        G.Log("Creating map layer generation thread");
         ___mapLayerGenThread = new Thread(() =>
         {
             while (!__instance.IsShuttingDown)
@@ -70,13 +70,13 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
             IsBackground = true
         };
 
-        G.Logger.VerboseDebug("Starting map layer generation thread");
+        G.Log("Starting map layer generation thread");
         ___mapLayerGenThread.Start();
 
         if (___capi is not null && (___capi.Settings.Bool["showMinimapHud"] || !___capi.Settings.Bool.Exists("showMinimapHud"))
         && (___worldMapDlg is null || !___worldMapDlg.IsOpened()))
         {
-            G.Logger.VerboseDebug("Opening mini-map");
+            G.Log("Opening mini-map");
             __instance.ToggleMap(EnumDialogType.HUD);
         }
 

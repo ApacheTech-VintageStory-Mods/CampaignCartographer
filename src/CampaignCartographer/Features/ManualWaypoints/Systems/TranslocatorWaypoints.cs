@@ -22,7 +22,7 @@ public sealed class TranslocatorWaypoints : ClientModSystem
     /// <param name="capi">The core API implemented by the client. The main interface for accessing the client. Contains all sub-components, and some miscellaneous methods.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting translocator waypoint service.");
+        G.Log("Starting translocator waypoint service.");
         (_capi = capi).ChatCommands
             .Create("wptl")
             .WithDescription(LangEx.FeatureString("PredefinedWaypoints.TranslocatorWaypoints", "Description"))

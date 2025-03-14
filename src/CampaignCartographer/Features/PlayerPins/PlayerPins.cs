@@ -34,7 +34,7 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting player pins system");
+        G.Log("Starting player pins system");
         capi.AddModMenuDialogue<PlayerPinsDialogue>("PlayerPins");
 
         capi.ChatCommands

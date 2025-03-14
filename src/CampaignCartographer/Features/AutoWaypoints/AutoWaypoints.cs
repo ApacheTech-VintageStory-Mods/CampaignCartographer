@@ -51,7 +51,7 @@ public sealed class AutoWaypoints : ClientModSystem, IClientServiceRegistrar
     /// <param name="capi">The client-side API.</param>
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting automatic waypoint service.");
+        G.Log("Starting automatic waypoint service.");
         _settings = IOC.Services.GetRequiredService<AutoWaypointsSettings>();
         capi.Event.LevelFinalize += () =>
         {
@@ -80,7 +80,7 @@ public sealed class AutoWaypoints : ClientModSystem, IClientServiceRegistrar
                     title: title);
                 command.Execute();
                 
-                G.Logger.VerboseDebug($"Added death marker: {title}");
+                G.Log($"Added death marker: {title}");
             });
         };
     }

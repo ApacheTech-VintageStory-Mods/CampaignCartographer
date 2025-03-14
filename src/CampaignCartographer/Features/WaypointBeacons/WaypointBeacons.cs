@@ -65,7 +65,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting waypoint beacons client mod system.");
+        G.Log("Starting waypoint beacons client mod system.");
         capi.AddModMenuDialogue<WaypointBeaconsSettingsDialogue>("WaypointBeacons");
         _settings = IOC.Services.GetRequiredService<WaypointBeaconsSettings>();
 
@@ -80,13 +80,13 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     /// </summary>
     private void OnLevelFinalise()
     {
-        G.Logger.VerboseDebug("Caching all waypoint icons for beacons");
+        G.Log("Caching all waypoint icons for beacons");
         Capi.Event.LevelFinalize += () => WaypointIconFactory.PreCacheAllIcons(Capi);
 
-        G.Logger.VerboseDebug("Creating Waypoint Beacons render mesh flyweight");
+        G.Log("Creating Waypoint Beacons render mesh flyweight");
         WaypointBeaconStore.Create();
 
-        G.Logger.VerboseDebug("Registering waypoint beacon update callback");
+        G.Log("Registering waypoint beacon update callback");
         _listener = Capi.Event.RegisterGameTickListener(Update, 20);
     }
 
@@ -113,7 +113,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         {
             if (kvp.Key is null)
             {
-                G.Logger.VerboseDebug($"Removing beacon because key is null: {kvp.Value.Waypoint?.Guid}");
+                G.Log($"Removing beacon because key is null: {kvp.Value.Waypoint?.Guid}");
                 kvp.Value.TryClose();
                 kvp.Value.Dispose();
                 _waypointElements.TryRemove(kvp);
@@ -124,7 +124,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         foreach (var kvp in _waypointElements)
         {
             if (_settings.ActiveBeacons.Contains(kvp.Key)) continue;
-            G.Logger.VerboseDebug($"Removing beacon because it is no longer active: {kvp.Value.Waypoint?.Guid}");
+            G.Log($"Removing beacon because it is no longer active: {kvp.Value.Waypoint?.Guid}");
             kvp.Value.TryClose();
             kvp.Value.Dispose();
             _waypointElements.TryRemove(kvp.Key, out _);
@@ -133,7 +133,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         // Add elements present in ActiveBeacons but missing in WaypointElements
         foreach (var id in _settings.ActiveBeacons.Where(id => id is not null && !_waypointElements.ContainsKey(id)))
         {
-            G.Logger.VerboseDebug($"Adding beacon: {id}");
+            G.Log($"Adding beacon: {id}");
             var element = new WaypointBeaconHudElement(ApiEx.Client, id);
             _waypointElements.TryAdd(id, element);
         }

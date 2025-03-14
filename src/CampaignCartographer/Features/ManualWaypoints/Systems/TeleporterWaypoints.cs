@@ -18,7 +18,7 @@ public sealed class TeleporterWaypoints : ClientModSystem
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        G.Logger.VerboseDebug("Starting the teleporter waypoint service.");
+        G.Log("Starting the teleporter waypoint service.");
         (_capi = capi).ChatCommands
             .Create("wptp")
             .WithDescription(LangEx.FeatureString("PredefinedWaypoints.TeleporterWaypoints", "Description"))

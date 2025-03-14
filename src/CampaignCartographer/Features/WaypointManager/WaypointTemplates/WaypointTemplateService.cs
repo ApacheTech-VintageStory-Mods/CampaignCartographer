@@ -57,7 +57,7 @@ public class WaypointTemplateService
                 }
             }
 
-            G.Logger.VerboseDebug($"{WaypointTemplates.Count} waypoint extensions loaded from {templatePacks.Count} template packs.");
+            G.Log($"{WaypointTemplates.Count} waypoint extensions loaded from {templatePacks.Count} template packs.");
         }
         catch (Exception e)
         {

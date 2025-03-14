@@ -28,7 +28,7 @@ public class AddWaypointGroupLayerCommand : CommandBase
             var mapLayer = WaypointGroupMapLayer.Create(command.Group, MapManager);
             MapManager.MapLayers.Add(mapLayer);
             mapLayer.OnLoaded();
-            G.Logger.VerboseDebug($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
+            G.Log($"Waypoint group with id {command.Group.Id} added to map with name '{command.Group.Title}'.");
             return base.Handle(command);
         }
     }
