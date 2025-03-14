@@ -3,6 +3,7 @@ using Gantry.Services.FileSystem.Configuration.Consumers;
 using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
 using Vintagestory.API.Util;
+using System.Threading.Tasks;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 
@@ -38,7 +39,8 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
         lock (MapLayerGeneration.MapLayersLock)
         {
             G.Log("Creating map layer instances");
-            foreach (var (key, value) in __instance.MapLayerRegistry)
+            var registry = new Dictionary<string, Type>(__instance.MapLayerRegistry);
+            foreach (var (key, value) in registry)
             {
                 if (key == "entities" && !___capi.World.Config.GetAsBool("entityMapLayer")) continue;
                 G.Log($" - {key}: {value.Name}");
@@ -48,8 +50,8 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
             }
         }
 
-        G.Log("Creating map layer generation thread");
-        ___mapLayerGenThread = new Thread(() =>
+        G.Log("Starting map layer generation task");
+        Task.Factory.StartNew(async () => 
         {
             while (!__instance.IsShuttingDown)
             {
@@ -57,21 +59,16 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
 
                 lock (MapLayerGeneration.MapLayersLock)
                 {
-                    foreach (var layer in __instance.MapLayers)
+                    var layers = new List<MapLayer>(__instance.MapLayers);
+                    foreach (var layer in layers)
                     {
                         layer.OnOffThreadTick(20 / 1000f);
                     }
                 }
 
-                Thread.Sleep(20);
+                await Task.Delay(20);
             }
-        })
-        {
-            IsBackground = true
-        };
-
-        G.Log("Starting map layer generation thread");
-        ___mapLayerGenThread.Start();
+        });
 
         if (___capi is not null && (___capi.Settings.Bool["showMinimapHud"] || !___capi.Settings.Bool.Exists("showMinimapHud"))
         && (___worldMapDlg is null || !___worldMapDlg.IsOpened()))
