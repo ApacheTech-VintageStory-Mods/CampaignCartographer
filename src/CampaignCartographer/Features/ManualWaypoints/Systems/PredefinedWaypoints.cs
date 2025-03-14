@@ -54,6 +54,7 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
 
     public override void AssetsLoaded(ICoreClientAPI api)
     {
+        TemplatePacks.Clear();
         G.Log("Loading custom template packs.");
         RegisterTemplatePack("custom-world-template-pack.json");
         RegisterTemplatePack("custom-global-template-pack.json");

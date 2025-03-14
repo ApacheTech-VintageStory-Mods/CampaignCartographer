@@ -22,6 +22,7 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
     private const double UnscaledSwitchSize = 25.0;
     private const double UnscaledSwitchPadding = 4.0;
     private const double UnscaledRightBoxWidth = 40.0;
+    private readonly ICoreClientAPI _capi;
 
     /// <summary>
     /// 	Initialises a new instance of the <see cref="WaypointImportGuiCell" /> class.
@@ -31,6 +32,7 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
     /// <param name="bounds">The bounds.</param>
     public WaypointTemplatePackGuiCell(ICoreClientAPI capi, WaypointTemplatePackCellEntry cell, ElementBounds bounds) : base(capi, "", null, bounds)
     {
+        _capi = capi;
         Cell = cell;
         Bounds = bounds;
         _cellTexture = new LoadedTexture(capi);
@@ -220,13 +222,10 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
     public override void Dispose()
     {
         GC.SuppressFinalize(this);
-        ApiEx.ClientMain.EnqueueMainThreadTask(() =>
-        {
-            _cellTexture?.Dispose();
-            api.Render.GLDeleteTexture(_leftHighlightTextureId);
-            api.Render.GLDeleteTexture(_rightHighlightTextureId);
-            api.Render.GLDeleteTexture(_switchOnTextureId);
-            base.Dispose();
-        }, "");
+        _cellTexture?.Dispose();
+        api.Render.GLDeleteTexture(_leftHighlightTextureId);
+        api.Render.GLDeleteTexture(_rightHighlightTextureId);
+        api.Render.GLDeleteTexture(_switchOnTextureId);
+        base.Dispose();
     }
 }
