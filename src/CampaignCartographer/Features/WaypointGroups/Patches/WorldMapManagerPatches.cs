@@ -50,8 +50,8 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
             }
         }
 
-        G.Log("Starting map layer generation task");
-        Task.Factory.StartNew(async () => 
+        G.Log("Starting map layer generation thread");
+        ___mapLayerGenThread = new Thread(() =>
         {
             while (!__instance.IsShuttingDown)
             {
@@ -66,9 +66,11 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
                     }
                 }
 
-                await Task.Delay(20);
+                Thread.Sleep(20);
             }
-        });
+        })
+        { IsBackground = true };
+        ___mapLayerGenThread.Start();
 
         if (___capi is not null && (___capi.Settings.Bool["showMinimapHud"] || !___capi.Settings.Bool.Exists("showMinimapHud"))
         && (___worldMapDlg is null || !___worldMapDlg.IsOpened()))
