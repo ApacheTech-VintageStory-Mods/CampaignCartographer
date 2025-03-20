@@ -62,7 +62,7 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
                     var layers = new List<MapLayer>(__instance.MapLayers);
                     foreach (var layer in layers)
                     {
-                        layer.OnOffThreadTick(20 / 1000f);
+                        layer.OnOffThreadTick(0.02f);
                     }
                 }
 
