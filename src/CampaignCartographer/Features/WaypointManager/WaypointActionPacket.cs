@@ -16,5 +16,5 @@ public class WaypointActionPacket
     /// <summary>
     ///     The mode indicating whether the action is an addition or an edit.
     /// </summary>
-    public AddEditDialogueMode Mode { get; set; }
+    public CrudAction Mode { get; set; }
 }

@@ -13,13 +13,10 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     [ClientSide]
     public override void StartClientSide(ICoreClientAPI capi)
     {
-        var channel = capi.Network
+        capi.Network
             .RegisterChannel(nameof(WaypointManager))
             .RegisterMessageType<WorldMapTeleportPacket>()
-            .RegisterMessageType<WaypointActionPacket>()
-            .RegisterMessageType<SignalPacket>();
-
-        var state = capi.Network.GetChannelState(nameof(WaypointManager));
+            .RegisterMessageType<WaypointActionPacket>();
         G.Log("Registered WaypointManager network channel.");
     }
 
@@ -29,15 +26,8 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
         api.Network
             .RegisterChannel(nameof(WaypointManager))
             .RegisterMessageHandler<WorldMapTeleportPacket>(OnTeleportPacketReceived)
-            .RegisterMessageHandler<WaypointActionPacket>(OnWaypointPacketReceived)
-            .RegisterMessageHandler<SignalPacket>(OnSignalPacketReceived);
+            .RegisterMessageHandler<WaypointActionPacket>(OnWaypointPacketReceived);
         G.Log("Registered WaypointManager network channel.");
-    }
-
-    [ServerSide]
-    private void OnSignalPacketReceived(IServerPlayer fromPlayer, SignalPacket packet)
-    {
-        G.Log(" ===== Signal Packet Received ===== ");
     }
 
     [ServerSide]
@@ -51,10 +41,10 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     {
         switch (packet.Mode)
         {
-            case AddEditDialogueMode.Add:
+            case CrudAction.Add:
                 AddWaypoint(packet.Waypoint, fromPlayer);
                 break;
-            case AddEditDialogueMode.Edit:
+            case CrudAction.Edit:
                 EditWaypoint(packet.Waypoint, fromPlayer);
                 break;
             default:

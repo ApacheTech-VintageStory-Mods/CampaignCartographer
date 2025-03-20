@@ -177,7 +177,7 @@ public class PredefinedWaypointsDialogue : GenericDialogue
     private bool OnAddNewWaypointTypeButtonPressed()
     {
         var template = new PredefinedWaypointTemplate().With(p => p.TemplatePack = _templatePack);
-        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(template, AddEditDialogueMode.Add).With(p =>
+        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(template, CrudAction.Add).With(p =>
         {
             p.Title = LangEntry("AddNew");
             p.OnOkAction = AddNewWaypointType;
@@ -253,7 +253,7 @@ public class PredefinedWaypointsDialogue : GenericDialogue
     {
         if (!_templatePack.Metadata.Custom) return;
         var cell = _cellList.elementCells.Cast<PredefinedWaypointsGuiCell>().ToList()[val];
-        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(cell.Model, AddEditDialogueMode.Edit).With(p =>
+        var dialogue = IOC.Services.CreateInstance<AddEditWaypointTypeDialogue>(cell.Model, CrudAction.Edit).With(p =>
         {
             p.Title = LangEntry("Edit");
             p.OnOkAction = EditWaypointType;

@@ -15,7 +15,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
 {
     private readonly WaypointGroupsSettings _settings;
     private readonly WaypointGroup _group;
-    private readonly AddEditDialogueMode _mode;
+    private readonly CrudAction _mode;
 
     public required Action OnChanged { get; init; }
 
@@ -27,11 +27,11 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
     [SidedConstructor(EnumAppSide.Client)]
     public AddEditWaypointGroupDialogue(WaypointGroup? group = null) : base(ApiEx.Client)
     {
-        _mode = group is null ? AddEditDialogueMode.Add : AddEditDialogueMode.Edit;
+        _mode = group is null ? CrudAction.Add : CrudAction.Edit;
         _group = group?.DeepClone() ?? new();
         _settings = IOC.Services.GetRequiredService<WaypointGroupsSettings>();
 
-        Title = T(_mode == AddEditDialogueMode.Add ? "AddNew" : "Edit");
+        Title = T(_mode == CrudAction.Add ? "AddNew" : "Edit");
         Alignment = EnumDialogArea.CenterMiddle;
         Modal = true;
         ModalTransparency = .4f;
@@ -81,7 +81,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
         // Delete Button
         //
 
-        if (_mode == AddEditDialogueMode.Edit)
+        if (_mode == CrudAction.Edit)
         {
             buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
             composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
@@ -121,8 +121,8 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
         }
 
         _mode.Switch(
-            (AddEditDialogueMode.Add, AddWaypointGroup),
-            (AddEditDialogueMode.Edit, UpdateWaypointGroup)
+            (CrudAction.Add, AddWaypointGroup),
+            (CrudAction.Edit, UpdateWaypointGroup)
         );
         return TryClose();
     }

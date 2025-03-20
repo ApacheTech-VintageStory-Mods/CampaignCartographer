@@ -16,7 +16,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 {
     private readonly PredefinedWaypointTemplate _template;
     private readonly IFileSystemService _fileSystemService;
-    private readonly AddEditDialogueMode _mode;
+    private readonly CrudAction _mode;
 
     private readonly string[] _icons;
     private readonly int[] _colours;
@@ -29,7 +29,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
     /// <param name="mode"></param>
     [Obsolete("Use Factory Method: WaypointInfoDialogue.ShowDialogue()")]
     [SidedConstructor(EnumAppSide.Client)]
-    public AddEditWaypointTypeDialogue(ICoreClientAPI capi, IFileSystemService fileSystemService, PredefinedWaypointTemplate waypoint, AddEditDialogueMode mode) : base(capi)
+    public AddEditWaypointTypeDialogue(ICoreClientAPI capi, IFileSystemService fileSystemService, PredefinedWaypointTemplate waypoint, CrudAction mode) : base(capi)
     {
         var waypointMapLayer = IOC.Services.GetRequiredService<WaypointMapLayer>();
         _template = waypoint.Clone().To<PredefinedWaypointTemplate>();
@@ -38,7 +38,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         _icons = [.. waypointMapLayer.WaypointIcons.Keys];
         _colours = [.. waypointMapLayer.WaypointColors];
 
-        var titlePrefix = _mode == AddEditDialogueMode.Add ? "AddNew" : "Edit";
+        var titlePrefix = _mode == CrudAction.Add ? "AddNew" : "Edit";
         Title = T(titlePrefix);
         Alignment = EnumDialogArea.CenterMiddle;
         Modal = true;
@@ -53,7 +53,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
     protected override void RefreshValues()
     {
-        if (_mode == AddEditDialogueMode.Add)
+        if (_mode == CrudAction.Add)
         {
             SingleComposer.GetTextInput("txtSyntax").SetValue(_template.Key);
         }
@@ -83,10 +83,10 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         composer
             .AddStaticText(T("Syntax"), labelFont, EnumTextOrientation.Right, left.WithFixedOffset(0, 5), "lblSyntax")
             .AddAutoSizeHoverText(T("Syntax.HoverText"), txtTitleFont, 260, left)
-            .AddIf(_mode == AddEditDialogueMode.Add)
+            .AddIf(_mode == CrudAction.Add)
             .AddTextInput(right, OnSyntaxChanged, txtTitleFont, "txtSyntax")
             .EndIf()
-            .AddIf(_mode == AddEditDialogueMode.Edit)
+            .AddIf(_mode == CrudAction.Edit)
             .AddStaticText(_template.Key, txtTitleFont, EnumTextOrientation.Left, right.WithFixedOffset(0, 5))
             .EndIf();
 
@@ -178,7 +178,7 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
 
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(LangEx.ConfirmationString("cancel"), OnCancelButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnCancel");
-        if (_mode == AddEditDialogueMode.Add) return;
+        if (_mode == CrudAction.Add) return;
 
         //
         // Delete Button

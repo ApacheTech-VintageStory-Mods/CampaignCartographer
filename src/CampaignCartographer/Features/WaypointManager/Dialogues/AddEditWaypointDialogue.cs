@@ -21,7 +21,7 @@ public class AddEditWaypointDialogue : GenericDialogue
     private readonly Waypoint _waypoint;
     private readonly int _index;
     private readonly BlockPos _position;
-    private readonly AddEditDialogueMode _mode;
+    private readonly CrudAction _mode;
     private readonly IClientNetworkChannel _clientChannel;
     private readonly IPlayer[] _onlinePlayers;
     private readonly Dictionary<string, string> _waypointGroups;
@@ -35,12 +35,12 @@ public class AddEditWaypointDialogue : GenericDialogue
     private WaypointGroup _group;
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, Waypoint waypoint, int index)
-        : this(capi, AddEditDialogueMode.Edit, waypoint, index: index)
+        : this(capi, CrudAction.Edit, waypoint, index: index)
     {
     }
 
     public AddEditWaypointDialogue(ICoreClientAPI capi, BlockPos position)
-        : this(capi, AddEditDialogueMode.Add, null, position: position)
+        : this(capi, CrudAction.Add, null, position: position)
     {
         _waypoint = new Waypoint
         {
@@ -56,7 +56,7 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     private AddEditWaypointDialogue(        
         ICoreClientAPI capi,
-        AddEditDialogueMode mode,
+        CrudAction mode,
         Waypoint waypoint,
         int index = 0,
         BlockPos position = null)
@@ -220,7 +220,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         // Delete Button
         //
 
-        if (_mode == AddEditDialogueMode.Add) return;
+        if (_mode == CrudAction.Add) return;
         buttonBounds = buttonBounds.FlatCopy().FixedLeftOf(buttonBounds, 10);
         composer.AddSmallButton(LangEx.ConfirmationString("delete"), OnDeleteButtonPressed, buttonBounds, EnumButtonStyle.Normal, "btnDelete");
 
