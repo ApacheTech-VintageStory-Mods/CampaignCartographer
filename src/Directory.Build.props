@@ -289,6 +289,24 @@
 		</Reference>
 
 		<!--
+	        Library 50: System.Text.Encodings.Web
+	        Description: Text encoding library for web applications
+	    -->
+		<Reference Include="System.Text.Encodings.Web">
+			<HintPath>$(VINTAGE_STORY)\Lib\System.Text.Encodings.Web.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
+	        Library 51: System.Text.Json
+	        Description: A BCL .NET library for JSON handling
+	    -->
+		<Reference Include="System.Text.Json">
+			<HintPath>$(VINTAGE_STORY)\Lib\System.Text.Json.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!--
 	        Library 58: Tavis.JsonPatch
 	        Description: A .NET library for working with JSON Patch format
 	    -->
