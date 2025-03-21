@@ -1,5 +1,4 @@
-﻿using Gantry.Core.Extensions.Api;
-using Gantry.Core.GameContent;
+﻿using Gantry.Core.GameContent;
 using Gantry.Core.Maths;
 using Vintagestory.API.MathTools;
 

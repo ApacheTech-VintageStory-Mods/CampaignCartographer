@@ -3,7 +3,6 @@ using Gantry.Services.FileSystem.Configuration.Consumers;
 using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
 using Vintagestory.API.Util;
-using System.Threading.Tasks;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 

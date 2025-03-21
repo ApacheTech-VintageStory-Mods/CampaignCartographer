@@ -6,7 +6,6 @@ using Gantry.Core.GameContent.GUI.Abstractions;
 using Gantry.Core.GameContent.GUI.Models;
 using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.Network.Packets;
-using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.API.Server;

@@ -1,5 +1,4 @@
 ﻿using Gantry.Core.Annotation;
-using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.Server;
 

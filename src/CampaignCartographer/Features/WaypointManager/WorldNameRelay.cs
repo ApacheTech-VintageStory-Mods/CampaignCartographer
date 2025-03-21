@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using ApacheTech.Common.Extensions.Harmony;
-using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
 using Gantry.Services.Network.Packets;
 using Vintagestory.API.Server;

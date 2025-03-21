@@ -1,5 +1,4 @@
-﻿ using ApacheTech.Common.Extensions.Enum;
-using ApacheTech.Common.Extensions.Harmony;
+﻿using ApacheTech.Common.Extensions.Enum;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Cairo;
 using Gantry.Core.Hosting.Annotation;

@@ -3,9 +3,9 @@ using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 using Gantry.Core.Extensions.Harmony;
 using Gantry.Services.Network.Packets;
-using Gantry.Services.Network;
 using Vintagestory.API.MathTools;
 using System.Text;
+using Gantry.Services.Network.Extensions;
 
 // ReSharper disable InconsistentNaming
 
@@ -82,7 +82,8 @@ public static class WaypointDialoguePatches
         if (!(Math.Abs(value) < size) || !(Math.Abs(dY) < size)) return false;
         if (player.Entity.Controls.ShiftKey && player.WorldData.CurrentGameMode == EnumGameMode.Creative)
         {
-            ApiEx.Client.Network.GetChannel(nameof(WaypointManager))
+            ApiEx.Client.Network
+                .GetDefaultChannel()
                 .SendPacket<WorldMapTeleportPacket>(new() { Position = ___waypoint.Position });
             args.Handled = true;
             return false;

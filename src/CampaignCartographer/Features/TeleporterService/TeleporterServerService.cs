@@ -1,5 +1,4 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
-using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;

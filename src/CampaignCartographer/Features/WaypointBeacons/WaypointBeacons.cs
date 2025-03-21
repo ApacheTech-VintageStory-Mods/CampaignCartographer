@@ -2,7 +2,6 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.ModMenu.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointBeacons.Dialogue.Renderers;
-using Gantry.Core.Extensions.Api;
 using Gantry.Core.Extensions.DotNet;
 using Gantry.Core.GameContent;
 using Gantry.Core.Hosting.Registration;

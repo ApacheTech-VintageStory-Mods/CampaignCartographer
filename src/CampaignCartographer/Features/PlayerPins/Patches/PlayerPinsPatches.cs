@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 using Vintagestory.Server;

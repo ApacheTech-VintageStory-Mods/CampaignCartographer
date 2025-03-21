@@ -3,7 +3,7 @@ using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.Map
 using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Dialogue;
 using Gantry.Core.GameContent.Blocks;
 using Gantry.Services.FileSystem.Configuration;
-using Gantry.Services.Network;
+using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Behaviours;
@@ -27,7 +27,8 @@ internal class TeleporterBlockBehaviour : BlockBehaviour<BlockTeleporter>
     /// <param name="block">The block instance this behaviour is associated with.</param>
     public TeleporterBlockBehaviour(Block block) : base(block)
     {
-        _clientChannel = ApiEx.Client.Network.GetChannel(nameof(TeleporterManager))
+        _clientChannel = ApiEx.Client.Network
+            .GetDefaultChannel()
             .SetMessageHandler<TpLocations>(ShowDialogue);
     }
 

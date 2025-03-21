@@ -1,4 +1,5 @@
-﻿using ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Extensions;
+﻿using System.Diagnostics;
+using ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Extensions;
 using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
@@ -20,23 +21,27 @@ internal class GpsClientSystem : ClientModSystem
         G.Log("Starting GPS service.");
         capi.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<GpsPacket>(p =>
-            {
-                var message = capi.World.Player.GpsLocation();
-                switch (p.Action)
-                {
-                    case GpsAction.Broadcast:
-                        Capi.SendChatMessage(message);
-                        break;
-                    case GpsAction.Clipboard:
-                        Capi.Input.ClipboardText = message;
-                        break;
-                    case GpsAction.Notification:
-                        Capi.ShowChatMessage(message);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(p));
-                }
-            });
+            .RegisterMessageHandler<GpsPacket>(ShowLocation);
+    }
+
+    private void ShowLocation(GpsPacket packet)
+    {
+        var player = Capi.World.Player;
+        if (player is null) return;
+        var message = player.GpsLocation();
+        switch (packet.Action)
+        {
+            case GpsAction.Broadcast:
+                Capi.SendChatMessage(message);
+                break;
+            case GpsAction.Clipboard:
+                Capi.Input.ClipboardText = message;
+                break;
+            case GpsAction.Notification:
+                Capi.ShowChatMessage(message);
+                break;
+            default:
+                throw new UnreachableException();
+        }
     }
 }
