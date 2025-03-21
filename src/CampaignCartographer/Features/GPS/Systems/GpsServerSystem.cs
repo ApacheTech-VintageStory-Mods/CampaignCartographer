@@ -4,6 +4,7 @@ using Gantry.Core.GameContent.ChatCommands.Parsers.Extensions;
 using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
 using Gantry.Services.Network;
+using Gantry.Services.Network.Extensions;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
@@ -53,9 +54,8 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
             .HandleWith(OnServerSubCommandPrivateMessage)
             .EndSubCommand();
 
-        _serverChannel = IOC.Services
-            .GetRequiredService<IServerNetworkService>()
-            .GetOrRegisterChannel("CC_GPS")
+        _serverChannel = api.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageType<GpsPacket>();
     }
 

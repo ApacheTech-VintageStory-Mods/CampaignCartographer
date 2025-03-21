@@ -14,7 +14,7 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     public override void StartClientSide(ICoreClientAPI capi)
     {
         capi.Network
-            .RegisterChannel(nameof(WaypointManager))
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageType<WorldMapTeleportPacket>()
             .RegisterMessageType<WaypointActionPacket>();
         G.Log("Registered WaypointManager network channel.");
@@ -24,7 +24,7 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     public override void StartServerSide(ICoreServerAPI api)
     {
         api.Network
-            .RegisterChannel(nameof(WaypointManager))
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageHandler<WorldMapTeleportPacket>(OnTeleportPacketReceived)
             .RegisterMessageHandler<WaypointActionPacket>(OnWaypointPacketReceived);
         G.Log("Registered WaypointManager network channel.");

@@ -1,5 +1,4 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Extensions;
-using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
@@ -19,9 +18,8 @@ internal class GpsClientSystem : ClientModSystem
     public override void StartClientSide(ICoreClientAPI capi)
     {
         G.Log("Starting GPS service.");
-        IOC.Services
-            .GetRequiredService<IClientNetworkService>()
-            .GetOrRegisterChannel("CC_GPS")
+        capi.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageHandler<GpsPacket>(p =>
             {
                 var message = capi.World.Player.GpsLocation();

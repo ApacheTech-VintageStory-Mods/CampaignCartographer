@@ -1,5 +1,4 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Behaviours;
-using Gantry.Services.Network;
 using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
@@ -17,11 +16,9 @@ public class TeleporterClientService : ClientModSystem
     public override void StartClientSide(ICoreClientAPI api)
     {
         G.Log("Starting teleporter service");
-        IOC.Services
-           .GetRequiredService<IClientNetworkService>()
-           .GetOrRegisterChannel(nameof(TeleporterManager))
-           .RegisterMessageType<TpLocations>()
-           .RegisterMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
+        api.Network
+            .GetOrRegisterDefaultChannel()
+            .RegisterMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
     }
 
     /// <summary>

@@ -107,10 +107,7 @@ public class TeleporterLocationDialogue : GenericDialogue
 
     private bool OnOkButtonPressed()
     {
-        var networkService = IOC.Services.GetRequiredService<IClientNetworkService>();
-
-        networkService.GetOrRegisterChannel("tpManager").SendPacket(_locationData.ForLocation);
-
+        capi.Network.GetChannel("tpManager")?.SendPacket(_locationData.ForLocation);
         IOC.Services
             .GetRequiredService<FastTravelOverlay.FastTravelOverlay>()
             .UpdateTeleporterTarget(_locationData.ForLocation);

@@ -24,20 +24,16 @@ public class WorldNameRelay : UniversalModSystem
     /// <param name="api">The API.</param>
     public override void StartClientSide(ICoreClientAPI api)
     {
-        _clientChannel = IOC.Services
-            .Resolve<IClientNetworkService>()
-            .DefaultClientChannel?
-            .RegisterMessageType<WorldNamePacket>()
-            .SetMessageHandler<WorldNamePacket>(OnWorldNamePacketReceived);
+        _clientChannel = api.Network
+            .GetOrRegisterDefaultChannel()
+            .RegisterMessageHandler<WorldNamePacket>(OnWorldNamePacketReceived);
     }
 
     public override void StartServerSide(ICoreServerAPI api)
     {
-        _serverChannel = IOC.Services
-            .Resolve<IServerNetworkService>()
-            .DefaultServerChannel?
-            .RegisterMessageType<WorldNamePacket>()
-            .SetMessageHandler<WorldNamePacket>(OnWorldNamePacketReceivedOnServer);
+        _serverChannel = api.Network
+            .GetOrRegisterDefaultChannel()
+            .RegisterMessageHandler<WorldNamePacket>(OnWorldNamePacketReceivedOnServer);
     }
 
     private void OnWorldNamePacketReceivedOnServer(IServerPlayer fromPlayer, WorldNamePacket packet)

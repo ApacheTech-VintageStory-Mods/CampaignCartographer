@@ -1,4 +1,5 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap.Packets;
+using Gantry.Services.Network.Extensions;
 using Vintagestory.API.Server;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap;
@@ -15,7 +16,8 @@ public sealed class CentreMapServer : ServerModSystem
     public override void StartServerSide(ICoreServerAPI sapi)
     {
         G.Log("Starting centre-map service");
-        _serverChannel = sapi.Network.RegisterChannel("centreMap")
+        _serverChannel = sapi.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageType<PlayerSpawnPositionDto>()
             .SetMessageHandler<PlayerSpawnPositionDto>(OnServerSpawnPointRequestReceived);
     }

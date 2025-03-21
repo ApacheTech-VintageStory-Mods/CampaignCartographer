@@ -27,9 +27,7 @@ internal class TeleporterBlockBehaviour : BlockBehaviour<BlockTeleporter>
     /// <param name="block">The block instance this behaviour is associated with.</param>
     public TeleporterBlockBehaviour(Block block) : base(block)
     {
-        var service = IOC.Services.GetRequiredService<IClientNetworkService>();
-        _clientChannel = service
-            .GetOrRegisterChannel(nameof(TeleporterManager))
+        _clientChannel = ApiEx.Client.Network.GetChannel(nameof(TeleporterManager))
             .SetMessageHandler<TpLocations>(ShowDialogue);
     }
 

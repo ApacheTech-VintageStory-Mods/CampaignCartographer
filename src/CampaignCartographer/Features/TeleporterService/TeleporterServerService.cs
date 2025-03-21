@@ -1,5 +1,6 @@
 ﻿using ApacheTech.Common.Extensions.Harmony;
 using Gantry.Services.Network;
+using Gantry.Services.Network.Extensions;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
@@ -25,12 +26,10 @@ internal class TeleporterServerService : ServerModSystem
         G.Log("Starting teleporter service");
         _vanillaSystem = Sapi.ModLoader.GetModSystem<TeleporterManager>();
 
-        _serverChannel = IOC.Services
-            .GetRequiredService<IServerNetworkService>()
-            .GetOrRegisterChannel(nameof(TeleporterManager))
-            .RegisterMessageType<TpLocations>()
-            .RegisterMessageType<TeleporterLocationsPacket>()
-            .SetMessageHandler<TpLocations>(SendDataToClient);
+        _serverChannel = api.Network
+            .GetOrRegisterDefaultChannel()
+            .RegisterMessageHandler<TpLocations>(SendDataToClient)
+            .RegisterMessageType<TeleporterLocationsPacket>();
 
         api.Event.PlayerJoin += SendLocationsToPlayer;
     }

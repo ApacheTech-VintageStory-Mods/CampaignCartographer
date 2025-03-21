@@ -36,7 +36,8 @@ public sealed class CentreMapClient : ClientModSystem
 
         _capi.Event.IsPlayerReady += Event_IsPlayerReady;
 
-        _clientChannel = _capi.Network.RegisterChannel("centreMap")
+        _clientChannel = _capi.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageType<PlayerSpawnPositionDto>()
             .SetMessageHandler<PlayerSpawnPositionDto>(OnClientSpawnPointResponsePacketReceived);
 

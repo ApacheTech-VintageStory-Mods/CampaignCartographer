@@ -11,6 +11,7 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.API.Server;
 using Groups = ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Systems.WaypointGroups;
+using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 
@@ -74,7 +75,7 @@ public class AddEditWaypointDialogue : GenericDialogue
         _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];        
         _waypointGroups = Groups.GetWaypointGroupListItems();
 
-        _clientChannel = capi.Network.GetChannel(nameof(WaypointManager));
+        _clientChannel = capi.Network.GetDefaultChannel();
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;

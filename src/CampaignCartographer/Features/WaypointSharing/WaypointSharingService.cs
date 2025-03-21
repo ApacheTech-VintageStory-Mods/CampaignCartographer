@@ -11,7 +11,6 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointSharing;
 public class WaypointSharingService : UniversalModSystem
 {
     private IClientNetworkChannel _clientChannel;
-    private IServerNetworkChannel _serverChannel;
 
     /// <inheritdoc />
     public override double ExecuteOrder() => 0.12;
@@ -23,9 +22,8 @@ public class WaypointSharingService : UniversalModSystem
     public override void StartServerSide(ICoreServerAPI api)
     {
         G.Log("Starting waypoint sharing service.");
-        _serverChannel = IOC.Services
-            .GetRequiredService<IServerNetworkService>()
-            .GetOrRegisterChannel(nameof(WaypointSharingService))
+        api.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageHandler<WaypointSharingPacket>(HandleServerPacket);
     }
 
@@ -66,9 +64,8 @@ public class WaypointSharingService : UniversalModSystem
     public override void StartClientSide(ICoreClientAPI api)
     {
         G.Log("Starting waypoint sharing service.");
-        _clientChannel = IOC.Services
-            .GetRequiredService<IClientNetworkService>()
-            .GetOrRegisterChannel(nameof(WaypointSharingService))
+        _clientChannel = api.Network
+            .GetOrRegisterDefaultChannel()
             .RegisterMessageType<WaypointSharingPacket>();
     }
 
