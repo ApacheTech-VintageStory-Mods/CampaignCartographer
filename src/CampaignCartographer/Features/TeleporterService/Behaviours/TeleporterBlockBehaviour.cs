@@ -1,6 +1,5 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay;
 using ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay.MapLayer;
-using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Dialogue;
 using Gantry.Core.GameContent.Blocks;
 using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.Network.Extensions;
@@ -11,9 +10,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService
 /// <summary>
 ///     Represents behaviour specific to teleporter blocks, including interactions and network communication.
 /// </summary>
-internal class TeleporterBlockBehaviour : BlockBehaviour<BlockTeleporter>
+internal class TeleporterBlockBehaviour(Block block) : BlockBehaviour<BlockTeleporter>(block)
 {
-    private readonly IClientNetworkChannel _clientChannel;
     private readonly WorldInteraction _interaction = new()
     {
         HotKeyCode = "shift",
@@ -21,34 +19,14 @@ internal class TeleporterBlockBehaviour : BlockBehaviour<BlockTeleporter>
         ActionLangCode = "blockhelp-set-teleporter-location"
     };
 
-    /// <summary>
-    ///     Initialises a new instance of the <see cref="TeleporterBlockBehaviour" /> class.
-    /// </summary>
-    /// <param name="block">The block instance this behaviour is associated with.</param>
-    public TeleporterBlockBehaviour(Block block) : base(block)
-    {
-        _clientChannel = ApiEx.Client.Network
-            .GetDefaultChannel()
-            .SetMessageHandler<TpLocations>(ShowDialogue);
-    }
-
-    /// <summary>
-    ///     Displays the teleporter location dialogue when a packet is received.
-    /// </summary>
-    /// <param name="packet">The teleporter location data.</param>
-    private void ShowDialogue(TpLocations packet)
-    {
-        var dialogue = new TeleporterLocationDialogue(ApiEx.Client, packet);
-        dialogue.ToggleGui();
-    }
-
     /// <inheritdoc />
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
     {
         if (!byPlayer.Entity.Controls.ShiftKey)
             return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
-
-        _clientChannel.SendPacket(new TpLocations { ForLocation = new TeleporterLocation { SourcePos = blockSel.Position } });
+        
+        var packet = new TpLocations { ForLocation = new TeleporterLocation { SourcePos = blockSel.Position } };
+        ApiEx.Client.Network.GetDefaultChannel().SendPacket(packet);
         handling = EnumHandling.Handled;
         return true;
     }

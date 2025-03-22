@@ -1,4 +1,5 @@
 ﻿using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Behaviours;
+using ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService.Dialogue;
 using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService;
@@ -18,8 +19,18 @@ public class TeleporterClientService : ClientModSystem
         G.Log("Starting teleporter service");
         api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageType<TpLocations>()
+            .RegisterMessageHandler<TpLocations>(ShowDialogue)
             .RegisterMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
+    }
+
+    /// <summary>
+    ///     Displays the teleporter location dialogue when a packet is received.
+    /// </summary>
+    /// <param name="packet">The teleporter location data.</param>
+    private void ShowDialogue(TpLocations packet)
+    {
+        var dialogue = new TeleporterLocationDialogue(ApiEx.Client, packet);
+        dialogue.ToggleGui();
     }
 
     /// <summary>
@@ -28,7 +39,7 @@ public class TeleporterClientService : ClientModSystem
     /// <param name="p">The packet containing teleporter location data.</param>
     private void OnLocationsReceived(TeleporterLocationsPacket p)
     {
-        G.Log("Teleporter locations updated.");
+        G.Log("Teleporter locations updated.");        
         TeleporterLocations = p.Teleporters;
     }
 
@@ -36,6 +47,9 @@ public class TeleporterClientService : ClientModSystem
     ///     Adds custom behaviours to teleporter blocks after assets have been finalised, ensuring they are properly 
     ///     configured for client-side functionality.
     /// </summary>
+    /// <remarks>
+    ///     This fires before <see cref="StartClientSide"/>, so the network channel is not yet available."/>
+    /// </remarks>
     /// <param name="api">The client API instance.</param>
     public override void AssetsFinalise(ICoreClientAPI api)
     {

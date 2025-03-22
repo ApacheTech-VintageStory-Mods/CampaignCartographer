@@ -68,7 +68,7 @@ internal class TeleporterServerService : ServerModSystem
     /// <param name="fromPlayer">The player who set the teleporter location.</param>
     [HarmonyPostfix]
     [HarmonyPatch(typeof(TeleporterManager), "OnSetLocationReceived")]
-    private static void Harmony_TeleporterManager_OnSetLocationReceived_Postfix(IServerPlayer fromPlayer)
+    public static void Harmony_TeleporterManager_OnSetLocationReceived_Postfix(IServerPlayer fromPlayer)
     {
         SendLocationsToPlayer(fromPlayer);
     }
