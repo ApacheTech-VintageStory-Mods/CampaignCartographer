@@ -25,14 +25,14 @@ public class WorldNameRelay : UniversalModSystem
     {
         _clientChannel = api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<WorldNamePacket>(OnWorldNamePacketReceived);
+            .RegisterPacket<WorldNamePacket>(OnWorldNamePacketReceived);
     }
 
     public override void StartServerSide(ICoreServerAPI api)
     {
         _serverChannel = api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<WorldNamePacket>(OnWorldNamePacketReceivedOnServer);
+            .RegisterPacket<WorldNamePacket>(OnWorldNamePacketReceivedOnServer);
     }
 
     private void OnWorldNamePacketReceivedOnServer(IServerPlayer fromPlayer, WorldNamePacket packet)

@@ -40,9 +40,9 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
         capi.ChatCommands
             .Create("playerpins")
             .WithDescription(LangEx.FeatureString("PlayerPins", "SettingsCommandDescription"))
-            .HandleWith(_ => IOC.Services.Resolve<PlayerPinsDialogue>().ToggleGui());
+            .HandleWith(_ => IOC.Services.GetRequiredService<PlayerPinsDialogue>().ToggleGui());
 
-        IOC.Services.Resolve<HighlightClientChatCommand>().Register();
+        IOC.Services.GetRequiredService<HighlightClientChatCommand>().Register();
         LoadTextures();
     }
 
@@ -53,7 +53,7 @@ public class PlayerPins : ClientModSystem, IClientServiceRegistrar
 
     public void LoadTextures()
     {
-        var settings = IOC.Services.Resolve<PlayerPinsSettings>();
+        var settings = IOC.Services.GetRequiredService<PlayerPinsSettings>();
         TextureCache[PlayerRelation.Self] = LoadTexture(settings.SelfColour, settings.SelfScale);
         TextureCache[PlayerRelation.Highlighted] = LoadTexture(settings.HighlightColour, settings.HighlightScale);
         TextureCache[PlayerRelation.Others] = LoadTexture(settings.OthersColour, settings.OthersScale);

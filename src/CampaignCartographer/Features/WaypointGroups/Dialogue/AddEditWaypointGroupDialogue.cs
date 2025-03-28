@@ -130,7 +130,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
     private void AddWaypointGroup()
     {
         _settings.Groups.Add(_group);
-        IOC.Brighter.Send(new AddWaypointGroupLayerCommand { Group = _group });
+        IOC.CommandProcessor.Send(new AddWaypointGroupLayerCommand { Group = _group });
         ModSettings.World.Save(_settings);
         OnChanged();
     }
@@ -138,7 +138,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
     private void UpdateWaypointGroup()
     {
         _settings.Groups.First(p => p.Id == _group.Id).Title = _group.Title;
-        IOC.Brighter.Send(new UpdateWaypointGroupLayerCommand { Group = _group });
+        IOC.CommandProcessor.Send(new UpdateWaypointGroupLayerCommand { Group = _group });
         ModSettings.World.Save(_settings);
         OnChanged();
     }
@@ -147,7 +147,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
     {
         _settings.Groups.RemoveAll(p => p.Id == _group.Id);
         ModSettings.World.Save(_settings);
-        IOC.Brighter.Send(new RemoveWaypointGroupLayerCommand { GroupId = _group.Id.ToString() });
+        IOC.CommandProcessor.Send(new RemoveWaypointGroupLayerCommand { GroupId = _group.Id.ToString() });
         OnChanged();
         return TryClose();
     }

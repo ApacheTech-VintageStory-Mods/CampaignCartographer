@@ -46,7 +46,7 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         {
             foreach (var group in ClientSettings.Groups)
             {
-                IOC.Brighter.Send(new AddWaypointGroupLayerCommand() { Group = group });
+                IOC.CommandProcessor.Send(new AddWaypointGroupLayerCommand() { Group = group });
             }
         }
         catch (Exception ex)

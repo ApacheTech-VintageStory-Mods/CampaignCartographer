@@ -121,7 +121,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
 
     private bool BackToWaypointManager()
     {
-        var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
+        var dialogue = IOC.Services.GetRequiredService<WaypointImportDialogue>();
         while (dialogue.IsOpened(dialogue.ToggleKeyCombinationCode))
             dialogue.TryClose();
         dialogue.TryOpen();

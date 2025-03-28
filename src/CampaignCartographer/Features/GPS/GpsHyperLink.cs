@@ -85,7 +85,7 @@ public class GpsHyperLink
     /// </remarks>
     public void Execute()
     {
-        var mapManager = IOC.Services.Resolve<WorldMapManager>();
+        var mapManager = IOC.Services.GetRequiredService<WorldMapManager>();
 
         if (mapManager.worldMapDlg is null ||
             !mapManager.worldMapDlg.IsOpened() ||

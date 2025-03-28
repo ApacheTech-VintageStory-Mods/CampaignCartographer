@@ -1,7 +1,10 @@
 ﻿#nullable enable
+using System.Text;
 using ApacheTech.Common.Extensions.Harmony;
 using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.FileSystem.Configuration.Consumers;
+using Vintagestory.API.MathTools;
+using static OpenTK.Graphics.OpenGL.GL;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 

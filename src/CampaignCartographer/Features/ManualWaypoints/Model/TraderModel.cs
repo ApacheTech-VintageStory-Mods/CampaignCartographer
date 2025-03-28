@@ -15,7 +15,7 @@ public sealed class TraderModel
     /// <returns>A <see cref="string"/> representation of the colour to use for the waypoint of the trader.</returns>
     public static string GetColourFor(EntityTrader trader)
     {
-        var colours = IOC.Services.Resolve<IFileSystemService>()
+        var colours = IOC.Services.GetRequiredService<IFileSystemService>()
             .GetJsonFile("trader-colours.json")
             .ParseAs<Dictionary<string, string>>();
 

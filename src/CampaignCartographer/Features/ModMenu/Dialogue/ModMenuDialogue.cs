@@ -81,7 +81,7 @@ public sealed class ModMenuDialogue : GenericDialogue
 
     private static bool OnDonateButtonPressed()
     {
-        var dialogue = IOC.Services.Resolve<SupportDialogue>();
+        var dialogue = IOC.Services.GetRequiredService<SupportDialogue>();
         return dialogue.TryOpen();
     }
 }

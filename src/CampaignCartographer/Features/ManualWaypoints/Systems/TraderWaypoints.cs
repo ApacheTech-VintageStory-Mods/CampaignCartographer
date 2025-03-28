@@ -22,7 +22,7 @@ public sealed class TraderWaypoints : ClientModSystem
     public override void StartClientSide(ICoreClientAPI capi)
     {
         G.Log("Starting the trader waypoint service.");
-        _waypointService = IOC.Services.Resolve<WaypointTemplateService>();
+        _waypointService = IOC.Services.GetRequiredService<WaypointTemplateService>();
 
         (_capi = capi).ChatCommands
             .Create("wpt")

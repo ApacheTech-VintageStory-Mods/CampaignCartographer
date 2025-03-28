@@ -51,5 +51,5 @@ public partial class WaypointIconModel
     ///     Gets a list of the vanilla icons.
     /// </summary>
     public static IEnumerable<WaypointIconModel> GetVanillaIcons() =>
-        IOC.Services.Resolve<WaypointMapLayer>().WaypointIcons.Select(p => new WaypointIconModel(p.Key, true));
+        IOC.Services.GetRequiredService<WaypointMapLayer>().WaypointIcons.Select(p => new WaypointIconModel(p.Key, true));
 }

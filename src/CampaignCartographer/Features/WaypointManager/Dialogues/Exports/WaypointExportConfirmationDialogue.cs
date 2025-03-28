@@ -32,7 +32,7 @@ public class WaypointExportConfirmationDialogue : GenericDialogue
 
     public static void ShowDialogue(List<PositionedWaypointTemplate> waypoints)
     {
-        IOC.Services.Resolve<ShowConfirmExportDialogue>()(waypoints).TryOpen();
+        IOC.Services.GetRequiredService<ShowConfirmExportDialogue>()(waypoints).TryOpen();
     }
 
     #region Form Composition
@@ -111,7 +111,7 @@ public class WaypointExportConfirmationDialogue : GenericDialogue
     {
         Task.Factory.StartNew(async () =>
         {
-            var worldName = await IOC.Services.Resolve<WorldNameRelay>().GetWorldNameAsync();
+            var worldName = await IOC.Services.GetRequiredService<WorldNameRelay>().GetWorldNameAsync();
             ApiEx.ClientMain.EnqueueMainThreadTask(() =>
             {
                 var txtName = SingleComposer.GetTextInput("txtName");

@@ -74,7 +74,7 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
         capi.AddModMenuDialogue<WaypointTemplatePackDialogue>("PredefinedWaypoints");
         capi.AddModMenuDialogue<EditBlockSelectionWaypointDialogue>("BlockSelection");
 
-        var oldCommand = IOC.Services.Resolve<PredefinedWaypointsChatCommand>();
+        var oldCommand = IOC.Services.GetRequiredService<PredefinedWaypointsChatCommand>();
         var newCommand = capi.ChatCommands.Create("wp")
             .WithDescription(oldCommand.GetDescription())
             .WithAdditionalInformation(oldCommand.GetSyntax())

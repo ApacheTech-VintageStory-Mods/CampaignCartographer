@@ -23,7 +23,7 @@ public class WaypointSharingService : UniversalModSystem
         G.Log("Starting waypoint sharing service.");
         api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<WaypointSharingPacket>(HandleServerPacket);
+            .RegisterPacket<WaypointSharingPacket>(HandleServerPacket);
     }
 
     /// <summary>

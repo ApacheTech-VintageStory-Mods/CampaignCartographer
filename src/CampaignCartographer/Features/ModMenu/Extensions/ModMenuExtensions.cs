@@ -15,7 +15,7 @@ public static class ModMenuExtensions
     [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Extension Method")]
     public static void AddModMenuDialogue<T>(this ICoreClientAPI capi, string title) where T : GenericDialogue
     {
-        IOC.Services.Resolve<ModMenuClientSystem>().FeatureDialogues
+        IOC.Services.GetRequiredService<ModMenuClientSystem>().FeatureDialogues
             .AddIfNotPresent(typeof(T), LangEx.FeatureString($"{title}.Dialogue", "Title"));
     }
 }

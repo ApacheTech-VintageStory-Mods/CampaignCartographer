@@ -69,12 +69,13 @@ public class AddEditWaypointDialogue : GenericDialogue
         _index = index;
         _position = position;
         _mode = mode;
-        _waypointGroupsSettings = IOC.Services.Resolve<WaypointGroupsSettings>();
-        _waypointBeaconSettings = IOC.Services.Resolve<WaypointBeaconsSettings>();
+        _waypointGroupsSettings = IOC.Services.GetRequiredService<WaypointGroupsSettings>();
+        _waypointBeaconSettings = IOC.Services.GetRequiredService<WaypointBeaconsSettings>();
         _onlinePlayers = [.. capi.World.AllOnlinePlayers.Except([capi.World.Player])];        
         _waypointGroups = Groups.GetWaypointGroupListItems();
 
         _clientChannel = capi.Network.GetDefaultChannel();
+        if (_clientChannel is null) G.Log("Client channel not found.");
 
         Title = T($"{_mode}.Title");
         Alignment = EnumDialogArea.CenterMiddle;

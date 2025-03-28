@@ -27,7 +27,7 @@ internal class TeleporterServerService : ServerModSystem
 
         _serverChannel = api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<TpLocations>(SendDataToClient)
+            .RegisterPacket<TpLocations>(SendDataToClient)
             .RegisterMessageType<TeleporterLocationsPacket>();
 
         api.Event.PlayerJoin += SendLocationsToPlayer;

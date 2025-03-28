@@ -6,6 +6,7 @@ using Gantry.Services.Network.Packets;
 using Vintagestory.API.MathTools;
 using System.Text;
 using Gantry.Services.Network.Extensions;
+using Vintagestory.ServerMods;
 
 // ReSharper disable InconsistentNaming
 

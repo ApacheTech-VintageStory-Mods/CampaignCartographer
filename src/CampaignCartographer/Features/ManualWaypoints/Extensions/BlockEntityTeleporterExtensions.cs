@@ -24,7 +24,7 @@ public static class BlockEntityTeleporterExtensions
     /// </remarks>
     public static void AddWaypoint(this BlockEntityTeleporterBase teleporter, string titleTemplate)
     {
-        _waypointService ??= IOC.Services.Resolve<WaypointTemplateService>();
+        _waypointService ??= IOC.Services.GetRequiredService<WaypointTemplateService>();
         var tpLocation = teleporter.GetField<TeleporterLocation>("tpLocation");
         var sourcePos = teleporter.Pos;
 

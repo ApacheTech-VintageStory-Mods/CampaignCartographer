@@ -13,11 +13,11 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     [ClientSide]
     public override void StartClientSide(ICoreClientAPI capi)
     {
+        G.Log("Registered WaypointManager network channel.");
         capi.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageType<WorldMapTeleportPacket>()
-            .RegisterMessageType<WaypointActionPacket>();
-        G.Log("Registered WaypointManager network channel.");
+            .RegisterPacket<WorldMapTeleportPacket>()
+            .RegisterPacket<WaypointActionPacket>();
     }
 
     [ServerSide]
@@ -25,8 +25,8 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     {
         api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<WorldMapTeleportPacket>(OnTeleportPacketReceived)
-            .RegisterMessageHandler<WaypointActionPacket>(OnWaypointPacketReceived);
+            .RegisterPacket<WorldMapTeleportPacket>(OnTeleportPacketReceived)
+            .RegisterPacket<WaypointActionPacket>(OnWaypointPacketReceived);
         G.Log("Registered WaypointManager network channel.");
     }
 

@@ -149,7 +149,7 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
 
     private bool OnImportButtonClicked()
     {
-        var dialogue = IOC.Services.Resolve<WaypointImportDialogue>();
+        var dialogue = IOC.Services.GetRequiredService<WaypointImportDialogue>();
         dialogue.OnClosed += () => TryClose();
         return dialogue.TryOpen();
     }

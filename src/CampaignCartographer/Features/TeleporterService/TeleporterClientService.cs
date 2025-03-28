@@ -19,8 +19,8 @@ public class TeleporterClientService : ClientModSystem
         G.Log("Starting teleporter service");
         api.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<TpLocations>(ShowDialogue)
-            .RegisterMessageHandler<TeleporterLocationsPacket>(OnLocationsReceived);
+            .RegisterPacket<TpLocations>(ShowDialogue)
+            .RegisterPacket<TeleporterLocationsPacket>(OnLocationsReceived);
     }
 
     /// <summary>

@@ -21,7 +21,7 @@ internal class GpsClientSystem : ClientModSystem
         G.Log("Starting GPS service.");
         capi.Network
             .GetOrRegisterDefaultChannel()
-            .RegisterMessageHandler<GpsPacket>(ShowLocation);
+            .RegisterPacket<GpsPacket>(ShowLocation);
     }
 
     private void ShowLocation(GpsPacket packet)

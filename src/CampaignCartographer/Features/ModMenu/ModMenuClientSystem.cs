@@ -39,7 +39,7 @@ public sealed class ModMenuClientSystem : ClientModSystem, IClientServiceRegistr
 
         // Registers a hotkey to open the mod menu dialogue
         capi.Input.RegisterTransientGuiDialogueHotKey(
-            IOC.Services.Resolve<ModMenuDialogue>,
+            IOC.Services.GetRequiredService<ModMenuDialogue>,
             LangEx.ModTitle(),
             GlKeys.F7);
     }

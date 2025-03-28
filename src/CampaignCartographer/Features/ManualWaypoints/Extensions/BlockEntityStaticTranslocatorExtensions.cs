@@ -37,8 +37,8 @@ public static class BlockEntityStaticTranslocatorExtensions
     /// <returns>A task that resolves to true if waypoints were removed, false otherwise.</returns>
     private static async Task<bool> ClearWaypointsForEndpoint(BlockPos pos)
     {
-        var service = IOC.Services.Resolve<WaypointTemplateService>();
-        var repo = IOC.Services.Resolve<WaypointCommandsRepository>();
+        var service = IOC.Services.GetRequiredService<WaypointTemplateService>();
+        var repo = IOC.Services.GetRequiredService<WaypointCommandsRepository>();
         var model = service.GetTemplateByKey("tl");
 
         var retVal = await pos.WaypointExistsAtPosAsync(Filter);

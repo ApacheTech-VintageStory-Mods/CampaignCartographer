@@ -41,7 +41,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
         if (++_timesRunBlock > 1) return;
         ApiEx.Client.RegisterDelayedCallback(_ => _timesRunBlock = 0, 1000);
 
-        _handler ??= IOC.Services.Resolve<AutoWaypointPatchHandler>();
+        _handler ??= IOC.Services.GetRequiredService<AutoWaypointPatchHandler>();
         _handler.HandleInteraction(__instance);
     }
 
@@ -61,7 +61,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
         if (++_timesRunBlock > 1) return;
         ApiEx.Client.RegisterDelayedCallback(_ => _timesRunBlock = 0, 1000);
 
-        _handler ??= IOC.Services.Resolve<AutoWaypointPatchHandler>();
+        _handler ??= IOC.Services.GetRequiredService<AutoWaypointPatchHandler>();
         _handler.HandleInteraction(__instance);
     }
 

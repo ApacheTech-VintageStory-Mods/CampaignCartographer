@@ -327,7 +327,7 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     public override bool TryClose()
     {
-        IOC.Services.Resolve<WaypointTemplateService>().LoadWaypointTemplates();
+        IOC.Services.GetRequiredService<WaypointTemplateService>().LoadWaypointTemplates();
         OnClose();
         return base.TryClose();
     }
