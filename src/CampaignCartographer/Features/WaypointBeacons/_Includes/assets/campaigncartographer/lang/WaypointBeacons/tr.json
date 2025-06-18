@@ -1,0 +1,16 @@
+﻿{
+    "Features.WaypointBeacons.Dialogue.ShowPillars":  "Sütunları Göster",
+    "Features.WaypointBeacons.Dialogue.IconRange.HoverText":  "Ara nokta simgelerinin göründüğü bloklar halinde aralık.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix":  "Öneki Göster",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition":  "Kelepçe Konumu",
+    "Features.WaypointBeacons.Dialogue.Title":  "Yol Noktası İşareti Ayarları",
+    "Features.WaypointBeacons.Dialogue.TitleRange.HoverText":  "Ara nokta başlıklarının göründüğü bloklar halindeki aralık.",
+    "Features.WaypointBeacons.Dialogue.TitleRange":  "Başlık Aralığı",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText":  "Ara nokta dizinlerinin görüntülenmesi gerekip gerekmediğini belirtir.",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointIndex":  "Dizini Göster",
+    "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText":  "Ara nokta öneklerinin görüntülenip görüntülenmeyeceğini belirtir.",
+    "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText":  "Ara nokta sütunlarının görüntülenip görüntülenmeyeceğini belirtir.",
+    "Features.WaypointBeacons.Dialogue.IconRange":  "Simge Aralığı",
+    "Features.WaypointBeacons.WaypointPrefix":  "Yol Noktası",
+    "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText":  "Ara nokta görüş alanının dışına çıktığında ara nokta simgesini ekranın yan tarafına sabitler."
+}

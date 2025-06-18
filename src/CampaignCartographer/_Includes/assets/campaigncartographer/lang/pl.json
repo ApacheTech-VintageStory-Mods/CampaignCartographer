@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Kartograf Kampanii",
-  "ModDescription": "Dodaje do gry wiele funkcji związanych z kartografią, takich jak niestandardowe ikony punktów orientacyjnych, GPS, automatyczne oznaczenia punktów orientacyjnych i inne.",
-
-  "error-messages.feature-not-available-client-side": "Ta funkcja nie jest dostępna po stronie klienta. Użyj zamiast tego równoważnego polecenia serwera.",
-  "error-messages.mod-not-installed-on-server": "Kartograf Kampanii nie jest zainstalowany na serwerze. Poproś administratora serwera o zainstalowanie Kartografa Kampanii dla dodatkowych funkcji.",
-  "error-messages.feature-disabled": "Administrator serwera wyłączył tę funkcję.",
-  "error-messages.invalid-command": "Nieprawidłowe polecenie. Spróbuj ponownie."
+﻿{
+    "ModTitle":  "Kartograf kampanii",
+    "ModDescription":  "Dodaje do gry wiele funkcji związanych z kartografią, takich jak niestandardowe ikony punktów trasy, GPS, automatyczne znaczniki punktów trasy i wiele innych.",
+    "error-messages.error-occured":  "Wystąpił błąd podczas wykonywania polecenia.",
+    "error-messages.invalid-command":  "Nieprawidłowe polecenie. Spróbuj ponownie.",
+    "error-messages.feature-disabled":  "Administrator serwera wyłączył tę funkcję.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer nie jest zainstalowany na serwerze. Poproś administratora serwera o zainstalowanie programu Campaign Cartographer na serwerze, aby uzyskać dodatkowe funkcje.",
+    "error-messages.feature-not-available-client-side":  "Ta funkcja nie jest dostępna w kliencie. Zamiast tego użyj równoważnego polecenia serwera."
 }

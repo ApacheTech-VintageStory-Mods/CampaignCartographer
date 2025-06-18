@@ -1,0 +1,9 @@
+﻿{
+    "ModTitle":  "Kampanya Kartografı",
+    "ModDescription":  "Oyuna özel ara nokta simgeleri, GPS, otomatik yol noktası işaretçileri ve daha fazlası gibi Kartografya ile ilgili birden fazla özellik ekler.",
+    "error-messages.error-occured":  "Komut yürütülürken bir hata oluştu.",
+    "error-messages.invalid-command":  "Geçersiz komut. Lütfen tekrar deneyin.",
+    "error-messages.feature-disabled":  "Sunucu yöneticisi bu özelliği devre dışı bıraktı.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer Sunucuda yüklü değil. Daha fazla işlevsellik için lütfen sunucu yöneticinizden sunucuya Campaign Cartographer\u0027ı yüklemesini isteyin.",
+    "error-messages.feature-not-available-client-side":  "Bu özellik istemciden kullanılamaz. Lütfen bunun yerine eşdeğer sunucu komutunu kullanın."
+}

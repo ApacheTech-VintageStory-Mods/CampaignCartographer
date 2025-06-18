@@ -1,0 +1,10 @@
+﻿{
+    "Features.WaypointGroups.Dialogue.lblTitle.HoverText":  "Haritada gösterilecek başlık.",
+    "Features.WaypointGroups.Dialogue.Title":  "Yol Noktası Grupları",
+    "Features.WaypointGroups.Dialogue.MaxReached":  "En fazla {0} grup oluşturabilirsiniz.",
+    "Features.WaypointGroups.DefaultGroupName":  "Temerrüt",
+    "Features.WaypointGroups.Dialogue.Edit":  "Grubu Düzenle",
+    "Features.WaypointGroups.Dialogue.lblTitle":  "Başlık:",
+    "Features.WaypointGroups.Dialogue.AddNew":  "Yeni Grup Ekle",
+    "Features.WaypointGroups.Dialogue.lblTitle.ValidationError":  "Başlık gereklidir."
+}

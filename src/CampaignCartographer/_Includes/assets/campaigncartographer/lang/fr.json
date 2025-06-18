@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Cartographe de Campagne",
-  "ModDescription": "Ajoute plusieurs fonctionnalités liées à la cartographie au jeu, telles que des icônes de points de repère personnalisés, un GPS, des marqueurs automatiques de points de repère, et bien plus.",
-
-  "error-messages.feature-not-available-client-side": "Cette fonctionnalité n'est pas disponible côté client. Veuillez utiliser la commande équivalente côté serveur à la place.",
-  "error-messages.mod-not-installed-on-server": "Cartographe de Campagne n'est pas installé sur le serveur. Veuillez demander à l'administrateur du serveur d'installer Cartographe de Campagne pour des fonctionnalités supplémentaires.",
-  "error-messages.feature-disabled": "L'administrateur du serveur a désactivé cette fonctionnalité.",
-  "error-messages.invalid-command": "Commande invalide. Veuillez réessayer."
+﻿{
+    "ModTitle":  "Cartographe de la campagne",
+    "ModDescription":  "Ajoute plusieurs fonctionnalités liées à la cartographie au jeu, telles que des icônes de points de cheminement personnalisées, un GPS, des marqueurs de points de cheminement automatiques, etc.",
+    "error-messages.error-occured":  "Une erreur s’est produite lors de l’exécution de la commande.",
+    "error-messages.invalid-command":  "Commande non valide. Veuillez réessayer.",
+    "error-messages.feature-disabled":  "L’administrateur du serveur a désactivé cette fonctionnalité.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer n’est pas installé sur le serveur. Veuillez demander à l’administrateur de votre serveur d’installer Campaign Cartographer sur le serveur, pour plus de fonctionnalités.",
+    "error-messages.feature-not-available-client-side":  "Cette fonctionnalité n’est pas disponible à partir du client. Veuillez utiliser la commande serveur équivalente à la place."
 }

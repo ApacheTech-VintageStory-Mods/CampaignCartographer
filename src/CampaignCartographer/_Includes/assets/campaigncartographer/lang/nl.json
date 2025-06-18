@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Campagne Kartograaf",
-  "ModDescription": "Voegt meerdere cartografiegerelateerde functies toe aan het spel, zoals aangepaste waypoint-pictogrammen, GPS, automatische waypoint-markeringen en meer.",
-
-  "error-messages.feature-not-available-client-side": "Deze functie is niet beschikbaar aan de cliëntzijde. Gebruik in plaats daarvan het equivalente servercommando.",
-  "error-messages.mod-not-installed-on-server": "Campagne Kartograaf is niet geïnstalleerd op de server. Vraag uw serverbeheerder om Campagne Kartograaf op de server te installeren voor extra functionaliteit.",
-  "error-messages.feature-disabled": "De serverbeheerder heeft deze functie uitgeschakeld.",
-  "error-messages.invalid-command": "Ongeldig commando. Probeer het opnieuw."
+﻿{
+    "ModTitle":  "Campagne cartograaf",
+    "ModDescription":  "Voegt meerdere cartografiegerelateerde functies toe aan het spel, zoals aangepaste waypointpictogrammen, GPS, automatische waypointmarkeringen en meer.",
+    "error-messages.error-occured":  "Er is een fout opgetreden tijdens het uitvoeren van de opdracht.",
+    "error-messages.invalid-command":  "Ongeldige opdracht. Probeer het opnieuw.",
+    "error-messages.feature-disabled":  "De serverbeheerder heeft deze functie uitgeschakeld.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer is niet geïnstalleerd op de server. Vraag uw serverbeheerder om Campaign Cartographer op de server te installeren voor extra functionaliteit.",
+    "error-messages.feature-not-available-client-side":  "Deze functie is niet beschikbaar in de client. Gebruik in plaats daarvan het equivalente servercommando."
 }

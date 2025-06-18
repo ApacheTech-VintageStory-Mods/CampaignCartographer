@@ -1,0 +1,9 @@
+﻿{
+    "Features.CentreMap.CentreMapOnWaypoint":  "Ara nokta {0}\u0027da yeniden ortalanmış harita: {1} ({2}, {3})",
+    "Features.CentreMap.CannotCentreMapOnPlayer":  "Şu anda \u0027{0}\u0027 oyuncusu bulunamıyor. Kapsama alanı dışında olabilirler. Yeniden günlüğe kaydetme bunları haritada gösterecektir.",
+    "Features.CentreMap.CentreMapOnPosition":  "Konum olarak yeniden ortalanmış harita: ({0}, {1})",
+    "Features.CentreMap.CentreMapOnPlayer":  "Oyuncu merkezli harita: {0} ({1}, {2}, {3})",
+    "Features.CentreMap.CentreMapOnPlayerSpawn":  "Oyuncunun doğma noktası yeniden ortalanmış harita: ({0}, {1})",
+    "Features.CentreMap.SettingsCommandDescription":  "Haritayı verilen konuma veya oyuncuya yeniden ortalar.",
+    "Features.CentreMap.CentreMapOnWorldSpawn":  "Dünya doğma haritasında yeniden ortalanmış: ({0}, {1})"
+}

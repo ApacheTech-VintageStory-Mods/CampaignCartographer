@@ -1,0 +1,8 @@
+﻿{
+    "Features.TeleporterService.Dialogue.lblName.HoverText":  "Bu ışınlayıcıya verilecek isim.",
+    "game:blockhelp-set-teleporter-location":  "Işınlayıcı konumunu ayarla",
+    "Features.TeleporterService.Dialogue.Title":  "Işınlayıcı Konumunu Ayarla",
+    "Features.TeleporterService.Dialogue.lblName":  "Ad",
+    "Features.TeleporterService.Dialogue.lblTargetLocation.HoverText":  "Bu bloğun sizi gönderdiği hedef ışınlayıcı.",
+    "Features.TeleporterService.Dialogue.lblTargetLocation":  "Hedef"
+}

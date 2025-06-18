@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Kartograf Kampane",
-  "ModDescription": "Pridáva do hry niekoľko funkcií súvisiacich s kartografiou, ako sú vlastné ikony trás, GPS, automatické značky trás a ďalšie.",
-
-  "error-messages.feature-not-available-client-side": "Táto funkcia nie je dostupná na strane klienta. Použite namiesto toho ekvivalentný príkaz servera.",
-  "error-messages.mod-not-installed-on-server": "Kartograf Kampane nie je nainštalovaný na serveri. Požiadajte správcu servera, aby nainštaloval Kartografa Kampane pre ďalšiu funkcionalitu.",
-  "error-messages.feature-disabled": "Správca servera túto funkciu zakázal.",
-  "error-messages.invalid-command": "Neplatný príkaz. Skúste to znova."
+﻿{
+    "ModTitle":  "Kartograf kampane",
+    "ModDescription":  "Pridáva do hry viacero funkcií súvisiacich s kartografiou, ako sú vlastné ikony trasových bodov, GPS, automatické značky trasových bodov a ďalšie.",
+    "error-messages.error-occured":  "Pri vykonávaní príkazu sa vyskytla chyba.",
+    "error-messages.invalid-command":  "Neplatný príkaz. Skúste to znova.",
+    "error-messages.feature-disabled":  "Správca servera túto funkciu zakázal.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer nie je nainštalovaný na serveri. Požiadajte správcu servera, aby nainštaloval Campaign Cartographer na server, aby ste získali ďalšie funkcie.",
+    "error-messages.feature-not-available-client-side":  "Táto funkcia nie je dostupná od klienta. Namiesto toho použite ekvivalentný príkaz servera."
 }

@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Cartógrafo de Campanha",
-  "ModDescription": "Adiciona várias funcionalidades relacionadas com cartografia ao jogo, como ícones personalizados de pontos de referência, GPS, marcadores automáticos de pontos de referência, e mais.",
-
-  "error-messages.feature-not-available-client-side": "Esta funcionalidade não está disponível do lado do cliente. Por favor, utilize o comando equivalente no servidor.",
-  "error-messages.mod-not-installed-on-server": "Cartógrafo de Campanha não está instalado no servidor. Solicite ao administrador do servidor que instale o Cartógrafo de Campanha para funcionalidades adicionais.",
-  "error-messages.feature-disabled": "O administrador do servidor desativou esta funcionalidade.",
-  "error-messages.invalid-command": "Comando inválido. Por favor, tente novamente."
+﻿{
+    "ModTitle":  "Cartógrafo de Campanha",
+    "ModDescription":  "Adiciona vários recursos relacionados à Cartografia ao jogo, como ícones de waypoint personalizados, GPS, marcadores automáticos de waypoint e muito mais.",
+    "error-messages.error-occured":  "Ocorreu um erro durante a execução do comando.",
+    "error-messages.invalid-command":  "Comando inválido. Por favor, tente novamente.",
+    "error-messages.feature-disabled":  "O administrador do servidor desativou esse recurso.",
+    "error-messages.mod-not-installed-on-server":  "O Cartógrafo de Campanha não está instalado no Servidor. Peça ao administrador do servidor para instalar o Campaign Cartographer no servidor, para obter funcionalidades adicionais.",
+    "error-messages.feature-not-available-client-side":  "Este recurso não está disponível no cliente. Em vez disso, use o comando server equivalente."
 }

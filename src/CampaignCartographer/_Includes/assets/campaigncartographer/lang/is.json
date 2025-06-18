@@ -1,0 +1,9 @@
+﻿{
+    "ModTitle":  "Kortagerðarmaður herferðarinnar",
+    "ModDescription":  "Bætir mörgum kortatengdum eiginleikum við leikinn, svo sem sérsniðin leiðarpunktatákn, GPS, sjálfvirk leiðarpunktamerki og fleira.",
+    "error-messages.error-occured":  "Villa kom upp við framkvæmd skipunarinnar.",
+    "error-messages.invalid-command":  "Ógild skipun. Vinsamlegast reyndu aftur.",
+    "error-messages.feature-disabled":  "Stjórnandi netþjónsins hefur gert þennan eiginleika óvirkan.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer er ekki uppsett á netþjóninum. Vinsamlegast biddu netþjónsstjórann þinn um að setja upp Campaign Cartographer á netþjóninum til að auka virkni.",
+    "error-messages.feature-not-available-client-side":  "Þessi eiginleiki er ekki í boði frá biðlaranum. Vinsamlegast notaðu samsvarandi netþjónsskipun í staðinn."
+}

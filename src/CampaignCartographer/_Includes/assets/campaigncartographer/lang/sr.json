@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Кампањски Картограф",
-  "ModDescription": "Додаје више функција везаних за картографију у игру, као што су прилагођене иконе тачака, GPS, аутоматске ознаке тачака и више.",
-
-  "error-messages.feature-not-available-client-side": "Ова функција није доступна на клијентској страни. Користите еквивалентну серверску команду.",
-  "error-messages.mod-not-installed-on-server": "Кампањски Картограф није инсталиран на серверу. Молимо вас да затражите од администратора сервера да инсталира Кампањски Картограф ради додатних могућности.",
-  "error-messages.feature-disabled": "Администратор сервера је онемогућио ову функцију.",
-  "error-messages.invalid-command": "Неисправна команда. Покушајте поново."
+﻿{
+    "ModTitle":  "Kampanja Kartograf",
+    "ModDescription":  "Dodaje više karakteristika vezanih za kartografiju u igru, kao što su prilagođene ikone putnih tačaka, GPS, automatski markeri putnih tačaka i još mnogo toga.",
+    "error-messages.error-occured":  "Došlo je do greške prilikom izvršavanja komande.",
+    "error-messages.invalid-command":  "Nevažeća komanda. Molimo vas da pokušate ponovo.",
+    "error-messages.feature-disabled":  "Administrator servera je onemogućio ovu funkciju.",
+    "error-messages.mod-not-installed-on-server":  "Kampanja Kartograf nije instaliran na serveru. Molimo vas da zamolite administratora servera da instalira Campaign Cartographer na serveru, za dodatnu funkcionalnost.",
+    "error-messages.feature-not-available-client-side":  "Ova funkcija nije dostupna od klijenta. Molimo Vas da umesto toga koristite ekvivalentnu komandu servera."
 }

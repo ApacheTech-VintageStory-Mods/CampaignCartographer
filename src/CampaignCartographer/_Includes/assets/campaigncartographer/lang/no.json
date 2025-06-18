@@ -1,0 +1,9 @@
+﻿{
+    "ModTitle":  "Kampanje kartograf",
+    "ModDescription":  "Legger til flere kartografirelaterte funksjoner i spillet, for eksempel tilpassede veipunktikoner, GPS, automatiske veipunktmarkører og mer.",
+    "error-messages.error-occured":  "Det oppstod en feil under utførelse av kommandoen.",
+    "error-messages.invalid-command":  "Ugyldig kommando. Prøv igjen.",
+    "error-messages.feature-disabled":  "Serveradministratoren har deaktivert denne funksjonen.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer er ikke installert på serveren. Be serveradministratoren om å installere Campaign Cartographer på serveren for ekstra funksjonalitet.",
+    "error-messages.feature-not-available-client-side":  "Denne funksjonen er ikke tilgjengelig fra klienten. Bruk den tilsvarende serverkommandoen i stedet."
+}

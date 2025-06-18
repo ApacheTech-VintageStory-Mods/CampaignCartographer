@@ -1,9 +1,9 @@
-{
-  "ModTitle": "Kampagnen-Kartograf",
-  "ModDescription": "Fügt mehrere kartografiebezogene Funktionen zum Spiel hinzu, wie benutzerdefinierte Wegpunktsymbole, GPS, automatische Wegpunktmarkierungen und mehr.",
-
-  "error-messages.feature-not-available-client-side": "Diese Funktion ist auf der Client-Seite nicht verfügbar. Bitte verwenden Sie stattdessen den entsprechenden Serverbefehl.",
-  "error-messages.mod-not-installed-on-server": "Kampagnen-Kartograf ist auf dem Server nicht installiert. Bitte bitten Sie Ihren Serveradministrator, Kampagnen-Kartograf auf dem Server zu installieren, um zusätzliche Funktionen zu nutzen.",
-  "error-messages.feature-disabled": "Der Serveradministrator hat diese Funktion deaktiviert.",
-  "error-messages.invalid-command": "Ungültiger Befehl. Bitte versuchen Sie es erneut."
+﻿{
+    "ModTitle":  "Kampagne Kartograph",
+    "ModDescription":  "Fügt dem Spiel mehrere Cartography-bezogene Funktionen hinzu, wie z. B. benutzerdefinierte Wegpunktsymbole, GPS, automatische Wegpunktmarkierungen und mehr.",
+    "error-messages.error-occured":  "Beim Ausführen des Befehls ist ein Fehler aufgetreten.",
+    "error-messages.invalid-command":  "Ungültiger Befehl. Bitte versuchen Sie es erneut.",
+    "error-messages.feature-disabled":  "Der Serveradministrator hat diese Funktion deaktiviert.",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer ist nicht auf dem Server installiert. Bitte bitten Sie Ihren Serveradministrator, Campaign Cartographer auf dem Server zu installieren, um zusätzliche Funktionen zu erhalten.",
+    "error-messages.feature-not-available-client-side":  "Diese Funktion ist auf dem Client nicht verfügbar. Bitte verwenden Sie stattdessen den entsprechenden Serverbefehl."
 }

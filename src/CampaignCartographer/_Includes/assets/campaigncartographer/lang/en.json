@@ -5,5 +5,6 @@
   "error-messages.feature-not-available-client-side": "This feature is not available from the client. Please use the equivalent server command instead.",
   "error-messages.mod-not-installed-on-server": "Campaign Cartographer is not installed on the Server. Please ask your server administrator to install Campaign Cartographer on the server, for added functionality.",
   "error-messages.feature-disabled": "The server administrator has disabled this feature.",
-  "error-messages.invalid-command": "Invalid command. Please try again."
+  "error-messages.invalid-command": "Invalid command. Please try again.",
+  "error-messages.error-occured": "An error occured while executing the command."
 }

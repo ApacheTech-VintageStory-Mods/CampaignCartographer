@@ -1,0 +1,9 @@
+﻿{
+    "ModTitle":  "戰役製圖師",
+    "ModDescription":  "為遊戲添加了多個與 Cartography 相關的功能，例如自定義航點圖示、GPS、自動航點標記等。",
+    "error-messages.error-occured":  "執行命令時出錯。",
+    "error-messages.invalid-command":  "命令無效。請重試。",
+    "error-messages.feature-disabled":  "伺服器管理員已禁用此功能。",
+    "error-messages.mod-not-installed-on-server":  "伺服器上未安裝 Campaign Cartographer。請讓您的伺服器管理員在伺服器上安裝 Campaign Cartographer，以獲得更多功能。",
+    "error-messages.feature-not-available-client-side":  "用戶端不提供此功能。請改用等效的 server 命令。"
+}

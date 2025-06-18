@@ -1,9 +1,9 @@
-{
-  "ModTitle": "キャンペーンカートグラファー",
-  "ModDescription": "カスタムウェイポイントアイコン、GPS、自動ウェイポイントマーカーなど、複数の地図作成関連機能をゲームに追加します。",
-
-  "error-messages.feature-not-available-client-side": "この機能はクライアント側では利用できません。代わりにサーバーコマンドを使用してください。",
-  "error-messages.mod-not-installed-on-server": "キャンペーンカートグラファーはサーバーにインストールされていません。サーバー管理者にインストールを依頼してください。",
-  "error-messages.feature-disabled": "サーバー管理者によってこの機能は無効化されています。",
-  "error-messages.invalid-command": "無効なコマンドです。もう一度お試しください。"
+﻿{
+    "ModTitle":  "キャンペーンカートグラファー",
+    "ModDescription":  "カスタムウェイポイントアイコン、GPS、自動ウェイポイントマーカーなど、複数のカートグラフィ関連機能をゲームに追加します。",
+    "error-messages.error-occured":  "コマンドの実行中にエラーが発生しました。",
+    "error-messages.invalid-command":  "無効なコマンドです。もう一度お試しください。",
+    "error-messages.feature-disabled":  "サーバー管理者がこの機能を無効にしています。",
+    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer がサーバーにインストールされていません。機能を追加するために、サーバー管理者に Campaign Cartographer をサーバーにインストールするように依頼してください。",
+    "error-messages.feature-not-available-client-side":  "この機能はクライアントからは使用できません。代わりに、同等のサーバー・コマンドを使用してください。"
 }

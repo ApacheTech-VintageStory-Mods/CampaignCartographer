@@ -1,0 +1,23 @@
+﻿{
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits":  "Yüzey Birikintileri:",
+    "Features.AutoWaypoints.Dialogue.lblResin":  "Reçine:",
+    "Features.AutoWaypoints.Dialogue.lblTraders":  "Tüccar:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText":  "Öldüğünüzde otomatik olarak ara noktalar ekleyin. Bu, vanilya ölüm yol noktasını devre dışı bırakacaktır.",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones":  "Gevşek Taşlar:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters":  "Işınlayıcı Blokları:",
+    "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText":  "Yüzey birikintilerini toplarken farklı kaya türleri için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblTraders.HoverText":  "Onlarla etkileşime girdikçe Trader\u0027lar için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText":  "Yüzey birikintilerini toplarken farklı metal türleri için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText":  "Yiyecek ararken mantarlar için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes":  "Berry çalıları:",
+    "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText":  "Işınlayıcılar arasında seyahat ederken onlar için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.DeathWaypointTitle":  "Burada öldün: {0}",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText":  "Aralarında seyahat ederken Translocator\u0027lar için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblResin.HoverText":  "Yiyecek ararken reçine için otomatik olarak ara noktalar ekleyin.",
+    "Features.AutoWaypoints.Dialogue.lblMushrooms":  "Mantar:",
+    "Features.AutoWaypoints.Dialogue.lblDeathWaypoints":  "Ölüm Yol Noktaları:",
+    "Features.AutoWaypoints.SettingsCommandDescription":  "Otomatik Ara Nokta Ayarlarını Değiştir",
+    "Features.AutoWaypoints.Dialogue.lblTranslocators":  "Statik Translocatörler:",
+    "Features.AutoWaypoints.Dialogue.Title":  "Otomatik Ara Noktalar",
+    "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText":  "Yiyecek ararken meyve çalıları için otomatik olarak ara noktalar ekleyin."
+}

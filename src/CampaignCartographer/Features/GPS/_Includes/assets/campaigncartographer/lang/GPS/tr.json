@@ -1,0 +1,13 @@
+﻿{
+    "Features.GPS.FuzzyPlayerSearch.MultipleResults":  "Aynı ada sahip birden fazla oyuncu bulundu.",
+    "Features.GPS.player-not-found":  "Oyuncu sunucuda bulunamadı.",
+    "Features.GPS.ClipboardTextSet":  "Oyuncu konumu panoya kopyalandı.",
+    "Features.GPS.Command.Description.PrivateMessageSubCommand":  "Mevcut konumunuzu başka bir oyuncuya gönderin.",
+    "Features.GPS.Command.Description.Default":  "Dünyadaki mevcut konumunuzu gösterir.",
+    "Features.GPS.whisper-received":  "[{0}\u0027dan itibaren]: {1}",
+    "Features.GPS.whisper-sent":  "[{0} için]: {1}",
+    "Features.GPS.Command.Description.BroadcastSubCommand":  "Mevcut konumunuzu sunucuya yayınlayın.",
+    "Features.GPS.Command.Description.ClipboardSubCommand":  "Mevcut konumunuzu panoya kopyalayın.",
+    "Features.GPS.ShowOnMap":  "Haritada Göster",
+    "Features.GPS.FuzzyPlayerSearch.NoResults":  "Oyuncu bulunamadı."
+}
