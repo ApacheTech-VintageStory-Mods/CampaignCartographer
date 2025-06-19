@@ -14,6 +14,16 @@
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
 		<Nullable>enable</Nullable>
+		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<Authors>Apache</Authors>
+		<Company>ApacheTech Solutions</Company>
+		<Copyright>All Rights Reserved.</Copyright>
+		<PackageIcon>modicon.png</PackageIcon>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Environment Variables">

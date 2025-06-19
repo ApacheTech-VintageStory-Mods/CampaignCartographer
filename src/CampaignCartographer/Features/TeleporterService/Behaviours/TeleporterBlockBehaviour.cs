@@ -26,7 +26,7 @@ internal class TeleporterBlockBehaviour(Block block) : BlockBehaviour<BlockTelep
             return base.OnBlockInteractStart(world, byPlayer, blockSel, ref handling);
         
         var packet = new TpLocations { ForLocation = new TeleporterLocation { SourcePos = blockSel.Position } };
-        ApiEx.Client.Network.GetDefaultChannel().SendPacket(packet);
+        ApiEx.Client.Network.GetDefaultChannel()?.SendPacket(packet);
         handling = EnumHandling.Handled;
         return true;
     }
