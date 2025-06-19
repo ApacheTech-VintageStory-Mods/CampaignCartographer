@@ -10,12 +10,6 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.W
 public class VanillaWaypoint
 {
     /// <summary>
-    ///     Initialises a new instance of the <see cref="VanillaWaypoint"/> class.
-    /// </summary>
-    [JsonConstructor]
-    public VanillaWaypoint() { }
-
-    /// <summary>
     ///     Initialises a new instance of the <see cref="VanillaWaypoint"/> class from an existing <see cref="Waypoint"/> object.
     /// </summary>
     /// <param name="waypoint">The waypoint to decorate.</param>

@@ -57,8 +57,8 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     {
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();
-        var wpIndex = waypointMapLayer.AddWaypoint(waypoint, player);
-
+        var wpIndex = waypointMapLayer?.AddWaypoint(waypoint, player);
+        
         var message = Lang.Get("Ok, waypoint nr. {0} added", wpIndex);
         Sapi.SendMessage(player, GlobalConstants.GeneralChatGroup, message, EnumChatType.CommandSuccess);
     }
@@ -69,7 +69,7 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();
 
-        var result = waypointMapLayer.Waypoints
+        var result = waypointMapLayer?.Waypoints
             .Select((wp, index) => new { Waypoint = wp, Index = index })
             .Where(x => x.Waypoint.OwningPlayerUid == player?.PlayerUID)
             .SingleOrDefault(x => x.Waypoint.Guid == waypoint.Guid);

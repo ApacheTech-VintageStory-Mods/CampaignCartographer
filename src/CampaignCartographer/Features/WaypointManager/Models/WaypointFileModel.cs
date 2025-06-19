@@ -14,13 +14,13 @@ public class WaypointFileModel
     ///     Gets or sets the name given to this export file.
     /// </summary>
     /// <value>The name that is displayed in the imports screen.</value>
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
 
     /// <summary>
     ///     Gets or sets the world from which these waypoints were exported.
     /// </summary>
     /// <value>The world from which these waypoints were exported.</value>
-    public string World { get; set; }
+    public string World { get; set; } = default!;
 
     /// <summary>
     ///     Gets or sets the number of waypoints contained within the file.
@@ -38,13 +38,13 @@ public class WaypointFileModel
     ///     Gets or sets the spawn position.
     /// </summary>
     /// <value>The spawn position.</value>
-    public EntityPos SpawnPosition { get; set; }
+    public EntityPos SpawnPosition { get; set; } = default!;
 
     /// <summary>
     ///     Gets or sets a list of waypoints contained within the export file.
     /// </summary>
     /// <value>The list of exported waypoints.</value>
-    public List<PositionedWaypointTemplate> Waypoints { get; set; }
+    public List<PositionedWaypointTemplate> Waypoints { get; set; } = default!;
 
     /// <summary>
     ///     

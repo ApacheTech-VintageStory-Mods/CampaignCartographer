@@ -27,7 +27,7 @@ public class FastTravelOverlaySettingsDialogue : FeatureSettingsDialogue<FastTra
         SetSliderValue("intDisabledOpacity", Settings.DisabledOpacity);
         SetSliderValue("intPathWidth", Settings.PathWidth, max: 3);
         SetSliderValue("intNodeSize", Settings.NodeSize, max: 5);
-        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>()?.RebuildMapComponents();
     }
 
     private void SetSliderValue(string name, int value, int min = 1, int max = 100, int step = 1)

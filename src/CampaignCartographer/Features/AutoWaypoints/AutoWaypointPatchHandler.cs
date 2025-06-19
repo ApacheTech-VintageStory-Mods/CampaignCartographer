@@ -75,6 +75,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <param name="block">The mushroom block.</param>
     private void HandleMushrooms(Block block)
     {
+        if (Settings is null) return;
         if (!Settings.Mushrooms) return;
         AddWaypointFor(block, MapOrganicMaterial(block.Code.Path));
     }
@@ -85,6 +86,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <param name="block">The berry bush block.</param>
     private void HandleBerries(Block block)
     {
+        if (Settings is null) return;
         if (!Settings.BerryBushes) return;
         AddWaypointFor(block, MapOrganicMaterial(block.Code.Path));
     }
@@ -95,6 +97,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <param name="block">The resin block.</param>
     private void HandleResin(Block block)
     {
+        if (Settings is null) return;
         if (!Settings.Resin) return;
         AddWaypointFor(block, MapOrganicMaterial(block.Code.Path));
     }
@@ -105,6 +108,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <param name="block">The loose stone block.</param>
     private void HandleLooseStones(Block block)
     {
+        if (Settings is null) return;
         if (!Settings.LooseStones) return;
         AddWaypointFor(block, MapLooseStones(block.Code.Path));
     }
@@ -116,15 +120,16 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <returns><see langword="true"/> if the ore was added, otherwise <see langword="false"/>.</returns>
     private bool HandleLooseOres(Block block)
     {
+        if (Settings is null) return false;
         return Settings.SurfaceDeposits &&
         AddWaypointFor(block, MapSurfaceOre(block.Code.Path));
     }
 
-    private string MapSurfaceOre(string assetCode) => Map(_crossMaps.Ores, assetCode);
-    private string MapLooseStones(string assetCode) => Map(_crossMaps.Stones, assetCode);
-    private string MapOrganicMaterial(string assetCode) => Map(_crossMaps.Organics, assetCode);
+    private string? MapSurfaceOre(string assetCode) => Map(_crossMaps.Ores, assetCode);
+    private string? MapLooseStones(string assetCode) => Map(_crossMaps.Stones, assetCode);
+    private string? MapOrganicMaterial(string assetCode) => Map(_crossMaps.Organics, assetCode);
 
-    private static string Map(IDictionary<string, string> dictionary, string assetCode)
+    private static string? Map(IDictionary<string, string> dictionary, string assetCode)
     {
         var value = dictionary.FirstOrNull(p => assetCode.Contains(p.Key));
         if (!string.IsNullOrWhiteSpace(value)) return value;
@@ -139,7 +144,7 @@ public sealed class AutoWaypointPatchHandler : WorldSettingsConsumer<AutoWaypoin
     /// <param name="block">The block for which to add a waypoint.</param>
     /// <param name="syntax">The syntax defining the waypoint type.</param>
     /// <returns><see langword="true"/> if the waypoint was added, otherwise <see langword="false"/>.</returns>
-    private bool AddWaypointFor(Block block, string syntax)
+    private bool AddWaypointFor(Block block, string? syntax)
     {
         if (string.IsNullOrWhiteSpace(syntax)) return false;
         var position = ApiEx.ClientMain.Player.Entity.BlockSelection.Position;

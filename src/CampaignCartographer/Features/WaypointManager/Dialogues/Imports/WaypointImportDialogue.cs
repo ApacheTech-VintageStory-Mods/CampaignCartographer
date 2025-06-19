@@ -19,13 +19,13 @@ public class WaypointImportDialogue : GenericDialogue
     private readonly FileSystemWatcher _watcher;
     private int _watcherLock;
 
-    private ElementBounds _clippedBounds;
-    private ElementBounds _cellListBounds;
+    private ElementBounds _clippedBounds = ElementBounds.Fixed(0, 0, 0, 0);
+    private ElementBounds _cellListBounds = ElementBounds.Fixed(0, 0, 0, 0);
 
     private List<WaypointImportCellEntry> _files = [];
 
-    private GuiElementCellList<WaypointImportCellEntry> _filesList;
-    private GuiElementDynamicText _lblSelectedCount;
+    private GuiElementCellList<WaypointImportCellEntry> _filesList = null!;
+    private GuiElementDynamicText _lblSelectedCount = null!;
 
     private readonly string _importsDirectory = ModPaths.CreateDirectory(Path.Combine(ModPaths.ModDataWorldPath, "Saves"));
 
@@ -113,7 +113,7 @@ public class WaypointImportDialogue : GenericDialogue
         ApiEx.ClientMain.EnqueueMainThreadTask(() =>
         {
             var cellList = _filesList.elementCells.Cast<WaypointImportGuiCell>().Where(p => p.On).ToList();
-            var totalCount = cellList.Sum(p => p.Cell.Model.Waypoints.Count);
+            var totalCount = cellList.Sum(p => p.Cell.Model is not null && p.Cell.Model.Waypoints is not null ? p.Cell.Model.Waypoints.Count : 0);
                 
             var code = LangEx.FeatureCode("WaypointManager.Dialogue.Imports", "File");
             var pluralisedFile = LangEx.Pluralise(code, cellList.Count);
@@ -261,8 +261,9 @@ public class WaypointImportDialogue : GenericDialogue
         var list = new List<ImportedWaypointTemplate>();
         foreach (var file in files)
         {
-            var waypoints = file.Model.Waypoints
+            var waypoints = file.Model?.Waypoints
                 .Select(p => new ImportedWaypointTemplate(p, file.Model.SpawnPosition));
+            if (waypoints is null || !waypoints.Any()) continue;
             list.AddRange(waypoints);
         }
         

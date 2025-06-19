@@ -13,11 +13,11 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.D
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class WaypointTemplatePackDialogue : GenericDialogue
 {
-    private ElementBounds _clippedBounds;
-    private ElementBounds _cellListBounds;
+    private ElementBounds _clippedBounds = null!;
+    private ElementBounds _cellListBounds = null!;
 
-    private GuiElementCellList<WaypointTemplatePackCellEntry> _filesList;
-    private GuiElementDynamicText _lblSelectedCount;
+    private GuiElementCellList<WaypointTemplatePackCellEntry> _filesList = null!;
+    private GuiElementDynamicText _lblSelectedCount = null!;
     private readonly PredefinedWaypointsSettings _settings;
 
     /// <summary>
@@ -108,8 +108,9 @@ public class WaypointTemplatePackDialogue : GenericDialogue
 
     private int GetTotalSelectedCount(List<WaypointTemplatePackGuiCell> cellList)
     {
-        var totalCount = cellList.Sum(p => p.Cell.Model.Templates.Count);
-        var selectedCount = cellList.Sum(p => _settings.DisabledTemplatesPerPack.CountList(p.Cell.Model.Metadata.Name));
+        if (cellList == null) return 0;
+        var totalCount = cellList.Sum(p => p.Cell?.Model?.Templates?.Count ?? 0);
+        var selectedCount = cellList.Sum(p => p.Cell?.Model != null ? _settings.DisabledTemplatesPerPack.CountList(p.Cell.Model.Metadata.Name) : 0);
         var totalSelectedCount = totalCount - selectedCount;
         return totalSelectedCount;
     }
@@ -181,7 +182,7 @@ public class WaypointTemplatePackDialogue : GenericDialogue
     {
         return new WaypointTemplatePackGuiCell(ApiEx.Client, cell, bounds)
         {
-            On = cell.Enabled = cell.Model.Metadata.Enabled,
+            On = cell.Enabled = cell.Model?.Metadata?.Enabled ?? false,
             OnMouseDownOnCellLeft = OnCellClickLeftSide,
             OnMouseDownOnCellRight = OnCellClickRightSide
         };
@@ -197,6 +198,7 @@ public class WaypointTemplatePackDialogue : GenericDialogue
     private void OnCellClickLeftSide(int val)
     {
         var cell = _filesList.elementCells.Cast<WaypointTemplatePackGuiCell>().ToList()[val];
+        if (cell.Cell?.Model == null) return;
         var dialogue = IOC.Services.CreateInstance<PredefinedWaypointsDialogue>(cell.Cell.Model).With(p =>
         {
             p.Title = cell.Cell.Model.Metadata.Title;
@@ -215,6 +217,7 @@ public class WaypointTemplatePackDialogue : GenericDialogue
     private void OnCellClickRightSide(int val)
     {
         var cell = _filesList.elementCells.Cast<WaypointTemplatePackGuiCell>().ToList()[val];
+        if (cell.Cell?.Model == null) return;
         cell.Cell.Model.Metadata.Enabled = cell.On = cell.Enabled = !cell.On;
         if (cell.On)
         {

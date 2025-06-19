@@ -97,7 +97,7 @@ public class WaypointBeaconRenderer : IDisposable
     private void UpdateDynamicTextColour()
     {
         var dynamicText = _hudElement.SingleComposer.GetDynamicText("text");
-        var colour = ColorUtil.ToRGBADoubles(_viewModel.Waypoint.Color);
+        var colour = _viewModel.Waypoint is not null ? ColorUtil.ToRGBADoubles(_viewModel.Waypoint.Color) : new double[] { 1, 1, 1, 1 };
         dynamicText.Font.Color = colour.With(c => c[3] = 1);
         dynamicText.Font.RenderTwice = true;
         dynamicText.Font.StrokeColor = [0, 0, 0, 1];
@@ -156,12 +156,19 @@ public class WaypointBeaconRenderer : IDisposable
         var engineShader = _capi.Render.GetEngineShader(EnumShaderProgram.Gui);
 
         var newColour = new Vec4f();
-        ColorUtil.ToRGBAVec4f(_viewModel.Waypoint.Color, ref newColour);
+        if (_viewModel.Waypoint is not null)
+        {
+            ColorUtil.ToRGBAVec4f(_viewModel.Waypoint.Color, ref newColour);
+        }
+        else
+        {
+            newColour.Set(1, 1, 1, 1);
+        }
         AdjustColourForAlignment(ref newColour);
 
         ConfigureEngineShader(engineShader, newColour);
 
-        if (!WaypointIconFactory.TryCreate(_viewModel.Waypoint.Icon, out var loadedTexture)) return;
+        if (_viewModel.Waypoint is null || !WaypointIconFactory.TryCreate(_viewModel.Waypoint.Icon, out var loadedTexture) || loadedTexture is null) return;
 
         RenderIcon(engineShader, loadedTexture, isClamped);
     }

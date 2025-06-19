@@ -60,5 +60,5 @@ public class TeleporterClientService : ClientModSystem
     /// <summary>
     ///     A list of known teleporter locations received from the server.
     /// </summary>
-    public List<TeleporterLocation> TeleporterLocations { get; set; }
+    public List<TeleporterLocation> TeleporterLocations { get; set; } = [];
 }

@@ -12,5 +12,5 @@ public class ConnectedWaypointTemplate : WaypointTemplateBase
     /// </summary>
     /// <value>A <see cref="string"/> representing the Waypoint that is connected to this one.</value>
     [ProtoMember(7)]
-    public string EndPoint { get; set; }
+    public string EndPoint { get; set; } = string.Empty;
 }

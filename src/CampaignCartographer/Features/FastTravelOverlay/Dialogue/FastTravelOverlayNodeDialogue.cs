@@ -192,7 +192,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
             if (_fastTravelOverlaySettings.Nodes.RemoveAll(p => p.Location.SourcePos == _node.Location.SourcePos) > 0)
             {
                 ModSettings.World.Save(_fastTravelOverlaySettings);
-                ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+                ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>()?.RebuildMapComponents();
             }
             TryClose();
         }
@@ -204,7 +204,7 @@ public class FastTravelOverlayNodeDialogue : GenericDialogue
         _fastTravelOverlaySettings.Nodes.RemoveAll(p => p.Location.SourcePos == _node.Location.SourcePos);
         _fastTravelOverlaySettings.Nodes.Add(_node);
         ModSettings.World.Save(_fastTravelOverlaySettings);
-        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>()?.RebuildMapComponents();
         return TryClose();
     }
 

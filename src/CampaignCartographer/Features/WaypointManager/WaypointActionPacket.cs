@@ -11,7 +11,7 @@ public class WaypointActionPacket
     /// <summary>
     ///     The waypoint associated with the action.
     /// </summary>
-    public Waypoint Waypoint { get; set; }
+    public Waypoint Waypoint { get; set; } = default!;
 
     /// <summary>
     ///     The mode indicating whether the action is an addition or an edit.

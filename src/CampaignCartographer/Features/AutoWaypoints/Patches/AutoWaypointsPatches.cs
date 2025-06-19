@@ -22,7 +22,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.AutoWaypoints.Pat
 [HarmonyClientSidePatch]
 public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
 {
-    private static AutoWaypointPatchHandler _handler;
+    private static AutoWaypointPatchHandler? _handler;
     private static int _timesRunBlock;
 
     /// <summary>
@@ -75,6 +75,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
     [HarmonyPatch(typeof(GuiDialogTrader), nameof(GuiDialogTrader.OnGuiOpened))]
     public static void Patch_GuiDialogTrader_OnGuiOpened_Prefix()
     {
+        if (Settings is null) return;
         if (!Settings.Traders) return;
         ApiEx.ClientMain.EnqueueMainThreadTask(() =>
         {
@@ -97,6 +98,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
     [HarmonyPatch(typeof(BlockStaticTranslocator), nameof(BlockStaticTranslocator.OnEntityCollide))]
     public static void Patch_BlockStaticTranslocator_OnEntityCollide_Postfix(BlockStaticTranslocator __instance, ICoreClientAPI ___api, Entity entity, BlockPos pos)
     {
+        if (Settings is null) return;
         if (___api.Side.IsServer()) return;
         if (++_timesRunBlock > 1) return;
         ___api.RegisterDelayedCallback(_ => _timesRunBlock = 0, 1000 * 3);
@@ -118,6 +120,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
     [HarmonyPatch(typeof(BlockEntityTeleporterBase), nameof(BlockEntityTeleporterBase.OnEntityCollide))]
     public static void Patch_BlockEntityTeleporter_OnEntityCollide_Prefix(BlockEntityTeleporterBase __instance, IReadOnlyDictionary<long, TeleportingEntity> ___tpingEntities)
     {
+        if (Settings is null) return;
         if (ApiEx.Side.IsServer()) return;
         if (__instance is BlockEntityStaticTranslocator) return;
         if (!Settings.Teleporters) return;

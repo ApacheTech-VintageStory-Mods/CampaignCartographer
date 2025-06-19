@@ -9,11 +9,11 @@ public class WaypointSharingPacket
     /// <summary>
     ///     The waypoint being shared within this packet.
     /// </summary>
-    public Waypoint Waypoint { get; set; }
+    public Waypoint Waypoint { get; set; } = default!;
 
     /// <summary>
     ///     The UID of the player to share the waypoint with.
     ///     If the string is null or empty, the waypoint will be shared with everyone online.
     /// </summary>
-    public string PlayerId { get; set; }
+    public string PlayerId { get; set; } = default!;
 }

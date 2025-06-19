@@ -19,12 +19,12 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     /// <summary>
     ///     The world map manager instance used to interact with the map layers.
     /// </summary>
-    private static WorldMapManager MapManager { get; set; }
+    private static WorldMapManager MapManager { get; set; } = null!;
 
     /// <summary>
     ///     The settings instance containing all waypoint groups.
     /// </summary>
-    private static WaypointGroupsSettings Settings { get; set; }
+    private static WaypointGroupsSettings Settings { get; set; } = null!;
 
     /// <inheritdoc />
     public void ConfigureClientModServices(IServiceCollection services, ICoreClientAPI capi)
@@ -74,7 +74,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     /// <param name="waypoint">The waypoint to look up.</param>
     /// <returns>The waypoint group that contains the waypoint, or <c>null</c> if none is found.</returns>
     public static WaypointGroup GetWaypointGroup(Waypoint waypoint)
-         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid));
+         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid))!;
 
     /// <summary>
     ///     Retrieves the identifier of the waypoint group associated with the specified waypoint.
@@ -84,7 +84,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     ///     The waypoint group ID as a string, or <c>null</c> if the waypoint does not belong to a group.
     /// </returns>
     public static string GetWaypointGroupId(Waypoint waypoint)
-         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid))?.Id.ToString();
+         => Settings.Groups.FirstOrDefault(p => p.Waypoints.Select(p => p.ToString()).Contains(waypoint.Guid))?.Id.ToString() ?? string.Empty;
 
     /// <summary>
     ///     Retrieves the map layer corresponding to the waypoint group that contains the specified waypoint.
@@ -94,7 +94,7 @@ public class WaypointGroups : ClientModSystem, IClientServiceRegistrar
     ///     The <see cref="WaypointGroupMapLayer"/> instance associated with the waypoint group, 
     ///     or <c>null</c> if no such group exists.
     /// </returns>
-    public static WaypointGroupMapLayer GetWaypointGroupMapLayer(Waypoint waypoint)
+    public static WaypointGroupMapLayer? GetWaypointGroupMapLayer(Waypoint waypoint)
     {
         var group = GetWaypointGroup(waypoint);
         if (group is null) return null;

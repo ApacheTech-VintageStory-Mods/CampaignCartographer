@@ -40,10 +40,13 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
                 var group = Systems.WaypointGroups.GetWaypointGroupMapLayer(waypoint);
                 if (group is null) continue;
                 inGroup.Add(mapComponent);
-                group.AddComponent(mapComponent as WaypointMapComponent);
-            }
+                if (mapComponent is WaypointMapComponent wmc)
+                {
+                    group.AddComponent(wmc);
+                }
 
-            ___wayPointComponents = [.. ___wayPointComponents.Except(inGroup)];
+                ___wayPointComponents = [.. ___wayPointComponents.Except(inGroup)];
+            }
         }
     }
 
@@ -62,7 +65,10 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
             var group = Systems.WaypointGroups.GetWaypointGroupMapLayer(waypoint);
             if (group is null) continue;
             inGroup.Add(mapComponent);
-            group.RemoveComponent(mapComponent as WaypointMapComponent);
+            if (mapComponent is WaypointMapComponent wmc)
+            {
+                group.RemoveComponent(wmc);
+            }
         }
     }
 
@@ -88,8 +94,10 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
                 .Select(p => p!.Value)
                 .ToHashSet();
 
-            foreach (var group in Settings.Groups)
+            var groups = Settings?.Groups ?? [];
+            foreach (var group in groups)
             {
+                if (group.Waypoints == null) continue; // Defensive: skip if null
                 var orphans = group.Waypoints.Where(p => !waypointGuidSet.Contains(p)).ToArray();
                 if (orphans.Length == 0) continue;
                 group.Waypoints = [.. group.Waypoints.Except(orphans)];

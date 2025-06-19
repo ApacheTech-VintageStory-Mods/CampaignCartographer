@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Cairo;
+using Gantry.Core.Extensions.Api;
 
 // ReSharper disable StringLiteralTypo
 
@@ -24,7 +25,7 @@ public class WaypointImportGuiCell : GuiElementTextBase, IGuiElementCell, IDispo
     private const double UnscaledRightBoxWidth = 40.0;
 
     /// <summary>
-    /// 	Initialises a new instance of the <see cref="WaypointImportGuiCell" /> class.
+    ///     Initialises a new instance of the <see cref="WaypointImportGuiCell" /> class.
     /// </summary>
     /// <param name="capi">The capi.</param>
     /// <param name="cell">The cell.</param>
@@ -40,7 +41,30 @@ public class WaypointImportGuiCell : GuiElementTextBase, IGuiElementCell, IDispo
         Cell.DetailTextFont.Color[3] *= 0.6;
     }
 
+    /// <summary>
+    ///     Gets the cell entry associated with this GUI cell.
+    /// </summary>
     public WaypointImportCellEntry Cell { get; }
+
+    /// <summary>
+    ///     Gets the bounds of this GUI cell.
+    /// </summary>
+    public new ElementBounds Bounds { get; }
+
+    /// <summary>
+    ///     Gets or sets the action to invoke when the left side of the cell is clicked.
+    /// </summary>
+    public Action<int>? OnMouseDownOnCellLeft { private get; init; }
+
+    /// <summary>
+    ///     Gets or sets the action to invoke when the right side of the cell is clicked.
+    /// </summary>
+    public Action<int>? OnMouseDownOnCellRight { private get; init; }
+
+    /// <summary>
+    ///     Gets or sets whether the cell is in the 'on' state.
+    /// </summary>
+    public bool On { get; set; } = true;
 
     private void GenerateEnabledTexture()
     {
@@ -83,7 +107,7 @@ public class WaypointImportGuiCell : GuiElementTextBase, IGuiElementCell, IDispo
 
         context.Operator = Operator.Add;
         EmbossRoundRectangleElement(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, false, 4, 0);
-        if (Cell.Model.Waypoints.Count > 0)
+        if (Cell.Model is not null && Cell.Model.Waypoints is not null && Cell.Model.Waypoints.Count > 0)
         {
             context.SetSourceRGBA(0.0, 0.0, 0.0, 0.5);
             RoundRectangle(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, 1.0);
@@ -209,17 +233,10 @@ public class WaypointImportGuiCell : GuiElementTextBase, IGuiElementCell, IDispo
         args.Handled = true;
     }
 
-    public new ElementBounds Bounds { get; }
-
-    public Action<int> OnMouseDownOnCellLeft { private get; init; }
-
-    public Action<int> OnMouseDownOnCellRight { private get; init; }
-
-    public bool On { get; set; } = true;
-
     public override void Dispose()
     {
-        ApiEx.ClientMain.EnqueueMainThreadTask(() =>
+        GC.SuppressFinalize(this);
+        api.AsClientMain().EnqueueMainThreadTask(() =>
         {
             _cellTexture?.Dispose();
             api.Render.GLDeleteTexture(_leftHighlightTextureId);

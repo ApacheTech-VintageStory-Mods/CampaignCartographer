@@ -14,15 +14,18 @@ using Gantry.Services.Network.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Dialogues;
 
+/// <summary>
+///     Dialogue window for adding or editing a waypoint, including all UI and logic for waypoint properties, group assignment, and actions.
+/// </summary>
 public class AddEditWaypointDialogue : GenericDialogue
 {
     private readonly string[] _icons;
     private readonly int[] _colours;
     private readonly Waypoint _waypoint;
     private readonly int _index;
-    private readonly BlockPos _position;
+    private readonly BlockPos? _position;
     private readonly CrudAction _mode;
-    private readonly IClientNetworkChannel _clientChannel;
+    private readonly IClientNetworkChannel? _clientChannel;
     private readonly IPlayer[] _onlinePlayers;
     private readonly Dictionary<string, string> _waypointGroups;
     private readonly WaypointGroupsSettings _waypointGroupsSettings;
@@ -31,14 +34,25 @@ public class AddEditWaypointDialogue : GenericDialogue
     private bool _beacon;
     private bool _autoSuggest = true;
     private bool _ignoreNextAutoSuggestDisable;
-    private string _selectedGroupId;
-    private WaypointGroup _group;
+    private string? _selectedGroupId;
+    private WaypointGroup? _group;
 
+    /// <summary>
+    ///     Initialises a new instance for editing an existing waypoint.
+    /// </summary>
+    /// <param name="capi">The client API.</param>
+    /// <param name="waypoint">The waypoint to edit.</param>
+    /// <param name="index">The index of the waypoint in the list.</param>
     public AddEditWaypointDialogue(ICoreClientAPI capi, Waypoint waypoint, int index)
         : this(capi, CrudAction.Edit, waypoint, index: index)
     {
     }
 
+    /// <summary>
+    ///     Initialises a new instance for adding a waypoint at a specific position.
+    /// </summary>
+    /// <param name="capi">The client API.</param>
+    /// <param name="position">The position for the new waypoint.</param>
     public AddEditWaypointDialogue(ICoreClientAPI capi, BlockPos position)
         : this(capi, CrudAction.Add, null, position: position)
     {
@@ -54,18 +68,26 @@ public class AddEditWaypointDialogue : GenericDialogue
         };
     }
 
+    /// <summary>
+    ///     Internal constructor for initialising the dialogue with all options.
+    /// </summary>
+    /// <param name="capi">The client API.</param>
+    /// <param name="mode">The CRUD action mode.</param>
+    /// <param name="waypoint">The waypoint to edit, or null for add mode.</param>
+    /// <param name="index">The index of the waypoint in the list.</param>
+    /// <param name="position">The position for a new waypoint, if applicable.</param>
     private AddEditWaypointDialogue(        
         ICoreClientAPI capi,
         CrudAction mode,
-        Waypoint waypoint,
+        Waypoint? waypoint,
         int index = 0,
-        BlockPos position = null)
+        BlockPos? position = null)
         : base(capi)
     {
         var waypointMapLayer = IOC.Services.GetRequiredService<WaypointMapLayer>();
         _icons = [.. waypointMapLayer.WaypointIcons.Keys];
         _colours = [.. waypointMapLayer.WaypointColors];
-        _waypoint = waypoint.DeepClone();
+        _waypoint = waypoint.DeepClone()!;
         _index = index;
         _position = position;
         _mode = mode;
@@ -83,6 +105,9 @@ public class AddEditWaypointDialogue : GenericDialogue
         ModalTransparency = .4f;
     }
 
+    /// <summary>
+    ///     Refreshes the values in the dialogue UI from the current waypoint and settings.
+    /// </summary>
     protected override void RefreshValues()
     {
         _beacon = _waypointBeaconSettings.ActiveBeacons.Contains(_waypoint.Guid);
@@ -104,6 +129,10 @@ public class AddEditWaypointDialogue : GenericDialogue
         }
     }
 
+    /// <summary>
+    ///     Composes the body of the dialogue, adding all UI elements for editing a waypoint.
+    /// </summary>
+    /// <param name="composer">The GUI composer.</param>
     protected override void ComposeBody(GuiComposer composer)
     {
         var labelFont = CairoFont.WhiteSmallText();
@@ -246,17 +275,34 @@ public class AddEditWaypointDialogue : GenericDialogue
         }
     }
 
+    /// <summary>
+    ///     Handles the event when the waypoint group is changed in the UI.
+    /// </summary>
+    /// <param name="code">The group code.</param>
+    /// <param name="selected">Whether the group is selected.</param>
     private void OnWaypointGroupChanged(string code, bool selected)
     {
         _selectedGroupId = code;
     }
 
+    /// <summary>
+    ///     Handles the teleport button press event.
+    /// </summary>
+    /// <returns>True if teleport was successful, otherwise false.</returns>
     private bool OnTeleportButtonPressed()
     {
+        if (_clientChannel is null)
+        {
+            ApiEx.Client.ShowChatMessage(LangEx.Get("error-message.error-occured"));
+            return false;
+        }
         _clientChannel.SendPacket<WorldMapTeleportPacket>(new() { Position = _waypoint.Position });
         return TryClose();
     }
 
+    /// <summary>
+    ///     Suggests a title for the waypoint based on icon and colour.
+    /// </summary>
     private void AutoSuggestTitle()
     {   
         if (!_autoSuggest) return;
@@ -272,33 +318,57 @@ public class AddEditWaypointDialogue : GenericDialogue
         txtTitle.SetValue(value);
     }
 
+    /// <summary>
+    ///     Handles the icon selection event.
+    /// </summary>
+    /// <param name="index">The selected icon index.</param>
     private void OnIconSelected(int index)
     {
         _waypoint.Icon = _icons[index];
         AutoSuggestTitle();
     }
 
+    /// <summary>
+    ///     Handles the colour selection event.
+    /// </summary>
+    /// <param name="index">The selected colour index.</param>
     private void OnColourSelected(int index)
     {
         _waypoint.Color = _colours[index];
         AutoSuggestTitle();
     }
 
+    /// <summary>
+    ///     Handles the beacon switch event.
+    /// </summary>
+    /// <param name="state">The new beacon state.</param>
     private void OnBeaconChanged(bool state)
     {
         _beacon = state;
     }
 
+    /// <summary>
+    ///     Handles the pinned switch event.
+    /// </summary>
+    /// <param name="state">The new pinned state.</param>
     private void OnPinnedChanged(bool state)
     {
         _waypoint.Pinned = state;
     }
 
+    /// <summary>
+    ///     Handles the description text change event.
+    /// </summary>
+    /// <param name="text">The new description text.</param>
     private void OnDescriptionChanged(string text)
     {
         _waypoint.Text = text;
     }
 
+    /// <summary>
+    ///     Handles the title text change event.
+    /// </summary>
+    /// <param name="title">The new title text.</param>
     private void OnTitleChanged(string title)
     {
         _waypoint.Title = title;
@@ -307,6 +377,10 @@ public class AddEditWaypointDialogue : GenericDialogue
         _ignoreNextAutoSuggestDisable = false;
     }
 
+    /// <summary>
+    ///     Handles the delete button press event and shows a confirmation dialogue.
+    /// </summary>
+    /// <returns>True if the delete dialogue was shown.</returns>
     private bool OnDeleteButtonPressed()
     {
         MessageBox.Show(T("DeleteConfirmationTitle"), T("DeleteConfirmationMessage"), ButtonLayout.OkCancel, DeleteWaypoint);
@@ -323,6 +397,10 @@ public class AddEditWaypointDialogue : GenericDialogue
         }
     }
 
+    /// <summary>
+    ///     Handles the share button press event.
+    /// </summary>
+    /// <returns>True if the share dialogue was shown.</returns>
     private bool OnShareButtonPressed()
     {
         var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, [_waypoint]);
@@ -330,8 +408,17 @@ public class AddEditWaypointDialogue : GenericDialogue
         return true;
     }
 
+    /// <summary>
+    ///     Handles the OK button press event, saving the waypoint.
+    /// </summary>
+    /// <returns>True if the waypoint was saved.</returns>
     private bool OnOkButtonPressed()
     {
+        if (_clientChannel is null)
+        {
+            ApiEx.Client.ShowChatMessage(LangEx.Get("error-message.error-occured"));
+            return TryClose();
+        }
         G.Log($"{_mode}ing waypoint: {_waypoint.Guid}");
         _clientChannel.SendPacket<WaypointActionPacket>(new() { Mode = _mode, Waypoint = _waypoint });
                 
@@ -344,6 +431,9 @@ public class AddEditWaypointDialogue : GenericDialogue
         return TryClose();
     }
 
+    /// <summary>
+    ///     Removes the waypoint from its group, if assigned.
+    /// </summary>
     private void RemoveWaypointGroup()
     {
         // 0. Don't do anything if the group is null.
@@ -357,6 +447,9 @@ public class AddEditWaypointDialogue : GenericDialogue
         ModSettings.World.Save(_waypointGroupsSettings);
     }
 
+    /// <summary>
+    ///     Updates the waypoint's group assignment.
+    /// </summary>
     private void UpdateWaypointGroup()
     {
         // 0. Don't do anything if the group hasn't changed.
@@ -377,6 +470,10 @@ public class AddEditWaypointDialogue : GenericDialogue
         ModSettings.World.Save(_waypointGroupsSettings);
     }
 
+    /// <summary>
+    ///     Handles the cancel button press event.
+    /// </summary>
+    /// <returns>True if the dialogue was closed.</returns>
     private bool OnCancelButtonPressed()
     {
         return TryClose();
@@ -384,14 +481,25 @@ public class AddEditWaypointDialogue : GenericDialogue
 
     #region Overrides
 
+    /// <inheritdoc/>
     public override bool CaptureAllInputs() => IsOpened();
+    /// <inheritdoc/>
     public override EnumDialogType DialogType => EnumDialogType.Dialog;
+    /// <inheritdoc/>
     public override bool DisableMouseGrab => true;
+    /// <inheritdoc/>
     public override double DrawOrder => 0.2;
+    /// <inheritdoc/>
     public override bool PrefersUngrabbedMouse => true;
 
     #endregion
 
+    /// <summary>
+    ///     Returns a translated string for the dialogue, using the specified path and arguments.
+    /// </summary>
+    /// <param name="path">The translation path.</param>
+    /// <param name="args">Optional arguments for formatting.</param>
+    /// <returns>The translated string.</returns>
     private static string T(string path, params IEnumerable<string> args)
         => LangEx.FeatureString("WaypointManager.Dialogue", path, args);
 }

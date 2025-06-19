@@ -12,7 +12,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.S
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class BlockSelectionWaypoints : ClientModSystem
 {
-    private ICoreClientAPI _capi;
+    private ICoreClientAPI? _capi;
 
     /// <summary>
     ///     Minor convenience method to save yourself the check for/cast to ICoreClientAPI in Start()
@@ -33,7 +33,7 @@ public sealed class BlockSelectionWaypoints : ClientModSystem
 
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
     {
-        var blockSelection = _capi.World.Player.CurrentBlockSelection;
+        var blockSelection = _capi!.World.Player.CurrentBlockSelection;
         if (blockSelection is null) return TextCommandResult.Success();
         var position = blockSelection.Position;
         var block = _capi.World.BlockAccessor.GetBlock(position, BlockLayersAccess.Default);

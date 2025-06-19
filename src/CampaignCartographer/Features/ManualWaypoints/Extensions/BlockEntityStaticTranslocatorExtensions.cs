@@ -25,6 +25,7 @@ public static class BlockEntityStaticTranslocatorExtensions
         {
             var blockPos = translocator.Pos;
             var targetPos = translocator.TargetLocation;
+            if (blockPos is null || targetPos is null) return;
             await AddWaypointAsync(blockPos, targetPos, titleTemplate);
             await AddWaypointAsync(targetPos, blockPos, titleTemplate);
         });
@@ -40,6 +41,7 @@ public static class BlockEntityStaticTranslocatorExtensions
         var service = IOC.Services.GetRequiredService<WaypointTemplateService>();
         var repo = IOC.Services.GetRequiredService<WaypointCommandsRepository>();
         var model = service.GetTemplateByKey("tl");
+        if (model is null) return false; // TODO: Decide if this should throw or just return false
 
         var retVal = await pos.WaypointExistsAtPosAsync(Filter);
         if (retVal) repo.RemoveAllWaypointsAtPosition(pos);
@@ -69,9 +71,9 @@ public static class BlockEntityStaticTranslocatorExtensions
         new PredefinedWaypointTemplate
         {
             Title = message,
-            Colour = NamedColour.Fuchsia,
-            DisplayedIcon = WaypointIcon.Spiral,
-            ServerIcon = WaypointIcon.Spiral
+            Colour = NamedColour.Fuchsia!, // TODO: Ensure NamedColour.Fuchsia is never null
+            DisplayedIcon = WaypointIcon.Spiral!, // TODO: Ensure WaypointIcon.Spiral is never null
+            ServerIcon = WaypointIcon.Spiral!     // TODO: Ensure WaypointIcon.Spiral is never null
         }.AddToMap(sourcePos, forceWaypoint);
 
         G.Log($"Added Waypoint: Translocator to ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
@@ -91,9 +93,9 @@ public static class BlockEntityStaticTranslocatorExtensions
         new PredefinedWaypointTemplate
         {
             Title = message,
-            Colour = NamedColour.Red,
-            DisplayedIcon = WaypointIcon.Spiral,
-            ServerIcon = WaypointIcon.Spiral
+            Colour = NamedColour.Red!, // TODO: Ensure NamedColour.Red is never null
+            DisplayedIcon = WaypointIcon.Spiral!, // TODO: Ensure WaypointIcon.Spiral is never null
+            ServerIcon = WaypointIcon.Spiral!     // TODO: Ensure WaypointIcon.Spiral is never null
         }.AddToMap(blockPos);
 
         G.Log($"Added Waypoint: Broken Translocator at ({displayPos.X}, {displayPos.Y}, {displayPos.Z})");
@@ -106,8 +108,8 @@ public static class BlockEntityStaticTranslocatorExtensions
     /// <param name="blockPos">The position of the translocator block.</param>
     public static void ProcessWaypoints(this BlockStaticTranslocator block, BlockPos blockPos)
     {
-        var translocator = (BlockEntityStaticTranslocator)ApiEx.Client.World.GetBlockAccessorPrefetch(false, false).GetBlockEntity(blockPos);
-        if (!block.Repaired || translocator is null || !translocator.GetField<bool>("canTeleport"))
+        var blockEntity = ApiEx.Client.World.GetBlockAccessorPrefetch(false, false).GetBlockEntity(blockPos);
+        if (!block.Repaired || blockEntity is not BlockEntityStaticTranslocator translocator || !translocator.GetField<bool>("canTeleport"))
         {
             block.AddBrokenTranslocatorWaypoint(blockPos);
             return;

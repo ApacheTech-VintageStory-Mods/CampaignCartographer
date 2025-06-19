@@ -9,7 +9,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointSharing;
 /// </summary>
 public class WaypointSharingService : UniversalModSystem
 {
-    private IClientNetworkChannel _clientChannel;
+    private IClientNetworkChannel? _clientChannel;
 
     /// <inheritdoc />
     public override double ExecuteOrder() => 0.12;
@@ -41,6 +41,7 @@ public class WaypointSharingService : UniversalModSystem
             : [Sapi.World.PlayerByUid(packet.PlayerId)];
 
         var waypointMapLayer = Sapi.ModLoader.GetModSystem<WorldMapManager>().WaypointMapLayer();
+        if (waypointMapLayer is null) return;
 
         foreach (var player in players)
         {
@@ -77,7 +78,7 @@ public class WaypointSharingService : UniversalModSystem
     public void ShareWaypoint(Waypoint waypoint, string playerId)
     {
         G.Log("Sending waypoint sharing packet to server.");
-        _clientChannel.SendPacket(new WaypointSharingPacket
+        _clientChannel?.SendPacket(new WaypointSharingPacket
         {
             Waypoint = waypoint,
             PlayerId = playerId
@@ -105,7 +106,7 @@ public class WaypointSharingService : UniversalModSystem
     public void BroadcastWaypoint(Waypoint waypoint)
     {
         G.Log("Sending waypoint sharing packet to server.");
-        _clientChannel.SendPacket(new WaypointSharingPacket
+        _clientChannel?.SendPacket(new WaypointSharingPacket
         {
             Waypoint = waypoint
         });

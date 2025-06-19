@@ -28,7 +28,9 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         if (ApiEx.Client is null) return true;
         if (!key.StartsWith("maplayer-")) return true;
         if (!Guid.TryParse(key.Replace("maplayer-", ""), out var id)) return true;
-        var group = ClientSettings.Groups.FirstOrDefault(p => p.Id == id);
+        var groups = ClientSettings?.Groups;
+        if (groups is null) return true;
+        var group = groups.FirstOrDefault(p => p is not null && p.Id == id);
         if (group is null) return true;
         __result = group.Title;
         return false;
@@ -44,8 +46,11 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
         if (ApiEx.Client is null) return;
         try
         {
-            foreach (var group in ClientSettings.Groups)
+            var groups = ClientSettings?.Groups;
+            if (groups is null) return;
+            foreach (var group in groups)
             {
+                if (group is null) continue;
                 IOC.CommandProcessor.Send(new AddWaypointGroupLayerCommand() { Group = group });
             }
         }
@@ -63,16 +68,18 @@ public class WaypointGroupsPatches : WorldSettingsConsumer<WaypointGroupsSetting
     public static void Harmony_GuiDialogWorldMap_OnTabClicked_Prefix(GuiDialogWorldMap __instance, int arg1, GuiTab tab, 
         List<string> ___tabnames, List<GuiTab> ___tabs)
     {
-        if (!ApiEx.Client.World.Player.Entity.Controls.ShiftKey) return;
+        if (ApiEx.Client?.World?.Player?.Entity?.Controls?.ShiftKey is not true) return;
+        if (___tabnames is null || ___tabs is null) return;
+        if (arg1 < 0 || arg1 >= ___tabnames.Count) return;
         string layerGroupCode = ___tabnames[arg1];
         if (layerGroupCode != "waypoints") return;
+        if (__instance.MapLayers is null) return;
         __instance.MapLayers.OfType<WaypointGroupMapLayer>().InvokeForAll(p =>
         {
-            var index = ___tabnames.IndexOf(p.LayerGroupCode);
-            if (index == -1) return;
+            var index = p.LayerGroupCode is not null ? ___tabnames.IndexOf(p.LayerGroupCode) : -1;
+            if (index == -1 || index >= ___tabs.Count) return;
             p.Active = tab.Active;
             ___tabs[index].Active = tab.Active;
         });
-
     }
 }

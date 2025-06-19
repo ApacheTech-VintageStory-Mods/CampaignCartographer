@@ -1,5 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Cairo;
+using ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
+using Gantry.Core.Extensions.Api;
 
 // ReSharper disable StringLiteralTypo
 
@@ -22,7 +25,6 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
     private const double UnscaledSwitchSize = 25.0;
     private const double UnscaledSwitchPadding = 4.0;
     private const double UnscaledRightBoxWidth = 40.0;
-    private readonly ICoreClientAPI _capi;
 
     /// <summary>
     /// 	Initialises a new instance of the <see cref="WaypointImportGuiCell" /> class.
@@ -32,14 +34,24 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
     /// <param name="bounds">The bounds.</param>
     public WaypointTemplatePackGuiCell(ICoreClientAPI capi, WaypointTemplatePackCellEntry cell, ElementBounds bounds) : base(capi, "", null, bounds)
     {
-        _capi = capi;
-        Cell = cell;
+        Cell = cell ?? throw new ArgumentNullException(nameof(cell));
         Bounds = bounds;
         _cellTexture = new LoadedTexture(capi);
         Cell.TitleFont ??= CairoFont.WhiteSmallishText();
-        if (Cell.DetailTextFont != null) return;
-        Cell.DetailTextFont = CairoFont.WhiteSmallText();
-        Cell.DetailTextFont.Color[3] *= 0.6;
+        if (Cell.DetailTextFont is null)
+        {
+            Cell.DetailTextFont = CairoFont.WhiteSmallText();
+            Cell.DetailTextFont.Color[3] *= 0.6;
+        }
+        // Ensure Model and Templates are not null
+        if (Cell.Model is null)
+        {
+            Cell.Model = new TemplatePack { Metadata = new TemplatePackMetadata(), Templates = new List<PredefinedWaypointTemplate>() };
+        }
+        if (Cell.Model.Templates is null)
+        {
+            Cell.Model.Templates = [];
+        }
     }
 
     public WaypointTemplatePackCellEntry Cell { get; }
@@ -85,7 +97,7 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
 
         context.Operator = Operator.Add;
         EmbossRoundRectangleElement(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, false, 4, 0);
-        if (Cell.Model.Templates.Count > 0)
+        if (Cell.Model?.Templates is not null && Cell.Model.Templates.Count > 0)
         {
             context.SetSourceRGBA(0.0, 0.0, 0.0, 0.5);
             RoundRectangle(context, 0.0, 0.0, Bounds.OuterWidth, Bounds.OuterHeight, 1.0);
@@ -176,7 +188,7 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
         text = Cell.Title;
 
         _titleTextHeight = textUtil.GetMultilineTextHeight(Font, Cell.Title, width) / RuntimeEnv.GUIScale;
-        Font = Cell.DetailTextFont;
+        Font = Cell.DetailTextFont ?? CairoFont.WhiteSmallText();
         text = Cell.DetailText;
         var num4 = textUtil.GetMultilineTextHeight(Font, Cell.DetailText, width) / RuntimeEnv.GUIScale;
 
@@ -213,19 +225,22 @@ public class WaypointTemplatePackGuiCell : GuiElementTextBase, IGuiElementCell, 
 
     public new ElementBounds Bounds { get; }
 
-    public Action<int> OnMouseDownOnCellLeft { private get; init; }
+    public Action<int> OnMouseDownOnCellLeft { private get; init; } = _ => { };
 
-    public Action<int> OnMouseDownOnCellRight { private get; init; }
+    public Action<int> OnMouseDownOnCellRight { private get; init; } = _ => { };
 
     public bool On { get; set; } = true;
 
     public override void Dispose()
     {
         GC.SuppressFinalize(this);
-        _cellTexture?.Dispose();
-        api.Render.GLDeleteTexture(_leftHighlightTextureId);
-        api.Render.GLDeleteTexture(_rightHighlightTextureId);
-        api.Render.GLDeleteTexture(_switchOnTextureId);
+        api.AsClientMain().EnqueueMainThreadTask(() =>
+        {
+            _cellTexture?.Dispose();
+            api.Render.GLDeleteTexture(_leftHighlightTextureId);
+            api.Render.GLDeleteTexture(_rightHighlightTextureId);
+            api.Render.GLDeleteTexture(_switchOnTextureId);
+        }, "");
         base.Dispose();
     }
 }

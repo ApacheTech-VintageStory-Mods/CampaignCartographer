@@ -73,7 +73,7 @@ public class WaypointTemplateService
     /// <returns>
     ///     A cloned <see cref="PredefinedWaypointTemplate"/> if found, or <c>null</c> if no matching template exists.
     /// </returns>
-    public PredefinedWaypointTemplate GetTemplateByKey(string key)
+    public PredefinedWaypointTemplate? GetTemplateByKey(string key)
     {
         WaypointTemplates.TryGetValue(key, out var template);
         return template;

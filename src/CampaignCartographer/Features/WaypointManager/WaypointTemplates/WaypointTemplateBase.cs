@@ -34,7 +34,7 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <value>The icon that will be saved to the server.</value>
     [JsonRequired]
     [ProtoMember(3)]
-    public string ServerIcon { get; set; } = WaypointIcon.Circle;
+    public string ServerIcon { get; set; } = WaypointIcon.Circle!;
 
     /// <summary>
     ///     Gets or sets the icon that will be displayed on the map.
@@ -42,7 +42,7 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <value>The icon that will be displayed on the map.</value>
     [JsonRequired]
     [ProtoMember(4)]
-    public string DisplayedIcon { get; set; } = WaypointIcon.Circle;
+    public string DisplayedIcon { get; set; } = WaypointIcon.Circle!;
 
     /// <summary>
     ///     Gets or sets the colour of the icon to be displayed.
@@ -68,7 +68,7 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <returns>
     ///     true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.
     /// </returns>
-    public bool Equals(WaypointTemplateBase other) => other.IsSameAs(this);
+    public bool Equals(WaypointTemplateBase? other) => other?.IsSameAs(this) ?? false;
 
     /// <summary>
     ///     Determines whether the specified <see cref="object" />, is equal to this instance.
@@ -77,7 +77,7 @@ public class WaypointTemplateBase : ICloneable, IEquatable<WaypointTemplateBase>
     /// <returns>
     ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is not WaypointTemplateBase other) return false;
         return other.IsSameAs(this);

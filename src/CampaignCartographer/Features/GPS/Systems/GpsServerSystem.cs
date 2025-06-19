@@ -5,6 +5,7 @@ using Gantry.Core.Hosting.Registration;
 using Gantry.Services.FileSystem.Hosting;
 using Gantry.Services.Network.Extensions;
 using Vintagestory.API.Server;
+using Vintagestory.Common;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 
@@ -19,7 +20,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.GPS.Systems;
 /// <seealso cref="IServerServiceRegistrar" />
 internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 {
-    private IServerNetworkChannel _serverChannel;
+    private IServerNetworkChannel? _serverChannel;
 
     public void ConfigureServerModServices(IServiceCollection services, ICoreServerAPI sapi)
     {
@@ -66,12 +67,14 @@ internal class GpsServerSystem : ServerModSystem, IServerServiceRegistrar
 
     private TextCommandResult OnServerSubCommandBroadcast(TextCommandCallingArgs args)
     {
+        if (_serverChannel is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Broadcast }, args.Caller.Player as IServerPlayer);
         return TextCommandResult.Success();
     }
 
     private TextCommandResult OnServerSubCommandClipboard(TextCommandCallingArgs args)
     {
+        if (_serverChannel is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         _serverChannel.SendPacket(new GpsPacket { Action = GpsAction.Clipboard }, args.Caller.Player as IServerPlayer);
         return TextCommandResult.Success(T("ClipboardTextSet"));
     }

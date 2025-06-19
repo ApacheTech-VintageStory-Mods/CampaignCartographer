@@ -12,7 +12,7 @@ public class AddWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     The waypoint group to be added as a layer.
     /// </summary>
-    public WaypointGroup Group { get; init; }
+    public required WaypointGroup Group { get; init; }
 
     /// <summary>
     ///     Handles the execution of the <see cref="AddWaypointGroupLayerCommand"/>.

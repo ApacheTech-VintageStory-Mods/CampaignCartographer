@@ -12,7 +12,7 @@ public class RemoveWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     The identifier of the waypoint group to be removed.
     /// </summary>
-    public string GroupId { get; set; }
+    public required string GroupId { get; set; }
 
     /// <summary>
     ///     Handles the execution of the <see cref="RemoveWaypointGroupLayerCommand"/>.

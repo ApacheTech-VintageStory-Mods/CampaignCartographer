@@ -20,12 +20,12 @@ public class PredefinedWaypointsDialogue : GenericDialogue
     private readonly TemplatePack _templatePack;
     private readonly PredefinedWaypointsSettings _settings;
 
-    private List<PredefinedWaypointsCellEntry> _waypointCells;
+    private List<PredefinedWaypointsCellEntry> _waypointCells = [];
     private readonly SortedDictionary<string, PredefinedWaypointTemplate> _templates = [];
-    private ElementBounds _clippedBounds;
-    private ElementBounds _cellListBounds;
-    private GuiElementCellList<PredefinedWaypointsCellEntry> _cellList;
-    private string _filterString;
+    private ElementBounds _clippedBounds = ElementBounds.Fixed(0, 0, 0, 0);
+    private ElementBounds _cellListBounds = ElementBounds.Fixed(0, 0, 0, 0);
+    private GuiElementCellList<PredefinedWaypointsCellEntry> _cellList = null!;
+    private string _filterString = string.Empty;
     private bool _disabledTypesOnly;
 
     /// <summary>
@@ -208,11 +208,11 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     #region Cell List Management
 
-    private IGuiElementCell CellCreator(PredefinedWaypointsCellEntry cell, ElementBounds bounds)
+    private PredefinedWaypointsGuiCell CellCreator(PredefinedWaypointsCellEntry cell, ElementBounds bounds)
     {
         return new PredefinedWaypointsGuiCell(ApiEx.Client, cell, bounds)
         {
-            On = cell.Model.Enabled = cell.Enabled,
+            On = cell.Model!.Enabled = cell.Enabled,
             OnMouseDownOnCellLeft = OnCellClickLeftSide,
             OnMouseDownOnCellRight = OnCellClickRightSide
         };
@@ -220,7 +220,7 @@ public class PredefinedWaypointsDialogue : GenericDialogue
 
     private List<PredefinedWaypointsCellEntry> GetCellEntries()
     {
-        if (!_templates.Any()) return [];
+        if (_templates.Count == 0) return [];
         var list = _templates.Select(kvp =>
         {
             var dto = kvp.Value;
@@ -332,5 +332,5 @@ public class PredefinedWaypointsDialogue : GenericDialogue
         return base.TryClose();
     }
 
-    public Action OnClose { get; set; }
+    public Action OnClose { get; set; } = () => { };
 }

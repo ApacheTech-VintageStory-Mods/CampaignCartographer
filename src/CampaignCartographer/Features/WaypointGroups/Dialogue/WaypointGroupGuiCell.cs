@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Cairo;
+using Gantry.Core.Extensions.Api;
 
 // ReSharper disable StringLiteralTypo
 
@@ -16,15 +17,27 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
     private LoadedTexture _cellTexture;
     private int _leftHighlightTextureId;
 
+    /// <summary>
+    ///     The cell entry associated with this GUI cell.
+    /// </summary>
     public WaypointGroupCellEntry Cell { get; }
 
+    /// <summary>
+    ///     The bounds of this GUI cell.
+    /// </summary>
     public new ElementBounds Bounds { get; }
 
-    public Action<int> OnMouseDownOnCell { private get; init; }
+    /// <summary>
+    ///     The action to invoke when the cell is clicked.
+    /// </summary>
+    public required Action<int> OnMouseDownOnCell { private get; init; }
 
     /// <summary>
-    /// 	Initialises a new instance of the <see cref="WaypointGroupGuiCell" /> class.
+    ///     Initialises a new instance of the <see cref="WaypointGroupGuiCell" /> class.
     /// </summary>
+    /// <param name="capi">The client API.</param>
+    /// <param name="cell">The cell entry to display.</param>
+    /// <param name="bounds">The bounds of the cell.</param>
     public WaypointGroupGuiCell(ICoreClientAPI capi, WaypointGroupCellEntry cell, ElementBounds bounds) : base(capi, "", null, bounds)
     {
         Cell = cell;
@@ -33,6 +46,9 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
         Bounds = bounds.WithFixedHeight(30);
     }
 
+    /// <summary>
+    ///     Composes the cell's visual elements and textures.
+    /// </summary>
     private void Compose()
     {
         ComposeHover(ref _leftHighlightTextureId);
@@ -58,6 +74,10 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
         generateTexture(imageSurface, ref _cellTexture);
     }
 
+    /// <summary>
+    ///     Composes the hover effect texture for the cell.
+    /// </summary>
+    /// <param name="textureId">The texture ID to update.</param>
     private void ComposeHover(ref int textureId)
     {
         var imageSurface = new ImageSurface(0, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
@@ -77,6 +97,11 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
         imageSurface.Dispose();
     }
 
+    /// <summary>
+    ///     Renders the interactive elements of the cell.
+    /// </summary>
+    /// <param name="capi">The client API.</param>
+    /// <param name="deltaTime">The time since the last frame.</param>
     public void OnRenderInteractiveElements(ICoreClientAPI capi, float deltaTime)
     {
         if (_cellTexture.TextureId == 0) Compose();
@@ -91,19 +116,37 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
         api.Render.Render2DTexturePremultipliedAlpha(_leftHighlightTextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
     }
 
+    /// <summary>
+    ///     Updates the cell's height to a fixed value.
+    /// </summary>
     public void UpdateCellHeight()
     {
         Bounds.fixedHeight = 30.0;
     }
 
+    /// <summary>
+    ///     Handles mouse down events on the cell element.
+    /// </summary>
+    /// <param name="args">The mouse event arguments.</param>
+    /// <param name="elementIndex">The index of the element.</param>
     public void OnMouseDownOnElement(MouseEvent args, int elementIndex)
     {
     }
 
+    /// <summary>
+    ///     Handles mouse move events on the cell element.
+    /// </summary>
+    /// <param name="args">The mouse event arguments.</param>
+    /// <param name="elementIndex">The index of the element.</param>
     public void OnMouseMoveOnElement(MouseEvent args, int elementIndex)
     {
     }
 
+    /// <summary>
+    ///     Handles mouse up events on the cell element and triggers the click action.
+    /// </summary>
+    /// <param name="args">The mouse event arguments.</param>
+    /// <param name="elementIndex">The index of the element.</param>
     public void OnMouseUpOnElement(MouseEvent args, int elementIndex)
     {
         var mouseX = api.Input.MouseX;
@@ -114,13 +157,17 @@ public class WaypointGroupGuiCell : GuiElementTextBase, IGuiElementCell, IDispos
         args.Handled = true;
     }
 
+    /// <summary>
+    ///     Disposes the resources used by the cell.
+    /// </summary>
     public override void Dispose()
     {
         GC.SuppressFinalize(this);
-        ApiEx.ClientMain.EnqueueMainThreadTask(() =>
+        api.AsClientMain().EnqueueMainThreadTask(() =>
         {
             _cellTexture?.Dispose();
-            api.Render.GLDeleteTexture(_leftHighlightTextureId);
+            if (_leftHighlightTextureId > 0)
+                api.Render.GLDeleteTexture(_leftHighlightTextureId);
             base.Dispose();
         }, "");
     }

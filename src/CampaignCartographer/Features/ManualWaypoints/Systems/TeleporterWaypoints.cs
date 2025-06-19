@@ -13,7 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.S
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class TeleporterWaypoints : ClientModSystem
 {
-    private ICoreClientAPI _capi;
+    private ICoreClientAPI? _capi;
 
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
@@ -28,7 +28,7 @@ public sealed class TeleporterWaypoints : ClientModSystem
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
     {
         var found = false;
-        var pos = _capi.World.Player.Entity.Pos.AsBlockPos;
+        var pos = _capi!.World.Player.Entity.Pos.AsBlockPos;
         var teleporter = _capi.World.GetNearestBlockEntity<BlockEntityTeleporter>(pos, 5f, 1f, Predicate);
 
         if (!found)
@@ -39,7 +39,7 @@ public sealed class TeleporterWaypoints : ClientModSystem
         }
 
         var titleTemplate = LangEx.FeatureCode("PredefinedWaypoints.TeleporterWaypoints", "TeleporterWaypointTitle");
-        teleporter.AddWaypoint(titleTemplate);
+        teleporter?.AddWaypoint(titleTemplate);
         return TextCommandResult.Success();
 
         bool Predicate(BlockEntityTeleporter p) => found = true;

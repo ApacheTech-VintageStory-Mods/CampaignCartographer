@@ -9,16 +9,16 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Di
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class WaypointGroupsDialogue : GenericDialogue
 {
-    private ElementBounds _clippedBounds;
-    private ElementBounds _cellListBounds;
-
-    private GuiElementCellList<WaypointGroupCellEntry> _groupCellList;
+    private ElementBounds? _clippedBounds;
+    private ElementBounds? _cellListBounds;
+    private GuiElementCellList<WaypointGroupCellEntry>? _groupCellList;
     private readonly WaypointGroupsSettings _settings;
 
     /// <summary>
-    /// 	Initialises a new instance of the <see cref="WaypointImportDialogue" /> class.
+    ///     Initialises a new instance of the <see cref="WaypointGroupsDialogue" /> class.
     /// </summary>
-    /// <param name="capi">Client API pass-through</param>
+    /// <param name="capi">Client API pass-through.</param>
+    /// <param name="settings">The settings for waypoint groups.</param>
     public WaypointGroupsDialogue(ICoreClientAPI capi, WaypointGroupsSettings settings) : base(capi)
     {
         _settings = settings;
@@ -51,7 +51,7 @@ public class WaypointGroupsDialogue : GenericDialogue
     /// </summary>
     private void RefreshWaypointGroups()
     {
-        _groupCellList.ReloadCells(CreateCellEntries());
+        _groupCellList?.ReloadCells(CreateCellEntries());
     }
 
     private List<WaypointGroupCellEntry> CreateCellEntries()
@@ -82,7 +82,7 @@ public class WaypointGroupsDialogue : GenericDialogue
     /// </summary>
     protected override void RefreshValues()
     {
-        if (SingleComposer is null) return;
+        if (SingleComposer is null || _clippedBounds is null || _cellListBounds is null) return;
         ApiEx.ClientMain.EnqueueMainThreadTask(() =>
         {
             _cellListBounds.CalcWorldBounds();
@@ -147,8 +147,8 @@ public class WaypointGroupsDialogue : GenericDialogue
 
     private bool OnAddNewGroupButtonClicked()
     {
-        var dialogue = new AddEditWaypointGroupDialogue 
-        { 
+        var dialogue = new AddEditWaypointGroupDialogue
+        {
             OnChanged = RefreshWaypointGroups
         };
         dialogue.ToggleGui();
@@ -165,6 +165,7 @@ public class WaypointGroupsDialogue : GenericDialogue
 
     private void OnScroll(float dy)
     {
+        if (_groupCellList is null) return;
         var bounds = _groupCellList.Bounds;
         bounds.fixedY = 0f - dy;
         bounds.CalcWorldBounds();
@@ -172,6 +173,7 @@ public class WaypointGroupsDialogue : GenericDialogue
 
     private void OnCellClick(int val)
     {
+        if (_groupCellList is null) return;
         var group = _groupCellList.elementCells.Cast<WaypointGroupGuiCell>().ToList()[val].Cell.Model;
         var dialogue = new AddEditWaypointGroupDialogue(group) { OnChanged = RefreshWaypointGroups };
         dialogue.ToggleGui();
@@ -180,12 +182,12 @@ public class WaypointGroupsDialogue : GenericDialogue
     #endregion
 
     /// <summary>
-    ///     Disposes the dialogue window.
+    ///     Disposes the dialogue window and its resources.
     /// </summary>
     public override void Dispose()
     {
         GC.SuppressFinalize(this);
-        _groupCellList.Dispose();
+        _groupCellList?.Dispose();
         base.Dispose();
     }
 }

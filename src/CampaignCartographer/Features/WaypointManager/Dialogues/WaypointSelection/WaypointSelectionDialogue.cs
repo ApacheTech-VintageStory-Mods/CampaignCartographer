@@ -7,7 +7,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 
 public abstract class WaypointSelectionDialogue : GenericDialogue
 {
-    private GuiElementDynamicText _lblSelectedCount;
+    private GuiElementDynamicText? _lblSelectedCount;
 
     protected WaypointSelectionDialogue(ICoreClientAPI capi) : base(capi)
     {
@@ -18,10 +18,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     protected WaypointSelectionDialogueBounds Bounds { get; } = new();
 
-    protected override void PreCompose()
-    {
-        RefreshCells();
-    }
+    protected override void PreCompose() => RefreshCells();
 
     protected override void ComposeBody(GuiComposer composer)
     {
@@ -36,10 +33,10 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
         if (SingleComposer is null) return;
         SingleComposer.GetTextInput("txtSearchBox").SetValue(SearchTerm);
 
-        var cellList = CellList.elementCells.Cast<WaypointSelectionGuiCell>();
-        var count = cellList.Count(p => p.On);
-        var selectedCountText = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "SelectedWaypoints", count.ToString("N0"));
-        _lblSelectedCount.SetNewText(selectedCountText, true, true);
+        var cellList = CellList?.elementCells.Cast<WaypointSelectionGuiCell>();
+        var count = cellList?.Count(p => p.On);
+        var selectedCountText = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "SelectedWaypoints", count?.ToString("N0"));
+        _lblSelectedCount?.SetNewText(selectedCountText, true, true);
         UpdateCellListBounds();
     }
 
@@ -146,13 +143,14 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     protected IEnumerable<WaypointSelectionCellEntry> Cells { get; private set; } = [];
 
-    protected GuiElementCellList<WaypointSelectionCellEntry> CellList { get; private set; }
+    protected GuiElementCellList<WaypointSelectionCellEntry>? CellList { get; private set; }
 
-    protected virtual string SearchTerm { get; set; }
+    protected virtual string SearchTerm { get; set; } = string.Empty;
 
     protected virtual void OnCellClickLeftSide(MouseEvent @event, int elementIndex)
     {
-        var cell = CellList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+        var cell = CellList?.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+        if (cell is null) return;
 
         var worldMap = capi.ModLoader.GetModSystem<WorldMapManager>();
         worldMap.RecentreMap(cell.Model.Position);
@@ -170,7 +168,9 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
     private void OnCellClickRightSide(MouseEvent @event, int elementIndex)
     {
-        var cell = CellList.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+        var cell = CellList?.elementCells.Cast<WaypointSelectionGuiCell>().ToList()[elementIndex];
+        if (cell is null) return;
+
         cell.On = !cell.On;
         cell.Enabled = cell.On;
         cell.Model.Selected = cell.On;
@@ -184,7 +184,7 @@ public abstract class WaypointSelectionDialogue : GenericDialogue
 
         WaypointSelectionGuiCell CellCreator(WaypointSelectionCellEntry cell, ElementBounds bounds) => new(capi, cell, bounds)
         {
-            On = cell.Model.Selected,
+            On = cell.Model?.Selected ?? false,
             OnMouseDownOnCellLeft = OnCellClickLeftSide,
             OnMouseDownOnCellRight = OnCellClickRightSide
         };

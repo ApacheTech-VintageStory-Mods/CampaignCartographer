@@ -11,9 +11,9 @@ public class WaypointBeaconViewModel
     private readonly string _id;
     private readonly WaypointBeaconsSettings _settings;
     private readonly WaypointMapLayer _mapLayer;
-    private Waypoint _memento;
+    private Waypoint? _memento;
 
-    private Waypoint ThisWaypoint
+    private Waypoint? ThisWaypoint
     {
         get
         {
@@ -52,7 +52,7 @@ public class WaypointBeaconViewModel
     /// <summary>
     ///     The waypoint associated with this view model.
     /// </summary>
-    public Waypoint Waypoint => Get(p => p);
+    public Waypoint? Waypoint => Get(p => p);
 
     /// <summary>
     ///     Indicates whether the waypoint is available.
@@ -62,12 +62,12 @@ public class WaypointBeaconViewModel
     /// <summary>
     ///     The index of the waypoint within the waypoint map layer.
     /// </summary>
-    public int Index => Get(p => p.GetIndex());
+    public int? Index => Get(p => p?.GetIndex());
 
     /// <summary>
     ///     The position of the waypoint in the world, adjusted to align with visual representation.
     /// </summary>
-    public Vec3d WaypointPosition => Get(p => p.Position.AsBlockPos.ToVec3d().SubCopy(0, 0.5, 0).Add(0.5));
+    public Vec3d? WaypointPosition => Get(p => p?.Position.AsBlockPos.ToVec3d().SubCopy(0, 0.5, 0).Add(0.5));
 
     /// <summary>
     ///     The distance from the player's current position to the waypoint.
@@ -82,14 +82,14 @@ public class WaypointBeaconViewModel
     /// <summary>
     ///     The colour of the waypoint normalised to an array of RGBA double values.
     /// </summary>
-    public double[] NormalisedColour => Get(p => ColorUtil.ToRGBADoubles(p.Color));
+    public double[]? NormalisedColour => Get(p => ColorUtil.ToRGBADoubles(p?.Color ?? 0));
 
     /// <summary>
     ///     A formatted label for the waypoint, including optional prefix, index, and distance information.
     /// </summary>
-    public string Label => Get(p =>
+    public string? Label => Get(p =>
     {
-        var title = p.Title is not null
+        var title = p?.Title is not null
             ? $"{(_settings.ShowWaypointPrefix ? "Waypoint: " : "")}{(_settings.ShowWaypointIndex
                 ? $"ID: {Index} | " : "")}{p.Title}" : "";
 
@@ -106,7 +106,7 @@ public class WaypointBeaconViewModel
     /// <typeparam name="T">The type of the value to retrieve.</typeparam>
     /// <param name="f">A function to retrieve the value from the waypoint.</param>
     /// <returns>The retrieved value, or the default if the waypoint is unavailable.</returns>
-    private T Get<T>(System.Func<Waypoint, T> f)
+    private T? Get<T>(System.Func<Waypoint?, T> f)
     {
         try
         {

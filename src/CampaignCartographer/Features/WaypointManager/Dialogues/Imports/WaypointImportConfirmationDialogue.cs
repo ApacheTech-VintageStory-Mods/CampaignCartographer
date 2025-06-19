@@ -16,8 +16,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
 {
     private readonly IEnumerable<ImportedWaypointTemplate> _waypoints;
-    private IEnumerable<WaypointSelectionCellEntry> _cells;
-    private ImmutableSortedDictionary<int, Waypoint> _sortedWaypoints;
+    private readonly IEnumerable<WaypointSelectionCellEntry> _cells;
+    private ImmutableSortedDictionary<int, Waypoint> _sortedWaypoints = ImmutableSortedDictionary<int, Waypoint>.Empty;
 
     [ActivatorUtilitiesConstructor]
     public WaypointImportConfirmationDialogue(ICoreClientAPI capi, List<ImportedWaypointTemplate> waypoints) : base(capi)
@@ -74,11 +74,8 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
         return list;
     }
 
-
-    protected override IEnumerable<WaypointSelectionCellEntry> GetCellEntries(System.Func<SelectableWaypointTemplate, bool> filter)
-    {
-        return WaypointQueriesRepository.SortCells(SortOrder, _cells);
-    }
+    protected override IEnumerable<WaypointSelectionCellEntry> GetCellEntries(System.Func<SelectableWaypointTemplate, bool> filter) 
+        => WaypointQueriesRepository.SortCells(SortOrder, _cells);
 
     #region Primary Button: Export Selected Waypoints
 
@@ -88,6 +85,7 @@ public class WaypointImportConfirmationDialogue : WaypointSelectionDialogue
 
     private bool ImportSelectedWaypoints()
     {
+        if (CellList is null) return false;
         var waypoints = CellList.elementCells
             .Cast<WaypointSelectionGuiCell>()
             .Where(p => p.On)

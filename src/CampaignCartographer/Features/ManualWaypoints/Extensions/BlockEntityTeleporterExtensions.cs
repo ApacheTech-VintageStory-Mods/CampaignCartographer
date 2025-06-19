@@ -10,7 +10,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.E
 /// </summary>
 public static class BlockEntityTeleporterExtensions
 {
-    private static WaypointTemplateService _waypointService;
+    private static WaypointTemplateService? _waypointService;
 
     /// <summary>
     ///     Adds waypoints at each end of a teleporter.
@@ -39,8 +39,8 @@ public static class BlockEntityTeleporterExtensions
         {
             Title = title,
             Colour = NamedColour.SpringGreen,
-            DisplayedIcon = WaypointIcon.Spiral,
-            ServerIcon = WaypointIcon.Spiral
+            DisplayedIcon = WaypointIcon.Spiral!,
+            ServerIcon = WaypointIcon.Spiral!
         }.AddToMap(sourcePos);
 
         G.Log($"Added Waypoint: {title}");

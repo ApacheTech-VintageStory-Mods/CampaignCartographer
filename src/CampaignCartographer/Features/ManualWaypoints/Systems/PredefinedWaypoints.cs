@@ -19,8 +19,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.S
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistrar
 {
-    private PredefinedWaypointsSettings _settings;
-    private IFileSystemService _fileSystemService;
+    private PredefinedWaypointsSettings? _settings;
+    private IFileSystemService? _fileSystemService;
 
     public static Dictionary<FileScope, TemplatePack> CustomPacks { get; } = [];
     public static List<TemplatePack> TemplatePacks { get; } = [];
@@ -46,7 +46,12 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
 
     private void RegisterTemplatePack(string fileName)
     {
-        var templatePack = _fileSystemService.GetJsonFile(fileName).ParseAs<TemplatePack>();
+        var templatePack = _fileSystemService?.GetJsonFile(fileName).ParseAs<TemplatePack>();
+        if (templatePack is null)
+        {
+            G.Logger.Error($"Failed to load template pack from {fileName}. It may not exist or is not a valid template pack.");
+            return;
+        }
         if (!TemplatePacks.AddIfNotPresent(templatePack)) return;
         CustomPacks[templatePack.Metadata.Scope] = templatePack;
         G.Log($" - {templatePack.Metadata.Title} ({templatePack.Templates.Count} templates)");
@@ -54,6 +59,16 @@ public sealed class PredefinedWaypoints : ClientModSystem, IClientServiceRegistr
 
     public override void AssetsLoaded(ICoreClientAPI api)
     {
+        if (_fileSystemService is null)
+        {
+            G.Logger.Error("File system service is not available. Cannot load template packs.");
+            return;
+        }
+        if (_settings is null)
+        {
+            G.Logger.Error("Settings for Predefined Waypoints are not available. Cannot load template packs.");
+            return;
+        }
         TemplatePacks.Clear();
         G.Log("Loading custom template packs.");
         RegisterTemplatePack("custom-world-template-pack.json");

@@ -12,7 +12,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 public class WaypointExportConfirmationDialogue : GenericDialogue
 {
     private readonly WaypointFileModel _model;
-    private string _fileName;
+    private string _fileName = string.Empty;
     private readonly string _defaultFileName = $"{DateTime.Now:yyyy.M.dd HH-mm-ss}.json";
     private readonly string _defaultName = LangEx.FeatureString("WaypointManager.Dialogue.Exports", "DefaultName");
 

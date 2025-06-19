@@ -74,7 +74,8 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         return blockEntity switch
         {
             BlockEntityStaticTranslocator translocator => translocator.FullyRepaired && translocator.TargetLocation is not null,
-            BlockEntityTeleporter teleporter => _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == teleporter.Pos).HasTargetLocation(),
+            BlockEntityTeleporter teleporter =>
+                _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == teleporter.Pos) is { } loc && loc.HasTargetLocation(),
             _ => false
         };
     }
@@ -87,10 +88,10 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
     /// <returns>A new or existing fast travel overlay node.</returns>
     private bool TryGetNode(BlockSelection selection, BlockEntity blockEntity, out FastTravelOverlayNode node)
     {
-        node = _settings.Nodes.FirstOrDefault(p => p.Location.SourcePos == selection.Position);
-        if (node is not null) return true;
+        node = _settings.Nodes?.FirstOrDefault(p => p?.Location?.SourcePos == selection.Position) ?? new FastTravelOverlayNode();
+        node.Location ??= new TeleporterLocation();
+        if (node.Location.SourcePos == selection.Position) return true;
 
-        node = new FastTravelOverlayNode();
         switch (blockEntity)
         {
             case BlockEntityStaticTranslocator translocator:
@@ -101,7 +102,11 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
                 break;
             case BlockEntityTeleporter:
                 node.Type = FastTravelBlockType.Teleporter;
-                node.Location = _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == selection.Position);
+                var teleLoc = _clientService.TeleporterLocations.FirstOrDefault(p => p.SourcePos == selection.Position);
+                if (teleLoc is not null)
+                {
+                    node.Location = teleLoc;
+                }
                 node.NodeColour = _settings.TeleporterColour;
                 break;
             default:
@@ -114,7 +119,7 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
                 break;
         }
 
-        node.Location!.SourcePos = selection.Position;
+        node.Location.SourcePos = selection.Position;
         return false;
     }
 
@@ -129,7 +134,11 @@ internal class FastTravelBlockBehaviour(Block block, FastTravelOverlaySettings s
         {
             G.Log($"Removed Fast Travel Node: {blockPos}");
             ModSettings.World.Save(_settings);
-            ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+            var mapLayer = ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>();
+            if (mapLayer is not null)
+            {
+                mapLayer.RebuildMapComponents();
+            }
         }
     }
 }

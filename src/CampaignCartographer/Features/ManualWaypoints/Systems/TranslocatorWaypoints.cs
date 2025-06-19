@@ -14,7 +14,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.S
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class TranslocatorWaypoints : ClientModSystem
 {
-    private ICoreClientAPI _capi;
+    private ICoreClientAPI? _capi;
 
     /// <summary>
     ///     Minor convenience method to save yourself the check for/cast to ICoreClientAPI in Start()
@@ -31,15 +31,15 @@ public sealed class TranslocatorWaypoints : ClientModSystem
 
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
     {
-        var pos = _capi.World.Player.Entity.Pos.AsBlockPos;
+        var pos = _capi!.World.Player.Entity.Pos.AsBlockPos;
         var block = _capi.World.GetNearestBlock<BlockStaticTranslocator>(pos, 5f, 1f, out var blockPos);
 
-        if (block is null)
+        if (block is null || blockPos is null)
         {
             var translocatorNotFoundMessage = LangEx.FeatureString("PredefinedWaypoints.TranslocatorWaypoints", "TranslocatorNotFound");
-            _capi.ShowChatMessage(translocatorNotFoundMessage);
-            return TextCommandResult.Success();
+            return TextCommandResult.Error(translocatorNotFoundMessage);
         }
+
         block.ProcessWaypoints(blockPos);
         return TextCommandResult.Success();
     }

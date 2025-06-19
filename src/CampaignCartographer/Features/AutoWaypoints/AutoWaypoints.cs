@@ -22,7 +22,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.AutoWaypoints;
 [UsedImplicitly]
 public sealed class AutoWaypoints : ClientModSystem, IClientServiceRegistrar
 {
-    private AutoWaypointsSettings _settings;
+    private AutoWaypointsSettings? _settings;
 
     /// <summary>
     ///     Allows a mod to include Singleton, or Transient services to the IOC Container.

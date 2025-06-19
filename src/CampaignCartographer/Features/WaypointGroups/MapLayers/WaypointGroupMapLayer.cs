@@ -5,7 +5,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Ma
 
 public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : WaypointMapLayer(api, mapSink)
 {
-    private WaypointGroup _group;
+    private WaypointGroup? _group;
     private readonly List<WaypointMapComponent> _waypointMapComponents = [];
 
     public static WaypointGroupMapLayer Create(WaypointGroup group, IWorldMapManager mapSink)
@@ -25,13 +25,21 @@ public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : Way
     ///     Updates the title of the waypoint group.
     /// </summary>
     /// <param name="title">The new title to assign to the waypoint group.</param>
-    public void UpdateTitle(string title) => _group.Title = title;
+    public void UpdateTitle(string title)
+    {
+        if (_group is null) return;
+        _group.Title = title;
+    }
 
     /// <summary>
     ///     Updates the list of waypoints associated with the waypoint group.
     /// </summary>
     /// <param name="waypoints">The new list of waypoint identifiers.</param>
-    public void UpdateWaypoints(List<Guid> waypoints) => _group.Waypoints = waypoints;
+    public void UpdateWaypoints(List<Guid> waypoints)
+    {
+        if (_group is null) return;
+        _group.Waypoints = waypoints;
+    }
 
     /// <summary>
     ///     Clears all waypoint map components from the group.
@@ -53,10 +61,10 @@ public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : Way
     #region Base Overrides
 
     /// <inheritdoc />
-    public override string Title => _group?.Title.IfNullOrEmpty(string.Empty);
+    public override string? Title => _group is not null ? _group.Title.IfNullOrEmpty(string.Empty) : string.Empty;
 
     /// <inheritdoc />
-    public override string LayerGroupCode => _group?.Id.ToString().IfNullOrEmpty(string.Empty);
+    public override string? LayerGroupCode => _group is not null ? _group.Id.ToString().IfNullOrEmpty(string.Empty) : string.Empty;
 
     /// <inheritdoc />
     public override EnumMapAppSide DataSide => EnumMapAppSide.Client;
@@ -70,7 +78,7 @@ public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : Way
         if (!Active) return;
         foreach (var mapComponent in _waypointMapComponents)
         {
-            mapComponent.Render(mapElem, dt);
+            mapComponent?.Render(mapElem, dt);
         }
     }
 
@@ -80,7 +88,7 @@ public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : Way
         if (!Active) return;
         foreach (var mapComponent in _waypointMapComponents)
         {
-            mapComponent.OnMouseUpOnElement(args, mapElem);
+            mapComponent?.OnMouseUpOnElement(args, mapElem);
             if (args.Handled) break;
         }
     }
@@ -91,7 +99,7 @@ public class WaypointGroupMapLayer(ICoreAPI api, IWorldMapManager mapSink) : Way
         if (!Active) return;
         foreach (var mapComponent in _waypointMapComponents)
         {
-            mapComponent.OnMouseMove(args, mapElem, hoverText);
+            mapComponent?.OnMouseMove(args, mapElem, hoverText);
         }
     }
 

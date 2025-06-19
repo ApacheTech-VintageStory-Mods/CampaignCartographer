@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿#nullable enable
+using System.Text;
 using ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.DataStructures;
 using Gantry.Services.FileSystem.Configuration.Consumers;
 using Vintagestory.Server;
@@ -12,10 +13,10 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.PlayerPins.Patche
 [HarmonyClientSidePatch]
 public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
 {
-    private static ICoreClientAPI _capi;
-    private static PlayerPins _system;
-    private static IWorldMapManager _mapSink;
-    private static IDictionary<IPlayer, EntityMapComponent> PlayerPins { get; set; }
+    private static ICoreClientAPI? _capi;
+    private static PlayerPins? _system;
+    private static IWorldMapManager? _mapSink;
+    private static Dictionary<IPlayer, EntityMapComponent> PlayerPins { get; set; } = [];
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(PlayerMapLayer), MethodType.Constructor, typeof(ICoreAPI), typeof(IWorldMapManager))]
@@ -67,7 +68,7 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
         if (!__instance.Active) return true;
         foreach (var pin in PlayerPins)
         {
-            if (mapElem.Api.ModLoader.IsModEnabled("th3rp") && !pin.Value.entity.WatchedAttributes.GetBool("maptag", true)) continue;
+            if (mapElem.Api.ModLoader.IsModEnabled("th3rp") && !pin.Value.entity!.WatchedAttributes.GetBool("maptag", true)) continue;
             if (pin.Value.Texture.Disposed) continue;
             pin.Value.Render(mapElem, dt);
         }
@@ -107,18 +108,17 @@ public class PlayerPinsPatches : WorldSettingsConsumer<PlayerPinsSettings>
 
     private static void OnPlayerSpawn(IPlayer player)
     {
-        if (_capi.World.Config.GetBool("mapHideOtherPlayers") && player.PlayerUID != _capi.World.Player.PlayerUID) return;
-
-        if (!_mapSink.IsOpened || PlayerPins.ContainsKey(player)) return;
-
+        if (_capi!.World.Config.GetBool("mapHideOtherPlayers") && player.PlayerUID != _capi.World.Player.PlayerUID) return;
+        if (!_mapSink!.IsOpened || PlayerPins.ContainsKey(player)) return;
         AddPlayerToMap(player);
     }
 
     private static void AddPlayerToMap(IPlayer player)
     {
+        if (_capi is null || _system is null || player.Entity is null) return;
         var textureType = player.PlayerUID == _capi.World.Player.PlayerUID
             ? PlayerRelation.Self
-            : Settings.HighlightedPlayers.ContainsValue(player.PlayerUID) ? PlayerRelation.Highlighted : PlayerRelation.Others;
+            : Settings!.HighlightedPlayers.ContainsValue(player.PlayerUID) ? PlayerRelation.Highlighted : PlayerRelation.Others;
 
         var texture = _system.TextureCache[textureType];
         var comp = new EntityMapComponent(_capi, texture, player.Entity);

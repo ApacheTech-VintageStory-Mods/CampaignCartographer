@@ -23,7 +23,7 @@ internal class WaypointCommandsRepository
     /// <summary>
     ///     Gets the list of saved waypoints from the map manager's waypoint layer.
     /// </summary>
-    private List<Waypoint> SavedWaypoints => _mapManager?.WaypointMapLayer().ownWaypoints ?? [];
+    private List<Waypoint> SavedWaypoints => _mapManager?.WaypointMapLayer()?.ownWaypoints ?? [];
 
     /// <summary>
     ///     Handles the waypoint data received from the server, resetting the processing state.

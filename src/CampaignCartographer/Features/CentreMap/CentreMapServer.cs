@@ -7,7 +7,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class CentreMapServer : ServerModSystem
 {
-    private IServerNetworkChannel _serverChannel;
+    private IServerNetworkChannel? _serverChannel;
 
     /// <summary>
     ///     Minor convenience method to save yourself the check for/cast to ICoreServerAPI in Start()
@@ -30,6 +30,6 @@ public sealed class CentreMapServer : ServerModSystem
     private void OnServerSpawnPointRequestReceived(IServerPlayer fromPlayer, PlayerSpawnPositionDto packet)
     {
         var spawnPosition = ApiEx.ServerMain.GetSpawnPosition(fromPlayer.PlayerUID).AsBlockPos;
-        _serverChannel.SendPacket(new PlayerSpawnPositionDto(spawnPosition), fromPlayer);
+        _serverChannel?.SendPacket(new PlayerSpawnPositionDto(spawnPosition), fromPlayer);
     }
 }

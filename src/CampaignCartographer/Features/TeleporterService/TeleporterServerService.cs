@@ -12,8 +12,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.TeleporterService
 [HarmonyServerSidePatch]
 internal class TeleporterServerService : ServerModSystem
 {
-    private static IServerNetworkChannel _serverChannel;
-    private static TeleporterManager _vanillaSystem;
+    private static IServerNetworkChannel? _serverChannel;
+    private static TeleporterManager? _vanillaSystem;
 
     /// <summary>
     ///     Configures the server-side networking for the teleporter system, registers message types and handlers, 
@@ -40,7 +40,7 @@ internal class TeleporterServerService : ServerModSystem
     private static void SendLocationsToPlayer(IServerPlayer byPlayer)
     {
         var locations = _vanillaSystem.GetField<Dictionary<BlockPos, TeleporterLocation>>("Locations");
-        _serverChannel.SendPacket(new TeleporterLocationsPacket
+        _serverChannel?.SendPacket(new TeleporterLocationsPacket
         {
             Teleporters = [.. locations.Values]
         }, byPlayer);
@@ -55,7 +55,7 @@ internal class TeleporterServerService : ServerModSystem
     {
         var forLocation = _vanillaSystem.CallMethod<TeleporterLocation>("GetOrCreateLocation", packet.ForLocation.SourcePos);
         var locations = _vanillaSystem.GetField<Dictionary<BlockPos, TeleporterLocation>>("Locations");
-        _serverChannel.SendPacket(new TpLocations
+        _serverChannel?.SendPacket(new TpLocations
         {
             ForLocation = forLocation,
             Locations = locations

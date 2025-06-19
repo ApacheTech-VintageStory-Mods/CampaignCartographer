@@ -29,7 +29,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
     public static void Harmony_WaypointMapLayer_OnDataFromServer_Postfix(List<Waypoint> ___ownWaypoints)
     {
         var waypointIds = ___ownWaypoints.Select(p => p.Guid);
-        if (_settings.ActiveBeacons.RemoveAll(id => !waypointIds.Contains(id)) > 0)
+        if (_settings?.ActiveBeacons.RemoveAll(id => !waypointIds.Contains(id)) > 0)
         {
             ModSettings.World.Save(_settings);
         }
@@ -37,13 +37,13 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
 
         foreach (var beacon in _waypointElements.Values)
         {
-            var waypoint = ___ownWaypoints.FirstOrDefault(p => p.Guid == beacon.Waypoint.Guid);
+            var waypoint = ___ownWaypoints.FirstOrDefault(p => p.Guid == beacon.Waypoint?.Guid);
             if (beacon.Waypoint.IsSameAs(waypoint)) continue;
             beacon.Rehydrate();
         }
     }
 
-    private static WaypointBeaconsSettings _settings;
+    private static WaypointBeaconsSettings? _settings;
     private long _listener;
     private static readonly ConcurrentDictionary<string, WaypointBeaconHudElement> _waypointElements = [];
 
@@ -122,6 +122,8 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         // Remove elements not in ActiveBeacons
         foreach (var kvp in _waypointElements)
         {
+            if (_settings is null) continue;
+            if (kvp.Key is null || kvp.Value.Waypoint is null) continue;
             if (_settings.ActiveBeacons.Contains(kvp.Key)) continue;
             G.Log($"Removing beacon because it is no longer active: {kvp.Value.Waypoint?.Guid}");
             kvp.Value.TryClose();
@@ -130,7 +132,8 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         }
 
         // Add elements present in ActiveBeacons but missing in WaypointElements
-        foreach (var id in _settings.ActiveBeacons.Where(id => id is not null && !_waypointElements.ContainsKey(id)))
+        var elements = _settings?.ActiveBeacons.Where(id => id is not null && !_waypointElements.ContainsKey(id)) ?? [];
+        foreach (var id in elements)
         {
             G.Log($"Adding beacon: {id}");
             var element = new WaypointBeaconHudElement(ApiEx.Client, id);

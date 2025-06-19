@@ -28,7 +28,7 @@ public class WaypointBeaconHudElement : HudElement
     /// <summary>
     ///     Gets the waypoint associated with this HUD element.
     /// </summary>
-    public Waypoint Waypoint => _viewModel.Waypoint;
+    public Waypoint? Waypoint => _viewModel.Waypoint;
 
     /// <summary>
     ///     Resets the cached waypoint data, forcing a refresh of the waypoint information.
@@ -71,7 +71,7 @@ public class WaypointBeaconHudElement : HudElement
     /// </summary>
     public void OpenEditDialogue()
     {
-        var dialogue = new AddEditWaypointDialogue(ApiEx.Client, _viewModel.Waypoint, _viewModel.Index);
+        var dialogue = new AddEditWaypointDialogue(ApiEx.Client, _viewModel.Waypoint!, _viewModel.Index!.Value);
         dialogue.ToggleGui();
     }
 

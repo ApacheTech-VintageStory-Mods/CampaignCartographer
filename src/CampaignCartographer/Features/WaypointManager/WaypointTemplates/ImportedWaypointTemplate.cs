@@ -41,5 +41,5 @@ public class ImportedWaypointTemplate() : PositionedWaypointTemplate()
     /// </summary>
     [JsonRequired]
     [ProtoMember(8)]
-    public EntityPos SpawnPosition { get; set; }
+    public EntityPos SpawnPosition { get; set; } = default!;
 }

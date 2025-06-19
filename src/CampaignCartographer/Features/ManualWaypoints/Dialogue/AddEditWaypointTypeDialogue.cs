@@ -45,9 +45,9 @@ public class AddEditWaypointTypeDialogue : GenericDialogue
         ModalTransparency = .4f;
     }
 
-    public Action<PredefinedWaypointTemplate> OnOkAction { get; set; }
-    public Action<PredefinedWaypointTemplate> OnDeleteAction { get; set; }
-    public ActionConsumable OnScopeChange { get; set; }
+    public Action<PredefinedWaypointTemplate> OnOkAction { get; set; } = _ => { };
+    public Action<PredefinedWaypointTemplate> OnDeleteAction { get; set; } = _ => { };
+    public ActionConsumable OnScopeChange { get; set; } = () => true;
 
     #region Form Composition
 

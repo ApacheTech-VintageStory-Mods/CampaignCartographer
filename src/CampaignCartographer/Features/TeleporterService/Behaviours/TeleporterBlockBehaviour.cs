@@ -62,8 +62,8 @@ internal class TeleporterBlockBehaviour(Block block) : BlockBehaviour<BlockTelep
     {
         var settings = IOC.Services.GetRequiredService<FastTravelOverlaySettings>();
         if (settings.Nodes.RemoveAll(p => p.Location.SourcePos == pos) <= 0) return;
-
+        
         ModSettings.World.Save(settings);
-        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>()?.RebuildMapComponents();
     }
-}   
+}

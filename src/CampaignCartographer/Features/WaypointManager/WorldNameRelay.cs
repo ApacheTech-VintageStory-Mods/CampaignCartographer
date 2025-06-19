@@ -13,9 +13,9 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class WorldNameRelay : UniversalModSystem
 {
-    private IClientNetworkChannel _clientChannel;
-    private IServerNetworkChannel _serverChannel;
-    private string _worldName;
+    private IClientNetworkChannel? _clientChannel;
+    private IServerNetworkChannel? _serverChannel;
+    private string? _worldName;
 
     /// <summary>
     /// Minor convenience method to save yourself the check for/cast to ICoreClientAPI in Start()
@@ -37,7 +37,7 @@ public class WorldNameRelay : UniversalModSystem
 
     private void OnWorldNamePacketReceivedOnServer(IServerPlayer fromPlayer, WorldNamePacket packet)
     {
-        _serverChannel.SendPacket(packet.With(p => p.Name = Sapi.WorldManager.SaveGame.WorldName), fromPlayer);
+        _serverChannel?.SendPacket(packet.With(p => p.Name = Sapi.WorldManager.SaveGame.WorldName), fromPlayer);
     }
 
     /// <summary>
@@ -51,6 +51,7 @@ public class WorldNameRelay : UniversalModSystem
     {
         return Task<string>.Factory.StartNew(() =>
         {
+            if (_clientChannel is null) return string.Empty;
             if (_worldName is not null) return _worldName;
             if (!(ApiEx.Client!.IsSinglePlayer && _clientChannel.Connected))
             {

@@ -17,7 +17,8 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.D
 public class WaypointExportDialogue : WaypointSelectionDialogue
 {
     private readonly IPlayer[] _onlinePlayers;
-    private static string _searchTerm;
+    private static string _searchTerm = string.Empty;
+    private static WaypointExportDialogue? _instance;
 
     public WaypointExportDialogue(ICoreClientAPI capi) : base(capi)
     {
@@ -31,8 +32,6 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
     protected override string SearchTerm { get => _searchTerm; set => _searchTerm = value; }
 
     #region Cell Management
-
-    private static WaypointExportDialogue _instance;
 
     protected override IEnumerable<WaypointSelectionCellEntry> GetCellEntries(System.Func<SelectableWaypointTemplate, bool> filter)
     {
@@ -67,7 +66,8 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
                 Index = w.Key
             };
         })
-        .Where(entry => entry is not null);
+        .Where(entry => entry is not null)
+        .Cast<WaypointSelectionCellEntry>();
     }
 
     [HarmonyPostfix]
@@ -98,6 +98,7 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
 
     private bool ExportSelectedWaypoints()
     {
+        if (CellList == null) return false;
         var waypoints = CellList.elementCells
             .Cast<WaypointSelectionGuiCell>()
             .Where(p => p.On)
@@ -128,10 +129,11 @@ public class WaypointExportDialogue : WaypointSelectionDialogue
 
     protected override string TertiaryButtonText => T("Exports.ShareSelected");
 
-    protected override ActionConsumable TertiaryButtonAction => _onlinePlayers.Length > 0 ? ShareSelectedWaypoints : null;
+    protected override ActionConsumable TertiaryButtonAction => _onlinePlayers.Length > 0 ? ShareSelectedWaypoints : (() => true); // TODO: Decide if a disabled state is needed when no online players
 
     private bool ShareSelectedWaypoints()
     {
+        if (CellList == null) return false;
         var cellList = CellList.elementCells.Cast<WaypointSelectionGuiCell>().Where(p => p.On);
         var waypoints = cellList.Select(p => p.Model.ToWaypoint());
         var dialogue = new ShareWaypointDialogue(capi, _onlinePlayers, waypoints);

@@ -72,8 +72,8 @@ public class WorldGenStructurePatches
 
 public class DebugRuinsLogger : ModSystem
 {
-    private ICoreAPI _api;
-    private Harmony _harmony;
+    private ICoreAPI? _api;
+    private Harmony? _harmony;
 
     public override void Start(ICoreAPI api)
     {
@@ -89,7 +89,7 @@ public class DebugRuinsLogger : ModSystem
     {
         if (Harmony.HasAnyPatches(Mod.Info.ModID))
         {
-            _harmony.UnpatchCategory($"{_api.Side}");
+            _harmony?.UnpatchCategory($"{_api?.Side}");
         }
     }
 }

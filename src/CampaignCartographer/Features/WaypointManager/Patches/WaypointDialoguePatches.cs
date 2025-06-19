@@ -6,15 +6,22 @@ using Gantry.Services.Network.Packets;
 using Vintagestory.API.MathTools;
 using System.Text;
 using Gantry.Services.Network.Extensions;
-using Vintagestory.ServerMods;
 
 // ReSharper disable InconsistentNaming
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Patches;
 
+/// <summary>
+///     Contains Harmony patches for the Waypoint Dialogue, enabling custom behaviour for waypoint editing and creation.
+/// </summary>
 [HarmonyClientSidePatch]
 public static class WaypointDialoguePatches
 {
+    /// <summary>
+    ///     Harmony transpiler for <see cref="GuiDialogWorldMap.OnMouseUp"/> to inject custom dialogue display logic.
+    /// </summary>
+    /// <param name="instructions">The original IL instructions.</param>
+    /// <returns>The modified IL instructions with injected logic.</returns>
     [HarmonyTranspiler]
     [HarmonyPatch(typeof(GuiDialogWorldMap), nameof(GuiDialogWorldMap.OnMouseUp))]
     public static IEnumerable<CodeInstruction> Harmony_GuiDialogueWorldMap_OnMouseUp_Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -34,6 +41,11 @@ public static class WaypointDialoguePatches
         ]);
     }
     
+    /// <summary>
+    ///     Displays the Add/Edit Waypoint Dialogue at the specified world position.
+    /// </summary>
+    /// <param name="instance">The world map dialogue instance.</param>
+    /// <param name="args">The mouse event arguments.</param>
     public static void ShowDialogue(GuiDialogWorldMap instance, MouseEvent args)
     {
         var wpPos = new Vec3d();
@@ -43,6 +55,13 @@ public static class WaypointDialoguePatches
         dialogue.OnClosed += () => ApiEx.Client.Gui.RequestFocus(instance);
     }
 
+    /// <summary>
+    ///     Loads the world position from the mouse coordinates on the map.
+    /// </summary>
+    /// <param name="instance">The world map dialogue instance.</param>
+    /// <param name="mouseX">The X coordinate of the mouse.</param>
+    /// <param name="mouseY">The Y coordinate of the mouse.</param>
+    /// <param name="worldPos">The output world position.</param>
     private static void LoadWorldPos(GuiDialogWorldMap instance, double mouseX, double mouseY, ref Vec3d worldPos)
     {
         var composer = instance.SingleComposer;
@@ -53,6 +72,15 @@ public static class WaypointDialoguePatches
         worldPos.Y += 1.0;
     }
 
+    /// <summary>
+    ///     Harmony prefix for <see cref="WaypointMapComponent.OnMouseUpOnElement"/> to show the Add/Edit Waypoint Dialogue or teleport.
+    /// </summary>
+    /// <param name="__instance">The waypoint map component instance.</param>
+    /// <param name="args">The mouse event arguments.</param>
+    /// <param name="mapElem">The map element.</param>
+    /// <param name="___waypoint">The waypoint being interacted with.</param>
+    /// <param name="___waypointIndex">The index of the waypoint.</param>
+    /// <returns>False if the event is handled; otherwise, true.</returns>
     [HarmonyPrefix]
     [HarmonyPatch(typeof(WaypointMapComponent), nameof(WaypointMapComponent.OnMouseUpOnElement))]
     public static bool Harmony_WaypointMapComponent_OnMouseUpOnElement_Prefix(
@@ -84,7 +112,7 @@ public static class WaypointDialoguePatches
         if (player.Entity.Controls.ShiftKey && player.WorldData.CurrentGameMode == EnumGameMode.Creative)
         {
             ApiEx.Client.Network
-                .GetDefaultChannel()
+                .GetDefaultChannel()?
                 .SendPacket<WorldMapTeleportPacket>(new() { Position = ___waypoint.Position });
             args.Handled = true;
             return false;
@@ -99,9 +127,17 @@ public static class WaypointDialoguePatches
     }
 }
 
+/// <summary>
+///     Contains Harmony patches for the WaypointMapComponent, such as hover text enrichment.
+/// </summary>
 [HarmonyClientSidePatch]
 public static class WaypointMapComponentPatches
 {
+    /// <summary>
+    ///     Harmony postfix for <see cref="WaypointMapComponent.OnMouseMove"/> to append waypoint text to the hover text.
+    /// </summary>
+    /// <param name="hoverText">The hover text StringBuilder.</param>
+    /// <param name="___waypoint">The waypoint being hovered over.</param>
     [HarmonyPostfix]
     [HarmonyPatch(typeof(WaypointMapComponent), nameof(WaypointMapComponent.OnMouseMove))]
     public static void Harmony_WaypointMapComponent_OnMouseMove_Postfix(StringBuilder hoverText, Waypoint ___waypoint)

@@ -18,30 +18,32 @@ public sealed class PlayerPinHelper : WorldSettingsConsumer<PlayerPinsSettings>
     /// <summary>
     ///     The colour of the player pin.
     /// </summary>
-    public static Color Colour
+    public static Color? Colour
     {
         get
         {
             return Relation switch
             {
-                PlayerRelation.Self => Settings.SelfColour,
-                PlayerRelation.Highlighted => Settings.HighlightColour,
-                PlayerRelation.Others => Settings.OthersColour,
+                PlayerRelation.Self => Settings?.SelfColour,
+                PlayerRelation.Highlighted => Settings?.HighlightColour,
+                PlayerRelation.Others => Settings?.OthersColour,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
         set
         {
+            if (Settings is null) return;
+            if (!value.HasValue) return;
             switch (Relation)
             {
                 case PlayerRelation.Self:
-                    Settings.SelfColour = value;
+                    Settings!.SelfColour = value.Value;
                     break;
                 case PlayerRelation.Highlighted:
-                    Settings.HighlightColour = value;
+                    Settings!.HighlightColour = value.Value;
                     break;
                 case PlayerRelation.Others:
-                    Settings.OthersColour = value;
+                    Settings!.OthersColour = value.Value;
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(value));
             }
@@ -51,30 +53,32 @@ public sealed class PlayerPinHelper : WorldSettingsConsumer<PlayerPinsSettings>
     /// <summary>
     ///     The scale of the player pin.
     /// </summary>
-    public static int Scale
+    public static int? Scale
     {
         get
         {
             return Relation switch
             {
-                PlayerRelation.Self => Settings.SelfScale,
-                PlayerRelation.Highlighted => Settings.HighlightScale,
-                PlayerRelation.Others => Settings.OthersScale,
+                PlayerRelation.Self => Settings!.SelfScale,
+                PlayerRelation.Highlighted => Settings!.HighlightScale,
+                PlayerRelation.Others => Settings!.OthersScale,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
         set
         {
+            if (Settings is null) return;
+            if (!value.HasValue) return;
             switch (Relation)
             {
                 case PlayerRelation.Self:
-                    Settings.SelfScale = value;
+                    Settings!.SelfScale = value.Value;
                     break;
                 case PlayerRelation.Highlighted:
-                    Settings.HighlightScale = value;
+                    Settings!.HighlightScale = value.Value;
                     break;
                 case PlayerRelation.Others:
-                    Settings.OthersScale = value;
+                    Settings!.OthersScale = value.Value;
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(value));
             }

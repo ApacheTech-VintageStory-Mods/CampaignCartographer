@@ -20,9 +20,9 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.CentreMap;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class CentreMapClient : ClientModSystem
 {
-    private ICoreClientAPI _capi;
-    private WorldMapManager _worldMap;
-    private IClientNetworkChannel _clientChannel;
+    private ICoreClientAPI? _capi;
+    private WorldMapManager? _worldMap;
+    private IClientNetworkChannel? _clientChannel;
 
     /// <summary>
     ///     Minor convenience method to save yourself the check for/cast to ICoreClientAPI in Start()
@@ -46,6 +46,7 @@ public sealed class CentreMapClient : ClientModSystem
 
     private bool Event_IsPlayerReady(ref EnumHandling handling)
     {
+        if (_capi is null) return false;
         _capi.Event.PlayerEntitySpawn += OnPlayerSpawn;
         _capi.Event.PlayerEntityDespawn += OnPlayerDespawn;
         handling = EnumHandling.PassThrough;
@@ -54,6 +55,7 @@ public sealed class CentreMapClient : ClientModSystem
 
     public override void Dispose()
     {
+        if (_capi is null) return;
         _capi.Event.IsPlayerReady -= Event_IsPlayerReady;
         _capi.Event.PlayerEntitySpawn -= OnPlayerSpawn;
         _capi.Event.PlayerEntityDespawn -= OnPlayerDespawn;
@@ -61,6 +63,7 @@ public sealed class CentreMapClient : ClientModSystem
 
     private void CreateChatCommand()
     {
+        if (_capi is null) return;
         var parsers = _capi.ChatCommands.Parsers;
         var cm = _capi.ChatCommands
             .Create("cm")
@@ -103,6 +106,7 @@ public sealed class CentreMapClient : ClientModSystem
 
     private void OnPlayerSpawn(IClientPlayer byPlayer)
     {
+        if (_capi is null) return;
         _capi.Event.EnqueueMainThreadTask(() =>
             _capi.Event.RegisterCallback(_ =>
                 _worldMap.GetField<IClientNetworkChannel>("clientChannel")
@@ -111,6 +115,7 @@ public sealed class CentreMapClient : ClientModSystem
 
     private void OnPlayerDespawn(IClientPlayer byPlayer)
     {
+        if (_capi is null) return;
         _capi.Event.EnqueueMainThreadTask(() =>
             _capi.Event.RegisterCallback(_ =>
                 _worldMap.GetField<IClientNetworkChannel>("clientChannel")
@@ -136,6 +141,7 @@ public sealed class CentreMapClient : ClientModSystem
     /// </summary>
     private TextCommandResult OnHomeOption(TextCommandCallingArgs args)
     {
+        if (_clientChannel is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         if (!_clientChannel.Connected)
         {
             return TextCommandResult.Error(LangEx.Get("error-messages.mod-not-installed-on-server"));
@@ -180,7 +186,8 @@ public sealed class CentreMapClient : ClientModSystem
     /// </summary>
     private TextCommandResult OnSpawnOption(TextCommandCallingArgs args)
     {
-        var pos = _capi.World.DefaultSpawnPosition.AsBlockPos;
+        var pos = _capi?.World.DefaultSpawnPosition.AsBlockPos;
+        if (pos is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         var displayPos = pos.RelativeToSpawn();
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnWorldSpawn", displayPos.X, displayPos.Z);
         return RecentreAndProvideFeedback(pos.ToVec3d(), message);
@@ -192,7 +199,8 @@ public sealed class CentreMapClient : ClientModSystem
     private TextCommandResult OnWaypointOption(TextCommandCallingArgs args)
     {
         var waypointId = args.Parsers[0].GetValue().To<int>();
-        var target = _worldMap.WaypointMapLayer().ownWaypoints[waypointId];
+        var target = _worldMap?.WaypointMapLayer()?.ownWaypoints[waypointId];
+        if (target is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         var pos = target.Position.AsBlockPos;
         var displayPos = pos.RelativeToSpawn();
         var message = LangEx.FeatureString("CentreMap", "CentreMapOnWaypoint", waypointId, target.Title,
@@ -215,8 +223,8 @@ public sealed class CentreMapClient : ClientModSystem
 
     private TextCommandResult RecentreAndProvideFeedback(Vec3d position, string message)
     {
+        if (_worldMap is null) return TextCommandResult.Error(LangEx.Get("error-messages.error-occured"));
         _worldMap.RecentreMap(position);
-        _capi.ShowChatMessage(message);
-        return TextCommandResult.Success();
+        return TextCommandResult.Success(message);
     }
 }

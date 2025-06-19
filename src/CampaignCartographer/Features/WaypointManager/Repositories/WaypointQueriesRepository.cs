@@ -14,7 +14,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.R
 public class WaypointQueriesRepository
 {
     private readonly WorldMapManager _mapManager;
-    private WaypointMapLayer _mapLayer;
+    private WaypointMapLayer? _mapLayer;
 
     /// <summary>
     ///     Initialises a new instance of the <see cref="WaypointQueriesRepository"/> class.
@@ -73,8 +73,8 @@ public class WaypointQueriesRepository
     /// </returns>
     public IEnumerable<KeyValuePair<int, Waypoint>> GetSortedWaypoints(WaypointSortType sortOrder)
     {
-        _mapLayer ??= _mapManager.WaypointMapLayer();
-        var waypoints = _mapLayer.ownWaypoints.ToSortedDictionary();
+        _mapLayer ??= _mapManager?.WaypointMapLayer();
+        var waypoints = _mapLayer?.ownWaypoints.ToSortedDictionary();
         return Sort(sortOrder, waypoints);
     }
 
@@ -96,14 +96,14 @@ public class WaypointQueriesRepository
         {
             WaypointSortType.IndexAscending => waypoints.OrderBy(p => p.Index),
             WaypointSortType.IndexDescending => waypoints.OrderByDescending(p => p.Index),
-            WaypointSortType.ColourAscending => waypoints.OrderBy(p => ColorUtil.Int2Hex(p.Model.Colour.ToInt())),
-            WaypointSortType.ColourDescending => waypoints.OrderByDescending(p => ColorUtil.Int2Hex(p.Model.Colour.ToInt())),
-            WaypointSortType.NameAscending => waypoints.OrderBy(p => p.Model.Title),
-            WaypointSortType.NameDescending => waypoints.OrderByDescending(p => p.Model.Title),
+            WaypointSortType.ColourAscending => waypoints.OrderBy(p => ColorUtil.Int2Hex(p.Model!.Colour.ToInt())),
+            WaypointSortType.ColourDescending => waypoints.OrderByDescending(p => ColorUtil.Int2Hex(p.Model!.Colour.ToInt())),
+            WaypointSortType.NameAscending => waypoints.OrderBy(p => p.Model!.Title),
+            WaypointSortType.NameDescending => waypoints.OrderByDescending(p => p.Model!.Title),
             WaypointSortType.DistanceAscending => waypoints.OrderBy(p =>
-                p.Model.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
+                p.Model!.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
             WaypointSortType.DistanceDescending => waypoints.OrderByDescending(p =>
-                p.Model.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
+                p.Model!.Position.AsBlockPos.HorizontalManhattenDistance(playerPos)),
             _ => waypoints
         };
     }
@@ -119,8 +119,9 @@ public class WaypointQueriesRepository
     /// </returns>
     public static IEnumerable<KeyValuePair<int, Waypoint>> Sort(
         WaypointSortType sortOrder,
-        SortedDictionary<int, Waypoint> waypoints)
+        SortedDictionary<int, Waypoint>? waypoints)
     {
+        if (waypoints is null || waypoints.Count == 0) return [];
         var playerPos = ApiEx.Client.World.Player.Entity.Pos.AsBlockPos;
         return sortOrder switch
         {

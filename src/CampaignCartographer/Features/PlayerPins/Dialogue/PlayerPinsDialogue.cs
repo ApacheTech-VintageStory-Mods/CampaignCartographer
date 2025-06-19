@@ -39,14 +39,14 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
     {
         if (!IsOpened()) return;
 
-        var colour = PlayerPinHelper.Colour;
+        var colour = PlayerPinHelper.Colour ?? Color.FromArgb(128, 128, 128, 128);
 
         SetPlayerPinSwitch("btnTogglePlayerPins", (int)PlayerPinHelper.Relation);
         SetColourSliderValue("sliderR", colour.R);
         SetColourSliderValue("sliderG", colour.G);
         SetColourSliderValue("sliderB", colour.B);
         SetColourSliderValue("sliderA", colour.A);
-        SetScaleSliderValue("sliderScale", PlayerPinHelper.Scale);
+        SetScaleSliderValue("sliderScale", PlayerPinHelper.Scale!.Value);
         SetPreviewColour("pnlPreview");
     }
 
@@ -164,7 +164,8 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
 
     private static void OnPreviewPanelDraw(Context ctx, ImageSurface surface, ElementBounds currentBounds)
     {
-        var colour = PlayerPinHelper.Colour.ToNormalisedRgba();
+        var colour = PlayerPinHelper.Colour?
+            .ToNormalisedRgba() ?? [0.5, 0.5, 0.5, 1.0];
 
         ctx.SetSourceRGBA(0, 0, 0, 1);
         ctx.LineWidth = 5.0;
@@ -186,7 +187,7 @@ public class PlayerPinsDialogue : FeatureSettingsDialogue<PlayerPinsSettings>
 
     private bool OnColourChanged(ColourChannel channel, int value)
     {
-        PlayerPinHelper.Colour = PlayerPinHelper.Colour.UpdateColourChannel(channel, (byte)value);
+        PlayerPinHelper.Colour = PlayerPinHelper.Colour?.UpdateColourChannel(channel, (byte)value);
         RefreshTextures();
         RefreshValues();
         return true;

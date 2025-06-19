@@ -15,15 +15,12 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.S
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class TraderWaypoints : ClientModSystem
 {
-    private ICoreClientAPI _capi;
-    private WaypointTemplateService _waypointService;
+    private ICoreClientAPI? _capi;
 
     /// <inheritdoc />
     public override void StartClientSide(ICoreClientAPI capi)
     {
         G.Log("Starting the trader waypoint service.");
-        _waypointService = IOC.Services.GetRequiredService<WaypointTemplateService>();
-
         (_capi = capi).ChatCommands
             .Create("wpt")
             .WithDescription(LangEx.FeatureString("PredefinedWaypoints.TraderWaypoints", "Description"))
@@ -33,6 +30,11 @@ public sealed class TraderWaypoints : ClientModSystem
     private TextCommandResult DefaultHandler(TextCommandCallingArgs args)
     {
         var found = false;
+        if (_capi?.World is null)
+        {
+            G.Logger.Error("The world is not available, cannot add trader waypoint.");
+            return TextCommandResult.Error("Campaign Cartographer encountered an error: CC-1001");
+        }
 
         var trader = (EntityTrader)_capi.World.GetNearestEntity(_capi.World.Player.Entity.Pos.XYZ, 10f, 10f, p =>
         {
@@ -54,8 +56,8 @@ public sealed class TraderWaypoints : ClientModSystem
             {
                 Title = wpTitle,
                 Colour = TraderModel.GetColourFor(trader),
-                DisplayedIcon = WaypointIcon.Trader,
-                ServerIcon = WaypointIcon.Trader
+                DisplayedIcon = WaypointIcon.Trader!,
+                ServerIcon = WaypointIcon.Trader!
             }.AddToMap(trader.Pos.AsBlockPos);
 
         }

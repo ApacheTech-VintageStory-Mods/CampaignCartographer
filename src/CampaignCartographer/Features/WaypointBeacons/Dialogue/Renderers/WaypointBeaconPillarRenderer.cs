@@ -44,14 +44,15 @@ internal class WaypointBeaconPillarRenderer(WaypointBeaconHudElement element, Wa
         var capi = ApiEx.Client;
         if (capi.HideGuis) return;
 
-        _counter += deltaTime;
         var pos = _viewModel.WaypointPosition;
+        if (pos is null) return;
+        _counter += deltaTime;
         var cameraPos = capi.World.Player.Entity.CameraPos;
         var prog = capi.Render.PreparedStandardShader((int)pos.X, (int)pos.Y, (int)pos.Z);
 
         capi.Render.GlToggleBlend(true);
         var newColour = new Vec4f();
-        ColorUtil.ToRGBAVec4f(_viewModel.Waypoint.Color, ref newColour);
+        ColorUtil.ToRGBAVec4f(_viewModel.Waypoint!.Color, ref newColour);
         var h = _element.IsAligned ? 2.0f : 1.0f;
         newColour.Mul(new Vec4f(h, h, h, 1.0f));
         newColour.A = 0.9f;

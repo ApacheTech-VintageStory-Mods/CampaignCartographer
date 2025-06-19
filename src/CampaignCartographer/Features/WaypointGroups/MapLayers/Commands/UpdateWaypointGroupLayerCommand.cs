@@ -12,7 +12,7 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     The waypoint group containing the updated information.
     /// </summary>
-    public WaypointGroup Group { get; set; }
+    public required WaypointGroup Group { get; set; }
 
     /// <summary>
     ///     Handles the execution of the <see cref="UpdateWaypointGroupLayerCommand"/>.

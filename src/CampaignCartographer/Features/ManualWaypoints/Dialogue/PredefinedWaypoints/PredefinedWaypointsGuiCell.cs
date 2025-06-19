@@ -47,7 +47,7 @@ public class PredefinedWaypointsGuiCell : GuiElementTextBase, IGuiElementCell
         Cell.DetailTextFont.Color[3] *= 0.6;
     }
 
-    public PredefinedWaypointTemplate Model => Cell.Model;
+    public PredefinedWaypointTemplate Model => Cell.Model ?? throw new InvalidOperationException("Cell.Model is null"); // TODO: Decide if null is valid here, or enforce non-null at construction
 
     private void GenerateEnabledTexture()
     {
@@ -233,9 +233,9 @@ public class PredefinedWaypointsGuiCell : GuiElementTextBase, IGuiElementCell
 
     public new ElementBounds Bounds { get; }
 
-    public Action<int> OnMouseDownOnCellLeft { private get; init; }
+    public Action<int> OnMouseDownOnCellLeft { private get; init; } = _ => { };
 
-    public Action<int> OnMouseDownOnCellRight { private get; init; }
+    public Action<int> OnMouseDownOnCellRight { private get; init; } = _ => { };
 
     public bool On { get; set; } = true;
 

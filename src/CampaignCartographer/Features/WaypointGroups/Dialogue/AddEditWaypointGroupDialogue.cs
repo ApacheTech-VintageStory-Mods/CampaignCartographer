@@ -28,7 +28,7 @@ public class AddEditWaypointGroupDialogue : GenericDialogue
     public AddEditWaypointGroupDialogue(WaypointGroup? group = null) : base(ApiEx.Client)
     {
         _mode = group is null ? CrudAction.Add : CrudAction.Edit;
-        _group = group?.DeepClone() ?? new();
+        _group = group?.DeepClone() ?? new() { Title = string.Empty };
         _settings = IOC.Services.GetRequiredService<WaypointGroupsSettings>();
 
         Title = T(_mode == CrudAction.Add ? "AddNew" : "Edit");

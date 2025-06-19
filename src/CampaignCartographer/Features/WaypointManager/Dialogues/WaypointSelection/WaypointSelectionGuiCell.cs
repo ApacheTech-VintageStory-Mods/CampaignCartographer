@@ -46,7 +46,7 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
         CellEntry.DetailTextFont.Color[3] *= 0.6;
     }
 
-    public SelectableWaypointTemplate Model => CellEntry.Model;
+    public SelectableWaypointTemplate Model => CellEntry.Model!;
 
     private void GenerateEnabledTexture()
     {
@@ -230,9 +230,9 @@ public class WaypointSelectionGuiCell : GuiElementTextBase, IGuiElementCell
 
     public new ElementBounds Bounds { get; }
 
-    public Action<MouseEvent, int> OnMouseDownOnCellLeft { private get; init; }
+    public Action<MouseEvent, int>? OnMouseDownOnCellLeft { private get; init; }
 
-    public Action<MouseEvent, int> OnMouseDownOnCellRight { private get; init; }
+    public Action<MouseEvent, int>? OnMouseDownOnCellRight { private get; init; }
 
     public bool On { get; set; } = true;
 

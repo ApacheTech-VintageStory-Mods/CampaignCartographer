@@ -13,7 +13,7 @@ public class WaypointGroup
     /// <summary>
     ///     The title of the waypoint group.
     /// </summary>
-    public string Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
     /// <summary>
     ///     A collection of waypoint identifiers associated with this group.

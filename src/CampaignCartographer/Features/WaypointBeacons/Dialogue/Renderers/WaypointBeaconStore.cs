@@ -10,12 +10,12 @@ public static class WaypointBeaconStore
     /// <summary>
     ///     Gets the mesh reference for the pillar model.
     /// </summary>
-    public static MeshRef PillarMeshRef { get; private set; }
+    public static MeshRef PillarMeshRef { get; private set; } = null!;
 
     /// <summary>
     ///     Gets the mesh reference for the quad model.
     /// </summary>
-    public static MeshRef QuadModel { get; private set; }
+    public static MeshRef QuadModel { get; private set; } = null!;
 
     /// <summary>
     ///     Creates the pillar and quad models and uploads them to the render system.
@@ -32,7 +32,7 @@ public static class WaypointBeaconStore
     /// </summary>
     public static void Dispose()
     {
-        PillarMeshRef.Dispose();
-        QuadModel.Dispose();
+        PillarMeshRef?.Dispose();
+        QuadModel?.Dispose();
     }
 }

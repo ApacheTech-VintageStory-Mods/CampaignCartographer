@@ -13,7 +13,7 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.FastTravelOverlay
 /// </summary>
 public class FastTravelOverlay : ClientModSystem, IClientServiceRegistrar
 {
-    private FastTravelOverlaySettings _settings;
+    private FastTravelOverlaySettings _settings = null!; // Set via StartClientSide
 
     /// <summary>
     ///     Configures client-side services required by the fast travel overlay feature.
@@ -66,7 +66,11 @@ public class FastTravelOverlay : ClientModSystem, IClientServiceRegistrar
         node.Location.TargetName = location.TargetName;
         node.Location.TargetPos = location.TargetPos;
         ModSettings.World.Save(_settings);
-        ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>().RebuildMapComponents();
+        var mapLayer = ApiEx.Client.GetMapLayer<FastTravelOverlayMapLayer>();
+        if (mapLayer is not null)
+        {
+            mapLayer.RebuildMapComponents();
+        }
     }
 
     /// <summary>

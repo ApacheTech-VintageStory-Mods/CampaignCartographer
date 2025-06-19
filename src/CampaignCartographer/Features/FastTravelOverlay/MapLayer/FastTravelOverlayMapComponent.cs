@@ -81,7 +81,7 @@ public class FastTravelOverlayMapComponent : MapComponent
                 RenderEndpointNode(map, here, there);
                 return;
             }
-            _node.Location.TargetPos = targetPosition.AsBlockPos;
+            _node.Location.TargetPos = targetPosition?.AsBlockPos;
             ModSettings.World.Save(_settings);
             map.TranslateWorldPosToViewPos(targetPosition, ref there);
         }
@@ -145,7 +145,7 @@ public class FastTravelOverlayMapComponent : MapComponent
     /// <param name="map">The map on which to render the node.</param>
     /// <param name="here">The screen coordinates of the node.</param>
     /// <param name="there">The screen coordinates of the destination node (optional).</param>
-    private void RenderEndpointNode(GuiElementMap map, Vec2f here, Vec2f there = null)
+    private void RenderEndpointNode(GuiElementMap map, Vec2f here, Vec2f? there = null)
     {
         if (here.X < -10f || here.Y < -10f ||
             here.X > map.Bounds.OuterWidth + 10.0 || here.Y > map.Bounds.OuterHeight + 10.0)
@@ -166,7 +166,7 @@ public class FastTravelOverlayMapComponent : MapComponent
         prog.Uniform("noTexture", 0f);
 
         var hover = (_hovering ? 6 : 0) - 1.5f * Math.Max(1f, 1f / map.ZoomLevel);
-        if (!WaypointIconFactory.TryCreate("circle", out var texture)) return;
+        if (!WaypointIconFactory.TryCreate("circle", out var texture) || texture is null) return;
 
         var scale = (4 + _settings.NodeSize) / 20f;
 
@@ -264,7 +264,7 @@ public class FastTravelOverlayMapComponent : MapComponent
     /// </summary>
     /// <param name="worldPos">The destination world position if found.</param>
     /// <returns><c>true</c> if the destination was found; otherwise, <c>false</c>.</returns>
-    private bool TryFindDestination(out Vec3d worldPos)
+    private bool TryFindDestination(out Vec3d? worldPos)
     {
         worldPos = null;
         try
@@ -277,7 +277,7 @@ public class FastTravelOverlayMapComponent : MapComponent
                     {
                         if (!translocator.FullyRepaired) return false;
                         if (translocator.TargetLocation is null) return false;
-                        translocator.TargetLocation.ToVec3d();
+                        worldPos = translocator.TargetLocation.ToVec3d();
                         return worldPos is not null;
                     }
                 case BlockEntityTeleporter:

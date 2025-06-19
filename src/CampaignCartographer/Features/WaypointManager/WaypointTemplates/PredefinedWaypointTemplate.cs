@@ -34,7 +34,7 @@ public class PredefinedWaypointTemplate : CoverageWaypointTemplate
     ///     The template pack this template belongs to.
     /// </summary>
     [JsonIgnore]
-    public TemplatePack TemplatePack { get; set; }
+    public TemplatePack TemplatePack { get; set; } = default!;
 
     /// <summary>
     ///     Gets the title of the template, returning the custom title if applicable; otherwise, returning the translated title.
