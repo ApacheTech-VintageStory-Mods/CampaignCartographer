@@ -123,6 +123,7 @@ public class AutoWaypointsPatches : WorldSettingsConsumer<AutoWaypointsSettings>
         if (Settings is null) return;
         if (ApiEx.Side.IsServer()) return;
         if (__instance is BlockEntityStaticTranslocator) return;
+        if (__instance is BlockEntityCorpseReturnTeleporter) return;
         if (!Settings.Teleporters) return;
         var playerId = ApiEx.Client.World.Player.Entity.EntityId;
         if (!___tpingEntities.ContainsKey(playerId)) return;
