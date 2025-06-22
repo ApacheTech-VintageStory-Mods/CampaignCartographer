@@ -163,6 +163,37 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
         => ActivatorUtilities.CreateInstance(IOC.Services, type, instance).To<MapLayer>();
 
     /// <summary>
+    ///     Creates a map layer instance with retry logic for IOException.
+    /// </summary>
+    /// <param name="type">The type of the map layer.</param>
+    /// <param name="instance">The WorldMapManager instance.</param>
+    /// <param name="maxAttempts">The maximum number of retry attempts.</param>
+    /// <param name="delayMs">The delay between retry attempts in milliseconds.</param>
+    /// <returns>The created MapLayer instance.</returns>
+    private static MapLayer CreateMapLayerWithRetry(Type type, WorldMapManager instance, int maxAttempts = 5, int delayMs = 200)
+    {
+        int attempt = 0;
+        while (true)
+        {
+            try
+            {
+                return ActivatorUtilities.CreateInstance(IOC.Services, type, instance).To<MapLayer>();
+            }
+            catch (IOException ex) when (attempt < maxAttempts)
+            {
+                G.Logger.Error($"[WorldMapManagerPatches] Retrying {type.Name} construction due to IO error: {ex.Message}");
+                Thread.Sleep(delayMs);
+                attempt++;
+            }
+            catch (Exception ex)
+            {
+                G.Logger.Error($"[WorldMapManagerPatches] Exception constructing {type.Name}: {ex}");
+                throw;
+            }
+        }
+    }
+
+    /// <summary>
     ///     Adds the map layer to the manager and calls OnLoaded. Logs and handles any exceptions.
     /// </summary>
     /// <param name="instance">The WorldMapManager instance.</param>
@@ -171,7 +202,8 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
     {
         try
         {
-            var mapLayer = CreateMapLayerInstance(type, instance);
+            MapLayer mapLayer;
+            mapLayer = CreateMapLayerWithRetry(type, instance);
             instance.MapLayers.Add(mapLayer);
             mapLayer.OnLoaded();
         }
