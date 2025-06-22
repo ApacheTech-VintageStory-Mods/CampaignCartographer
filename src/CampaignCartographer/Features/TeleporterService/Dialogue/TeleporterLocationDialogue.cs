@@ -37,6 +37,12 @@ public class TeleporterLocationDialogue : GenericDialogue
         var txtNameValue = _locationData.ForLocation.SourceName;
         txtName.SetValue(txtNameValue);
 
+        if (_locationData.ForLocation.TargetPos is null)
+        {
+            _locationData.ForLocation.TargetName = _locationData.ForLocation.SourceName;
+            _locationData.ForLocation.TargetPos = _locationData.ForLocation.SourcePos;
+        }
+
         var index = _locations.FindIndex(p => p.SourcePos == _locationData.ForLocation.TargetPos);
         var selectedIndex = Math.Max(0, index);
         var cbxTargetLocation = SingleComposer.GetDropDown("cbxTargetLocation");
