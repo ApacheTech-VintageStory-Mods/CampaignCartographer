@@ -2,6 +2,7 @@
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.Extensions;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager.WaypointTemplates;
 using Gantry.Core.GameContent.AssetEnum;
+using Vintagestory.GameContent;
 
 // ReSharper disable StringLiteralTypo
 
@@ -50,15 +51,23 @@ public sealed class TraderWaypoints : ClientModSystem
         else
         {
             var displayName = trader.GetBehavior<EntityBehaviorNameTag>().DisplayName;
-            var wpTitle = Lang.Get("tradingwindow-" + trader.Code.Path, displayName);
+            var title = Lang.Get("tradingwindow-" + trader.Code.Path, displayName);
 
-            new PredefinedWaypointTemplate
+            var waypointService = IOC.Services.GetRequiredService<WaypointTemplateService>();
+            var template = waypointService.GetTemplateByKey("trader");
+
+            var waypoint = new PredefinedWaypointTemplate
             {
-                Title = wpTitle,
+                Title = title,
                 Colour = TraderModel.GetColourFor(trader),
-                DisplayedIcon = WaypointIcon.Trader!,
-                ServerIcon = WaypointIcon.Trader!
-            }.AddToMap(trader.Pos.AsBlockPos);
+                DisplayedIcon = template?.DisplayedIcon ?? WaypointIcon.Trader!,
+                ServerIcon = template?.ServerIcon ?? WaypointIcon.Trader!,
+                VerticalCoverageRadius = template?.VerticalCoverageRadius ?? 25,
+                HorizontalCoverageRadius = template?.HorizontalCoverageRadius ?? 25,
+                Pinned = template?.Pinned ?? false
+            };
+            
+            waypoint.AddToMap(trader.Pos.AsBlockPos);
 
         }
         return TextCommandResult.Success();

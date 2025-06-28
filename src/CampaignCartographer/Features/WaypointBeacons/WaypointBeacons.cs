@@ -38,7 +38,7 @@ public class WaypointBeacons : ClientModSystem, IClientServiceRegistrar
         foreach (var beacon in _waypointElements.Values)
         {
             var waypoint = ___ownWaypoints.FirstOrDefault(p => p.Guid == beacon.Waypoint?.Guid);
-            if (beacon.Waypoint.IsSameAs(waypoint)) continue;
+            if (beacon.Waypoint?.IsSameAs(waypoint) is not true) continue;
             beacon.Rehydrate();
         }
     }
