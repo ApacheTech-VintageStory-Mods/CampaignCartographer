@@ -5,6 +5,11 @@ using System.Reflection;
 [assembly: AssemblyMetadata("ModDB Page", "https://mods.vintagestory.at/campaigncartographer")]
 [assembly: AssemblyMetadata("Issue Tracker", "https://github.com/ApacheTech-VintageStory-Mods/CampaignCartographer/issues")]
 
+[assembly: AssemblyMetadata("Buy Me A Coffee", "https://www.buymeacoffee.com/Apache")]
+[assembly: AssemblyMetadata("Donate via PayPal", "https://bit.ly/APGDonate")]
+[assembly: AssemblyMetadata("Join me on Patreon", "https://patreon.com/ApacheTechSolutions")]
+[assembly: AssemblyMetadata("Amazon Wishlist", "https://amzn.eu/7qvKTFu ")]
+
 [assembly: ModDependency("game", "1.20.12")]
 [assembly: ModDependency("survival", "1.20.12")]
 
