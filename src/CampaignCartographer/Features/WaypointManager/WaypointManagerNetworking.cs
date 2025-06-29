@@ -5,6 +5,7 @@ using Gantry.Core.GameContent.GUI.Abstractions;
 using System.Diagnostics;
 using ApacheTech.Common.Extensions.Harmony;
 using Gantry.Services.Network.Extensions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointManager;
 
@@ -58,7 +59,7 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();
         var wpIndex = waypointMapLayer?.AddWaypoint(waypoint, player);
-        
+
         var message = Lang.Get("Ok, waypoint nr. {0} added", wpIndex);
         Sapi.SendMessage(player, GlobalConstants.GeneralChatGroup, message, EnumChatType.CommandSuccess);
     }
@@ -68,11 +69,25 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
     {
         var mapManager = Sapi.ModLoader.GetModSystem<WorldMapManager>();
         var waypointMapLayer = mapManager.WaypointMapLayer();
+        if (waypointMapLayer is null)
+        {
+            G.Logger.Error("WaypointMapLayer not found while editing waypoint {0}", waypoint.Guid);
+        }
 
-        var result = waypointMapLayer?.Waypoints
-            .Select((wp, index) => new { Waypoint = wp, Index = index })
-            .Where(x => x.Waypoint.OwningPlayerUid == player?.PlayerUID)
-            .SingleOrDefault(x => x.Waypoint.Guid == waypoint.Guid);
+        WaypointIndexPair? result;
+        try
+        {
+            result = waypointMapLayer?.Waypoints
+                .Select((wp, index) => new WaypointIndexPair(wp, index))
+                .Where(x => x.Waypoint.OwningPlayerUid == player?.PlayerUID)
+                .SingleOrDefault(x => x.Waypoint.Guid == waypoint.Guid);
+        }
+        catch (InvalidOperationException)
+        {
+            waypointMapLayer?.DedupeWaypoints();
+            EditWaypoint(waypoint, player);
+            return;
+        }
 
         if (result is null) return;
 
@@ -92,4 +107,6 @@ public sealed class WaypointManagerNetworking : UniversalModSystem
         var message = Lang.Get("Ok, waypoint nr. {0} modified", wpIndex);
         Sapi.SendMessage(player, GlobalConstants.GeneralChatGroup, message, EnumChatType.CommandSuccess);
     }
+
+    private record WaypointIndexPair(Waypoint Waypoint, int Index);
 }

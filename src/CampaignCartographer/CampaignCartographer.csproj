@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Version>4.7.0</Version>
+		<Version>4.7.1</Version>
 		<Product>Campaign Cartogrpaher</Product>
 		<Description>The original map mod, reborn. Adds multiple Cartography related features to the game, such as custom player pins, GPS, auto waypoint markers, and more.</Description>
 		<PackageProjectUrl>https://mods.vintagestory.at/campaigncartographer</PackageProjectUrl>

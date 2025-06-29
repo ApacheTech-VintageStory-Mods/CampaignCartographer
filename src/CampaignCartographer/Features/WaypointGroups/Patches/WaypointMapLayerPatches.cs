@@ -1,10 +1,9 @@
 ﻿#nullable enable
 using System.Text;
 using ApacheTech.Common.Extensions.Harmony;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Extensions;
 using Gantry.Services.FileSystem.Configuration;
 using Gantry.Services.FileSystem.Configuration.Consumers;
-using Vintagestory.API.MathTools;
-using static OpenTK.Graphics.OpenGL.GL;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
 
@@ -113,4 +112,13 @@ public class WaypointMapLayerPatches : WorldSettingsConsumer<WaypointGroupsSetti
             if (saveChanges) ModSettings.World.Save(Settings);
         }
     }
+
+    /// <summary>
+    ///     Ensures waypoint components are removed from their respective groups when the map is closed.
+    /// </summary>
+    /// <param name="___tmpWayPointComponents">The temporary list of waypoint components.</param>
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(WaypointMapLayer), "OnSaveGameGettingSaved")]
+    public static void Harmony_WaypointMapLayer_OnSaveGameGettingSaved_Prefix(WaypointMapLayer __instance) 
+        => __instance.DedupeWaypoints();
 }

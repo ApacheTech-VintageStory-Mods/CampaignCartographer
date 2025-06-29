@@ -1,4 +1,5 @@
-﻿using Gantry.Services.FileSystem.Abstractions.Contracts;
+﻿using Gantry.Core.GameContent.AssetEnum;
+using Gantry.Services.FileSystem.Abstractions.Contracts;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.ManualWaypoints.Model;
 
@@ -19,10 +20,13 @@ public sealed class TraderModel
             .GetJsonFile("trader-colours.json")
             .ParseAs<Dictionary<string, string>>();
 
-        return colours.SingleOrDefault(p =>
-                trader.Code.Path
-                    .ToLowerInvariant()
-                    .EndsWith(p.Key))
+        var colour = colours.SingleOrDefault(p => trader.Code.Path
+            .ToLowerInvariant()
+            .EndsWith(p.Key))
             .Value ?? colours["default"];
+
+        return colour.StartsWith('#')
+            ? colour : NamedColour.TryParse(colour, false, out var namedColour)
+            ? namedColour! : NamedColour.Black;
     }
 }

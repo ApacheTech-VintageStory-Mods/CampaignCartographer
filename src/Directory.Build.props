@@ -2,45 +2,62 @@
 	<PropertyGroup Label="Framework Versioning">
 		<TargetFramework>net7.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
+		<Configurations>Debug;Release;Package</Configurations>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Project Configuration">
-		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-		<OutputType>Library</OutputType>
-		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-		<Configurations>Debug;Release;Package</Configurations>
-		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-		<Nullable>enable</Nullable>
-		<RootNamespace>ApacheTech.VintageMods.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<AnalysisLevel>latest</AnalysisLevel>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<OutputType>Library</OutputType>
+		<RepositoryType>git</RepositoryType>
+		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<Copyright>All Rights Reserved.</Copyright>
 		<Authors>Apache</Authors>
 		<Company>ApacheTech Solutions</Company>
-		<Copyright>All Rights Reserved.</Copyright>
 		<PackageIcon>modicon.png</PackageIcon>
-		<RepositoryType>git</RepositoryType>
-	</PropertyGroup>
-
-	<PropertyGroup Label="Environment Variables">
-		<!-- Environment Variable not recongised by Visual Studio Analysers. -->
-		<!-- ReSharper disable once UnknownProperty -->
-		<EnvironmentVariable>$(VINTAGE_STORY)</EnvironmentVariable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<ProjectCapability Include="DynamicDependentFile" />
 		<ProjectCapability Include="DynamicFileNesting" />
 	</ItemGroup>
-	
-	<ItemGroup>
-		<InternalsVisibleTo Include="Gantry" />
-	</ItemGroup>
 
+	<ItemGroup>
+		<!-- Dynamic URLs -->
+		<AssemblyMetadata Include="ModDB Page" Value="https://mods.vintagestory.at/$(MSBuildProjectName)" />
+		<AssemblyMetadata Include="Issue Tracker" Value="https://github.com/ApacheTech-VintageStory-Mods/$(MSBuildProjectName)/issues" />
+
+		<!-- Static URLs -->
+		<AssemblyMetadata Include="Visit my Website" Value="https://apachetech.co.uk" />
+		<AssemblyMetadata Include="Subscribe on YouTube" Value="https://youtube.com/@ApacheGamingUK" />
+		<AssemblyMetadata Include="Subscribe on Twitch" Value="https://twitch.tv/ApacheGamingUK" />
+
+		<!-- Monetised URLs -->
+		<AssemblyMetadata Include="Buy Me A Coffee" Value="https://www.buymeacoffee.com/Apache" />
+		<AssemblyMetadata Include="Donate via PayPal" Value="https://bit.ly/APGDonate" />
+		<AssemblyMetadata Include="Join me on Patreon" Value="https://patreon.com/ApacheTechSolutions" />
+		<AssemblyMetadata Include="Amazon Wishlist" Value="https://amzn.eu/7qvKTFu" />
+	</ItemGroup>
+	
+	<ItemGroup Label="Compile Time Interop">
+		<InternalsVisibleTo Include="Gantry" />
+		<InternalsVisibleTo Include="$(ProjectName).Tests.Unit" />
+		<InternalsVisibleTo Include="$(ProjectName).Tests.Integration" />
+		<InternalsVisibleTo Include="$(ProjectName).Tests.Benchmarks" />
+		<InternalsVisibleTo Include="$(ProjectName).Tests.Acceptance" />
+	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Package|AnyCPU'">
 		<DefineConstants>TRACE</DefineConstants>
@@ -53,19 +70,9 @@
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<ModPackagerDir>C:\Users\Apache\source\repos\.tools\packager\</ModPackagerDir>
-		<ModPackagerName>ModPackager.exe</ModPackagerName>
-		<ModPackagerPath>$(ModPackagerDir)$(ModPackagerName)</ModPackagerPath>
-
-		<ModInfoGeneratorDir>C:\Users\Apache\source\repos\.tools\mig\</ModInfoGeneratorDir>
-		<ModInfoGeneratorName>mig.exe</ModInfoGeneratorName>
-		<ModInfoGeneratorPath>$(ModInfoGeneratorDir)$(ModInfoGeneratorName)</ModInfoGeneratorPath>
-	</PropertyGroup>
-
 	<!-- Core Game Library Imports -->
 
-	<ItemGroup>
+	<ItemGroup Label="Game Engine Imports">
 
 		<!--
 			Library 1: VintagestoryAPI
@@ -116,7 +123,7 @@
 
 	<!-- Auxhilary Game Library Imports -->
 
-	<ItemGroup>
+	<ItemGroup Label="Game Library Imports">
 
 		<!--
 	        Library 1: 0Harmony
@@ -335,13 +342,13 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="SmartAssembly">
 		<None Include="$(ProjectName).saproj">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 	
-	<ItemGroup>
+	<ItemGroup Label="Embedded Resources">
 		<EmbeddedResource Include="**\_EmbeddedResources\**\*.*" />
 	</ItemGroup>
 </Project>
