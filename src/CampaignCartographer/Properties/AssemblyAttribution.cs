@@ -11,5 +11,5 @@
     RequiredOnServer = true,
     NetworkVersion = "1.0.0",
     Website = "https://apachetech.co.uk",
-    Contributors = ["Apache", "Doombox", "Melchior", "Novocain", "egocarib", "Craluminum2413", "Aledark", "Th3Dilly"],
+    Contributors = ["Apache", "Doombox", "Melchior", "Novocain", "egocarib", "Craluminum2413", "Aledark", "Th3Dilly", "ResursX"],
     Authors = ["ApacheTech Solutions"])]

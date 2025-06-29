@@ -16,15 +16,23 @@ namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Ma
 public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : CommandBase
 {
     /// <summary>
-    ///     Gets the world map manager instance.
+    ///     Tthe world map manager instance.
     /// </summary>
     protected WorldMapManager MapManager { get; }
 
     /// <summary>
+    ///     The core client API.
+    /// </summary>
+    protected ICoreClientAPI Capi { get; }
+
+    /// <summary>
     ///     Initialises a new instance of the <see cref="WorldMapManagerRequestHandler{T}"/> class.
     /// </summary>
-    /// <param name="mapManager">The world map manager instance.</param>
-    protected WorldMapManagerRequestHandler(WorldMapManager mapManager) => MapManager = mapManager;
+    protected WorldMapManagerRequestHandler(WorldMapManager mapManager, ICoreClientAPI capi)
+    {
+        MapManager = mapManager;
+        Capi = capi;
+    }
 
     /// <summary>
     ///     Handles the specified command, ensuring the world map dialogue is managed correctly.
@@ -36,6 +44,7 @@ public class WorldMapManagerRequestHandler<T> : RequestHandler<T> where T : Comm
     {
         if (MapManager.worldMapDlg is not null)
         {
+            Capi.Gui.TriggerDialogClosed(MapManager.worldMapDlg);
             MapManager.worldMapDlg.Dispose();
             MapManager.worldMapDlg = null;
             MapManager.ToggleMap(EnumDialogType.HUD);

@@ -17,8 +17,8 @@ public class UpdateWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     Handles the execution of the <see cref="UpdateWaypointGroupLayerCommand"/>.
     /// </summary>
-    private class UpdateWaypointGroupLayerHandler(WorldMapManager mapManager)
-        : WorldMapManagerRequestHandler<UpdateWaypointGroupLayerCommand>(mapManager)
+    private class UpdateWaypointGroupLayerHandler(WorldMapManager mapManager, ICoreClientAPI capi)
+        : WorldMapManagerRequestHandler<UpdateWaypointGroupLayerCommand>(mapManager, capi)
     {
         /// <inheritdoc />
         [LockMapLayerGeneration]

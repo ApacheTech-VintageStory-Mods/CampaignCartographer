@@ -1,6 +1,9 @@
-﻿using Gantry.Services.FileSystem.Configuration.Consumers;
+﻿using System.Reflection;
+using System.Reflection.Emit;
 using ApacheTech.Common.Extensions.Harmony;
 using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Abstractions;
+using ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.MapLayers.Commands;
+using Gantry.Services.FileSystem.Configuration.Consumers;
 using Vintagestory.API.Util;
 
 namespace ApacheTech.VintageMods.CampaignCartographer.Features.WaypointGroups.Patches;
@@ -118,7 +121,7 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
                     try
                     {
                         if (!ShouldCreateMapLayer(key, capi)) continue;
-                        G.Log($"[WorldMapManagerPatches] Creating map layer: {key}: {value.Name}");
+                        G.Log($" - Creating map layer: {key}: {value.Name}");
                         AddMapLayer(instance, value);
                     }
                     catch (Exception exLayer)
@@ -221,7 +224,7 @@ public class WorldMapManagerPatches : WorldSettingsConsumer<WaypointGroupsSettin
     /// <param name="mapLayerGenThread">Reference to the map layer generation thread.</param>
     private static void StartMapLayerGenerationThread(WorldMapManager instance, ref Thread mapLayerGenThread)
     {
-        try
+         try
         {
             G.Log("[WorldMapManagerPatches] Starting map layer generation thread");
             mapLayerGenThread = new Thread(() =>

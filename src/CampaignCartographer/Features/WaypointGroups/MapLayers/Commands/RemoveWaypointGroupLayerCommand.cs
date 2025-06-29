@@ -17,8 +17,8 @@ public class RemoveWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     Handles the execution of the <see cref="RemoveWaypointGroupLayerCommand"/>.
     /// </summary>
-    private class RemoveWaypointGroupLayerHandler(WorldMapManager mapManager)
-        : WorldMapManagerRequestHandler<RemoveWaypointGroupLayerCommand>(mapManager)
+    private class RemoveWaypointGroupLayerHandler(WorldMapManager mapManager, ICoreClientAPI capi)
+        : WorldMapManagerRequestHandler<RemoveWaypointGroupLayerCommand>(mapManager, capi)
     {
         /// <inheritdoc />
         [LockMapLayerGeneration]

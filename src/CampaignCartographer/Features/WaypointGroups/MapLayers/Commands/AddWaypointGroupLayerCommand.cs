@@ -17,8 +17,8 @@ public class AddWaypointGroupLayerCommand : CommandBase
     /// <summary>
     ///     Handles the execution of the <see cref="AddWaypointGroupLayerCommand"/>.
     /// </summary>
-    private class AddWaypointGroupLayerHandler(WorldMapManager mapManager)
-        : WorldMapManagerRequestHandler<AddWaypointGroupLayerCommand>(mapManager)
+    private class AddWaypointGroupLayerHandler(WorldMapManager mapManager, ICoreClientAPI capi)
+        : WorldMapManagerRequestHandler<AddWaypointGroupLayerCommand>(mapManager, capi)
     {
         /// <inheritdoc />
         [LockMapLayerGeneration]
