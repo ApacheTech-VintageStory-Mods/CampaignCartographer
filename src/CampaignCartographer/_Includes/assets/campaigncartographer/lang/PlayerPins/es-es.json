@@ -1,0 +1,35 @@
+{
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 30/06/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+  "Features.PlayerPins.Dialogue.Title": "Iconos de Jugadores",
+  "Features.PlayerPins.Dialogue.Self": "Tu",
+  "Features.PlayerPins.Dialogue.Highlighted": "Amigos Destacados",
+  "Features.PlayerPins.Dialogue.Others": "Otros en Servidor",
+  "Features.PlayerPins.Dialogue.Randomise": "Color y Escala Aleatorio",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch": "Icono Jugador:",
+  "Features.PlayerPins.Dialogue.lblToggleSwitch.HoverText": "Cambiar el estilo de los iconos de jugador, el tuyo propio y el resto de miembros del servidor.",
+  "Features.PlayerPins.Dialogue.btnToggleSwitch": "{0} Jugador",
+  "Features.PlayerPins.Dialogue.lblRed": "Rojo:",
+  "Features.PlayerPins.Dialogue.lblRed.HoverText": "El canal rojo del color del icono.",
+  "Features.PlayerPins.Dialogue.lblGreen": "Verde:",
+  "Features.PlayerPins.Dialogue.lblGreen.HoverText": "El canal verde del color del icono.",
+  "Features.PlayerPins.Dialogue.lblBlue": "Azul:",
+  "Features.PlayerPins.Dialogue.lblBlue.HoverText": "El canal azul del color del icono.",
+  "Features.PlayerPins.Dialogue.lblOpacity": "Opacidad:",
+  "Features.PlayerPins.Dialogue.lblOpacity.HoverText": "La opacidad del color de la icono.",
+  "Features.PlayerPins.Dialogue.lblScale": "Escala:",
+  "Features.PlayerPins.Dialogue.lblScale.HoverText": "El tamaño que debe aplicarse al icono.",
+
+  "Features.PlayerPins.SettingsCommandDescription": "Personalizar los Iconos del los Jugadores en el Mapa",
+
+  "Features.PlayerPins.Highlight.Description": "Añade o elimina jugadores de tu lista de amigos. Los amigos aparecen descatados en el mapa del mundo.",
+  "Features.PlayerPins.Highlight.FriendsList": "Lista de Amigos:",
+  "Features.PlayerPins.Highlight.YouHaveNoFriends": "No tienes amigos.",
+  "Features.PlayerPins.Highlight.NoPlayerNameGiven": "Por favor, especifica el nombre del jugador.",
+  "Features.PlayerPins.Highlight.PlayerNotFound": "No se ha encontrado ningún jugador con el nombre «{0}».",
+  "Features.PlayerPins.Highlight.MultiplePlayersFound": "Se han encontrado varios jugadores con el nombre «{0}».",
+  "Features.PlayerPins.Highlight.PlayerAlreadyAdded": "{0} ya ha sido añadido a tu Lista de Amigos.",
+  "Features.PlayerPins.Highlight.PlayerAdded": "{0} se ha añadido a tu Lista de Amigos.",
+  "Features.PlayerPins.Highlight.PlayerRemoved": "{0} ha sido eliminado de tu Lista de Amigos."
+}
