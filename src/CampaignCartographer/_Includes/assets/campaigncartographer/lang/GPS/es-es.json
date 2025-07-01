@@ -1,0 +1,20 @@
+{
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 30/06/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+  "Features.GPS.Command.Description.Default": "Muestra tu posición actual en el mundo.",
+  "Features.GPS.Command.Description.BroadcastSubCommand": "Transmite tu ubicación actual en el servidor.",
+  "Features.GPS.Command.Description.ClipboardSubCommand": "Copia tu ubicación actual en el portapapeles.",
+  "Features.GPS.Command.Description.PrivateMessageSubCommand": "Envía tu ubicación actual a otro jugador.",
+
+  "Features.GPS.ClipboardTextSet": "Ubicación del jugador copiada en el portapapeles.",
+
+  "Features.GPS.FuzzyPlayerSearch.MultipleResults": "Se han encontrado varios jugadores con el mismo nombre.",
+  "Features.GPS.FuzzyPlayerSearch.NoResults": "No se han encontrado jugadores.",
+
+  "Features.GPS.player-not-found": "Jugador no encontrado en el servidor.",
+  "Features.GPS.whisper-received": "[Desde {0}]: {1}",
+  "Features.GPS.whisper-sent": "[Hasta {0}]: {1}",
+
+  "Features.GPS.ShowOnMap": "Mostrar en el Mapa"
+}
