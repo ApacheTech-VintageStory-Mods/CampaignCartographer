@@ -1,0 +1,28 @@
+{
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 06/03/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+  "Features.AutoWaypoints.DeathWaypointTitle": "Has muerto aquí: {0}",
+
+  "Features.AutoWaypoints.SettingsCommandDescription": "Configuración de las Marcas Automáticas",
+
+  "Features.AutoWaypoints.Dialogue.Title": "Marcas Automáticas",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints": "Marcas de Muerte:",
+  "Features.AutoWaypoints.Dialogue.lblDeathWaypoints.HoverText": "Añade marcas al mapa en cada posición de tu muerte. Esto desactivará la marca de muerte original.",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators": "Translocalizadores:",
+  "Features.AutoWaypoints.Dialogue.lblTranslocators.HoverText": "Añade marcas al mapa al viajar entre Translocalizadores.",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters": "Teletransportadores:",
+  "Features.AutoWaypoints.Dialogue.lblTeleporters.HoverText": "Añade marcas al mapa al viajar entre Teletransportadores.",
+  "Features.AutoWaypoints.Dialogue.lblTraders": "Comerciantes:",
+  "Features.AutoWaypoints.Dialogue.lblTraders.HoverText": "Añade marcas al mapa al interactuar con los comerciantes.",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits": "Minerales Superficiales:",
+  "Features.AutoWaypoints.Dialogue.lblSurfaceDeposits.HoverText": "Añade marcas al mapa al recoger los distintos tipos de minerales superficiales.",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones": "Piedras:",
+  "Features.AutoWaypoints.Dialogue.lblLooseStones.HoverText": "Añade marcas al mapa al recoger los distintos tipos de piedras.",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms": "Setas:",
+  "Features.AutoWaypoints.Dialogue.lblMushrooms.HoverText": "Añade marcas al mapa al recolectar Setas.",
+  "Features.AutoWaypoints.Dialogue.lblResin": "Resina:",
+  "Features.AutoWaypoints.Dialogue.lblResin.HoverText": "Añade marcas al mapa al recolectar Resina.",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes": "Arbustos de Bayas:",
+  "Features.AutoWaypoints.Dialogue.lblBerryBushes.HoverText": "Añade marcas al mapa al recolectar Arbustos de Bayas."
+}
