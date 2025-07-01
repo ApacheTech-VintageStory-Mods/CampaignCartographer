@@ -1,0 +1,12 @@
+{
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 06/03/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+  "Features.CentreMap.SettingsCommandDescription": "Vuelve a centrar el mapa en la ubicación o el jugador.",
+  "Features.CentreMap.CannotCentreMapOnPlayer": "No se puede encontrar al jugador «{0}» en este momento. Puede que esté fuera de cobertura. Si vuelve a conectarse, aparecerá en el mapa.",
+  "Features.CentreMap.CentreMapOnPlayer": "Mapa centrado en el jugador: {0} ({1}, {2}, {3})",
+  "Features.CentreMap.CentreMapOnPlayerSpawn": "Mapa centrado en el Punto de Aparición del jugador: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnPosition": "Mapa centrado en la posición: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWorldSpawn": "Mapa centrado en el Inicio del mundo: ({0}, {1})",
+  "Features.CentreMap.CentreMapOnWaypoint": "Mapa recentrado en la Marca {0}: {1} ({2}, {3})"
+}
