@@ -1,9 +1,13 @@
 ﻿{
-    "ModTitle":  "Cartógrafo de campaña",
-    "ModDescription":  "Agrega múltiples características relacionadas con la cartografía al juego, como íconos de puntos de referencia personalizados, GPS, marcadores de puntos de referencia automáticos y más.",
-    "error-messages.error-occured":  "Se ha producido un error al ejecutar el comando.",
-    "error-messages.invalid-command":  "Comando no válido. Por favor, inténtelo de nuevo.",
-    "error-messages.feature-disabled":  "El administrador del servidor ha desactivado esta función.",
-    "error-messages.mod-not-installed-on-server":  "Campaign Cartographer no está instalado en el servidor. Pida al administrador de su servidor que instale Campaign Cartographer en el servidor para obtener una funcionalidad adicional.",
-    "error-messages.feature-not-available-client-side":  "Esta función no está disponible en el cliente. En su lugar, utilice el comando de servidor equivalente."
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 30/06/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+  "ModTitle": "Cartógrafo de Campaña",
+  "ModDescription": "Añade al juego múltiples funciones relacionadas con la cartografía, como Iconos Personalizados para las Marcas, GPS, Marcas Automáticas, etc.",
+
+  "error-messages.feature-not-available-client-side": "Esta función no está disponible como cliente. En su lugar, usa el comando equivalente para servidores.",
+  "error-messages.mod-not-installed-on-server": "El mod «Campaign Cartographer» no está instalado en el servidor. Solicita al administrador del servidor que instale el mod para obtener una mayor funcionalidad.",
+  "error-messages.feature-disabled": "Esta función se encuentra desactivada en este servidor.",
+  "error-messages.invalid-command": "Comando no válido. Por favor, inténtelo de nuevo.",
+  "error-messages.error-occured": "Se ha producido un error al ejecutar el comando."
 }
