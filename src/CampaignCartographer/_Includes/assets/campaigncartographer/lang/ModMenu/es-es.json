@@ -1,0 +1,18 @@
+{
+  "_comentarios-1": "Campaign Cartographer v4.7.1 || Enlace de VS ModDB: https://mods.vintagestory.at/campaigncartographer ",
+  "_comentarios-2": "Traducido por C4BR3R4 || Última Modificación: 30/06/2025 || Registro de Cambios: https://c4br3r4.es/index.php?topic=1325.0 ",
+
+    "Features.ModMenu.Dialogue.WaypointManager": "Administrador de Marcas",
+    "Features.Support.Dialogue.YouTube": "Suscríbete en YouTube",
+    "Features.ModMenu.Dialogue.Title": "Campaign Cartographer",
+    "Features.Support.Dialogue.Back": "Volver",
+    "Features.Support.Dialogue.Coffee": "Cómprame un Café",
+    "Features.ModMenu.Dialogue.Support": "Apoya al desarrollador del Mod",
+    "Features.Support.Dialogue.Twitch": "Suscríbete en Twitch.tv",
+    "Features.ModMenu.Dialogue.EditBlockSelectionWaypointMarker": "Modificar las Marcas de Selección de Bloques",
+    "Features.Support.Dialogue.WishList": "Lista de Deseos de Amazon",
+    "Features.ModMenu.Dialogue.EditPreDefinedWaypoints": "Modificar las Marcas Predefinidas",
+    "Features.Support.Dialogue.Website": "Visita mi sitio Web",
+    "Features.Support.Dialogue.Patreon": "Entra en mi Patreon",
+    "Features.Support.Dialogue.Donate": "Dona por PayPal"
+}
