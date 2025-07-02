@@ -1,0 +1,22 @@
+{
+  "Features.WaypointBeacons.WaypointPrefix": "Marca",
+
+  "Features.WaypointBeacons.Dialogue.Title": "Configuración de Balizas",
+  "Features.WaypointBeacons.Dialogue.IconRange": "Distancia de Icono",
+  "Features.WaypointBeacons.Dialogue.IconRange.HoverText": "El rango (en bloques) dentro del cual es visible el icono de la marca.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix": "Mostrar Prefijo",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointPrefix.HoverText": "Indica si se debe mostrar el prefijo de las marcas.",
+
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex": "Mostrar Índice",
+  "Features.WaypointBeacons.Dialogue.ShowWaypointIndex.HoverText": "Indica si se debe mostrar el índice de las marcas.",
+
+  "Features.WaypointBeacons.Dialogue.ShowPillars": "Mostrar Columnas",
+  "Features.WaypointBeacons.Dialogue.ShowPillars.HoverText": "Indica si se debe mostrar la columna en las Marcas.",
+
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition": "Sujetar Posición",
+  "Features.WaypointBeacons.Dialogue.ClampWaypointPosition.HoverText": "Sostiene el icono de la Marca en el borde de pantalla cuando la marca se encuentra fuera de la vista. Si la marca no se encuentra fijada en el Minimapa.",
+
+  "Features.WaypointBeacons.Dialogue.TitleRange": "Distancia de Título",
+  "Features.WaypointBeacons.Dialogue.TitleRange.HoverText": "El rango (en bloques) dentro del cual es visible el título de la marca."
+}
