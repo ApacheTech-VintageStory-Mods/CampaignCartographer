@@ -1,0 +1,10 @@
+{
+  "Features.WaypointGroups.DefaultGroupName":  "Predeterminado",
+  "Features.WaypointGroups.Dialogue.Title": "Grupos de Marcas",
+  "Features.WaypointGroups.Dialogue.AddNew": "Añadir Grupo Nuevo",
+  "Features.WaypointGroups.Dialogue.Edit": "Modificar Grupo",
+  "Features.WaypointGroups.Dialogue.MaxReached": "Sólo puedes hacer un máximo de {0} grupos.",
+  "Features.WaypointGroups.Dialogue.lblTitle": "Título:",
+  "Features.WaypointGroups.Dialogue.lblTitle.HoverText": "El título que se mostrará en el mapa.",
+  "Features.WaypointGroups.Dialogue.lblTitle.ValidationError": "El título es necesario."
+}
